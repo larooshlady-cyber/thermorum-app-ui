@@ -615,8 +615,7 @@
   .input-error { border-color: #999 !important; }
 
   /* Guest mode */
-  .guest-mode .product-card .product-price { display: none !important; }
-  .guest-mode .product-card .guest-price-msg { display: block !important; }
+  .guest-mode .product-card .guest-price-msg { display: none !important; }
 
   /* Wireframe placeholder box */
   .placeholder {
@@ -4043,23 +4042,11 @@
     document.querySelectorAll('.guest-show').forEach(el => {
       el.style.display = isGuest ? '' : 'none';
     });
-    // Toggle guest banner on product page
-    const guestBanner = document.getElementById('product-guest-banner');
-    const productBottom = document.getElementById('product-bottom-bar');
-    if (guestBanner) guestBanner.style.display = isGuest ? 'flex' : 'none';
-    if (productBottom) productBottom.style.display = isGuest ? 'none' : 'flex';
-    // Catalog: hide cart button and prices in guest mode
-    const catalogCart = document.getElementById('catalog-cart-btn');
-    if (catalogCart) catalogCart.style.display = isGuest ? 'none' : '';
-    // Hide/show prices in catalog product cards
-    document.querySelectorAll('#screen-catalog .product-card').forEach(card => {
-      const priceEls = card.querySelectorAll('div[style*="font-weight:800"], span[style*="font-weight:800"]');
-      priceEls.forEach(p => {
-        if (p.textContent.includes('₾')) p.style.display = isGuest ? 'none' : '';
-      });
-    });
-    // Hide discount badge text in product detail for guests
-    const discountBadge = document.querySelector('#screen-product .product-badge, #screen-product div[style*="-15%"]');
+    // Guest mode — prices are always visible, no banners
+    var guestBanner = document.getElementById('product-guest-banner');
+    var productBottom = document.getElementById('product-bottom-bar');
+    if (guestBanner) guestBanner.style.display = 'none';
+    if (productBottom) productBottom.style.display = 'flex';
   }
 
   // Guard: redirect guests trying to access auth-only screens
