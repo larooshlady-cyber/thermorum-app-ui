@@ -86,10 +86,14 @@
     pointer-events: all;
     z-index: 5;
   }
-  .screen.fade-in { animation: fadeIn 0.2s ease-out forwards; }
-  .screen.fade-out { animation: fadeOut 0.15s ease-in forwards; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+  .screen.fade-in { animation: screenIn 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+  .screen.fade-out { animation: screenOut 0.2s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards; }
+  .screen.slide-back-in { animation: slideBackIn 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+  .screen.slide-back-out { animation: slideBackOut 0.2s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards; }
+  @keyframes screenIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes screenOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(-20px); } }
+  @keyframes slideBackIn { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes slideBackOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(40px); } }
 
   /* Header */
   .header {
@@ -97,6 +101,8 @@
     padding: 0 16px 16px;
     border-bottom: var(--border);
     flex-shrink: 0;
+    position: relative;
+    z-index: 10;
   }
 
   /* Content */
@@ -121,62 +127,64 @@
     background: var(--white);
     border-top: var(--border);
     display: flex;
-    align-items: flex-start;
-    padding-top: 10px;
+    align-items: stretch;
     justify-content: space-around;
     z-index: 50;
-    transition: transform 0.25s ease;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 -1px 8px rgba(0,0,0,0.04);
   }
-  .tab-bar.hidden { transform: translateY(100%); }
+  .tab-bar.hidden { transform: translateY(calc(100% + 28px)); pointer-events: none; }
 
   .tab-item {
+    flex: 1;
     text-align: center;
     cursor: pointer;
     position: relative;
-    padding: 4px 8px;
+    padding: 16px 0 0;
     background: none;
     border: none;
     outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
   .tab-item .indicator {
     position: absolute;
-    top: -8px; left: 50%;
-    transform: translateX(-50%);
-    width: 20px; height: 2px;
+    top: 0; left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 24px; height: 3px;
     background: var(--d1);
-    border-radius: 1px;
-    opacity: 0;
-    transition: opacity 0.2s;
+    border-radius: 2px;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  .tab-item.active .indicator { opacity: 1; }
+  .tab-item.active .indicator { transform: translateX(-50%) scaleX(1); }
   .tab-item .tab-label {
     font-size: 10px;
     color: var(--l3);
-    margin-top: 2px;
+    margin-top: 4px;
     font-family: inherit;
     transition: color 0.2s;
   }
   .tab-item.active .tab-label { color: var(--d1); font-weight: 600; }
 
-  /* FAB */
-  .ai-fab {
-    position: absolute;
-    bottom: calc(88px + var(--safe-bottom));
-    right: 16px;
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: var(--d1);
+  /* Center AI button */
+  .tab-center-ai {
+    flex: 1;
+    position: relative;
+    padding-top: 0 !important;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    z-index: 40;
-    cursor: pointer;
-    transition: transform 0.15s, opacity 0.2s;
-    border: none;
+    justify-content: flex-start;
+    margin-top: -20px;
   }
-  .ai-fab:active { transform: scale(0.9); }
-  .ai-fab.hidden { opacity: 0; pointer-events: none; }
+  .tab-center-ai .indicator { display: none !important; }
+  .tab-center-ai .tab-label { margin-top: 12px; }
+  .tab-center-ai:active > div:first-child {
+    transform: scale(0.92) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+  }
 
   /* Card */
   .card {
@@ -185,6 +193,8 @@
     padding: 16px;
     border: var(--border);
     margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s, transform 0.15s;
   }
 
   /* Buttons */
@@ -202,7 +212,8 @@
     transition: transform 0.1s, opacity 0.1s;
     min-height: 52px;
   }
-  .btn-primary:active { transform: scale(0.97); opacity: 0.8; }
+  .btn-primary:active { transform: scale(0.97); opacity: 0.85; }
+  .btn-primary:focus-visible { outline: 3px solid rgba(26,26,26,0.2); outline-offset: 2px; }
 
   .btn-secondary {
     padding: 18px;
@@ -352,7 +363,7 @@
     border: var(--border);
     transition: transform 0.1s;
   }
-  .product-card:active { transform: scale(0.97); }
+  .product-card:active { transform: scale(0.97); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
   .product-img {
     width: 100%; height: 100px;
     background: var(--l1);
@@ -555,9 +566,9 @@
     align-items: center;
     justify-content: center;
     z-index: 200;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .splash.hidden { opacity: 0; pointer-events: none; }
+  .splash.hidden { opacity: 0; transform: scale(1.05); pointer-events: none; }
   .splash-logo {
     width: 72px; height: 72px;
     border-radius: 50%;
@@ -566,10 +577,29 @@
     align-items: center;
     justify-content: center;
     animation: pulse-ring 2s ease infinite;
+    transform: scale(0);
+    animation: splash-pop 0.6s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, pulse-ring 2s 0.8s ease infinite;
+  }
+  .splash-title {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: splash-fade 0.4s 0.5s ease forwards;
+  }
+  .splash-subtitle {
+    opacity: 0;
+    animation: splash-fade 0.3s 0.7s ease forwards;
   }
   @keyframes pulse-ring {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0.1); }
-    50% { box-shadow: 0 0 0 12px rgba(0,0,0,0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0.08); }
+    50% { box-shadow: 0 0 0 16px rgba(0,0,0,0); }
+  }
+  @keyframes splash-pop {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+  }
+  @keyframes splash-fade {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 
   input:focus { outline: none; }
@@ -577,8 +607,43 @@
   [data-navigate] { cursor: pointer; }
 
   /* Input focus glow */
-  .input-wrap { transition: border-color 0.15s; }
-  .input-wrap:focus-within { border-color: #1A1A1A !important; }
+  .input-wrap { transition: border-color 0.15s, box-shadow 0.15s; }
+  .input-wrap:focus-within { border-color: #1A1A1A !important; box-shadow: 0 0 0 3px rgba(26,26,26,0.06); }
+
+  /* Skeleton loading */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .skeleton {
+    background: linear-gradient(90deg, var(--l1) 25%, #ECECEC 50%, var(--l1) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Elevation layers */
+  .elevation-1 { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .elevation-2 { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .elevation-3 { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+
+  /* Smooth press feedback */
+  .press-scale { transition: transform 0.12s ease; }
+  .press-scale:active { transform: scale(0.96); }
+
+  /* Better scrollbar hiding for all platforms */
+  .hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* Slide-up enter for drawers/modals */
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  @keyframes slideDown {
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
+  }
 
   /* Toast */
   .toast {
@@ -636,8 +701,8 @@
     <div class="splash-logo">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/></svg>
     </div>
-    <div style="margin-top:16px;font-size:20px;font-weight:800;color:var(--d1);letter-spacing:2px;">THERMORUM</div>
-    <div style="font-size:11px;color:var(--l3);margin-top:4px;letter-spacing:1px;">wireframe prototype</div>
+    <div class="splash-title" style="margin-top:16px;font-size:20px;font-weight:800;color:var(--d1);letter-spacing:2px;">THERMORUM</div>
+    <div class="splash-subtitle" style="font-size:11px;color:var(--l3);margin-top:4px;letter-spacing:1px;">გათბობის სისტემები</div>
   </div>
 
   <!-- ==================== LOGIN ==================== -->
@@ -649,11 +714,11 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/></svg>
         </div>
         <div style="font-size:22px;font-weight:800;color:var(--d1);letter-spacing:1px;">THERMORUM</div>
-        <div style="font-size:12px;color:var(--l3);margin-top:4px;">გათბობის სისტემები</div>
+        <div style="font-size:12px;color:var(--l3);margin-top:4px;letter-spacing:0.5px;">გათბობის სისტემები</div>
       </div>
       <div style="width:100%;max-width:340px;">
         <div style="margin-bottom:20px;">
-          <label style="display:block;font-size:12px;color:var(--mid);margin-bottom:4px;font-weight:500;">მობილურის ნომერი</label>
+          <label style="display:block;font-size:12px;color:var(--mid);margin-bottom:6px;font-weight:600;">მობილურის ნომერი</label>
           <div class="input-wrap" id="login-phone-wrap" style="border:var(--border);border-radius:var(--radius-sm);padding:12px 14px;display:flex;align-items:center;gap:8px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AAAAAA" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
             <span style="font-size:14px;color:var(--d2);font-weight:500;">+995</span>
@@ -878,9 +943,14 @@
     </div>
     <div class="header" style="padding-top:12px;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-        <div>
-          <div id="greeting-text" style="font-size:12px;color:var(--l3);">დილა მშვიდობისა,</div>
-          <div style="font-size:18px;font-weight:800;color:var(--d1);">გიორგი</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button class="icon-btn" aria-label="Menu" onclick="openHamburger()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div>
+            <div id="greeting-text" style="font-size:12px;color:var(--l3);">დილა მშვიდობისა,</div>
+            <div style="font-size:18px;font-weight:800;color:var(--d1);">გიორგი</div>
+          </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
           <button class="icon-btn" aria-label="Notifications" onclick="navigateTo('notifications')">
@@ -891,15 +961,12 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
             <div class="badge" id="home-cart-badge">3</div>
           </button>
-          <button class="icon-btn" aria-label="Menu" onclick="openHamburger()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          </button>
         </div>
       </div>
     </div>
     <div class="content">
       <!-- AI Search bar -->
-      <div class="input-wrap" style="border:var(--border);border-radius:var(--radius-pill);padding:14px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px;cursor:pointer;min-height:52px;" onclick="navigateTo('chat')">
+      <div class="input-wrap" style="border:var(--border);border-radius:var(--radius-pill);padding:14px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px;cursor:pointer;min-height:52px;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:box-shadow 0.2s,transform 0.15s;" onpointerdown="this.style.transform='scale(0.98)'" onpointerup="this.style.transform=''" onclick="navigateTo('chat')">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
         <span style="font-size:14px;color:var(--l3);">რა გჭირდება? AI დაგეხმარება...</span>
         <div style="margin-left:auto;width:28px;height:28px;border-radius:50%;background:var(--d1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -1016,11 +1083,13 @@
       </div>
 
       <!-- Promo banner — between product sections -->
-      <div class="card" style="cursor:pointer;background:var(--d1);border-color:var(--d1);padding:20px;margin-bottom:16px;" onclick="switchTab('promotions')">
+      <div class="card" style="cursor:pointer;background:var(--d1);border-color:var(--d1);padding:20px;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,0.15);position:relative;overflow:hidden;" onclick="switchTab('promotions')">
+        <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.05);"></div>
+        <div style="position:absolute;bottom:-30px;right:40px;width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,0.03);"></div>
         <div style="font-size:10px;font-weight:600;color:var(--l3);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">შეთავაზება</div>
-        <div style="font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;">-15% ფასდაკლება</div>
+        <div style="font-size:22px;font-weight:900;color:var(--white);margin-bottom:4px;">-15% ფასდაკლება</div>
         <div style="font-size:13px;color:var(--l3);margin-bottom:14px;">ყველა კონდენსაციურ ქვაბზე</div>
-        <div style="display:inline-block;background:var(--white);color:var(--d1);padding:10px 24px;border-radius:var(--radius-pill);font-size:13px;font-weight:700;">დეტალურად</div>
+        <div style="display:inline-block;background:var(--white);color:var(--d1);padding:10px 24px;border-radius:var(--radius-pill);font-size:13px;font-weight:700;transition:transform 0.1s;">დეტალურად</div>
       </div>
 
       <!-- More products -->
@@ -2074,12 +2143,22 @@
       <button class="icon-btn" style="position:absolute;top:8px;left:16px;" onclick="goBack()">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
-      <button class="icon-btn" style="position:absolute;top:8px;right:16px;" onclick="toggleFavorite(this)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-      </button>
+      <div style="position:absolute;top:8px;right:16px;display:flex;gap:8px;">
+        <button class="icon-btn" onclick="showToast('გაზიარება...')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </button>
+        <button class="icon-btn" onclick="toggleFavorite(this)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </button>
+      </div>
       <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="1"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
-      <div style="position:absolute;bottom:10px;display:flex;gap:5px;"><div style="width:6px;height:6px;border-radius:3px;background:var(--d2);"></div><div style="width:6px;height:6px;border-radius:3px;background:var(--l2);"></div><div style="width:6px;height:6px;border-radius:3px;background:var(--l2);"></div></div>
-      <div style="position:absolute;bottom:10px;right:16px;background:var(--d1);padding:3px 10px;border-radius:var(--radius-pill);"><span style="font-size:11px;font-weight:700;color:var(--white);">-15%</span></div>
+      <div style="position:absolute;bottom:12px;display:flex;gap:6px;">
+        <div style="width:8px;height:8px;border-radius:4px;background:var(--d1);transition:all 0.2s;"></div>
+        <div style="width:8px;height:8px;border-radius:4px;background:var(--l2);transition:all 0.2s;"></div>
+        <div style="width:8px;height:8px;border-radius:4px;background:var(--l2);transition:all 0.2s;"></div>
+      </div>
+      <div style="position:absolute;top:12px;right:60px;background:rgba(0,0,0,0.5);padding:3px 8px;border-radius:var(--radius-pill);"><span style="font-size:10px;font-weight:600;color:var(--white);">1/3</span></div>
+      <div style="position:absolute;bottom:12px;right:16px;background:var(--d1);padding:4px 12px;border-radius:var(--radius-pill);"><span style="font-size:11px;font-weight:700;color:var(--white);">-15%</span></div>
     </div>
     <div style="flex:1;overflow-y:auto;padding:16px;padding-bottom:100px;background:var(--white);border-top-left-radius:20px;border-top-right-radius:20px;margin-top:-16px;position:relative;">
       <div style="font-size:12px;color:var(--mid);font-weight:600;margin-bottom:2px;">Bosch</div>
@@ -2110,6 +2189,26 @@
         <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px;text-align:center;"><div style="font-size:10px;color:var(--l3);margin-bottom:1px;">ფართობი</div><div style="font-size:15px;font-weight:800;">240 მ²</div></div>
         <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px;text-align:center;"><div style="font-size:10px;color:var(--l3);margin-bottom:1px;">გარანტია</div><div style="font-size:15px;font-weight:800;">5 წელი</div></div>
       </div>
+      <!-- Technical specs row -->
+      <div style="display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:2px;" class="hide-scrollbar">
+        <div style="flex-shrink:0;padding:8px 14px;border:var(--border);border-radius:var(--radius-pill);display:flex;align-items:center;gap:6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <span style="font-size:11px;font-weight:600;">98% ეფექტურობა</span>
+        </div>
+        <div style="flex-shrink:0;padding:8px 14px;border:var(--border);border-radius:var(--radius-pill);display:flex;align-items:center;gap:6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span style="font-size:11px;font-weight:600;">Wi-Fi</span>
+        </div>
+        <div style="flex-shrink:0;padding:8px 14px;border:var(--border);border-radius:var(--radius-pill);display:flex;align-items:center;gap:6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span style="font-size:11px;font-weight:600;">5 წ. გარანტია</span>
+        </div>
+        <div style="flex-shrink:0;padding:8px 14px;border:var(--border);border-radius:var(--radius-pill);display:flex;align-items:center;gap:6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <span style="font-size:11px;font-weight:600;">36 dB(A)</span>
+        </div>
+      </div>
+
       <div style="font-size:14px;font-weight:700;margin-bottom:6px;">აღწერა</div>
       <div style="font-size:13px;color:var(--d3);line-height:1.6;margin-bottom:16px;">Bosch Condens GC7000iW — მაღალი ეფექტურობის კონდენსაციური ქვაბი, ოპტიმალური ენერგომოხმარებით. იდეალურია საცხოვრებელი და კომერციული ფართებისთვის.</div>
 
@@ -2138,42 +2237,48 @@
         </div>
       </div>
 
-      <!-- In stock badge -->
-      <div style="display:flex;gap:6px;align-items:center;margin-bottom:20px;">
-        <div style="width:8px;height:8px;border-radius:50%;background:var(--d2);"></div>
-        <span style="font-size:12px;font-weight:600;color:var(--d2);">მარაგშია — მიწოდება 1-2 დღეში</span>
+      <!-- In stock + delivery info -->
+      <div style="display:flex;gap:10px;margin-bottom:20px;">
+        <div style="flex:1;display:flex;gap:8px;align-items:center;padding:10px 12px;background:var(--bg);border-radius:var(--radius-sm);">
+          <div style="width:8px;height:8px;border-radius:50%;background:#4CAF50;flex-shrink:0;"></div>
+          <div><div style="font-size:12px;font-weight:700;color:var(--d2);">მარაგშია</div><div style="font-size:10px;color:var(--l3);">საწყობი: თბილისი</div></div>
+        </div>
+        <div style="flex:1;display:flex;gap:8px;align-items:center;padding:10px 12px;background:var(--bg);border-radius:var(--radius-sm);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" style="flex-shrink:0;"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <div><div style="font-size:12px;font-weight:700;color:var(--d2);">1-2 დღე</div><div style="font-size:10px;color:var(--l3);">უფასო მიტანა</div></div>
+        </div>
       </div>
 
       <!-- Related products -->
       <div style="margin-bottom:16px;">
         <div style="font-size:15px;font-weight:800;color:var(--d1);margin-bottom:12px;">მსგავსი პროდუქტები</div>
         <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;">
-          <div style="min-width:140px;background:var(--light);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Vaillant ecoTEC — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:var(--border-color);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Vaillant ecoTEC — მალე')">
+            <div style="width:100%;height:90px;border-radius:10px;background:var(--l1);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
             </div>
             <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Vaillant ecoTEC</div>
             <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">24.6 kW · A+</div>
             <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 2,950</div>
           </div>
-          <div style="min-width:140px;background:var(--light);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Buderus GB172i — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:var(--border-color);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Buderus GB172i — მალე')">
+            <div style="width:100%;height:90px;border-radius:10px;background:var(--l1);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
             </div>
             <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Buderus GB172i</div>
             <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">24 kW · A++</div>
             <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 2,480</div>
           </div>
-          <div style="min-width:140px;background:var(--light);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Sime Go 25 — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:var(--border-color);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Sime Go 25 — მალე')">
+            <div style="width:100%;height:90px;border-radius:10px;background:var(--l1);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
             </div>
             <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Sime Go 25</div>
             <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">25 kW · ეკონომ</div>
             <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 1,890</div>
           </div>
-          <div style="min-width:140px;background:var(--light);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Ariston ALTEAS — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:var(--border-color);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Ariston ALTEAS — მალე')">
+            <div style="width:100%;height:90px;border-radius:10px;background:var(--l1);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
             </div>
             <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Ariston ALTEAS</div>
@@ -2187,24 +2292,24 @@
       <div style="margin-bottom:100px;">
         <div style="font-size:15px;font-weight:800;color:var(--d1);margin-bottom:12px;">ნანახი პროდუქტები</div>
         <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;">
-          <div style="min-width:140px;background:var(--light);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Kermi FKO — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:var(--border-color);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Kermi FKO — მალე')">
+            <div style="width:100%;height:90px;border-radius:10px;background:var(--l1);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="7" y1="4" x2="7" y2="20"/><line x1="11" y1="4" x2="11" y2="20"/></svg>
             </div>
             <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Kermi FKO 22</div>
             <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">500/1200 · პანელური</div>
             <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 350</div>
           </div>
-          <div style="min-width:140px;background:var(--light);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Grundfos ALPHA2 — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:var(--border-color);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Grundfos ALPHA2 — მალე')">
+            <div style="width:100%;height:90px;border-radius:10px;background:var(--l1);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 3"/></svg>
             </div>
             <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Grundfos ALPHA2</div>
             <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">25-60 · 45W</div>
             <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 380</div>
           </div>
-          <div style="min-width:140px;background:var(--light);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Watts თერმოსტატი — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:var(--border-color);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Watts თერმოსტატი — მალე')">
+            <div style="width:100%;height:90px;border-radius:10px;background:var(--l1);display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
             <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Watts თერმოსტატი</div>
@@ -2215,10 +2320,15 @@
       </div>
     </div>
     <!-- Logged-in bottom bar -->
-    <div id="product-bottom-bar" style="position:absolute;bottom:0;left:0;right:0;background:var(--white);padding:14px 16px calc(14px + var(--safe-bottom));border-top:var(--border);display:flex;align-items:center;z-index:10;">
+    <div id="product-bottom-bar" style="position:absolute;bottom:0;left:0;right:0;background:var(--white);padding:14px 16px calc(14px + var(--safe-bottom));border-top:var(--border);display:flex;align-items:center;gap:10px;z-index:10;box-shadow:0 -2px 10px rgba(0,0,0,0.04);">
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <button class="qty-btn" onclick="changeProductQty(-1)">−</button>
+        <span id="product-qty" style="font-size:16px;font-weight:800;width:24px;text-align:center;">1</span>
+        <button class="qty-btn" style="background:var(--d1);color:var(--white);border-color:var(--d1);" onclick="changeProductQty(1)">+</button>
+      </div>
       <button class="btn-primary" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;" onclick="addToCart()">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-        დაამატე კალათაში — ₾ 2,720
+        კალათაში — ₾ 2,720
       </button>
     </div>
     <!-- Guest bottom bar -->
@@ -2248,12 +2358,13 @@
           <div><div style="font-size:14px;font-weight:700;">#TH-2847</div><div style="font-size:11px;color:var(--l3);">10 მარტი, 2026</div></div>
           <div class="status-badge">მზადდება</div>
         </div>
-        <div style="display:flex;gap:6px;margin-bottom:8px;">
+        <div style="display:flex;gap:6px;margin-bottom:10px;">
           <div class="placeholder" style="width:40px;height:40px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg></div>
           <div class="placeholder" style="width:40px;height:40px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="7" y1="4" x2="7" y2="20"/></svg></div>
           <div class="placeholder" style="width:40px;height:40px;"><span style="font-size:10px;font-weight:600;color:var(--mid);">+3</span></div>
         </div>
-        <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:var(--l3);">5 ელემენტი</span><span style="font-size:14px;font-weight:800;">₾ 4,850</span></div>
+        <div class="progress-bar" style="margin-bottom:10px;"><div class="progress-fill" style="width:60%;"></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:12px;color:var(--l3);">5 ელემენტი · 3/5 მზადაა</span><span style="font-size:14px;font-weight:800;">₾ 4,850</span></div>
       </div>
       <div class="order-card" style="border-left:3px solid var(--l2);" onclick="navigateTo('order-detail')">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
@@ -2374,7 +2485,7 @@
         <div style="flex:1;"><div style="font-size:15px;font-weight:700;">ძიება & AI ასისტენტი</div><div style="font-size:11px;color:var(--mid);">მოძებნე ან ჰკითხე AI-ს</div></div>
       </div>
     </div>
-    <div id="chat-messages" style="flex:1;overflow-y:auto;padding:14px 16px;padding-bottom:80px;">
+    <div id="chat-messages" style="flex:1;overflow-y:auto;padding:14px 16px;padding-bottom:90px;-webkit-overflow-scrolling:touch;">
       <div style="text-align:center;margin-bottom:14px;"><span style="font-size:11px;color:var(--l3);background:var(--l1);padding:3px 10px;border-radius:10px;">დღეს</span></div>
       <div style="display:flex;gap:8px;margin-bottom:14px;align-items:flex-end;">
         <div style="width:28px;height:28px;border-radius:50%;background:var(--l1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg></div>
@@ -2411,15 +2522,15 @@
         </div>
       </div>
     </div>
-    <div style="position:absolute;bottom:64px;left:0;right:0;background:var(--white);padding:10px 16px;border-top:var(--border);z-index:10;">
+    <div style="position:absolute;bottom:0;left:0;right:0;background:var(--white);padding:10px 16px calc(10px + var(--safe-bottom));border-top:var(--border);z-index:10;">
       <div style="display:flex;gap:8px;align-items:center;">
-        <button id="chat-voice-btn" style="width:36px;height:36px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;border:var(--border);cursor:pointer;flex-shrink:0;transition:all 0.2s;" onclick="toggleVoiceInput(this)" onpointerdown="this.style.transform='scale(0.9)'" onpointerup="this.style.transform=''">
+        <button id="chat-voice-btn" style="width:40px;height:40px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;border:var(--border);cursor:pointer;flex-shrink:0;transition:all 0.2s;" onclick="toggleVoiceInput(this)" onpointerdown="this.style.transform='scale(0.9)'" onpointerup="this.style.transform=''">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
         </button>
         <div class="input-wrap" style="flex:1;border:var(--border);border-radius:var(--radius-pill);padding:10px 14px;">
           <input type="text" id="chat-input" placeholder="მოძებნე ან დაწერე..." style="background:none;border:none;font-size:13px;width:100%;font-family:inherit;" onkeydown="if(event.key==='Enter')sendChat()">
         </div>
-        <button id="chat-send-btn" style="width:36px;height:36px;border-radius:50%;background:var(--d1);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:transform 0.1s;" onclick="sendChat()" onpointerdown="this.style.transform='scale(0.9)'" onpointerup="this.style.transform=''">
+        <button id="chat-send-btn" style="width:40px;height:40px;border-radius:50%;background:var(--d1);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:transform 0.1s;" onclick="sendChat()" onpointerdown="this.style.transform='scale(0.9)'" onpointerup="this.style.transform=''">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         </button>
       </div>
@@ -2533,7 +2644,7 @@
     </div>
 
     <!-- Cart bottom summary -->
-    <div style="position:absolute;bottom:50px;left:0;right:0;background:var(--white);padding:12px 16px 10px;border-top:var(--border);z-index:10;">
+    <div style="position:absolute;bottom:50px;left:0;right:0;background:var(--white);padding:12px 16px 10px;border-top:var(--border);z-index:10;box-shadow:0 -2px 10px rgba(0,0,0,0.04);">
       <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:13px;color:var(--l3);">ქვეჯამი</span><span id="cart-subtotal" style="font-size:13px;">₾ 3,585</span></div>
       <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:13px;color:var(--l3);">მიწოდება</span><span style="font-size:13px;font-weight:600;">უფასო</span></div>
       <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:13px;color:var(--mid);">ფასდაკლება (-15%)</span><span id="cart-discount" style="font-size:13px;color:var(--mid);">-₾ 538</span></div>
@@ -2580,9 +2691,9 @@
     </div>
     <div class="content">
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px;">
-        <div class="card" style="text-align:center;padding:12px;"><div style="font-size:20px;font-weight:900;">12</div><div style="font-size:10px;color:var(--l3);font-weight:500;">შეკვეთა</div></div>
-        <div class="card" style="text-align:center;padding:12px;"><div style="font-size:20px;font-weight:900;">850</div><div style="font-size:10px;color:var(--l3);font-weight:500;">ქულა</div></div>
-        <div class="card" style="text-align:center;padding:12px;"><div style="font-size:20px;font-weight:900;">VIP</div><div style="font-size:10px;color:var(--l3);font-weight:500;">სტატუსი</div></div>
+        <div class="card" style="text-align:center;padding:14px 12px;"><div style="font-size:22px;font-weight:900;">12</div><div style="font-size:10px;color:var(--l3);font-weight:500;margin-top:2px;">შეკვეთა</div></div>
+        <div class="card" style="text-align:center;padding:14px 12px;"><div style="font-size:22px;font-weight:900;">850</div><div style="font-size:10px;color:var(--l3);font-weight:500;margin-top:2px;">ქულა</div></div>
+        <div class="card" style="text-align:center;padding:14px 12px;"><div style="font-size:16px;font-weight:900;letter-spacing:1px;">VIP</div><div style="font-size:10px;color:var(--l3);font-weight:500;margin-top:2px;">სტატუსი</div></div>
       </div>
       <div class="card" style="padding:0;margin-bottom:12px;">
         <div class="menu-item" style="border-bottom:var(--border);cursor:pointer;" onclick="navigateTo('personal-info')">
@@ -2667,39 +2778,36 @@
         </div>
       </div>
     </div>
-    <div class="content" style="padding-bottom:160px;">
+    <div class="content" style="padding-bottom:100px;">
+
+      <!-- AI suggestion — compact top banner -->
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--d1);border-radius:var(--radius);margin-bottom:12px;cursor:pointer;" onclick="navigateTo('chat')">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--d2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:12px;font-weight:700;color:#fff;">AI კომპლექტაციის შემოწმება</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
 
       <!-- Kit items grouped by category — rendered by JS -->
       <div id="kit-categories" style="margin-bottom:16px;"></div>
 
-      <!-- AI suggestion -->
-      <div class="card" style="background:var(--d1);color:var(--white);border:none;">
-        <div style="display:flex;gap:10px;align-items:center;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--d2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg>
+      <!-- Kit totals + add to cart — inline -->
+      <div style="background:var(--white);border-radius:var(--radius);border:var(--border);padding:16px;margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <div>
+            <div id="kit-count-label" style="font-size:11px;color:var(--l3);">არჩეულია 0 ნივთი</div>
+            <div id="kit-total" style="font-size:22px;font-weight:900;">0₾</div>
           </div>
-          <div style="flex:1;">
-            <div style="font-size:13px;font-weight:700;">AI რეკომენდაცია</div>
-            <div style="font-size:11px;color:var(--l2);">კომპლექტაციის შემოწმება და ოპტიმიზაცია</div>
+          <div style="text-align:right;">
+            <div style="font-size:11px;color:var(--mid);">ეკონომია</div>
+            <div id="kit-savings" style="font-size:14px;font-weight:800;color:var(--d2);">-₾ 0</div>
           </div>
         </div>
-        <button style="width:100%;margin-top:10px;padding:10px;border-radius:var(--radius-sm);border:1px solid var(--l2);background:transparent;color:var(--white);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;" onclick="navigateTo('chat')">AI-სთან კონსულტაცია</button>
+        <button class="btn-primary" onclick="addKitToCart()">კალათაში დამატება</button>
       </div>
-    </div>
-
-    <!-- Kit total footer -->
-    <div style="position:absolute;bottom:0;left:0;right:0;background:var(--white);padding:14px 16px calc(14px + var(--safe-bottom));border-top:var(--border);z-index:10;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-        <div>
-          <div id="kit-count-label" style="font-size:11px;color:var(--l3);">არჩეულია 0 ნივთი</div>
-          <div id="kit-total" style="font-size:20px;font-weight:900;">0₾</div>
-        </div>
-        <div style="text-align:right;">
-          <div style="font-size:11px;color:var(--mid);">ეკონომია</div>
-          <div id="kit-savings" style="font-size:14px;font-weight:800;color:var(--d2);">-₾ 0</div>
-        </div>
-      </div>
-      <button class="btn-primary" onclick="addKitToCart()">კალათაში დამატება</button>
     </div>
 
   </div>
@@ -2754,7 +2862,7 @@
     </div>
     <div class="content" style="padding-top:10px;">
       <!-- Unread -->
-      <div class="card" style="border-left:3px solid var(--d1);cursor:pointer;" onclick="navigateTo('order-detail')">
+      <div class="card" style="border-left:3px solid var(--d1);cursor:pointer;background:rgba(26,26,26,0.02);" onclick="navigateTo('order-detail')">
         <div style="display:flex;gap:10px;align-items:flex-start;">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--d1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
@@ -2766,7 +2874,7 @@
           </div>
         </div>
       </div>
-      <div class="card" style="border-left:3px solid var(--d1);cursor:pointer;" onclick="navigateTo('promotions')">
+      <div class="card" style="border-left:3px solid var(--d1);cursor:pointer;background:rgba(26,26,26,0.02);" onclick="navigateTo('promotions')">
         <div style="display:flex;gap:10px;align-items:flex-start;">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--d1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -3016,7 +3124,7 @@
   <!-- Hamburger Menu Overlay -->
   <div id="hamburger-overlay" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;z-index:100;">
     <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);" onclick="closeHamburger()"></div>
-    <div id="hamburger-panel" style="position:absolute;top:0;right:0;width:280px;height:100%;background:var(--white);padding:0;transform:translateX(100%);transition:transform 0.3s ease;">
+    <div id="hamburger-panel" style="position:absolute;top:0;left:0;width:280px;height:100%;background:var(--white);padding:0;transform:translateX(-100%);transition:transform 0.3s ease;display:flex;flex-direction:column;">
       <div style="background:var(--d1);padding:60px 20px 20px;">
         <div style="display:flex;align-items:center;gap:12px;">
           <div style="width:48px;height:48px;border-radius:50%;background:var(--d2);display:flex;align-items:center;justify-content:center;">
@@ -3028,37 +3136,20 @@
           </div>
         </div>
       </div>
-      <div style="padding:12px 0;">
-        <div style="padding:12px 20px;display:flex;gap:12px;align-items:center;cursor:pointer;" onclick="closeHamburger();navigateTo('profile')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          <span style="font-size:14px;font-weight:600;">პროფილი</span>
-        </div>
-        <div style="padding:12px 20px;display:flex;gap:12px;align-items:center;cursor:pointer;" onclick="closeHamburger();navigateTo('orders')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <span style="font-size:14px;font-weight:600;">შეკვეთები</span>
-        </div>
-        <div style="padding:12px 20px;display:flex;gap:12px;align-items:center;cursor:pointer;" onclick="closeHamburger();navigateTo('transactions')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-          <span style="font-size:14px;font-weight:600;">ტრანზაქციები</span>
-          <span style="margin-left:auto;font-size:12px;font-weight:700;color:var(--mid);">₾ 1,250</span>
-        </div>
-        <div style="padding:12px 20px;display:flex;gap:12px;align-items:center;cursor:pointer;" onclick="closeHamburger();navigateTo('favorites')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-          <span style="font-size:14px;font-weight:600;">ფავორიტები</span>
-        </div>
-        <div style="padding:12px 20px;display:flex;gap:12px;align-items:center;cursor:pointer;" onclick="closeHamburger();navigateTo('contacts')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72"/></svg>
-          <span style="font-size:14px;font-weight:600;">კონტაქტი</span>
-        </div>
-        <div style="padding:12px 20px;display:flex;gap:12px;align-items:center;cursor:pointer;" onclick="closeHamburger();navigateTo('notifications')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
-          <span style="font-size:14px;font-weight:600;">შეტყობინებები</span>
-          <div style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:var(--d1);display:flex;align-items:center;justify-content:center;"><span style="font-size:9px;font-weight:800;color:var(--white);">3</span></div>
-        </div>
-        <div style="height:1px;background:var(--l1);margin:8px 20px;"></div>
-        <div style="padding:12px 20px;display:flex;gap:12px;align-items:center;cursor:pointer;" onclick="closeHamburger();navigateTo('login')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-          <span style="font-size:14px;font-weight:600;color:var(--mid);">გასვლა</span>
+      <div style="flex:1;padding:24px 20px;display:flex;flex-direction:column;gap:10px;">
+        <button style="width:100%;padding:16px;border-radius:var(--radius-pill);border:2px solid var(--l1);background:var(--white);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background 0.15s,border-color 0.15s;" onclick="closeHamburger();switchTab('kit')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''">ქვაბის კომპლექტი</button>
+        <button style="width:100%;padding:16px;border-radius:var(--radius-pill);border:2px solid var(--l1);background:var(--white);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background 0.15s,border-color 0.15s;" onclick="closeHamburger();switchTab('home')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''">პროდუქცია</button>
+        <button style="width:100%;padding:16px;border-radius:var(--radius-pill);border:2px solid var(--l1);background:var(--white);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background 0.15s,border-color 0.15s;" onclick="closeHamburger();switchTab('orders')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''">ბოლო შეკვეთები</button>
+        <button style="width:100%;padding:16px;border-radius:var(--radius-pill);border:2px solid var(--l1);background:var(--white);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background 0.15s,border-color 0.15s;" onclick="closeHamburger();navigateTo('promotions')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''">აქციები</button>
+        <button style="width:100%;padding:16px;border-radius:var(--radius-pill);border:none;background:linear-gradient(135deg,#6B7BF7,#9B6BF7);color:var(--white);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity 0.15s;display:flex;align-items:center;justify-content:center;gap:8px;" onclick="closeHamburger();navigateTo('chat')" onpointerdown="this.style.opacity='0.85'" onpointerup="this.style.opacity=''">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          AI ასისტენტი
+        </button>
+      </div>
+      <div style="padding:12px 20px 24px;">
+        <div style="padding:14px 16px;border-radius:var(--radius);display:flex;gap:14px;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s;" onclick="closeHamburger();navigateTo('login')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span style="font-size:13px;font-weight:600;color:var(--mid);">გასვლა</span>
         </div>
       </div>
     </div>
@@ -3067,13 +3158,8 @@
   <!-- Toast -->
   <div class="toast" id="toast"></div>
 
-  <!-- AI FAB -->
-  <button class="ai-fab" id="aiFab" onclick="navigateTo('chat')">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-  </button>
-
   <!-- TAB BAR -->
-  <div class="tab-bar" id="tabBar">
+  <div class="tab-bar hidden" id="tabBar">
     <button class="tab-item active" data-tab="home" onclick="switchTab('home')">
       <div class="indicator"></div>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
@@ -3084,15 +3170,17 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       <div class="tab-label">კომპლექტები</div>
     </button>
+    <!-- Center AI Chat button -->
+    <button class="tab-item tab-center-ai" onclick="navigateTo('chat')">
+      <div style="width:48px;height:48px;border-radius:50%;background:var(--d1);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.18);transition:transform 0.15s,box-shadow 0.15s;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div class="tab-label">AI ჩატი</div>
+    </button>
     <button class="tab-item" data-tab="orders" onclick="switchTab('orders')">
       <div class="indicator"></div>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       <div class="tab-label">შეკვეთები</div>
-    </button>
-    <button class="tab-item" data-tab="promotions" onclick="switchTab('promotions')">
-      <div class="indicator"></div>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      <div class="tab-label">აქციები</div>
     </button>
     <button class="tab-item" data-tab="profile" onclick="switchTab('profile')">
       <div class="indicator"></div>
@@ -3139,24 +3227,27 @@
     document.getElementById('splash').classList.add('hidden');
     document.getElementById('screen-login').classList.add('active');
     currentScreen = 'login';
+    updateUI();
   }, 1400);
 
   // ============ NAVIGATION ============
-  function animateTransition(fromId, toId) {
+  function animateTransition(fromId, toId, reverse) {
     const from = document.getElementById('screen-' + fromId);
     const to = document.getElementById('screen-' + toId);
+    var outClass = reverse ? 'slide-back-out' : 'fade-out';
+    var inClass = reverse ? 'slide-back-in' : 'fade-in';
     if (from) {
-      from.classList.add('fade-out');
+      from.classList.add(outClass);
       from.addEventListener('animationend', function handler() {
         from.removeEventListener('animationend', handler);
-        from.classList.remove('active', 'fade-out', 'fade-in');
+        from.classList.remove('active', 'fade-out', 'fade-in', 'slide-back-out', 'slide-back-in');
       }, { once: true });
     }
     if (to) {
-      to.classList.add('active', 'fade-in');
+      to.classList.add('active', inClass);
       to.addEventListener('animationend', function handler() {
         to.removeEventListener('animationend', handler);
-        to.classList.remove('fade-in');
+        to.classList.remove('fade-in', 'slide-back-in');
       }, { once: true });
       const content = to.querySelector('.content');
       if (content) content.scrollTop = 0;
@@ -3183,7 +3274,7 @@
       const prev = navHistory.pop();
       const fromId = currentScreen;
       currentScreen = prev;
-      animateTransition(fromId, prev);
+      animateTransition(fromId, prev, true);
       updateUI();
       onScreenEnter(prev);
     } else {
@@ -3191,17 +3282,25 @@
       const fromId = currentScreen;
       currentScreen = 'home';
       navHistory = [];
-      animateTransition(fromId, 'home');
+      animateTransition(fromId, 'home', true);
       updateUI();
     }
   }
 
   function switchTab(tab) {
-    if (tab === currentScreen) return;
+    if (tab === currentScreen) {
+      // Scroll to top if already on this tab
+      var screen = document.getElementById('screen-' + tab);
+      if (screen) {
+        var content = screen.querySelector('.content');
+        if (content) content.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
     navHistory = [];
     const from = document.getElementById('screen-' + currentScreen);
     const to = document.getElementById('screen-' + tab);
-    if (from) from.classList.remove('active', 'fade-in', 'fade-out');
+    if (from) from.classList.remove('active', 'fade-in', 'fade-out', 'slide-back-in', 'slide-back-out');
     currentScreen = tab;
     if (to) to.classList.add('active');
     updateUI();
@@ -3210,12 +3309,23 @@
 
   function updateUI() {
     const tabBar = document.getElementById('tabBar');
-    const aiFab = document.getElementById('aiFab');
     tabBar.classList.toggle('hidden', hideTabScreens.includes(currentScreen));
-    const hideFabScreens = [...authScreens, 'chat', 'cart', 'checkout', 'payment', 'order-success', 'guest-prompt'];
-    aiFab.classList.toggle('hidden', hideFabScreens.includes(currentScreen));
 
     document.querySelectorAll('.tab-item').forEach(item => {
+      if (item.classList.contains('tab-center-ai')) {
+        // Highlight center AI button when on chat screen
+        const aiCircle = item.querySelector('div');
+        if (currentScreen === 'chat') {
+          aiCircle.style.background = 'var(--d1)';
+          aiCircle.style.boxShadow = '0 4px 18px rgba(0,0,0,0.3)';
+          aiCircle.style.transform = 'scale(1.08)';
+        } else {
+          aiCircle.style.background = 'var(--d1)';
+          aiCircle.style.boxShadow = '0 4px 14px rgba(0,0,0,0.2)';
+          aiCircle.style.transform = 'scale(1)';
+        }
+        return;
+      }
       const tab = item.dataset.tab;
       const isActive = tab === currentScreen;
       item.classList.toggle('active', isActive);
@@ -3262,6 +3372,11 @@
       const el = id => document.getElementById(id);
       if (el('payment-amount')) el('payment-amount').textContent = formatted;
       if (el('payment-btn')) el('payment-btn').textContent = 'გადახდა — ' + formatted;
+    }
+    // Reset product qty
+    if (screen === 'product') {
+      var pqty = document.getElementById('product-qty');
+      if (pqty) pqty.textContent = '1';
     }
     // Reapply guest mode visibility on screen enter
     if (['catalog', 'product', 'categories', 'subcategory', 'search'].includes(screen)) {
@@ -3536,6 +3651,14 @@
   function setChip(el) {
     el.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('chip-active'));
     el.classList.add('chip-active');
+  }
+
+  // ============ PRODUCT QTY ============
+  function changeProductQty(delta) {
+    var el = document.getElementById('product-qty');
+    var val = parseInt(el.textContent) || 1;
+    val = Math.max(1, val + delta);
+    el.textContent = val;
   }
 
   // ============ PRODUCT — ADD TO CART ============
@@ -4178,6 +4301,14 @@
     if (savingsEl) savingsEl.textContent = '-₾ ' + savings.toLocaleString('en');
   }
 
+  function orderKit() {
+    let kitCount = 0;
+    kitData.forEach(cat => { cat.items.forEach(item => { if (item.checked) kitCount += item.qty; }); });
+    if (kitCount === 0) { showToast('აირჩიეთ მინიმუმ 1 კომპონენტი'); return; }
+    document.querySelectorAll('.badge').forEach(b => { var n = parseInt(b.textContent) || 0; b.textContent = n + kitCount; });
+    navigateTo('checkout');
+  }
+
   function addKitToCart() {
     let kitCount = 0;
     kitData.forEach(cat => {
@@ -4204,7 +4335,7 @@
 
   function closeHamburger() {
     const panel = document.getElementById('hamburger-panel');
-    panel.style.transform = 'translateX(100%)';
+    panel.style.transform = 'translateX(-100%)';
     setTimeout(() => {
       document.getElementById('hamburger-overlay').style.display = 'none';
     }, 300);
