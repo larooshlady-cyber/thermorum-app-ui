@@ -2155,6 +2155,7 @@
         მეტის ჩვენება (64 დარჩენილი)
       </button>
     </div>
+    </div>
 
     <!-- Filter Drawer Overlay -->
     <div id="filter-overlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:200;" onclick="closeFilterDrawer()"></div>
@@ -3330,7 +3331,7 @@
     const now = new Date();
     const h = String(now.getHours()).padStart(2, '0');
     const m = String(now.getMinutes()).padStart(2, '0');
-    document.querySelectorAll('.status-bar .time').forEach(el => el.textContent = h + ':' + m);
+    document.querySelectorAll('.status-bar .time, .status-bar-light .time').forEach(el => el.textContent = h + ':' + m);
   }
   updateClock();
   setInterval(updateClock, 10000);
