@@ -689,107 +689,138 @@
   </div>
 
   <!-- ==================== REGISTER ==================== -->
-  <div class="screen login-dark" id="screen-register">
-    <div style="height:calc(44px + var(--safe-top));background:var(--d1);"></div>
-    <div style="flex:1;overflow-y:auto;padding:0 20px 40px;">
-      <div style="display:flex;align-items:center;gap:10px;padding:12px 0 24px;">
-        <button class="back-btn" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:#fff;">რეგისტრაცია</span>
+  <div class="screen" id="screen-register" style="background:#F2F2F7;display:flex;flex-direction:column;overflow:hidden;">
+    <!-- Yellow gradient wash -->
+    <div style="position:absolute;top:0;left:0;right:0;height:45%;background:linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 12%, #FFFAED 35%, #F2F2F7 100%);pointer-events:none;"></div>
+
+    <!-- Content -->
+    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:calc(var(--safe-top) + 16px) 24px 0;overflow-y:auto;">
+
+      <!-- Back + Title -->
+      <div style="display:flex;align-items:center;gap:12px;animation:loginFadeIn 0.4s ease both;">
+        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <span style="font-size:18px;font-weight:800;color:#1C1C1B;">რეგისტრაცია</span>
       </div>
 
-      <div style="width:100%;max-width:340px;margin:0 auto;">
+      <p style="margin-top:8px;padding-left:52px;font-size:14px;color:#8E8E93;animation:loginFadeIn 0.4s ease 0.05s both;">შექმენით პარტნიორული ანგარიში</p>
+
+      <!-- Form card -->
+      <div style="margin-top:24px;background:#FFFFFF;border-radius:20px;padding:24px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);animation:loginCardUp 0.5s ease 0.15s both;">
+
         <!-- Name fields -->
-        <div style="display:flex;gap:10px;margin-bottom:14px;">
+        <div style="display:flex;gap:10px;margin-bottom:16px;">
           <div style="flex:1;">
-            <label class="login-label">სახელი</label>
-            <div class="input-field">
-              <input type="text" id="reg-fname" placeholder="სახელი">
+            <label style="font-size:13px;font-weight:600;color:#3A3A3B;margin-bottom:8px;display:block;">სახელი</label>
+            <div class="login-input-wrap" style="background:#F8F8FA;border-color:#EBEBF0;">
+              <input type="text" id="reg-fname" placeholder="სახელი" style="flex:1;background:none;border:none;color:#1C1C1B;font-size:16px;font-family:inherit;font-weight:500;padding:0 14px;height:100%;outline:none;" onfocus="this.parentElement.classList.add('focused')" onblur="this.parentElement.classList.remove('focused')">
             </div>
           </div>
           <div style="flex:1;">
-            <label class="login-label">გვარი</label>
-            <div class="input-field">
-              <input type="text" id="reg-lname" placeholder="გვარი">
+            <label style="font-size:13px;font-weight:600;color:#3A3A3B;margin-bottom:8px;display:block;">გვარი</label>
+            <div class="login-input-wrap" style="background:#F8F8FA;border-color:#EBEBF0;">
+              <input type="text" id="reg-lname" placeholder="გვარი" style="flex:1;background:none;border:none;color:#1C1C1B;font-size:16px;font-family:inherit;font-weight:500;padding:0 14px;height:100%;outline:none;" onfocus="this.parentElement.classList.add('focused')" onblur="this.parentElement.classList.remove('focused')">
             </div>
           </div>
         </div>
 
         <!-- Phone -->
-        <div style="margin-bottom:20px;">
-          <label class="login-label">მობილურის ნომერი</label>
-          <div class="input-field" id="reg-phone-wrap">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-            <span style="font-size:14px;color:rgba(255,255,255,0.5);font-weight:500;">+995</span>
-            <div style="width:1px;height:18px;background:rgba(255,255,255,0.1);"></div>
-            <input type="tel" id="reg-phone" placeholder="5XX XXX XXX">
+        <label style="font-size:13px;font-weight:600;color:#3A3A3B;margin-bottom:8px;display:block;">მობილურის ნომერი</label>
+        <div id="reg-phone-wrap" class="login-input-wrap" style="background:#F8F8FA;border-color:#EBEBF0;margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:8px;padding:0 14px;height:100%;flex-shrink:0;">
+            <span style="font-size:14px;color:#1C1C1B;font-weight:600;">+995</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#AEAEB2" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
+          <div style="width:1px;height:22px;background:#E0E0E5;flex-shrink:0;"></div>
+          <input type="tel" id="reg-phone" placeholder="5XX XXX XXX" inputmode="numeric" style="flex:1;background:none;border:none;color:#1C1C1B;font-size:17px;font-family:inherit;font-weight:500;padding:0 14px;height:100%;outline:none;" onfocus="this.parentElement.classList.add('focused')" onblur="this.parentElement.classList.remove('focused')">
         </div>
 
         <!-- Terms -->
-        <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:24px;">
-          <div id="terms-checkbox" style="width:20px;height:20px;border:1px solid rgba(255,255,255,0.2);border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;" onclick="toggleCheckbox(this)">
+        <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:24px;">
+          <div id="terms-checkbox" style="width:22px;height:22px;border:1.5px solid #D1D1D6;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s;background:#FAFAFA;" onclick="toggleCheckbox(this)">
           </div>
-          <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;">
-            ვეთანხმები <span style="text-decoration:underline;cursor:pointer;font-weight:500;color:rgba(255,255,255,0.7);">წესებსა და პირობებს</span> და <span style="text-decoration:underline;cursor:pointer;font-weight:500;color:rgba(255,255,255,0.7);">კონფიდენციალურობის პოლიტიკას</span>
+          <div style="font-size:12px;color:#8E8E93;line-height:1.6;">
+            ვეთანხმები <span style="color:#1C1C1B;font-weight:600;cursor:pointer;">წესებსა და პირობებს</span> და <span style="color:#1C1C1B;font-weight:600;cursor:pointer;">კონფიდენციალურობის პოლიტიკას</span>
           </div>
         </div>
 
-        <button class="btn-primary" onclick="handleRegister()">კოდის გაგზავნა</button>
-        <div style="text-align:center;margin-top:12px;">
-          <span style="color:rgba(255,255,255,0.3);font-size:12px;">SMS კოდი გამოგეგზავნებათ მითითებულ ნომერზე</span>
+        <!-- CTA -->
+        <button class="login-cta-btn" onclick="handleRegister()" style="border-radius:100px;">კოდის გაგზავნა</button>
+        <p style="text-align:center;margin-top:10px;font-size:11px;color:#AEAEB2;">SMS კოდი გამოგეგზავნებათ მითითებულ ნომერზე</p>
+
+        <!-- Divider -->
+        <div style="display:flex;align-items:center;margin:22px 0;gap:14px;">
+          <div style="flex:1;height:1px;background:#EBEBF0;"></div>
+          <span style="font-size:11px;font-weight:600;color:#C7C7CC;">ან</span>
+          <div style="flex:1;height:1px;background:#EBEBF0;"></div>
         </div>
 
-        <div style="display:flex;align-items:center;margin:24px 0;gap:12px;">
-          <div class="divider-line"></div>
-          <span style="color:rgba(255,255,255,0.25);font-size:11px;">ან</span>
-          <div class="divider-line"></div>
-        </div>
-        <button class="btn-social" onclick="navigateTo('google-picker')">
-          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#666"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#888"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#AAA"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#777"/></svg>
+        <!-- Google -->
+        <button class="login-social-btn" onclick="navigateTo('google-picker')" style="background:#F8F8FA;border:1.5px solid #EBEBF0;color:#1C1C1B;border-radius:100px;">
+          <svg width="18" height="18" viewBox="0 0 24 24">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
           Google-ით რეგისტრაცია
         </button>
+      </div>
 
-        <div style="text-align:center;margin-top:20px;">
-          <span style="color:rgba(255,255,255,0.35);font-size:13px;">უკვე გაქვს ანგარიში? </span>
-          <span style="color:var(--accent);font-size:13px;font-weight:600;cursor:pointer;" onclick="navigateTo('login')">შესვლა</span>
-        </div>
+      <div style="flex:1;min-height:20px;"></div>
+
+      <!-- Login link -->
+      <div style="text-align:center;padding-bottom:calc(20px + var(--safe-bottom));">
+        <span style="font-size:14px;color:#8E8E93;">უკვე გაქვს ანგარიში? </span>
+        <span style="font-size:14px;font-weight:700;color:#1C1C1B;cursor:pointer;" onclick="navigateTo('login')">შესვლა</span>
       </div>
     </div>
   </div>
 
   <!-- ==================== VERIFY PHONE (OTP) ==================== -->
-  <div class="screen login-dark" id="screen-verify-phone">
-    <div style="height:calc(44px + var(--safe-top));background:var(--d1);"></div>
-    <div style="flex:1;display:flex;flex-direction:column;padding:0 20px;">
-      <div style="display:flex;align-items:center;gap:10px;padding:12px 0 32px;">
-        <button class="back-btn" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <div class="screen" id="screen-verify-phone" style="background:#F2F2F7;display:flex;flex-direction:column;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 12%, #FFFAED 35%, #F2F2F7 100%);pointer-events:none;"></div>
+
+    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:calc(var(--safe-top) + 16px) 24px 0;">
+
+      <!-- Back -->
+      <div style="animation:loginFadeIn 0.4s ease both;">
+        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
       </div>
 
-      <div style="width:100%;max-width:340px;margin:0 auto;text-align:center;">
-        <div style="width:64px;height:64px;margin:0 auto 20px;border-radius:50%;background:rgba(253,206,54,0.08);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      <!-- Icon + heading -->
+      <div style="text-align:center;margin-top:32px;animation:loginFadeIn 0.5s ease 0.1s both;">
+        <div style="width:64px;height:64px;margin:0 auto 20px;border-radius:18px;background:linear-gradient(145deg, #FDCE36 0%, #F0B90B 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(253,206,54,0.25);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
         </div>
-        <div style="font-size:20px;font-weight:800;margin-bottom:8px;color:#fff;">SMS კოდის დადასტურება</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.5;margin-bottom:32px;">
+        <div style="font-size:22px;font-weight:800;color:#1C1C1B;margin-bottom:8px;">SMS კოდის დადასტურება</div>
+        <div style="font-size:14px;color:#8E8E93;line-height:1.5;">
           4-ნიშნა კოდი გამოგზავნილია<br>
-          <span class="otp-phone" style="font-weight:600;color:rgba(255,255,255,0.7);">+995 5** *** **9</span>
+          <span class="otp-phone" style="font-weight:600;color:#1C1C1B;">+995 5** *** **9</span>
         </div>
+      </div>
 
-        <!-- OTP inputs (4 digits) -->
+      <!-- OTP card -->
+      <div style="margin-top:28px;background:#FFFFFF;border-radius:20px;padding:28px 24px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);text-align:center;animation:loginCardUp 0.5s ease 0.2s both;">
+
+        <!-- OTP inputs -->
         <div style="display:flex;gap:12px;justify-content:center;margin-bottom:24px;">
-          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-sm);text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:rgba(255,255,255,0.06);color:#fff;">
-          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-sm);text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:rgba(255,255,255,0.06);color:#fff;">
-          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-sm);text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:rgba(255,255,255,0.06);color:#fff;">
-          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-sm);text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:rgba(255,255,255,0.06);color:#fff;">
+          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1.5px solid #EBEBF0;border-radius:14px;text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:#F8F8FA;color:#1C1C1B;outline:none;transition:border-color 0.15s,box-shadow 0.15s;" onfocus="this.style.borderColor='#FDCE36';this.style.boxShadow='0 0 0 4px rgba(253,206,54,0.1)';this.style.background='#fff'" onblur="this.style.borderColor='#EBEBF0';this.style.boxShadow='none';this.style.background='#F8F8FA'">
+          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1.5px solid #EBEBF0;border-radius:14px;text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:#F8F8FA;color:#1C1C1B;outline:none;transition:border-color 0.15s,box-shadow 0.15s;" onfocus="this.style.borderColor='#FDCE36';this.style.boxShadow='0 0 0 4px rgba(253,206,54,0.1)';this.style.background='#fff'" onblur="this.style.borderColor='#EBEBF0';this.style.boxShadow='none';this.style.background='#F8F8FA'">
+          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1.5px solid #EBEBF0;border-radius:14px;text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:#F8F8FA;color:#1C1C1B;outline:none;transition:border-color 0.15s,box-shadow 0.15s;" onfocus="this.style.borderColor='#FDCE36';this.style.boxShadow='0 0 0 4px rgba(253,206,54,0.1)';this.style.background='#fff'" onblur="this.style.borderColor='#EBEBF0';this.style.boxShadow='none';this.style.background='#F8F8FA'">
+          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1.5px solid #EBEBF0;border-radius:14px;text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:#F8F8FA;color:#1C1C1B;outline:none;transition:border-color 0.15s,box-shadow 0.15s;" onfocus="this.style.borderColor='#FDCE36';this.style.boxShadow='0 0 0 4px rgba(253,206,54,0.1)';this.style.background='#fff'" onblur="this.style.borderColor='#EBEBF0';this.style.boxShadow='none';this.style.background='#F8F8FA'">
         </div>
 
-        <button class="btn-primary" onclick="navigateTo('home')">დადასტურება</button>
+        <button class="login-cta-btn" onclick="navigateTo('home')" style="border-radius:100px;">დადასტურება</button>
 
-        <div style="margin-top:24px;">
-          <span style="font-size:13px;color:rgba(255,255,255,0.35);">კოდი არ მიგიღიათ? </span>
-          <span style="font-size:13px;color:var(--accent);font-weight:600;cursor:pointer;" id="resend-verify">ხელახლა გაგზავნა</span>
+        <div style="margin-top:20px;">
+          <span style="font-size:13px;color:#AEAEB2;">კოდი არ მიგიღიათ? </span>
+          <span style="font-size:13px;color:#1C1C1B;font-weight:700;cursor:pointer;" id="resend-verify">ხელახლა გაგზავნა</span>
         </div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:8px;" id="timer-verify"></div>
+        <div style="font-size:12px;color:#AEAEB2;margin-top:6px;" id="timer-verify"></div>
       </div>
     </div>
   </div>
@@ -797,75 +828,102 @@
   <!-- Forgot password, reset OTP, new password, and password success screens removed — phone OTP is used for auth -->
 
   <!-- ==================== GOOGLE ACCOUNT PICKER ==================== -->
-  <div class="screen login-dark" id="screen-google-picker">
-    <div style="height:calc(44px + var(--safe-top));background:var(--d1);"></div>
-    <div style="flex:1;display:flex;flex-direction:column;padding:0 20px;">
-      <div style="display:flex;align-items:center;gap:10px;padding:12px 0 24px;">
-        <button class="back-btn" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <div class="screen" id="screen-google-picker" style="background:#F2F2F7;display:flex;flex-direction:column;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;height:45%;background:linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 12%, #FFFAED 35%, #F2F2F7 100%);pointer-events:none;"></div>
+
+    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:calc(var(--safe-top) + 16px) 24px 0;">
+
+      <!-- Back -->
+      <div style="animation:loginFadeIn 0.4s ease both;">
+        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
       </div>
 
-      <div style="width:100%;max-width:340px;margin:0 auto;">
-        <div style="text-align:center;margin-bottom:28px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" style="margin-bottom:12px;"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#666"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#888"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#AAA"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#777"/></svg>
-          <div style="font-size:18px;font-weight:800;margin-bottom:4px;color:#fff;">აირჩიეთ ანგარიში</div>
-          <div style="font-size:12px;color:rgba(255,255,255,0.35);">Thermorum-ში გასაგრძელებლად</div>
-        </div>
+      <!-- Header -->
+      <div style="text-align:center;margin-top:28px;animation:loginFadeIn 0.5s ease 0.1s both;">
+        <svg width="32" height="32" viewBox="0 0 24 24" style="margin-bottom:14px;">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        <div style="font-size:20px;font-weight:800;color:#1C1C1B;margin-bottom:4px;">აირჩიეთ ანგარიში</div>
+        <div style="font-size:13px;color:#8E8E93;">Thermorum-ში გასაგრძელებლად</div>
+      </div>
+
+      <!-- Accounts card -->
+      <div style="margin-top:24px;background:#FFFFFF;border-radius:20px;padding:8px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);animation:loginCardUp 0.5s ease 0.2s both;">
 
         <!-- Account 1 -->
-        <div style="border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;margin-bottom:8px;transition:background 0.1s;background:rgba(255,255,255,0.04);" onclick="navigateTo('home')" onpointerdown="this.style.background='rgba(255,255,255,0.08)'" onpointerup="this.style.background='rgba(255,255,255,0.04)'">
-          <div style="width:40px;height:40px;border-radius:50%;background:rgba(253,206,54,0.15);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--accent);flex-shrink:0;">გმ</div>
+        <div style="border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background 0.15s;" onclick="navigateTo('home')" onpointerdown="this.style.background='#F8F8FA'" onpointerup="this.style.background=''">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(145deg, #FDCE36, #F0B90B);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#1C1C1B;flex-shrink:0;">გმ</div>
           <div style="flex:1;min-width:0;">
-            <div style="font-size:14px;font-weight:600;color:#fff;">გიორგი მათიაშვილი</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.4);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">g.matiashvili@gmail.com</div>
+            <div style="font-size:15px;font-weight:600;color:#1C1C1B;">გიორგი მათიაშვილი</div>
+            <div style="font-size:12px;color:#8E8E93;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">g.matiashvili@gmail.com</div>
           </div>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C7C7CC" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
+
+        <div style="height:1px;background:#F2F2F7;margin:0 14px;"></div>
 
         <!-- Account 2 -->
-        <div style="border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;margin-bottom:8px;transition:background 0.1s;background:rgba(255,255,255,0.04);" onclick="navigateTo('home')" onpointerdown="this.style.background='rgba(255,255,255,0.08)'" onpointerup="this.style.background='rgba(255,255,255,0.04)'">
-          <div style="width:40px;height:40px;border-radius:50%;background:rgba(253,206,54,0.15);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--accent);flex-shrink:0;">გმ</div>
+        <div style="border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background 0.15s;" onclick="navigateTo('home')" onpointerdown="this.style.background='#F8F8FA'" onpointerup="this.style.background=''">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(145deg, #FDCE36, #F0B90B);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#1C1C1B;flex-shrink:0;">გმ</div>
           <div style="flex:1;min-width:0;">
-            <div style="font-size:14px;font-weight:600;color:#fff;">გიორგი მათიაშვილი</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.4);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">info@thermorum.ge</div>
+            <div style="font-size:15px;font-weight:600;color:#1C1C1B;">გიორგი მათიაშვილი</div>
+            <div style="font-size:12px;color:#8E8E93;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">info@thermorum.ge</div>
           </div>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C7C7CC" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
+
+        <div style="height:1px;background:#F2F2F7;margin:0 14px;"></div>
 
         <!-- Another account -->
-        <div style="border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background 0.1s;" onpointerdown="this.style.background='rgba(255,255,255,0.06)'" onpointerup="this.style.background=''">
-          <div style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div style="border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background 0.15s;" onpointerdown="this.style.background='#F8F8FA'" onpointerup="this.style.background=''">
+          <div style="width:44px;height:44px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
           <div style="flex:1;">
-            <div style="font-size:14px;font-weight:600;color:#fff;">სხვა ანგარიშის გამოყენება</div>
+            <div style="font-size:15px;font-weight:600;color:#1C1C1B;">სხვა ანგარიშის გამოყენება</div>
           </div>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C7C7CC" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
+      </div>
 
-        <div style="text-align:center;margin-top:24px;">
-          <div style="font-size:11px;color:rgba(255,255,255,0.25);line-height:1.6;">
-            გაგრძელებით ეთანხმებით Google-ის<br>
-            <span style="text-decoration:underline;cursor:pointer;color:rgba(255,255,255,0.4);">პირობებს</span> და <span style="text-decoration:underline;cursor:pointer;color:rgba(255,255,255,0.4);">კონფიდენციალურობას</span>
-          </div>
+      <div style="flex:1;"></div>
+
+      <div style="text-align:center;padding-bottom:calc(24px + var(--safe-bottom));">
+        <div style="font-size:11px;color:#AEAEB2;line-height:1.6;">
+          გაგრძელებით ეთანხმებით Google-ის<br>
+          <span style="color:#8E8E93;font-weight:500;cursor:pointer;">პირობებს</span> და <span style="color:#8E8E93;font-weight:500;cursor:pointer;">კონფიდენციალურობას</span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ==================== WELCOME ==================== -->
-  <div class="screen" id="screen-welcome" style="background:var(--d1);">
-    <div style="height:calc(44px + var(--safe-top));background:var(--d1);"></div>
-    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;position:relative;">
-      <div style="position:absolute;top:-20px;right:-20px;width:200px;height:200px;border-radius:50%;border:1px solid rgba(253,206,54,0.06);"></div>
-      <div style="position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;border-radius:50%;border:1px solid rgba(253,206,54,0.04);"></div>
-      <div style="width:80px;height:80px;border-radius:50%;border:2px solid var(--accent);background:rgba(253,206,54,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/></svg>
+  <div class="screen" id="screen-welcome" style="background:#F2F2F7;display:flex;flex-direction:column;overflow:hidden;">
+    <!-- Large yellow gradient wash -->
+    <div style="position:absolute;top:0;left:0;right:0;height:65%;background:linear-gradient(180deg, #FFF3C4 0%, #FFF8E1 20%, #FFFAED 45%, #F2F2F7 100%);pointer-events:none;"></div>
+    <div style="position:absolute;top:10%;right:-10%;width:50%;height:40%;background:radial-gradient(ellipse, rgba(253,206,54,0.1) 0%, transparent 70%);pointer-events:none;"></div>
+
+    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 28px;">
+
+      <!-- Logo -->
+      <div style="width:80px;height:80px;border-radius:22px;background:linear-gradient(145deg, #FDCE36 0%, #E8AD0C 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(253,206,54,0.3),0 2px 6px rgba(0,0,0,0.06);margin-bottom:24px;animation:loginFadeIn 0.6s ease both;">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/></svg>
       </div>
-      <div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:3px;margin-bottom:6px;">THERMORUM</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:48px;letter-spacing:0.5px;">გათბობის სისტემები — B2B პლატფორმა</div>
-      <div style="width:100%;max-width:340px;">
-        <button class="btn-primary" style="margin-bottom:12px;" onclick="navigateTo('login')">შესვლა</button>
-        <button class="btn-social" onclick="enterGuest()">პროდუქცია (სტუმარი)</button>
+
+      <div style="font-size:22px;font-weight:800;color:#1C1C1B;letter-spacing:4px;margin-bottom:6px;animation:loginFadeIn 0.6s ease 0.1s both;">THERMORUM</div>
+      <div style="font-size:13px;color:#8E8E93;letter-spacing:0.5px;margin-bottom:56px;animation:loginFadeIn 0.6s ease 0.15s both;">გათბობის სისტემები — B2B პლატფორმა</div>
+
+      <div style="width:100%;max-width:320px;animation:loginCardUp 0.5s ease 0.25s both;">
+        <button class="login-cta-btn" style="margin-bottom:12px;border-radius:100px;" onclick="navigateTo('login')">შესვლა</button>
+        <button class="login-social-btn" onclick="enterGuest()" style="background:#1C1C1B;border:none;color:#FFFFFF;border-radius:100px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          პროდუქცია (სტუმარი)
+        </button>
       </div>
     </div>
   </div>
