@@ -297,7 +297,7 @@
     padding: 0; border: none;
     overflow: hidden;
     transition: transform 0.1s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
   }
   .product-card:active { transform: scale(0.97); }
   .product-img {
@@ -649,7 +649,7 @@
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes shimmer {
+  @keyframes shimmerLogin {
     0% { background-position: -200% center; }
     100% { background-position: 200% center; }
   }
@@ -1018,17 +1018,20 @@
   </div>
 
   <!-- ==================== HOME (Main Menu Hub) ==================== -->
-  <div class="screen" id="screen-home" style="background:#F2F2F7;">
-    <!-- Yellow gradient wash -->
-    <div style="position:absolute;top:0;left:0;right:0;height:35%;background:linear-gradient(180deg, #FFF8E1 0%, #FFFAED 30%, #F2F2F7 100%);pointer-events:none;z-index:1;"></div>
-    <div class="status-bar-light" style="position:relative;z-index:2;">
+  <div class="screen" id="screen-home" style="background:#F2F2F7;overflow:hidden;">
+    <!-- Same gradient as login screen -->
+    <div style="position:absolute;top:0;left:0;right:0;height:55%;background:linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 15%, #FFFAED 40%, #F2F2F7 100%);pointer-events:none;"></div>
+    <!-- Warmth blob — same as login -->
+    <div style="position:absolute;top:5%;right:-15%;width:60%;height:35%;background:radial-gradient(ellipse, rgba(253,206,54,0.12) 0%, transparent 70%);pointer-events:none;"></div>
+
+    <div class="status-bar-light" style="position:relative;z-index:1;">
       <span class="time">17:42</span>
       <div class="icons">
         <svg viewBox="0 0 24 24" fill="var(--d1)"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.24 4.24 0 00-6 0zm-4-4l2 2a7.07 7.07 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
         <svg viewBox="0 0 24 24" fill="var(--d1)"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
       </div>
     </div>
-    <div class="header-light" style="padding-top:12px;position:relative;z-index:2;">
+    <div class="header-light" style="padding-top:12px;position:relative;z-index:1;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
         <div style="display:flex;align-items:center;gap:12px;">
           <button class="icon-btn-light" aria-label="Menu" onclick="openHamburger()">
@@ -1051,9 +1054,9 @@
         </div>
       </div>
     </div>
-    <div class="content" style="background:transparent;position:relative;z-index:2;">
+    <div class="content" style="background:transparent;position:relative;z-index:1;">
       <!-- AI Search bar -->
-      <div style="background:var(--white);border:1.5px solid #E2E2E8;border-radius:var(--radius-pill);padding:14px 16px;display:flex;align-items:center;gap:10px;margin-bottom:20px;cursor:pointer;min-height:52px;transition:transform 0.15s;box-shadow:0 2px 8px rgba(0,0,0,0.04);" onpointerdown="this.style.transform='scale(0.98)'" onpointerup="this.style.transform=''" onclick="navigateTo('chat')">
+      <div style="background:var(--white);border:1.5px solid #E2E2E8;border-radius:var(--radius-pill);padding:14px 16px;display:flex;align-items:center;gap:10px;margin-bottom:24px;cursor:pointer;min-height:52px;transition:transform 0.15s;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);" onpointerdown="this.style.transform='scale(0.98)'" onpointerup="this.style.transform=''" onclick="navigateTo('chat')">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
         <span style="font-size:14px;color:var(--l3);">რა გჭირდება? AI დაგეხმარება...</span>
         <div style="margin-left:auto;width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -1066,7 +1069,7 @@
         <span class="section-title">აქტიური შეკვეთა</span>
         <span class="section-link" onclick="switchTab('orders')">ყველა</span>
       </div>
-      <div style="cursor:pointer;padding:18px;background:var(--white);border-radius:var(--radius-lg);border-left:4px solid var(--accent);margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 4px 20px rgba(0,0,0,0.05);" onclick="navigateTo('order-detail')">
+      <div style="cursor:pointer;padding:18px;background:var(--white);border-radius:var(--radius-lg);border-left:4px solid var(--accent);margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);" onclick="navigateTo('order-detail')">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
           <div>
             <div style="font-size:15px;font-weight:800;">#TH-2847</div>
@@ -1127,14 +1130,14 @@
             <div style="font-size:12px;font-weight:700;line-height:1.3;">ცხელი წყალი</div>
           </div>
           <div style="flex-shrink:0;width:80px;scroll-snap-align:start;text-align:center;cursor:pointer;" onclick="navigateTo('catalog')">
-            <div style="width:60px;height:60px;margin:0 auto 8px;border-radius:18px;background:#F0F0F4;display:flex;align-items:center;justify-content:center;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="1.8"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+            <div style="width:60px;height:60px;margin:0 auto 8px;border-radius:18px;background:rgba(253,206,54,0.12);display:flex;align-items:center;justify-content:center;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="1.8"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
             </div>
             <div style="font-size:12px;font-weight:700;line-height:1.3;">ფიტინგები</div>
           </div>
           <div style="flex-shrink:0;width:80px;scroll-snap-align:start;text-align:center;cursor:pointer;" onclick="navigateTo('catalog')">
-            <div style="width:60px;height:60px;margin:0 auto 8px;border-radius:18px;background:#F0F0F4;display:flex;align-items:center;justify-content:center;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+            <div style="width:60px;height:60px;margin:0 auto 8px;border-radius:18px;background:rgba(253,206,54,0.12);display:flex;align-items:center;justify-content:center;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
             </div>
             <div style="font-size:12px;font-weight:700;line-height:1.3;">ხელსაწყოები</div>
           </div>
@@ -1191,13 +1194,13 @@
         <div style="position:absolute;top:-10px;right:-10px;width:100px;height:100px;border-radius:50%;border:2px solid rgba(253,206,54,0.15);"></div>
         <div style="position:absolute;bottom:-20px;right:30px;width:60px;height:60px;border-radius:50%;border:2px solid rgba(253,206,54,0.08);"></div>
         <div style="font-size:10px;font-weight:700;color:var(--accent);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;">შეთავაზება</div>
-        <div style="font-size:22px;font-weight:900;color:var(--white);margin-bottom:4px;">-15% ფასდაკლება</div>
+        <div style="font-size:22px;font-weight:800;color:var(--white);margin-bottom:4px;">-15% ფასდაკლება</div>
         <div style="font-size:13px;color:var(--mid);margin-bottom:16px;">ყველა კონდენსაციურ ქვაბზე</div>
         <div style="display:inline-block;background:var(--accent);color:var(--d1);padding:10px 24px;border-radius:var(--radius-pill);font-size:13px;font-weight:700;">დეტალურად</div>
       </div>
 
       <!-- More products -->
-      <div style="margin-bottom:16px;">
+      <div style="margin-bottom:24px;">
         <div class="section-header"><span class="section-title">ახალი დამატებული</span><span class="section-link" onclick="navigateTo('catalog')">ყველა</span></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
           <div class="product-card" style="cursor:pointer;" onclick="navigateTo('product')">
@@ -1231,9 +1234,9 @@
       </div>
 
       <!-- Brands -->
-      <div style="margin-bottom:16px;">
+      <div style="margin-bottom:24px;">
         <div class="section-header"><span class="section-title">ბრენდები</span><span class="section-link" onclick="navigateTo('categories')">ყველა</span></div>
-        <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;">
+        <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;" class="hide-scrollbar">
           <div class="brand-chip" onclick="navigateTo('catalog')">Bosch</div>
           <div class="brand-chip" onclick="navigateTo('catalog')">Vaillant</div>
           <div class="brand-chip" onclick="navigateTo('catalog')">Kermi</div>
@@ -1243,7 +1246,7 @@
       </div>
 
       <!-- Even more products -->
-      <div style="margin-bottom:16px;">
+      <div style="margin-bottom:24px;">
         <div class="section-header"><span class="section-title">შენთვის</span><span class="section-link" onclick="navigateTo('catalog')">ყველა</span></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
           <div class="product-card" style="cursor:pointer;" onclick="navigateTo('product')">
