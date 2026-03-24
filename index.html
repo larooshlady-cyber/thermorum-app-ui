@@ -558,54 +558,53 @@
   </div>
 
   <!-- ==================== LOGIN ==================== -->
-  <div class="screen" id="screen-login" style="background:#fff;display:flex;flex-direction:column;">
-    <!-- Dark header -->
-    <div style="background:var(--d1);padding:calc(var(--safe-top) + 48px) 28px 40px;position:relative;">
-      <!-- Brand mark -->
+  <div class="screen" id="screen-login" style="background:#F4F4F6;display:flex;flex-direction:column;">
+    <!-- Dark header with gradient -->
+    <div style="background:linear-gradient(165deg, #1C1C1B 0%, #262626 100%);padding:calc(var(--safe-top) + 52px) 32px 64px;position:relative;flex-shrink:0;">
+      <!-- Brand -->
       <div style="display:flex;align-items:center;gap:14px;">
-        <div style="width:44px;height:44px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2.2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/></svg>
+        <div style="width:40px;height:40px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(253,206,54,0.25);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/></svg>
         </div>
         <div>
-          <div style="font-size:18px;font-weight:800;color:#fff;letter-spacing:4px;">THERMORUM</div>
-          <div style="font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:2px;margin-top:3px;font-weight:600;text-transform:uppercase;">Partner Portal</div>
+          <div style="font-size:16px;font-weight:700;color:#fff;letter-spacing:3.5px;">THERMORUM</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.28);letter-spacing:1.5px;margin-top:2px;font-weight:500;">PARTNER PORTAL</div>
         </div>
       </div>
-      <!-- Welcome text -->
-      <div style="margin-top:36px;">
-        <div style="font-size:26px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.2;">მოგესალმებით</div>
-        <div style="font-size:14px;color:rgba(255,255,255,0.4);margin-top:6px;line-height:1.5;font-weight:400;">შედით თქვენს პარტნიორულ ანგარიშზე</div>
+      <!-- Welcome -->
+      <div style="margin-top:32px;">
+        <div style="font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;line-height:1.15;">მოგესალმებით</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.38);margin-top:8px;line-height:1.5;">შედით თქვენს პარტნიორულ ანგარიშზე</div>
       </div>
-      <!-- Gold accent line -->
-      <div style="position:absolute;bottom:0;left:28px;width:40px;height:3px;background:var(--accent);border-radius:2px;"></div>
     </div>
 
-    <!-- Form area -->
-    <div style="flex:1;padding:32px 28px 0;display:flex;flex-direction:column;background:#fff;">
+    <!-- Overlapping white card -->
+    <div style="flex:1;margin:-24px 16px 0;background:#fff;border-radius:16px 16px 0 0;padding:28px 24px 0;display:flex;flex-direction:column;position:relative;z-index:2;box-shadow:0 -4px 6px rgba(0,0,0,0.02),0 -12px 32px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.03);">
 
       <!-- Phone input -->
-      <label style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:10px;display:block;letter-spacing:0.3px;text-transform:uppercase;">მობილურის ნომერი</label>
-      <div id="login-phone-wrap" style="display:flex;align-items:center;gap:0;background:#FAFAFA;border:1.5px solid #E8E8ED;border-radius:10px;height:54px;transition:border-color 0.2s;overflow:hidden;">
-        <div style="display:flex;align-items:center;gap:8px;padding:0 14px;height:100%;border-right:1.5px solid #E8E8ED;background:#F5F5F7;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-          <span style="font-size:14px;color:var(--d1);font-weight:600;">+995</span>
+      <label style="font-size:13px;font-weight:500;color:#374151;margin-bottom:8px;display:block;">მობილურის ნომერი</label>
+      <div id="login-phone-wrap" style="display:flex;align-items:center;background:#fff;border:1px solid #D1D5DB;border-radius:10px;height:48px;transition:border-color 0.15s,box-shadow 0.15s;overflow:hidden;">
+        <div style="display:flex;align-items:center;gap:6px;padding:0 12px;height:100%;color:#6B7280;flex-shrink:0;">
+          <span style="font-size:14px;color:#111;font-weight:500;">+995</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <input type="tel" id="login-phone" placeholder="5XX XXX XXX" inputmode="numeric" style="flex:1;background:none;border:none;color:var(--d1);font-size:16px;font-family:inherit;font-weight:500;padding:0 16px;height:100%;outline:none;">
+        <div style="width:1px;height:24px;background:#E5E7EB;flex-shrink:0;"></div>
+        <input type="tel" id="login-phone" placeholder="5XX XXX XXX" inputmode="numeric" style="flex:1;background:none;border:none;color:#111;font-size:16px;font-family:inherit;font-weight:400;padding:0 14px;height:100%;outline:none;" onfocus="this.parentElement.style.borderColor='#FDCE36';this.parentElement.style.boxShadow='0 0 0 3px rgba(253,206,54,0.12)'" onblur="this.parentElement.style.borderColor='#D1D5DB';this.parentElement.style.boxShadow='none'">
       </div>
 
       <!-- Primary CTA -->
-      <button class="btn-primary" onclick="handleLogin()" style="margin-top:18px;height:54px;border-radius:10px;font-size:15px;font-weight:700;letter-spacing:0.2px;">კოდის გაგზავნა</button>
-      <p style="text-align:center;margin-top:10px;font-size:11px;color:var(--l2);font-weight:400;">SMS კოდი გამოგეგზავნებათ მითითებულ ნომერზე</p>
+      <button class="btn-primary" onclick="handleLogin()" style="margin-top:20px;height:48px;border-radius:10px;font-size:15px;font-weight:600;letter-spacing:0.01em;box-shadow:0 1px 2px rgba(0,0,0,0.05);">კოდის გაგზავნა</button>
+      <p style="text-align:center;margin-top:8px;font-size:12px;color:#9CA3AF;">SMS კოდი გამოგეგზავნებათ მითითებულ ნომერზე</p>
 
       <!-- Divider -->
-      <div style="display:flex;align-items:center;margin:28px 0;gap:16px;">
-        <div style="flex:1;height:1px;background:#EBEBF0;"></div>
-        <span style="font-size:11px;font-weight:600;color:var(--l2);letter-spacing:0.5px;">ან</span>
-        <div style="flex:1;height:1px;background:#EBEBF0;"></div>
+      <div style="display:flex;align-items:center;margin:24px 0;gap:12px;">
+        <div style="flex:1;height:1px;background:#E5E7EB;"></div>
+        <span style="font-size:12px;font-weight:500;color:#9CA3AF;">ან</span>
+        <div style="flex:1;height:1px;background:#E5E7EB;"></div>
       </div>
 
       <!-- Google -->
-      <button onclick="navigateTo('google-picker')" style="width:100%;height:50px;background:#fff;border:1.5px solid #E0E0E5;border-radius:10px;font-size:14px;font-weight:600;color:var(--d1);cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:10px;transition:border-color 0.2s,background 0.2s;">
+      <button onclick="navigateTo('google-picker')" style="width:100%;height:48px;background:#fff;border:1px solid #D1D5DB;border-radius:10px;font-size:14px;font-weight:500;color:#111;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:10px;transition:all 0.15s ease;">
         <svg width="18" height="18" viewBox="0 0 24 24">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -615,18 +614,18 @@
         Google-ით შესვლა
       </button>
 
-      <!-- Guest — subtle dark button -->
-      <button onclick="enterGuest()" style="width:100%;height:50px;margin-top:10px;background:var(--d1);border:none;border-radius:10px;font-size:14px;font-weight:600;color:#fff;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity 0.2s;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <!-- Guest — tertiary action -->
+      <button onclick="enterGuest()" style="width:100%;height:48px;margin-top:8px;background:transparent;border:1px solid #E5E7EB;border-radius:10px;font-size:14px;font-weight:500;color:#6B7280;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.15s ease;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         სტუმრად შესვლა
       </button>
 
-      <div style="flex:1;min-height:24px;"></div>
+      <div style="flex:1;min-height:20px;"></div>
 
       <!-- Register -->
-      <div style="text-align:center;padding-bottom:24px;">
-        <span style="font-size:13px;color:var(--l3);font-weight:400;">არ გაქვს ანგარიში? </span>
-        <span style="font-size:13px;font-weight:700;color:var(--d1);cursor:pointer;text-decoration:underline;text-underline-offset:2px;" onclick="navigateTo('register')">რეგისტრაცია</span>
+      <div style="text-align:center;padding-bottom:calc(24px + var(--safe-bottom));">
+        <span style="font-size:14px;color:#6B7280;">არ გაქვს ანგარიში? </span>
+        <span style="font-size:14px;font-weight:600;color:#111;cursor:pointer;" onclick="navigateTo('register')">რეგისტრაცია</span>
       </div>
     </div>
   </div>
