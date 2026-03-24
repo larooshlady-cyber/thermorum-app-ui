@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=390, initial-scale=1.0">
+<title>Thermorum — Cart & Checkout</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; background: #F8F9FA; width: 390px; height: 844px; overflow: hidden; position: relative; }
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;display:flex;flex-direction:column;position:relative;">
+
+  <!-- Status bar spacer -->
+  <div style="height:47px;background:#1C1C1B;"></div>
+
+  <!-- Header -->
+  <div style="background:#1C1C1B;padding:0 20px 20px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      <span style="font-size:18px;font-weight:800;color:#FFFFFF;">კალათა</span>
+      <span style="font-size:14px;color:#9D9FA2;margin-left:4px;">(3 ელემენტი)</span>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div style="flex:1;overflow-y:auto;padding:16px 20px;padding-bottom:220px;">
+
+    <!-- Cart item 1 -->
+    <div style="background:#FFFFFF;border-radius:16px;padding:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:12px;">
+      <div style="display:flex;gap:12px;">
+        <div style="width:72px;height:72px;border-radius:12px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <div style="font-size:14px;font-weight:700;color:#1C1C1B;">Bosch Condens</div>
+              <div style="font-size:12px;color:#9D9FA2;">GC7000iW 24</div>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF5B45" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:32px;height:32px;border-radius:10px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#444546;">−</div>
+              <span style="font-size:15px;font-weight:800;color:#1C1C1B;">1</span>
+              <div style="width:32px;height:32px;border-radius:10px;background:#FDCE36;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#1C1C1B;">+</div>
+            </div>
+            <div>
+              <div style="font-size:16px;font-weight:800;color:#1C1C1B;">₾ 2,720</div>
+              <div style="font-size:11px;color:#9D9FA2;text-decoration:line-through;text-align:right;">₾ 3,200</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart item 2 -->
+    <div style="background:#FFFFFF;border-radius:16px;padding:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:12px;">
+      <div style="display:flex;gap:12px;">
+        <div style="width:72px;height:72px;border-radius:12px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="7" y1="4" x2="7" y2="20"/><line x1="11" y1="4" x2="11" y2="20"/><line x1="15" y1="4" x2="15" y2="20"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <div style="font-size:14px;font-weight:700;color:#1C1C1B;">Kermi FKO</div>
+              <div style="font-size:12px;color:#9D9FA2;">22/500/1200</div>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF5B45" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:32px;height:32px;border-radius:10px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#444546;">−</div>
+              <span style="font-size:15px;font-weight:800;color:#1C1C1B;">2</span>
+              <div style="width:32px;height:32px;border-radius:10px;background:#FDCE36;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#1C1C1B;">+</div>
+            </div>
+            <div style="font-size:16px;font-weight:800;color:#1C1C1B;">₾ 680</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart item 3 -->
+    <div style="background:#FFFFFF;border-radius:16px;padding:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:16px;">
+      <div style="display:flex;gap:12px;">
+        <div style="width:72px;height:72px;border-radius:12px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <div style="font-size:14px;font-weight:700;color:#1C1C1B;">Watts თერმოსტატი</div>
+              <div style="font-size:12px;color:#9D9FA2;">LCD Smart Wi-Fi</div>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF5B45" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:32px;height:32px;border-radius:10px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#444546;">−</div>
+              <span style="font-size:15px;font-weight:800;color:#1C1C1B;">1</span>
+              <div style="width:32px;height:32px;border-radius:10px;background:#FDCE36;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#1C1C1B;">+</div>
+            </div>
+            <div style="font-size:16px;font-weight:800;color:#1C1C1B;">₾ 185</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Promo code -->
+    <div style="display:flex;gap:10px;margin-bottom:16px;">
+      <div style="flex:1;background:#FFFFFF;border:1.5px solid #E0E0E0;border-radius:12px;padding:14px 16px;">
+        <span style="font-size:14px;color:#9D9FA2;">პრომო კოდი</span>
+      </div>
+      <button style="padding:14px 20px;background:#1C1C1B;border:none;border-radius:12px;font-size:14px;font-weight:700;color:#FDCE36;cursor:pointer;">
+        გააქტიურება
+      </button>
+    </div>
+
+    <!-- Delivery address -->
+    <div style="background:#FFFFFF;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:16px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <span style="font-size:14px;font-weight:700;color:#1C1C1B;">მიწოდების მისამართი</span>
+        <span style="font-size:13px;color:#037FF7;font-weight:600;">შეცვლა</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <div style="width:40px;height:40px;border-radius:10px;background:#EBF5FF;display:flex;align-items:center;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#037FF7" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#1C1C1B;">ვაჟა-ფშაველას გამზ. 71</div>
+          <div style="font-size:12px;color:#9D9FA2;">თბილისი, 0186</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment method -->
+    <div style="background:#FFFFFF;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <span style="font-size:14px;font-weight:700;color:#1C1C1B;">გადახდის მეთოდი</span>
+        <span style="font-size:13px;color:#037FF7;font-weight:600;">შეცვლა</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <div style="width:40px;height:40px;border-radius:10px;background:#FFF8E1;display:flex;align-items:center;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFAE00" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#1C1C1B;">Visa •••• 4521</div>
+          <div style="font-size:12px;color:#9D9FA2;">ვადა: 08/28</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom summary + CTA -->
+  <div style="position:absolute;bottom:0;left:0;right:0;background:#FFFFFF;padding:16px 20px 32px;border-top:1px solid #F0F0F0;box-shadow:0 -4px 20px rgba(0,0,0,0.08);">
+    <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+      <span style="font-size:14px;color:#9D9FA2;">ქვეჯამი</span>
+      <span style="font-size:14px;color:#1C1C1B;">₾ 3,585</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+      <span style="font-size:14px;color:#9D9FA2;">მიწოდება</span>
+      <span style="font-size:14px;color:#34A853;font-weight:600;">უფასო</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+      <span style="font-size:14px;color:#34A853;">ფასდაკლება (-15%)</span>
+      <span style="font-size:14px;color:#34A853;">-₾ 480</span>
+    </div>
+    <div style="height:1px;background:#F0F0F0;margin:10px 0;"></div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:16px;">
+      <span style="font-size:18px;font-weight:900;color:#1C1C1B;">ჯამი</span>
+      <span style="font-size:20px;font-weight:900;color:#1C1C1B;">₾ 3,105</span>
+    </div>
+    <button style="width:100%;padding:16px;background:linear-gradient(135deg,#FFAE00,#F9E866);border:none;border-radius:24px;font-size:16px;font-weight:800;color:#1C1C1B;cursor:pointer;box-shadow:0 4px 16px rgba(253,206,54,0.3);">
+      შეკვეთის გაფორმება
+    </button>
+  </div>
+
+</div>
+</body>
+</html>

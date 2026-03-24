@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=390, initial-scale=1.0">
+<title>Thermorum — Home</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; background: #F8F9FA; width: 390px; height: 844px; overflow: hidden; position: relative; }
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;display:flex;flex-direction:column;position:relative;">
+
+  <!-- Status bar spacer -->
+  <div style="height:47px;background:#1C1C1B;"></div>
+
+  <!-- Header -->
+  <div style="background:#1C1C1B;padding:0 20px 20px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+      <div>
+        <div id="greeting-text" style="font-size:13px;color:#9D9FA2;">დილა მშვიდობისა,</div>
+        <div style="font-size:20px;font-weight:800;color:#FFFFFF;">გიორგი</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:40px;height:40px;border-radius:12px;background:#2A2A29;display:flex;align-items:center;justify-content:center;position:relative;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          <div style="position:absolute;top:6px;right:6px;width:8px;height:8px;background:#FF5B45;border-radius:50%;border:2px solid #1C1C1B;"></div>
+        </div>
+        <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#FFAE00,#F9E866);display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:16px;font-weight:800;color:#1C1C1B;">გმ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div style="background:#2A2A29;border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <span style="color:#9D9FA2;font-size:14px;">ძიება...</span>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div style="flex:1;overflow-y:auto;padding:20px;padding-bottom:100px;">
+
+    <!-- Quick actions -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:24px;">
+      <div style="text-align:center;">
+        <div style="width:56px;height:56px;margin:0 auto 8px;border-radius:16px;background:linear-gradient(135deg,#FFAE00,#F9E866);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(253,206,54,0.2);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <span style="font-size:11px;color:#444546;font-weight:600;">მაღაზია</span>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:56px;height:56px;margin:0 auto 8px;border-radius:16px;background:#EBF5FF;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#037FF7" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="23 7 16 12 16 7"/></svg>
+        </div>
+        <span style="font-size:11px;color:#444546;font-weight:600;">ვიდეო</span>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:56px;height:56px;margin:0 auto 8px;border-radius:16px;background:#FFF0ED;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5B45" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <span style="font-size:11px;color:#444546;font-weight:600;">შეკვეთები</span>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:56px;height:56px;margin:0 auto 8px;border-radius:16px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#444546" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.32 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </div>
+        <span style="font-size:11px;color:#444546;font-weight:600;">პარამეტრი</span>
+      </div>
+    </div>
+
+    <!-- Active order card -->
+    <div style="margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <span style="font-size:17px;font-weight:800;color:#1C1C1B;">აქტიური შეკვეთა</span>
+        <span style="font-size:13px;color:#037FF7;font-weight:600;">ყველა →</span>
+      </div>
+      <div style="background:#FFFFFF;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+          <div>
+            <div style="font-size:15px;font-weight:700;color:#1C1C1B;">შეკვეთა #TH-2847</div>
+            <div style="font-size:12px;color:#9D9FA2;margin-top:2px;">10 მარტი, 2026</div>
+          </div>
+          <div style="background:#FFF8E1;padding:4px 12px;border-radius:20px;">
+            <span style="font-size:12px;font-weight:700;color:#FFAE00;">მზადდება</span>
+          </div>
+        </div>
+        <!-- Progress bar -->
+        <div style="background:#F0F0F0;border-radius:8px;height:6px;margin-bottom:12px;">
+          <div style="background:linear-gradient(90deg,#FFAE00,#F9E866);border-radius:8px;height:6px;width:60%;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+          <span style="font-size:12px;color:#9D9FA2;">3/5 ელემენტი</span>
+          <span style="font-size:14px;font-weight:700;color:#1C1C1B;">₾ 4,850.00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Promo banner -->
+    <div style="background:linear-gradient(135deg,#F8C255,#FFDA47);border-radius:16px;padding:20px;margin-bottom:20px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-20px;top:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.2);"></div>
+      <div style="position:absolute;right:20px;bottom:-30px;width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,0.15);"></div>
+      <div style="font-size:12px;font-weight:700;color:#1C1C1B;opacity:0.7;margin-bottom:4px;">სპეციალური შეთავაზება</div>
+      <div style="font-size:20px;font-weight:900;color:#1C1C1B;margin-bottom:4px;">-15% ფასდაკლება</div>
+      <div style="font-size:13px;color:#444546;margin-bottom:12px;">ყველა კონდენსაციურ ქვაბზე</div>
+      <div style="display:inline-block;background:#1C1C1B;color:#FDCE36;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:700;">დეტალურად</div>
+    </div>
+
+    <!-- Popular products -->
+    <div style="margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <span style="font-size:17px;font-weight:800;color:#1C1C1B;">პოპულარული</span>
+        <span style="font-size:13px;color:#037FF7;font-weight:600;">ყველა →</span>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <div style="flex:1;background:#FFFFFF;border-radius:16px;padding:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+          <div style="width:100%;height:100px;background:linear-gradient(135deg,#F0F0F0,#E8E8E8);border-radius:12px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><circle cx="12" cy="14" r="3"/></svg>
+          </div>
+          <div style="font-size:13px;font-weight:700;color:#1C1C1B;">Bosch Condens</div>
+          <div style="font-size:11px;color:#9D9FA2;margin-bottom:6px;">GC7000iW 24</div>
+          <div style="font-size:15px;font-weight:800;color:#1C1C1B;">₾ 3,200</div>
+        </div>
+        <div style="flex:1;background:#FFFFFF;border-radius:16px;padding:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+          <div style="width:100%;height:100px;background:linear-gradient(135deg,#F0F0F0,#E8E8E8);border-radius:12px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><circle cx="12" cy="14" r="3"/></svg>
+          </div>
+          <div style="font-size:13px;font-weight:700;color:#1C1C1B;">Vaillant ecoTEC</div>
+          <div style="font-size:11px;color:#9D9FA2;margin-bottom:6px;">plus VUW 246</div>
+          <div style="font-size:15px;font-weight:800;color:#1C1C1B;">₾ 2,950</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- AI FAB -->
+  <div style="position:absolute;bottom:96px;right:20px;width:56px;height:56px;border-radius:28px;background:linear-gradient(135deg,#FFAE00,#F9E866);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(253,206,54,0.4);z-index:10;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7v1h1.27c.34-.6.99-1 1.73-1a2 2 0 010 4c-.74 0-1.39-.4-1.73-1H21v1a7 7 0 01-7 7h-1v1.27c.6.34 1 .99 1 1.73a2 2 0 01-4 0c0-.74.4-1.39 1-1.73V19h-1a7 7 0 01-7-7v-1H1.73C1.39 11.6.74 12 0 12a2 2 0 010-4c.74 0 1.39.4 1.73 1H3v-1a7 7 0 017-7h1V3.73C10.4 3.39 10 2.74 10 2a2 2 0 012-2z"/></svg>
+  </div>
+
+  <!-- Bottom Tab Bar -->
+  <div style="position:absolute;bottom:0;left:0;right:0;height:80px;background:#1C1C1B;display:flex;align-items:flex-start;padding-top:12px;justify-content:space-around;border-top-left-radius:20px;border-top-right-radius:20px;">
+    <div style="text-align:center;position:relative;">
+      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:24px;height:3px;background:#FDCE36;border-radius:2px;"></div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#FDCE36" stroke="#FDCE36" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      <div style="font-size:10px;color:#FDCE36;font-weight:700;margin-top:4px;">მთავარი</div>
+    </div>
+    <div style="text-align:center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <div style="font-size:10px;color:#9D9FA2;margin-top:4px;">მაღაზია</div>
+    </div>
+    <div style="text-align:center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <div style="font-size:10px;color:#9D9FA2;margin-top:4px;">შეკვეთები</div>
+    </div>
+    <div style="text-align:center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <div style="font-size:10px;color:#9D9FA2;margin-top:4px;">ჩატი</div>
+    </div>
+    <div style="text-align:center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <div style="font-size:10px;color:#9D9FA2;margin-top:4px;">პროფილი</div>
+    </div>
+  </div>
+
+</div>
+<script>
+(function() {
+  var h = new Date().getHours();
+  var g;
+  if (h >= 5 && h < 12) g = 'დილა მშვიდობისა,';
+  else if (h >= 12 && h < 17) g = 'შუადღე მშვიდობისა,';
+  else if (h >= 17 && h < 21) g = 'საღამო მშვიდობისა,';
+  else g = 'ღამე მშვიდობისა,';
+  document.getElementById('greeting-text').textContent = g;
+})();
+</script>
+</body>
+</html>

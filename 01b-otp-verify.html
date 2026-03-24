@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=390, initial-scale=1.0">
+<title>Thermorum — კოდის დადასტურება</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; background: #1C1C1B; width: 390px; height: 844px; overflow: hidden; position: relative; }
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;background:linear-gradient(180deg,#1C1C1B 0%,#2A2A29 100%);display:flex;flex-direction:column;padding:0 24px;position:relative;">
+
+  <!-- Status bar spacer -->
+  <div style="height:47px;"></div>
+
+  <!-- Back + Title -->
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:48px;">
+    <a href="01-login.html" style="width:40px;height:40px;border-radius:12px;background:#2A2A29;display:flex;align-items:center;justify-content:center;text-decoration:none;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <span style="font-size:20px;font-weight:800;color:#FFFFFF;">კოდის დადასტურება</span>
+  </div>
+
+  <!-- OTP illustration -->
+  <div style="text-align:center;margin-bottom:36px;">
+    <div style="width:80px;height:80px;margin:0 auto 20px;border-radius:50%;background:linear-gradient(135deg,rgba(255,174,0,0.15),rgba(249,232,102,0.15));display:flex;align-items:center;justify-content:center;">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FDCE36" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+    </div>
+    <div style="font-size:15px;color:#FFFFFF;font-weight:600;margin-bottom:6px;">კოდი გაიგზავნა</div>
+    <div style="font-size:14px;color:#9D9FA2;">+995 5** *** *89</div>
+  </div>
+
+  <!-- OTP Input boxes -->
+  <div style="display:flex;justify-content:center;gap:12px;margin-bottom:36px;">
+    <div style="width:56px;height:64px;background:#2A2A29;border:2px solid #FDCE36;border-radius:16px;display:flex;align-items:center;justify-content:center;">
+      <span style="font-size:28px;font-weight:800;color:#FFFFFF;">4</span>
+    </div>
+    <div style="width:56px;height:64px;background:#2A2A29;border:2px solid #FDCE36;border-radius:16px;display:flex;align-items:center;justify-content:center;">
+      <span style="font-size:28px;font-weight:800;color:#FFFFFF;">7</span>
+    </div>
+    <div style="width:56px;height:64px;background:#2A2A29;border:2px solid #FDCE36;border-radius:16px;display:flex;align-items:center;justify-content:center;">
+      <span style="font-size:28px;font-weight:800;color:#FFFFFF;">2</span>
+    </div>
+    <div style="width:56px;height:64px;background:#2A2A29;border:1.5px solid #444546;border-radius:16px;display:flex;align-items:center;justify-content:center;">
+      <div style="width:2px;height:28px;background:#FDCE36;border-radius:1px;animation:blink 1s infinite;"></div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+  </style>
+
+  <!-- Verify button -->
+  <div style="width:100%;max-width:342px;margin:0 auto;">
+    <button onclick="window.location.href='02-home-dashboard.html'" style="width:100%;padding:16px;background:linear-gradient(135deg,#FFAE00,#F9E866);border:none;border-radius:24px;font-size:16px;font-weight:800;color:#1C1C1B;cursor:pointer;letter-spacing:0.5px;box-shadow:0 4px 16px rgba(253,206,54,0.3);">
+      დადასტურება
+    </button>
+
+    <!-- Resend -->
+    <div style="text-align:center;margin-top:24px;">
+      <span style="color:#9D9FA2;font-size:14px;">კოდი არ მოგივიდა? </span>
+      <span style="color:#FDCE36;font-size:14px;font-weight:700;">ხელახლა გაგზავნა</span>
+    </div>
+
+    <!-- Timer -->
+    <div style="text-align:center;margin-top:12px;">
+      <span style="color:#9D9FA2;font-size:13px;">ხელახლა გაგზავნა შესაძლებელია </span>
+      <span style="color:#FFFFFF;font-size:13px;font-weight:700;">0:47</span>
+    </div>
+  </div>
+
+  <!-- Numeric keypad -->
+  <div style="position:absolute;bottom:0;left:0;right:0;background:#2A2A29;padding:16px 32px 40px;border-top-left-radius:24px;border-top-right-radius:24px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+      <div style="text-align:center;padding:14px;border-radius:12px;cursor:pointer;"><span style="font-size:24px;font-weight:700;color:#FFFFFF;">1</span></div>
+      <div style="text-align:center;padding:14px;border-radius:12px;cursor:pointer;"><span style="font-size:24px;font-weight:700;color:#FFFFFF;">2</span></div>
+      <div style="text-align:center;padding:14px;border-radius:12px;cursor:pointer;"><span style="font-size:24px;font-weight:700;color:#FFFFFF;">3</span></div>
+      <div style="text-align:center;padding:14px;border-radius:12px;cursor:pointer;"><span style="font-size:24px;font-weight:700;color:#FFFFFF;">4</span></div>
+      <div style="text-align:center;padding:14px;border-radius:12px;cursor:pointer;"><span style="font-size:24px;font-weight:700;color:#FFFFFF;">5</span></div>
+      <div style="text-align:center;padding:14px;border-radius:12px;cursor:pointer;"><span style="font-size:24px;font-weight:700;color:#FFFFFF;">6</span></div>
+      <div style="text-align:center;padding:14px;border-radius:12px;cursor:pointer;"><span style="font-size:24px;font-weight:700;color:#FFFFFF;">7</span></div>
+      <div style="text-align:center;padding:14px;border-radius:12px;cursor:pointer;"><span style="font-size:24px;font-weight:700;color:#FFFFFF;">8</span></div>
+      <div style="text-align:center;padding:14px;border-radius:12px;cursor:pointer;"><span style="font-size:24px;font-weight:700;color:#FFFFFF;">9</span></div>
+      <div style="text-align:center;padding:14px;border-radius:12px;"></div>
+      <div style="text-align:center;padding:14px;border-radius:12px;cursor:pointer;"><span style="font-size:24px;font-weight:700;color:#FFFFFF;">0</span></div>
+      <div style="text-align:center;padding:14px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 002-2V6a2 2 0 00-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

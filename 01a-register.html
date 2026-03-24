@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=390, initial-scale=1.0">
+<title>Thermorum — რეგისტრაცია</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; background: #1C1C1B; width: 390px; height: 844px; overflow: hidden; position: relative; }
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;background:linear-gradient(180deg,#1C1C1B 0%,#2A2A29 100%);display:flex;flex-direction:column;padding:0 24px;position:relative;">
+
+  <!-- Status bar spacer -->
+  <div style="height:47px;"></div>
+
+  <!-- Back + Title -->
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:36px;">
+    <a href="01-login.html" style="width:40px;height:40px;border-radius:12px;background:#2A2A29;display:flex;align-items:center;justify-content:center;text-decoration:none;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <span style="font-size:20px;font-weight:800;color:#FFFFFF;">რეგისტრაცია</span>
+  </div>
+
+  <!-- Logo small -->
+  <div style="text-align:center;margin-bottom:36px;">
+    <div style="width:56px;height:56px;margin:0 auto 12px;border-radius:50%;background:linear-gradient(135deg,#FFAE00,#F9E866);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(253,206,54,0.25);">
+      <div style="width:26px;height:26px;border-radius:50%;border:2.5px solid #1C1C1B;position:relative;">
+        <div style="position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:2.5px;height:6px;background:#1C1C1B;border-radius:2px;"></div>
+        <div style="position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:2.5px;height:6px;background:#1C1C1B;border-radius:2px;"></div>
+        <div style="position:absolute;left:-6px;top:50%;transform:translateY(-50%);width:6px;height:2.5px;background:#1C1C1B;border-radius:2px;"></div>
+        <div style="position:absolute;right:-6px;top:50%;transform:translateY(-50%);width:6px;height:2.5px;background:#1C1C1B;border-radius:2px;"></div>
+      </div>
+    </div>
+    <div style="font-size:14px;color:#9D9FA2;">შექმენი ანგარიში და დაიწყე</div>
+  </div>
+
+  <!-- Registration form -->
+  <div style="width:100%;max-width:342px;margin:0 auto;">
+    <!-- First name -->
+    <div style="margin-bottom:16px;">
+      <label style="display:block;font-size:13px;color:#9D9FA2;margin-bottom:6px;font-weight:600;">სახელი</label>
+      <div style="background:#2A2A29;border:1.5px solid #444546;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:10px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span style="color:#9D9FA2;font-size:15px;">მაგ. გიორგი</span>
+      </div>
+    </div>
+
+    <!-- Last name -->
+    <div style="margin-bottom:16px;">
+      <label style="display:block;font-size:13px;color:#9D9FA2;margin-bottom:6px;font-weight:600;">გვარი</label>
+      <div style="background:#2A2A29;border:1.5px solid #444546;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:10px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span style="color:#9D9FA2;font-size:15px;">მაგ. მატიაშვილი</span>
+      </div>
+    </div>
+
+    <!-- Phone number -->
+    <div style="margin-bottom:24px;">
+      <label style="display:block;font-size:13px;color:#9D9FA2;margin-bottom:6px;font-weight:600;">მობილურის ნომერი</label>
+      <div style="background:#2A2A29;border:1.5px solid #444546;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:10px;">
+        <div style="display:flex;align-items:center;gap:6px;border-right:1px solid #444546;padding-right:10px;">
+          <div style="width:24px;height:16px;border-radius:2px;overflow:hidden;position:relative;background:#FFFFFF;">
+            <div style="position:absolute;top:50%;left:0;right:0;height:2px;background:#FF0000;transform:translateY(-50%);"></div>
+            <div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:#FF0000;transform:translateX(-50%);"></div>
+          </div>
+          <span style="color:#FFFFFF;font-size:15px;font-weight:600;">+995</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <span style="color:#9D9FA2;font-size:15px;">5XX XXX XXX</span>
+      </div>
+    </div>
+
+    <!-- Register button -->
+    <button onclick="window.location.href='01b-otp-verify.html'" style="width:100%;padding:16px;background:linear-gradient(135deg,#FFAE00,#F9E866);border:none;border-radius:24px;font-size:16px;font-weight:800;color:#1C1C1B;cursor:pointer;letter-spacing:0.5px;box-shadow:0 4px 16px rgba(253,206,54,0.3);">
+      კოდის გაგზავნა
+    </button>
+
+    <!-- Info text -->
+    <div style="text-align:center;margin-top:16px;">
+      <span style="color:#9D9FA2;font-size:12px;line-height:1.5;">SMS კოდი გამოგეგზავნებათ მითითებულ ნომერზე</span>
+    </div>
+
+    <!-- Terms -->
+    <div style="text-align:center;margin-top:24px;">
+      <span style="color:#9D9FA2;font-size:11px;line-height:1.6;">რეგისტრაციით ეთანხმები <span style="color:#FDCE36;font-weight:600;">წესებსა და პირობებს</span> და <span style="color:#FDCE36;font-weight:600;">კონფიდენციალურობის პოლიტიკას</span></span>
+    </div>
+  </div>
+
+  <!-- Already have account -->
+  <div style="position:absolute;bottom:48px;left:0;right:0;text-align:center;">
+    <span style="color:#9D9FA2;font-size:14px;">უკვე გაქვს ანგარიში? </span>
+    <a href="01-login.html" style="color:#FDCE36;font-size:14px;font-weight:700;text-decoration:none;">შესვლა</a>
+  </div>
+
+</div>
+</body>
+</html>

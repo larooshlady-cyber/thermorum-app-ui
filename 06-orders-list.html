@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=390, initial-scale=1.0">
+<title>Thermorum — Orders</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; background: #F8F9FA; width: 390px; height: 844px; overflow: hidden; position: relative; }
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;display:flex;flex-direction:column;position:relative;">
+
+  <!-- Status bar spacer -->
+  <div style="height:47px;background:#1C1C1B;"></div>
+
+  <!-- Header -->
+  <div style="background:#1C1C1B;padding:0 20px 20px;">
+    <div style="font-size:18px;font-weight:800;color:#FFFFFF;margin-bottom:16px;">ჩემი შეკვეთები</div>
+    <!-- Filter tabs -->
+    <div style="display:flex;gap:8px;">
+      <div style="padding:8px 16px;background:#FDCE36;border-radius:20px;">
+        <span style="font-size:13px;font-weight:700;color:#1C1C1B;">ყველა</span>
+      </div>
+      <div style="padding:8px 16px;background:#2A2A29;border-radius:20px;">
+        <span style="font-size:13px;font-weight:600;color:#9D9FA2;">აქტიური</span>
+      </div>
+      <div style="padding:8px 16px;background:#2A2A29;border-radius:20px;">
+        <span style="font-size:13px;font-weight:600;color:#9D9FA2;">დასრულებული</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div style="flex:1;overflow-y:auto;padding:16px 20px;padding-bottom:100px;">
+
+    <!-- Order 1 - Active -->
+    <div style="background:#FFFFFF;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:12px;border-left:4px solid #FDCE36;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+        <div>
+          <div style="font-size:16px;font-weight:700;color:#1C1C1B;">#TH-2847</div>
+          <div style="font-size:12px;color:#9D9FA2;">10 მარტი, 2026</div>
+        </div>
+        <div style="background:#FFF8E1;padding:4px 12px;border-radius:20px;">
+          <span style="font-size:12px;font-weight:700;color:#FFAE00;">მზადდება</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:10px;">
+        <div style="width:48px;height:48px;border-radius:10px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
+        </div>
+        <div style="width:48px;height:48px;border-radius:10px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="7" y1="4" x2="7" y2="20"/><line x1="11" y1="4" x2="11" y2="20"/></svg>
+        </div>
+        <div style="width:48px;height:48px;border-radius:10px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:12px;font-weight:700;color:#9D9FA2;">+3</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;color:#9D9FA2;">5 ელემენტი</span>
+        <span style="font-size:16px;font-weight:800;color:#1C1C1B;">₾ 4,850</span>
+      </div>
+    </div>
+
+    <!-- Order 2 - Delivered -->
+    <div style="background:#FFFFFF;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:12px;border-left:4px solid #34A853;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+        <div>
+          <div style="font-size:16px;font-weight:700;color:#1C1C1B;">#TH-2801</div>
+          <div style="font-size:12px;color:#9D9FA2;">28 თებერვალი, 2026</div>
+        </div>
+        <div style="background:#E8F5E9;padding:4px 12px;border-radius:20px;">
+          <span style="font-size:12px;font-weight:700;color:#34A853;">მიტანილია</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:10px;">
+        <div style="width:48px;height:48px;border-radius:10px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
+        </div>
+        <div style="width:48px;height:48px;border-radius:10px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:12px;font-weight:700;color:#9D9FA2;">+1</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;color:#9D9FA2;">2 ელემენტი</span>
+        <span style="font-size:16px;font-weight:800;color:#1C1C1B;">₾ 3,450</span>
+      </div>
+    </div>
+
+    <!-- Order 3 - Shipped -->
+    <div style="background:#FFFFFF;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:12px;border-left:4px solid #037FF7;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+        <div>
+          <div style="font-size:16px;font-weight:700;color:#1C1C1B;">#TH-2756</div>
+          <div style="font-size:12px;color:#9D9FA2;">15 თებერვალი, 2026</div>
+        </div>
+        <div style="background:#EBF5FF;padding:4px 12px;border-radius:20px;">
+          <span style="font-size:12px;font-weight:700;color:#037FF7;">გზაშია</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:10px;">
+        <div style="width:48px;height:48px;border-radius:10px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;color:#9D9FA2;">1 ელემენტი</span>
+        <span style="font-size:16px;font-weight:800;color:#1C1C1B;">₾ 185</span>
+      </div>
+    </div>
+
+    <!-- Order 4 - Cancelled -->
+    <div style="background:#FFFFFF;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:12px;border-left:4px solid #FF5B45;opacity:0.7;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+        <div>
+          <div style="font-size:16px;font-weight:700;color:#1C1C1B;">#TH-2690</div>
+          <div style="font-size:12px;color:#9D9FA2;">2 თებერვალი, 2026</div>
+        </div>
+        <div style="background:#FFF0ED;padding:4px 12px;border-radius:20px;">
+          <span style="font-size:12px;font-weight:700;color:#FF5B45;">გაუქმებული</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;color:#9D9FA2;">3 ელემენტი</span>
+        <span style="font-size:16px;font-weight:800;color:#9D9FA2;text-decoration:line-through;">₾ 2,100</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- AI FAB -->
+  <div style="position:absolute;bottom:96px;right:20px;width:56px;height:56px;border-radius:28px;background:linear-gradient(135deg,#FFAE00,#F9E866);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(253,206,54,0.4);z-index:10;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7v1h1.27c.34-.6.99-1 1.73-1a2 2 0 010 4c-.74 0-1.39-.4-1.73-1H21v1a7 7 0 01-7 7h-1v1.27c.6.34 1 .99 1 1.73a2 2 0 01-4 0c0-.74.4-1.39 1-1.73V19h-1a7 7 0 01-7-7v-1H1.73C1.39 11.6.74 12 0 12a2 2 0 010-4c.74 0 1.39.4 1.73 1H3v-1a7 7 0 017-7h1V3.73C10.4 3.39 10 2.74 10 2a2 2 0 012-2z"/></svg>
+  </div>
+
+  <!-- Bottom Tab Bar -->
+  <div style="position:absolute;bottom:0;left:0;right:0;height:80px;background:#1C1C1B;display:flex;align-items:flex-start;padding-top:12px;justify-content:space-around;border-top-left-radius:20px;border-top-right-radius:20px;">
+    <div style="text-align:center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      <div style="font-size:10px;color:#9D9FA2;margin-top:4px;">მთავარი</div>
+    </div>
+    <div style="text-align:center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <div style="font-size:10px;color:#9D9FA2;margin-top:4px;">მაღაზია</div>
+    </div>
+    <div style="text-align:center;position:relative;">
+      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:24px;height:3px;background:#FDCE36;border-radius:2px;"></div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#FDCE36" stroke="#FDCE36" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <div style="font-size:10px;color:#FDCE36;font-weight:700;margin-top:4px;">შეკვეთები</div>
+    </div>
+    <div style="text-align:center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <div style="font-size:10px;color:#9D9FA2;margin-top:4px;">ჩატი</div>
+    </div>
+    <div style="text-align:center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9D9FA2" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <div style="font-size:10px;color:#9D9FA2;margin-top:4px;">პროფილი</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
