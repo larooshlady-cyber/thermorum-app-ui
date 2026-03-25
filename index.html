@@ -1129,11 +1129,13 @@
     </div>
 
     <!-- AI Bubble → expands horizontally into chat input -->
-    <div id="ai-wrap" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;height:46px;width:46px;border-radius:23px;background:#FDCE36;box-shadow:0 2px 12px rgba(229,184,32,0.25);transition:width 0.35s cubic-bezier(0.25,1,0.5,1),background 0.25s ease,box-shadow 0.25s ease;overflow:hidden;cursor:pointer;" onclick="expandAiBubble()">
-      <input id="ai-chat-input" type="text" placeholder="რა გჭირდება?..." onclick="event.stopPropagation()" style="flex:1;min-width:0;height:100%;border:none;background:transparent;color:var(--d1);padding:0 0 0 16px;font-size:14px;font-weight:600;outline:none;opacity:0;transition:opacity 0.2s ease 0.12s;pointer-events:none;" onkeydown="if(event.key==='Enter'){event.stopPropagation();navigateTo('chat');collapseAiBubble();}">
+    <div id="ai-wrap" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;justify-content:center;height:46px;width:46px;border-radius:23px;background:#FDCE36;box-shadow:0 2px 12px rgba(229,184,32,0.25);transition:width 0.35s cubic-bezier(0.25,1,0.5,1),background 0.25s ease,box-shadow 0.25s ease;overflow:hidden;cursor:pointer;" onclick="expandAiBubble()">
+      <input id="ai-chat-input" type="text" placeholder="რა გჭირდება?..." onclick="event.stopPropagation()" style="width:0;flex:0;min-width:0;height:100%;border:none;background:transparent;color:var(--d1);padding:0;font-size:14px;font-weight:600;outline:none;opacity:0;transition:opacity 0.2s ease 0.12s,flex 0.3s ease;pointer-events:none;" onkeydown="if(event.key==='Enter'){event.stopPropagation();navigateTo('chat');collapseAiBubble();}">
       <div id="ai-btn" style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;transition:all 0.25s ease;">
-        <svg id="ai-icon-chat" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" style="transition:opacity 0.15s;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        <svg id="ai-icon-send" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" style="position:absolute;opacity:0;transition:opacity 0.15s;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <!-- Sparkle/magic AI icon -->
+        <svg id="ai-icon-chat" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:opacity 0.15s;"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
+        <!-- Send arrow -->
+        <svg id="ai-icon-send" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;opacity:0;transition:opacity 0.15s;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </div>
     </div>
   </div>
@@ -4329,15 +4331,18 @@
     var iconSend = document.getElementById('ai-icon-send');
     var btn = document.getElementById('ai-btn');
     wrap.style.width = 'calc(100% - 32px)';
+    wrap.style.justifyContent = 'stretch';
     wrap.style.background = '#FFFFFF';
     wrap.style.boxShadow = '0 2px 16px rgba(0,0,0,0.1)';
     wrap.style.cursor = 'default';
     wrap.onclick = null;
     iconChat.style.opacity = '0';
+    input.style.flex = '1';
+    input.style.padding = '0 0 0 16px';
     setTimeout(function(){
       iconSend.style.opacity = '1';
       btn.style.background = '#FDCE36';
-      btn.style.borderRadius = '13px';
+      btn.style.borderRadius = '50%';
       btn.style.width = '38px';
       btn.style.height = '38px';
       btn.style.margin = '0 4px 0 0';
@@ -4361,6 +4366,8 @@
     input.blur();
     input.style.opacity = '0';
     input.style.pointerEvents = 'none';
+    input.style.flex = '0';
+    input.style.padding = '0';
     iconSend.style.opacity = '0';
     btn.style.background = 'none';
     btn.style.borderRadius = '';
@@ -4373,6 +4380,7 @@
       iconChat.style.opacity = '1';
     }, 80);
     wrap.style.width = '46px';
+    wrap.style.justifyContent = 'center';
     wrap.style.background = '#FDCE36';
     wrap.style.boxShadow = '0 2px 12px rgba(229,184,32,0.25)';
     wrap.style.cursor = 'pointer';
