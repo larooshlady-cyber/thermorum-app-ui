@@ -231,6 +231,7 @@
   .chip-active {
     background: var(--d1); color: var(--white);
     border-color: var(--d1);
+    box-shadow: 0 2px 8px rgba(28,28,27,0.2);
   }
 
   /* ═══════════ BADGE ═══════════ */
@@ -269,8 +270,8 @@
   }
 
   /* ═══════════ PROGRESS ═══════════ */
-  .progress-bar { background: rgba(0,0,0,0.06); border-radius: 3px; height: 6px; overflow: hidden; }
-  .progress-fill { background: var(--accent); border-radius: 3px; height: 100%; transition: width 0.3s; }
+  .progress-bar { background: rgba(0,0,0,0.06); border-radius: 4px; height: 8px; overflow: hidden; }
+  .progress-fill { background: linear-gradient(90deg, #FDCE36, #F5A623); border-radius: 4px; height: 100%; transition: width 0.3s; }
 
   /* ═══════════ QUICK GRID ═══════════ */
   .quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
@@ -357,10 +358,10 @@
   /* ═══════════ ORDER CARD ═══════════ */
   .order-card {
     background: var(--white); border-radius: var(--radius-lg);
-    padding: 16px; border: none;
+    padding: 18px; border: none;
     border-left: 4px solid var(--accent);
-    margin-bottom: 10px; cursor: pointer;
-    transition: transform 0.1s;
+    margin-bottom: 12px; cursor: pointer;
+    transition: transform 0.12s;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.05);
   }
   .order-card:active { transform: scale(0.98); }
@@ -389,19 +390,20 @@
   /* ═══════════ MENU ═══════════ */
   .menu-item {
     display: flex; align-items: center; gap: 14px;
-    padding: 14px 16px; min-height: 56px;
-    cursor: pointer; transition: background 0.1s;
+    padding: 16px 18px; min-height: 60px;
+    cursor: pointer; transition: background 0.15s;
+    border-radius: var(--radius);
   }
-  .menu-item:active { background: var(--bg); }
+  .menu-item:active { background: rgba(253,206,54,0.06); }
   .menu-icon {
-    width: 40px; height: 40px;
-    border-radius: var(--radius-sm);
+    width: 44px; height: 44px;
+    border-radius: 14px;
     border: none;
-    background: var(--accent-soft);
+    background: linear-gradient(135deg, rgba(253,206,54,0.12), rgba(253,206,54,0.04));
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .menu-icon svg { stroke: var(--d1) !important; }
+  .menu-icon svg { stroke: var(--accent-dark) !important; }
 
   /* ═══════════ TOGGLE ═══════════ */
   .toggle {
@@ -549,16 +551,26 @@
 
   /* ═══════════ STAT CARD ═══════════ */
   .stat-card {
-    text-align: center; padding: 16px 12px;
-    background: var(--white); border-radius: var(--radius);
+    text-align: center; padding: 18px 12px;
+    background: var(--white); border-radius: var(--radius-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.05);
   }
-  .stat-card .stat-value { font-size: 22px; font-weight: 900; color: var(--d1); }
-  .stat-card .stat-label { font-size: 10px; color: var(--l3); font-weight: 600; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .stat-card .stat-value { font-size: 24px; font-weight: 900; color: var(--d1); }
+  .stat-card .stat-label { font-size: 11px; color: var(--l3); font-weight: 600; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px; }
 
   /* ═══════════ NOTIFICATION CARD ═══════════ */
   .notif-card-unread {
-    border-left: 3px solid var(--accent);
-    background: rgba(253,206,54,0.05);
+    border-left: 4px solid var(--accent);
+    background: rgba(253,206,54,0.06);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+  }
+  .notif-card-read {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    opacity: 0.7;
   }
 
   /* ═══════════ WARM GRADIENT WASH ═══════════ */
@@ -1193,43 +1205,43 @@
       <!-- Category list — clean rows -->
       <div class="card" style="padding:0;">
         <div class="menu-item" style="border-bottom:var(--border);cursor:pointer;" onclick="navigateTo('catalog')">
-          <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M12 3v18M5.63 7.5l12.74 9M5.63 16.5l12.74-9"/></svg>
+          <div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(253,206,54,0.12),rgba(253,206,54,0.04));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M12 3v18M5.63 7.5l12.74 9M5.63 16.5l12.74-9"/></svg>
           </div>
           <div style="flex:1;"><div style="font-size:14px;font-weight:600;">გაგრილება / კონდიცირება</div><div style="font-size:11px;color:var(--l3);">18 პროდუქტი</div></div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
         <div class="menu-item" style="border-bottom:var(--border);cursor:pointer;" onclick="navigateTo('catalog')">
-          <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M12 2v6m0 12v2m-6-8a6 6 0 0012 0"/></svg>
+          <div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(253,206,54,0.12),rgba(253,206,54,0.04));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M12 2v6m0 12v2m-6-8a6 6 0 0012 0"/></svg>
           </div>
           <div style="flex:1;"><div style="font-size:14px;font-weight:600;">ცხელი წყალი</div><div style="font-size:11px;color:var(--l3);">15 პროდუქტი</div></div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
         <div class="menu-item" style="border-bottom:var(--border);cursor:pointer;" onclick="navigateTo('catalog')">
-          <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+          <div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(253,206,54,0.12),rgba(253,206,54,0.04));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
           </div>
           <div style="flex:1;"><div style="font-size:14px;font-weight:600;">ფიტინგები / არმატურა</div><div style="font-size:11px;color:var(--l3);">86 პროდუქტი</div></div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
         <div class="menu-item" style="border-bottom:var(--border);cursor:pointer;" onclick="navigateTo('catalog')">
-          <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M4 14.899A7 7 0 1115.71 8h1.79a4.5 4.5 0 012.5 8.242"/><path d="M12 12v9"/></svg>
+          <div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(253,206,54,0.12),rgba(253,206,54,0.04));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M4 14.899A7 7 0 1115.71 8h1.79a4.5 4.5 0 012.5 8.242"/><path d="M12 12v9"/></svg>
           </div>
           <div style="flex:1;"><div style="font-size:14px;font-weight:600;">წყალმომარაგება</div><div style="font-size:11px;color:var(--l3);">31 პროდუქტი</div></div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
         <div class="menu-item" style="border-bottom:var(--border);cursor:pointer;" onclick="navigateTo('catalog')">
-          <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(253,206,54,0.12),rgba(253,206,54,0.04));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           </div>
           <div style="flex:1;"><div style="font-size:14px;font-weight:600;">კანალიზაცია</div><div style="font-size:11px;color:var(--l3);">22 პროდუქტი</div></div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
         <div class="menu-item" style="cursor:pointer;" onclick="navigateTo('catalog')">
-          <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          <div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(253,206,54,0.12),rgba(253,206,54,0.04));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
           </div>
           <div style="flex:1;"><div style="font-size:14px;font-weight:600;">ხელსაწყოები / აქსესუარი</div><div style="font-size:11px;color:var(--l3);">14 პროდუქტი</div></div>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
@@ -1240,19 +1252,19 @@
       <div style="margin-top:16px;">
         <div class="section-header"><span class="section-title">ბრენდები</span><span class="section-link" onclick="navigateTo('catalog')">ყველა</span></div>
         <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;">
-          <div style="flex-shrink:0;width:72px;height:48px;border:var(--border);border-radius:var(--radius-sm);background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="navigateTo('catalog')">
+          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.03);" onclick="navigateTo('catalog')">
             <span style="font-size:11px;font-weight:800;color:var(--d2);">Bosch</span>
           </div>
-          <div style="flex-shrink:0;width:72px;height:48px;border:var(--border);border-radius:var(--radius-sm);background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="navigateTo('catalog')">
+          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.03);" onclick="navigateTo('catalog')">
             <span style="font-size:11px;font-weight:800;color:var(--d2);">Vaillant</span>
           </div>
-          <div style="flex-shrink:0;width:72px;height:48px;border:var(--border);border-radius:var(--radius-sm);background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="navigateTo('catalog')">
+          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.03);" onclick="navigateTo('catalog')">
             <span style="font-size:11px;font-weight:800;color:var(--d2);">Kermi</span>
           </div>
-          <div style="flex-shrink:0;width:72px;height:48px;border:var(--border);border-radius:var(--radius-sm);background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="navigateTo('catalog')">
+          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.03);" onclick="navigateTo('catalog')">
             <span style="font-size:11px;font-weight:800;color:var(--d2);">Grundfos</span>
           </div>
-          <div style="flex-shrink:0;width:72px;height:48px;border:var(--border);border-radius:var(--radius-sm);background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="navigateTo('catalog')">
+          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.03);" onclick="navigateTo('catalog')">
             <span style="font-size:11px;font-weight:800;color:var(--d2);">Watts</span>
           </div>
         </div>
@@ -1614,12 +1626,13 @@
     </div>
     <div class="content">
       <!-- Balance card -->
-      <div class="card" style="background:var(--d1);color:var(--white);border:none;margin-bottom:16px;">
-        <div style="font-size:12px;color:var(--l2);margin-bottom:4px;">ხელმისაწვდომი ბალანსი</div>
-        <div style="font-size:28px;font-weight:900;margin-bottom:4px;">₾ 1,250.00</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
-          <div><div style="font-size:11px;color:var(--l2);">ჯამური საკომისიო</div><div style="font-size:15px;font-weight:800;">₾ 4,820.00</div></div>
-          <button style="padding:8px 20px;background:var(--white);border:none;border-radius:var(--radius-pill);font-size:13px;font-weight:700;color:var(--d1);cursor:pointer;">გამოტანა</button>
+      <div class="card" style="background:linear-gradient(135deg,#1C1C1B 0%,#2C2C2B 100%);color:var(--white);border:none;margin-bottom:16px;padding:22px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(253,206,54,0.1) 0%,transparent 70%);"></div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:6px;font-weight:500;">ხელმისაწვდომი ბალანსი</div>
+        <div style="font-size:30px;font-weight:900;margin-bottom:4px;">₾ 1,250.00</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;position:relative;">
+          <div><div style="font-size:11px;color:rgba(255,255,255,0.5);font-weight:500;">ჯამური საკომისიო</div><div style="font-size:16px;font-weight:800;color:var(--accent);margin-top:2px;">₾ 4,820.00</div></div>
+          <button style="padding:10px 22px;background:linear-gradient(135deg,#FDCE36,#F5A623);border:none;border-radius:var(--radius-pill);font-size:13px;font-weight:700;color:var(--d1);cursor:pointer;box-shadow:0 4px 12px rgba(253,206,54,0.3);">გამოტანა</button>
         </div>
       </div>
 
@@ -1632,7 +1645,7 @@
             <div style="font-size:11px;color:var(--l3);">10 მარტი, 2026 · საკომისიო 3%</div>
           </div>
           <div style="text-align:right;">
-            <div style="font-size:14px;font-weight:800;">+₾ 145.50</div>
+            <div style="font-size:14px;font-weight:800;color:#2DA44E;">+₾ 145.50</div>
             <div style="font-size:10px;color:var(--mid);">ID: TX-98421</div>
           </div>
         </div>
@@ -1656,7 +1669,7 @@
             <div style="font-size:11px;color:var(--l3);">28 თებერვალი, 2026 · საკომისიო 3%</div>
           </div>
           <div style="text-align:right;">
-            <div style="font-size:14px;font-weight:800;">+₾ 103.50</div>
+            <div style="font-size:14px;font-weight:800;color:#2DA44E;">+₾ 103.50</div>
             <div style="font-size:10px;color:var(--mid);">ID: TX-98215</div>
           </div>
         </div>
@@ -1668,7 +1681,7 @@
             <div style="font-size:11px;color:var(--l3);">15 თებერვალი, 2026 · საკომისიო 3%</div>
           </div>
           <div style="text-align:right;">
-            <div style="font-size:14px;font-weight:800;">+₾ 5.55</div>
+            <div style="font-size:14px;font-weight:800;color:#2DA44E;">+₾ 5.55</div>
             <div style="font-size:10px;color:var(--mid);">ID: TX-98100</div>
           </div>
         </div>
@@ -2358,37 +2371,37 @@
       </div>
     </div>
     <div class="content" style="padding-top:14px;">
-      <div class="order-card" style="border-left:3px solid var(--d2);" onclick="navigateTo('order-detail')">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-          <div><div style="font-size:14px;font-weight:700;">#TH-2847</div><div style="font-size:11px;color:var(--l3);">10 მარტი, 2026</div></div>
-          <div class="status-badge">მზადდება</div>
+      <div class="order-card" style="border-left:4px solid var(--accent);" onclick="navigateTo('order-detail')">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+          <div><div style="font-size:16px;font-weight:800;">#TH-2847</div><div style="font-size:12px;color:var(--l3);margin-top:2px;">10 მარტი, 2026</div></div>
+          <div class="status-badge" style="background:rgba(253,206,54,0.15);color:var(--accent-dark);">მზადდება</div>
         </div>
-        <div style="display:flex;gap:6px;margin-bottom:10px;">
-          <div class="placeholder" style="width:40px;height:40px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg></div>
-          <div class="placeholder" style="width:40px;height:40px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="7" y1="4" x2="7" y2="20"/></svg></div>
-          <div class="placeholder" style="width:40px;height:40px;"><span style="font-size:10px;font-weight:600;color:var(--mid);">+3</span></div>
+        <div style="display:flex;gap:8px;margin-bottom:12px;">
+          <div class="placeholder" style="width:44px;height:44px;border-radius:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg></div>
+          <div class="placeholder" style="width:44px;height:44px;border-radius:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="7" y1="4" x2="7" y2="20"/></svg></div>
+          <div class="placeholder" style="width:44px;height:44px;border-radius:12px;"><span style="font-size:11px;font-weight:700;color:var(--mid);">+3</span></div>
         </div>
-        <div class="progress-bar" style="margin-bottom:10px;"><div class="progress-fill" style="width:60%;"></div></div>
-        <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:12px;color:var(--l3);">5 ელემენტი · 3/5 მზადაა</span><span style="font-size:14px;font-weight:800;">₾ 4,850</span></div>
+        <div class="progress-bar" style="margin-bottom:12px;"><div class="progress-fill" style="width:60%;"></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;color:var(--l3);font-weight:500;">5 ელემენტი · 3/5 მზადაა</span><span style="font-size:16px;font-weight:800;">₾ 4,850</span></div>
       </div>
-      <div class="order-card" style="border-left:3px solid var(--l2);" onclick="navigateTo('order-detail')">
+      <div class="order-card" style="border-left:4px solid var(--green);" onclick="navigateTo('order-detail')">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-          <div><div style="font-size:14px;font-weight:700;">#TH-2801</div><div style="font-size:11px;color:var(--l3);">28 თებერვალი, 2026</div></div>
-          <div class="status-badge">მიტანილია</div>
+          <div><div style="font-size:16px;font-weight:800;">#TH-2801</div><div style="font-size:12px;color:var(--l3);margin-top:2px;">28 თებერვალი, 2026</div></div>
+          <div class="status-badge" style="background:rgba(52,199,89,0.12);color:#2DA44E;">მიტანილია</div>
         </div>
-        <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:var(--l3);">2 ელემენტი</span><span style="font-size:14px;font-weight:800;">₾ 3,450</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="font-size:13px;color:var(--l3);font-weight:500;">2 ელემენტი</span><span style="font-size:16px;font-weight:800;">₾ 3,450</span></div>
       </div>
-      <div class="order-card" style="border-left:3px solid var(--mid);" onclick="navigateTo('order-detail')">
+      <div class="order-card" style="border-left:4px solid #5ba4c9;" onclick="navigateTo('order-detail')">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-          <div><div style="font-size:14px;font-weight:700;">#TH-2756</div><div style="font-size:11px;color:var(--l3);">15 თებერვალი, 2026</div></div>
-          <div class="status-badge">გზაშია</div>
+          <div><div style="font-size:16px;font-weight:800;">#TH-2756</div><div style="font-size:12px;color:var(--l3);margin-top:2px;">15 თებერვალი, 2026</div></div>
+          <div class="status-badge" style="background:rgba(91,164,201,0.12);color:#3D8DB5;">გზაშია</div>
         </div>
-        <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:var(--l3);">1 ელემენტი</span><span style="font-size:14px;font-weight:800;">₾ 185</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="font-size:13px;color:var(--l3);font-weight:500;">1 ელემენტი</span><span style="font-size:16px;font-weight:800;">₾ 185</span></div>
       </div>
-      <div class="order-card" style="border-left:3px solid var(--l1);opacity:0.6;" onclick="navigateTo('order-detail')">
+      <div class="order-card" style="border-left:4px solid var(--l2);opacity:0.55;" onclick="navigateTo('order-detail')">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-          <div><div style="font-size:14px;font-weight:700;">#TH-2690</div><div style="font-size:11px;color:var(--l3);">2 თებერვალი, 2026</div></div>
-          <div class="status-badge">გაუქმებული</div>
+          <div><div style="font-size:16px;font-weight:800;">#TH-2690</div><div style="font-size:12px;color:var(--l3);margin-top:2px;">2 თებერვალი, 2026</div></div>
+          <div class="status-badge" style="background:rgba(0,0,0,0.06);color:var(--l3);">გაუქმებული</div>
         </div>
         <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:var(--l3);">3 ელემენტი</span><span style="font-size:14px;font-weight:800;text-decoration:line-through;color:var(--l3);">₾ 2,100</span></div>
       </div>
@@ -2689,8 +2702,8 @@
     <div class="status-bar-light" style="position:relative;z-index:2;"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;text-align:center;padding-bottom:24px;position:relative;z-index:2;">
       <div style="font-size:18px;font-weight:800;margin-bottom:16px;color:var(--d1);">პროფილი</div>
-      <div style="width:68px;height:68px;border-radius:50%;background:rgba(253,206,54,0.12);border:2px solid var(--accent);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;">
-        <span style="font-size:22px;font-weight:800;color:var(--accent);">გმ</span>
+      <div style="width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.15),rgba(253,206,54,0.06));border:3px solid var(--accent);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(253,206,54,0.2);">
+        <span style="font-size:24px;font-weight:900;color:var(--accent-dark);">გმ</span>
       </div>
       <div style="font-size:16px;font-weight:800;color:var(--d1);">გიორგი მათიაშვილი</div>
       <div style="font-size:12px;color:#8E8E93;margin-top:4px;">+995 599 123 456</div>
@@ -2719,15 +2732,16 @@
         </div>
       </div>
       <!-- Partner status -->
-      <div class="card" style="background:var(--d1);color:var(--white);border:none;margin-bottom:12px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div class="card" style="background:linear-gradient(135deg,#1C1C1B 0%,#2C2C2B 100%);color:var(--white);border:none;margin-bottom:12px;padding:20px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(253,206,54,0.12) 0%,transparent 70%);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;position:relative;">
           <div>
-            <div style="font-size:11px;color:var(--l2);">პარტნიორის სტატუსი</div>
-            <div style="font-size:18px;font-weight:900;">VIP პარტნიორი</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.5);font-weight:500;">პარტნიორის სტატუსი</div>
+            <div style="font-size:20px;font-weight:900;margin-top:2px;">VIP პარტნიორი</div>
           </div>
           <div style="text-align:right;">
-            <div style="font-size:11px;color:var(--l2);">პარტნიორობის ვადა</div>
-            <div style="font-size:14px;font-weight:700;">3 წელი 2 თვე</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.5);font-weight:500;">პარტნიორობის ვადა</div>
+            <div style="font-size:15px;font-weight:700;color:var(--accent);margin-top:2px;">3 წელი 2 თვე</div>
           </div>
         </div>
       </div>
@@ -2876,7 +2890,7 @@
       <!-- Unread -->
       <div class="card notif-card-unread" style="cursor:pointer;" onclick="navigateTo('order-detail')">
         <div style="display:flex;gap:10px;align-items:flex-start;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FDCE36,#F5A623);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(253,206,54,0.25);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
           </div>
           <div style="flex:1;">
@@ -2888,7 +2902,7 @@
       </div>
       <div class="card notif-card-unread" style="cursor:pointer;" onclick="navigateTo('promotions')">
         <div style="display:flex;gap:10px;align-items:flex-start;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FDCE36,#F5A623);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(253,206,54,0.25);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <div style="flex:1;">
@@ -2899,9 +2913,9 @@
         </div>
       </div>
       <!-- Read -->
-      <div class="card" style="opacity:0.6;">
+      <div class="card notif-card-read" style="cursor:pointer;">
         <div style="display:flex;gap:10px;align-items:flex-start;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--l1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="width:42px;height:42px;border-radius:50%;background:#EEEEF2;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <div style="flex:1;">
@@ -2911,9 +2925,9 @@
           </div>
         </div>
       </div>
-      <div class="card" style="opacity:0.6;">
+      <div class="card notif-card-read" style="cursor:pointer;">
         <div style="display:flex;gap:10px;align-items:flex-start;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--l1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="width:42px;height:42px;border-radius:50%;background:#EEEEF2;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           </div>
           <div style="flex:1;">
@@ -3004,14 +3018,14 @@
     </div>
     <div class="content" style="padding-top:14px;">
       <!-- Address 1 - primary -->
-      <div class="card" style="border-left:3px solid var(--d1);">
+      <div class="card" style="border-left:4px solid var(--accent);">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-          <div style="display:flex;gap:10px;align-items:flex-start;">
-            <div class="menu-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div class="menu-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div>
-              <div style="display:flex;gap:6px;align-items:center;">
-                <div style="font-size:14px;font-weight:700;">ოფისი</div>
-                <div class="status-badge" style="background:var(--d1);color:var(--white);font-size:9px;padding:2px 6px;">მთავარი</div>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <div style="font-size:15px;font-weight:800;">ოფისი</div>
+                <div style="font-size:10px;font-weight:700;padding:3px 8px;border-radius:100px;background:linear-gradient(135deg,#FDCE36,#F5A623);color:var(--d1);">მთავარი</div>
               </div>
               <div style="font-size:13px;color:var(--d3);margin-top:2px;">ვაჟა-ფშაველას გამზ. 71</div>
               <div style="font-size:11px;color:var(--l3);">თბილისი, 0186</div>
@@ -3035,9 +3049,9 @@
         </div>
       </div>
       <!-- Add new -->
-      <div style="background:var(--white);border-radius:var(--radius);padding:14px;border:2px dashed var(--l2);display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        <span style="font-size:13px;font-weight:600;color:var(--mid);">ახალი მისამართის დამატება</span>
+      <div style="background:var(--white);border-radius:var(--radius-lg);padding:16px;border:2px dashed rgba(201,162,39,0.3);display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span style="font-size:14px;font-weight:700;color:var(--accent-dark);">ახალი მისამართის დამატება</span>
       </div>
     </div>
   </div>
@@ -3053,8 +3067,8 @@
     </div>
     <div class="content" style="padding-top:14px;">
       <div style="text-align:center;margin-bottom:24px;">
-        <div style="width:72px;height:72px;border-radius:50%;background:var(--l1);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;position:relative;">
-          <span style="font-size:24px;font-weight:800;color:var(--d2);">გმ</span>
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.15),rgba(253,206,54,0.06));border:3px solid var(--accent);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 4px 16px rgba(253,206,54,0.2);">
+          <span style="font-size:26px;font-weight:900;color:var(--accent-dark);">გმ</span>
           <div style="position:absolute;bottom:0;right:0;width:24px;height:24px;border-radius:50%;background:var(--d1);display:flex;align-items:center;justify-content:center;border:2px solid var(--white);">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
           </div>
