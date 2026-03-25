@@ -1018,7 +1018,7 @@
   </div>
 
   <!-- ==================== HOME (Main Menu Hub) ==================== -->
-  <div class="screen" id="screen-home" style="background:#F2F2F7;overflow:hidden;">
+  <div class="screen" id="screen-home" style="background:#F2F2F7;overflow:hidden;display:flex;flex-direction:column;">
     <!-- Same gradient as login screen -->
     <div style="position:absolute;top:0;left:0;right:0;height:55%;background:linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 15%, #FFFAED 40%, #F2F2F7 100%);pointer-events:none;"></div>
     <!-- Warmth blob — same as login -->
@@ -1054,51 +1054,51 @@
         </div>
       </div>
     </div>
-    <div class="content" style="background:transparent;position:relative;z-index:1;">
-      <!-- 5 Main Navigation Hub — per spec doc -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;">
+    <div style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;padding:0 16px 16px;overflow:hidden;">
+      <!-- 5 Main Navigation Hub — fills available screen space -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:12px;flex:1;min-height:0;">
         <!-- 1. ქვაბის კომპლექტი (yellow) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:var(--radius-lg);padding:18px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:4px solid #c9a227;" onclick="switchTab('kit')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
-          <div style="width:44px;height:44px;border-radius:14px;background:rgba(201,162,39,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <div style="cursor:pointer;background:var(--white);border-radius:20px;padding:24px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:5px solid #c9a227;display:flex;flex-direction:column;justify-content:center;" onclick="switchTab('kit')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
+          <div style="width:52px;height:52px;border-radius:16px;background:rgba(201,162,39,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           </div>
-          <div style="font-size:14px;font-weight:800;color:var(--d1);line-height:1.3;">ქვაბის კომპლექტი</div>
-          <div style="font-size:11px;color:var(--l3);margin-top:3px;">კონფიგურატორი</div>
+          <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.3;">ქვაბის კომპლექტი</div>
+          <div style="font-size:12px;color:var(--l3);margin-top:4px;">კონფიგურატორი</div>
         </div>
         <!-- 2. პროდუქცია (green) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:var(--radius-lg);padding:18px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:4px solid #4a8c4a;" onclick="navigateTo('categories')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
-          <div style="width:44px;height:44px;border-radius:14px;background:rgba(74,140,74,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a8c4a" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <div style="cursor:pointer;background:var(--white);border-radius:20px;padding:24px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:5px solid #4a8c4a;display:flex;flex-direction:column;justify-content:center;" onclick="navigateTo('categories')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
+          <div style="width:52px;height:52px;border-radius:16px;background:rgba(74,140,74,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4a8c4a" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
           </div>
-          <div style="font-size:14px;font-weight:800;color:var(--d1);line-height:1.3;">პროდუქცია</div>
-          <div style="font-size:11px;color:var(--l3);margin-top:3px;">სრული კატალოგი</div>
+          <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.3;">პროდუქცია</div>
+          <div style="font-size:12px;color:var(--l3);margin-top:4px;">სრული კატალოგი</div>
         </div>
         <!-- 3. ბოლო შეკვეთები (red) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:var(--radius-lg);padding:18px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:4px solid #b34747;" onclick="switchTab('orders')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
-          <div style="width:44px;height:44px;border-radius:14px;background:rgba(179,71,71,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b34747" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <div style="cursor:pointer;background:var(--white);border-radius:20px;padding:24px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:5px solid #b34747;display:flex;flex-direction:column;justify-content:center;" onclick="switchTab('orders')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
+          <div style="width:52px;height:52px;border-radius:16px;background:rgba(179,71,71,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b34747" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           </div>
-          <div style="font-size:14px;font-weight:800;color:var(--d1);line-height:1.3;">ბოლო შეკვეთები</div>
-          <div style="font-size:11px;color:var(--l3);margin-top:3px;">ისტორია</div>
+          <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.3;">ბოლო შეკვეთები</div>
+          <div style="font-size:12px;color:var(--l3);margin-top:4px;">ისტორია</div>
         </div>
         <!-- 4. აქციები (blue) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:var(--radius-lg);padding:18px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:4px solid #5ba4c9;" onclick="switchTab('promotions')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
-          <div style="width:44px;height:44px;border-radius:14px;background:rgba(91,164,201,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5ba4c9" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        <div style="cursor:pointer;background:var(--white);border-radius:20px;padding:24px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:5px solid #5ba4c9;display:flex;flex-direction:column;justify-content:center;" onclick="switchTab('promotions')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
+          <div style="width:52px;height:52px;border-radius:16px;background:rgba(91,164,201,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5ba4c9" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
           </div>
-          <div style="font-size:14px;font-weight:800;color:var(--d1);line-height:1.3;">აქციები</div>
-          <div style="font-size:11px;color:var(--l3);margin-top:3px;">შეთავაზებები</div>
+          <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.3;">აქციები</div>
+          <div style="font-size:12px;color:var(--l3);margin-top:4px;">შეთავაზებები</div>
         </div>
-        <!-- 5. AI ასისტენტი (purple) — full width -->
-        <div style="cursor:pointer;background:var(--d1);border-radius:var(--radius-lg);padding:18px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;grid-column:1/-1;display:flex;align-items:center;gap:16px;" onclick="navigateTo('chat')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
-          <div style="width:44px;height:44px;border-radius:14px;background:rgba(122,91,164,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <!-- 5. AI ასისტენტი (purple) — full width bottom row -->
+        <div style="cursor:pointer;background:var(--d1);border-radius:20px;padding:24px 20px;box-shadow:0 4px 16px rgba(0,0,0,0.12);transition:transform 0.1s;grid-column:1/-1;display:flex;align-items:center;gap:18px;" onclick="navigateTo('chat')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
+          <div style="width:52px;height:52px;border-radius:16px;background:rgba(122,91,164,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
           </div>
           <div style="flex:1;">
-            <div style="font-size:14px;font-weight:800;color:var(--white);line-height:1.3;">AI ასისტენტი</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:3px;">რა გჭირდება? AI დაგეხმარება</div>
+            <div style="font-size:16px;font-weight:800;color:var(--white);line-height:1.3;">AI ასისტენტი</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">რა გჭირდება? AI დაგეხმარება</div>
           </div>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
       </div>
     </div>
