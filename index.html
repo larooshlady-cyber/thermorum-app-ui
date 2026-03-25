@@ -1019,11 +1019,11 @@
 
   <!-- ==================== HOME (Main Menu Hub) ==================== -->
   <div class="screen" id="screen-home" style="background:#F2F2F7;overflow:hidden;display:flex;flex-direction:column;">
-    <!-- Same gradient as login screen -->
+    <!-- Warm gradient background -->
     <div style="position:absolute;top:0;left:0;right:0;height:55%;background:linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 15%, #FFFAED 40%, #F2F2F7 100%);pointer-events:none;"></div>
-    <!-- Warmth blob — same as login -->
     <div style="position:absolute;top:5%;right:-15%;width:60%;height:35%;background:radial-gradient(ellipse, rgba(253,206,54,0.12) 0%, transparent 70%);pointer-events:none;"></div>
 
+    <!-- Status bar -->
     <div class="status-bar-light" style="position:relative;z-index:1;">
       <span class="time">17:42</span>
       <div class="icons">
@@ -1031,15 +1031,17 @@
         <svg viewBox="0 0 24 24" fill="var(--d1)"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
       </div>
     </div>
-    <div class="header-light" style="padding-top:12px;position:relative;z-index:1;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+
+    <!-- Header with greeting -->
+    <div style="position:relative;z-index:1;padding:8px 20px 0;">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
         <div style="display:flex;align-items:center;gap:12px;">
           <button class="icon-btn-light" aria-label="Menu" onclick="openHamburger()">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           </button>
           <div>
-            <div id="greeting-text" style="font-size:12px;color:#8E8E93;">დილა მშვიდობისა,</div>
-            <div style="font-size:20px;font-weight:800;color:var(--d1);">გიორგი</div>
+            <div id="greeting-text" style="font-size:12px;color:#8E8E93;font-weight:500;">დილა მშვიდობისა,</div>
+            <div style="font-size:22px;font-weight:900;color:var(--d1);letter-spacing:-0.3px;">გიორგი</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
@@ -1054,64 +1056,91 @@
         </div>
       </div>
     </div>
-    <div style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;padding:0 16px 16px;overflow:hidden;">
-      <!-- 5 Main Navigation Hub — vertical, equal width, fills screen -->
-      <div style="display:flex;flex-direction:column;gap:10px;flex:1;min-height:0;">
+
+    <!-- Navigation Hub -->
+    <div style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;padding:16px 16px 12px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-height:0;">
+
         <!-- 1. ქვაბის კომპლექტი (yellow) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:18px;padding:0 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:5px solid #c9a227;display:flex;align-items:center;gap:16px;flex:1;" onclick="switchTab('kit')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
-          <div style="width:48px;height:48px;border-radius:14px;background:rgba(201,162,39,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          </div>
+        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;" onclick="switchTab('kit')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
+          <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(201,162,39,0.06);"></div>
           <div>
-            <div style="font-size:15px;font-weight:800;color:var(--d1);line-height:1.3;">ქვაბის კომპლექტი</div>
-            <div style="font-size:12px;color:var(--l3);margin-top:2px;">კონფიგურატორი</div>
+            <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(201,162,39,0.15),rgba(201,162,39,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+            </div>
+            <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.25;letter-spacing:-0.2px;">ქვაბის კომპლექტი</div>
+            <div style="font-size:12px;color:var(--l3);margin-top:4px;font-weight:500;">კონფიგურატორი</div>
           </div>
-          <svg style="margin-left:auto;flex-shrink:0;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:12px;">
+            <div style="height:3px;flex:1;border-radius:2px;background:linear-gradient(90deg,#c9a227,rgba(201,162,39,0.15));"></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
         </div>
+
         <!-- 2. პროდუქცია (green) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:18px;padding:0 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:5px solid #4a8c4a;display:flex;align-items:center;gap:16px;flex:1;" onclick="navigateTo('categories')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
-          <div style="width:48px;height:48px;border-radius:14px;background:rgba(74,140,74,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a8c4a" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-          </div>
+        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;" onclick="navigateTo('categories')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
+          <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(74,140,74,0.06);"></div>
           <div>
-            <div style="font-size:15px;font-weight:800;color:var(--d1);line-height:1.3;">პროდუქცია</div>
-            <div style="font-size:12px;color:var(--l3);margin-top:2px;">სრული კატალოგი</div>
+            <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(74,140,74,0.15),rgba(74,140,74,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4a8c4a" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            </div>
+            <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.25;letter-spacing:-0.2px;">პროდუქცია</div>
+            <div style="font-size:12px;color:var(--l3);margin-top:4px;font-weight:500;">სრული კატალოგი</div>
           </div>
-          <svg style="margin-left:auto;flex-shrink:0;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:12px;">
+            <div style="height:3px;flex:1;border-radius:2px;background:linear-gradient(90deg,#4a8c4a,rgba(74,140,74,0.15));"></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a8c4a" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
         </div>
+
         <!-- 3. ბოლო შეკვეთები (red) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:18px;padding:0 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:5px solid #b34747;display:flex;align-items:center;gap:16px;flex:1;" onclick="switchTab('orders')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
-          <div style="width:48px;height:48px;border-radius:14px;background:rgba(179,71,71,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b34747" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          </div>
+        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;" onclick="switchTab('orders')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
+          <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(179,71,71,0.06);"></div>
           <div>
-            <div style="font-size:15px;font-weight:800;color:var(--d1);line-height:1.3;">ბოლო შეკვეთები</div>
-            <div style="font-size:12px;color:var(--l3);margin-top:2px;">ისტორია</div>
+            <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(179,71,71,0.15),rgba(179,71,71,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b34747" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.25;letter-spacing:-0.2px;">შეკვეთები</div>
+            <div style="font-size:12px;color:var(--l3);margin-top:4px;font-weight:500;">ისტორია</div>
           </div>
-          <svg style="margin-left:auto;flex-shrink:0;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:12px;">
+            <div style="height:3px;flex:1;border-radius:2px;background:linear-gradient(90deg,#b34747,rgba(179,71,71,0.15));"></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b34747" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
         </div>
+
         <!-- 4. აქციები (blue) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:18px;padding:0 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);transition:transform 0.1s;border-left:5px solid #5ba4c9;display:flex;align-items:center;gap:16px;flex:1;" onclick="switchTab('promotions')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
-          <div style="width:48px;height:48px;border-radius:14px;background:rgba(91,164,201,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5ba4c9" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-          </div>
+        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;" onclick="switchTab('promotions')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
+          <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(91,164,201,0.06);"></div>
           <div>
-            <div style="font-size:15px;font-weight:800;color:var(--d1);line-height:1.3;">აქციები</div>
-            <div style="font-size:12px;color:var(--l3);margin-top:2px;">შეთავაზებები</div>
+            <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(91,164,201,0.15),rgba(91,164,201,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5ba4c9" stroke-width="1.8"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            </div>
+            <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.25;letter-spacing:-0.2px;">აქციები</div>
+            <div style="font-size:12px;color:var(--l3);margin-top:4px;font-weight:500;">შეთავაზებები</div>
           </div>
-          <svg style="margin-left:auto;flex-shrink:0;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:12px;">
+            <div style="height:3px;flex:1;border-radius:2px;background:linear-gradient(90deg,#5ba4c9,rgba(91,164,201,0.15));"></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5ba4c9" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
         </div>
-        <!-- 5. AI ასისტენტი (purple) -->
-        <div style="cursor:pointer;background:var(--d1);border-radius:18px;padding:0 20px;box-shadow:0 4px 16px rgba(0,0,0,0.12);transition:transform 0.1s;display:flex;align-items:center;gap:16px;flex:1;" onclick="navigateTo('chat')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
-          <div style="width:48px;height:48px;border-radius:14px;background:rgba(122,91,164,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+
+        <!-- 5. AI ასისტენტი (purple/dark) — spans full width -->
+        <div style="cursor:pointer;background:linear-gradient(135deg,#1C1C1B 0%,#2A2A29 100%);border-radius:22px;padding:20px 22px;box-shadow:0 4px 20px rgba(0,0,0,0.15);transition:transform 0.15s ease;grid-column:1/-1;display:flex;align-items:center;gap:18px;position:relative;overflow:hidden;" onclick="navigateTo('chat')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
+          <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(167,139,218,0.08);"></div>
+          <div style="position:absolute;bottom:-20px;left:30%;width:80px;height:80px;border-radius:50%;background:rgba(167,139,218,0.05);"></div>
+          <div style="width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,rgba(167,139,218,0.25),rgba(167,139,218,0.1));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01" stroke-linecap="round"/></svg>
           </div>
-          <div style="flex:1;">
-            <div style="font-size:15px;font-weight:800;color:var(--white);line-height:1.3;">AI ასისტენტი</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px;">რა გჭირდება? AI დაგეხმარება</div>
+          <div style="flex:1;position:relative;z-index:1;">
+            <div style="font-size:17px;font-weight:800;color:#fff;line-height:1.25;letter-spacing:-0.2px;">AI ასისტენტი</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:4px;font-weight:500;">რა გჭირდება? AI დაგეხმარება</div>
           </div>
-          <svg style="flex-shrink:0;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <div style="width:36px;height:36px;border-radius:12px;background:rgba(167,139,218,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
