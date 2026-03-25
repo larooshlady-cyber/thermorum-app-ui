@@ -1057,85 +1057,103 @@
       </div>
     </div>
 
-    <!-- Navigation Hub -->
-    <div style="position:relative;z-index:1;padding:12px 16px 16px;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-
-        <!-- 1. ქვაბის კომპლექტი (yellow) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;position:relative;overflow:hidden;" onclick="switchTab('kit')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
-          <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(201,162,39,0.06);"></div>
-          <div>
-            <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(201,162,39,0.15),rgba(201,162,39,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
-            </div>
-            <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.25;letter-spacing:-0.2px;">ქვაბის კომპლექტი</div>
-            <div style="font-size:12px;color:var(--l3);margin-top:4px;font-weight:500;">კონფიგურატორი</div>
+    <!-- Active Orders -->
+    <div style="position:relative;z-index:1;padding:12px 16px 0;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <span style="font-size:13px;font-weight:700;color:var(--d1);">აქტიური შეკვეთები</span>
+        <span style="font-size:12px;font-weight:600;color:var(--accent-dark);cursor:pointer;" onclick="switchTab('orders')">ყველა</span>
+      </div>
+      <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;" class="hide-scrollbar">
+        <div style="cursor:pointer;flex-shrink:0;width:200px;background:var(--white);border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 16px rgba(0,0,0,0.05);" onclick="navigateTo('order-detail')">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span style="font-size:13px;font-weight:800;color:var(--d1);">#TH-2847</span>
+            <span style="font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(253,206,54,0.15);color:var(--accent-dark);">მზადდება</span>
           </div>
-          <div style="display:flex;align-items:center;gap:6px;margin-top:12px;">
-            <div style="height:3px;flex:1;border-radius:2px;background:linear-gradient(90deg,#c9a227,rgba(201,162,39,0.15));"></div>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </div>
-
-        <!-- 2. პროდუქცია (green) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;position:relative;overflow:hidden;" onclick="navigateTo('categories')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
-          <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(74,140,74,0.06);"></div>
-          <div>
-            <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(74,140,74,0.15),rgba(74,140,74,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4a8c4a" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-            </div>
-            <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.25;letter-spacing:-0.2px;">პროდუქცია</div>
-            <div style="font-size:12px;color:var(--l3);margin-top:4px;font-weight:500;">სრული კატალოგი</div>
-          </div>
-          <div style="display:flex;align-items:center;gap:6px;margin-top:12px;">
-            <div style="height:3px;flex:1;border-radius:2px;background:linear-gradient(90deg,#4a8c4a,rgba(74,140,74,0.15));"></div>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a8c4a" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          <div style="height:4px;border-radius:2px;background:#EEEEF0;margin-bottom:8px;"><div style="height:100%;width:60%;border-radius:2px;background:var(--accent);"></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:11px;color:var(--l3);">3/5 ელემენტი</span>
+            <span style="font-size:13px;font-weight:800;color:var(--d1);">₾ 4,850</span>
           </div>
         </div>
-
-        <!-- 3. ბოლო შეკვეთები (red) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;position:relative;overflow:hidden;" onclick="switchTab('orders')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
-          <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(179,71,71,0.06);"></div>
-          <div>
-            <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(179,71,71,0.15),rgba(179,71,71,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b34747" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            </div>
-            <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.25;letter-spacing:-0.2px;">შეკვეთები</div>
-            <div style="font-size:12px;color:var(--l3);margin-top:4px;font-weight:500;">ისტორია</div>
+        <div style="cursor:pointer;flex-shrink:0;width:200px;background:var(--white);border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 16px rgba(0,0,0,0.05);" onclick="navigateTo('order-detail')">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span style="font-size:13px;font-weight:800;color:var(--d1);">#TH-2831</span>
+            <span style="font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(52,199,89,0.12);color:#2DA44E;">გაგზავნილი</span>
           </div>
-          <div style="display:flex;align-items:center;gap:6px;margin-top:12px;">
-            <div style="height:3px;flex:1;border-radius:2px;background:linear-gradient(90deg,#b34747,rgba(179,71,71,0.15));"></div>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b34747" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          <div style="height:4px;border-radius:2px;background:#EEEEF0;margin-bottom:8px;"><div style="height:100%;width:85%;border-radius:2px;background:var(--green);"></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:11px;color:var(--l3);">7/8 ელემენტი</span>
+            <span style="font-size:13px;font-weight:800;color:var(--d1);">₾ 2,120</span>
           </div>
         </div>
-
-        <!-- 4. აქციები (blue) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;position:relative;overflow:hidden;" onclick="switchTab('promotions')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
-          <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(91,164,201,0.06);"></div>
-          <div>
-            <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(91,164,201,0.15),rgba(91,164,201,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5ba4c9" stroke-width="1.8"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-            </div>
-            <div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.25;letter-spacing:-0.2px;">აქციები</div>
-            <div style="font-size:12px;color:var(--l3);margin-top:4px;font-weight:500;">შეთავაზებები</div>
-          </div>
-          <div style="display:flex;align-items:center;gap:6px;margin-top:12px;">
-            <div style="height:3px;flex:1;border-radius:2px;background:linear-gradient(90deg,#5ba4c9,rgba(91,164,201,0.15));"></div>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5ba4c9" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </div>
-
       </div>
     </div>
 
-    <!-- AI Bubble → expands horizontally into chat input -->
-    <div id="ai-wrap" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;justify-content:center;height:46px;width:46px;border-radius:23px;background:#FDCE36;box-shadow:0 2px 12px rgba(229,184,32,0.25);transition:width 0.35s cubic-bezier(0.25,1,0.5,1),background 0.25s ease,box-shadow 0.25s ease;overflow:hidden;cursor:pointer;" onclick="expandAiBubble()">
-      <input id="ai-chat-input" type="text" placeholder="რა გჭირდება?..." onclick="event.stopPropagation()" style="width:0;flex:0;min-width:0;height:100%;border:none;background:transparent;color:var(--d1);padding:0;font-size:14px;font-weight:600;outline:none;opacity:0;transition:opacity 0.2s ease 0.12s,flex 0.3s ease;pointer-events:none;" onkeydown="if(event.key==='Enter'){event.stopPropagation();navigateTo('chat');collapseAiBubble();}">
-      <div id="ai-btn" style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;transition:all 0.25s ease;">
-        <!-- Sparkle/magic AI icon -->
-        <svg id="ai-icon-chat" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:opacity 0.15s;"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
-        <!-- Send arrow -->
-        <svg id="ai-icon-send" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;opacity:0;transition:opacity 0.15s;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    <!-- 4 Navigation Buttons — 1x4 vertical -->
+    <div style="position:relative;z-index:1;padding:14px 16px 0;display:flex;flex-direction:column;gap:10px;">
+      <!-- 1. ქვაბის კომპლექტი (yellow) -->
+      <div style="cursor:pointer;background:var(--white);border-radius:16px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.03),0 4px 16px rgba(0,0,0,0.05);transition:transform 0.12s ease;display:flex;align-items:center;gap:14px;" onclick="switchTab('kit')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
+        <div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(201,162,39,0.15),rgba(201,162,39,0.05));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:15px;font-weight:800;color:var(--d1);line-height:1.2;">ქვაბის კომპლექტი</div>
+          <div style="font-size:11px;color:var(--l3);margin-top:2px;font-weight:500;">კონფიგურატორი</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <!-- 2. პროდუქცია (green) -->
+      <div style="cursor:pointer;background:var(--white);border-radius:16px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.03),0 4px 16px rgba(0,0,0,0.05);transition:transform 0.12s ease;display:flex;align-items:center;gap:14px;" onclick="navigateTo('categories')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
+        <div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(74,140,74,0.15),rgba(74,140,74,0.05));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a8c4a" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:15px;font-weight:800;color:var(--d1);line-height:1.2;">პროდუქცია</div>
+          <div style="font-size:11px;color:var(--l3);margin-top:2px;font-weight:500;">სრული კატალოგი</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a8c4a" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <!-- 3. შეკვეთები (red) -->
+      <div style="cursor:pointer;background:var(--white);border-radius:16px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.03),0 4px 16px rgba(0,0,0,0.05);transition:transform 0.12s ease;display:flex;align-items:center;gap:14px;" onclick="switchTab('orders')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
+        <div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(179,71,71,0.15),rgba(179,71,71,0.05));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b34747" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:15px;font-weight:800;color:var(--d1);line-height:1.2;">შეკვეთები</div>
+          <div style="font-size:11px;color:var(--l3);margin-top:2px;font-weight:500;">ისტორია</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b34747" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <!-- 4. აქციები (blue) -->
+      <div style="cursor:pointer;background:var(--white);border-radius:16px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.03),0 4px 16px rgba(0,0,0,0.05);transition:transform 0.12s ease;display:flex;align-items:center;gap:14px;" onclick="switchTab('promotions')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
+        <div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(91,164,201,0.15),rgba(91,164,201,0.05));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5ba4c9" stroke-width="1.8"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:15px;font-weight:800;color:var(--d1);line-height:1.2;">აქციები</div>
+          <div style="font-size:11px;color:var(--l3);margin-top:2px;font-weight:500;">შეთავაზებები</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5ba4c9" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+    </div>
+
+    <!-- AI Chat Input Bar — fixed at bottom -->
+    <div id="ai-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:10;padding:10px 14px 20px;background:linear-gradient(0deg,#F2F2F7 60%,transparent);pointer-events:none;">
+      <div id="ai-wrap" style="display:flex;align-items:center;height:54px;border-radius:27px;background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04);padding:0 6px 0 16px;gap:4px;pointer-events:auto;">
+        <!-- Camera -->
+        <button onclick="navigateTo('chat')" style="cursor:pointer;width:36px;height:36px;border:none;background:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:50%;transition:background 0.15s;" onpointerdown="this.style.background='rgba(0,0,0,0.04)'" onpointerup="this.style.background='none'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </button>
+        <!-- Input -->
+        <input id="ai-chat-input" type="text" placeholder="AI ასისტენტი — რა გჭირდება?" style="flex:1;height:100%;min-width:0;border:none;background:transparent;color:var(--d1);font-size:14px;font-weight:500;outline:none;" onkeydown="if(event.key==='Enter')navigateTo('chat');" onfocus="this.parentElement.style.boxShadow='0 2px 12px rgba(0,0,0,0.08),0 0 0 2px rgba(253,206,54,0.4)'" onblur="this.parentElement.style.boxShadow='0 2px 12px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04)'">
+        <!-- Mic -->
+        <button onclick="navigateTo('chat')" style="cursor:pointer;width:36px;height:36px;border:none;background:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:50%;transition:background 0.15s;" onpointerdown="this.style.background='rgba(0,0,0,0.04)'" onpointerup="this.style.background='none'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+        <!-- Send -->
+        <button onclick="navigateTo('chat')" style="cursor:pointer;width:42px;height:42px;border:none;border-radius:50%;background:#FDCE36;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.1s;" onpointerdown="this.style.transform='scale(0.9)'" onpointerup="this.style.transform=''">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -4321,71 +4339,6 @@
   }
 
   // ============ HAMBURGER MENU ============
-  let aiExpanded = false;
-  function expandAiBubble() {
-    if (aiExpanded) return;
-    aiExpanded = true;
-    var wrap = document.getElementById('ai-wrap');
-    var input = document.getElementById('ai-chat-input');
-    var iconChat = document.getElementById('ai-icon-chat');
-    var iconSend = document.getElementById('ai-icon-send');
-    var btn = document.getElementById('ai-btn');
-    wrap.style.width = 'calc(100% - 32px)';
-    wrap.style.justifyContent = 'stretch';
-    wrap.style.background = '#FFFFFF';
-    wrap.style.boxShadow = '0 2px 16px rgba(0,0,0,0.1)';
-    wrap.style.cursor = 'default';
-    wrap.onclick = null;
-    iconChat.style.opacity = '0';
-    input.style.flex = '1';
-    input.style.padding = '0 0 0 16px';
-    setTimeout(function(){
-      iconSend.style.opacity = '1';
-      btn.style.background = '#FDCE36';
-      btn.style.borderRadius = '50%';
-      btn.style.width = '38px';
-      btn.style.height = '38px';
-      btn.style.margin = '0 4px 0 0';
-      btn.style.cursor = 'pointer';
-      btn.onclick = function(e){ e.stopPropagation(); navigateTo('chat'); collapseAiBubble(); };
-    }, 100);
-    setTimeout(function(){
-      input.style.opacity = '1';
-      input.style.pointerEvents = 'auto';
-      input.focus();
-    }, 180);
-  }
-  function collapseAiBubble() {
-    aiExpanded = false;
-    var wrap = document.getElementById('ai-wrap');
-    var input = document.getElementById('ai-chat-input');
-    var iconChat = document.getElementById('ai-icon-chat');
-    var iconSend = document.getElementById('ai-icon-send');
-    var btn = document.getElementById('ai-btn');
-    input.value = '';
-    input.blur();
-    input.style.opacity = '0';
-    input.style.pointerEvents = 'none';
-    input.style.flex = '0';
-    input.style.padding = '0';
-    iconSend.style.opacity = '0';
-    btn.style.background = 'none';
-    btn.style.borderRadius = '';
-    btn.style.width = '46px';
-    btn.style.height = '46px';
-    btn.style.margin = '0';
-    btn.style.cursor = '';
-    btn.onclick = null;
-    setTimeout(function(){
-      iconChat.style.opacity = '1';
-    }, 80);
-    wrap.style.width = '46px';
-    wrap.style.justifyContent = 'center';
-    wrap.style.background = '#FDCE36';
-    wrap.style.boxShadow = '0 2px 12px rgba(229,184,32,0.25)';
-    wrap.style.cursor = 'pointer';
-    wrap.onclick = expandAiBubble;
-  }
 
   function openHamburger() {
     const overlay = document.getElementById('hamburger-overlay');
