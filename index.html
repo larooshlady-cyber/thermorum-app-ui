@@ -1128,31 +1128,16 @@
       </div>
     </div>
 
-    <!-- AI Floating Bubble -->
-    <div id="ai-bubble" onclick="expandAiBubble()" style="cursor:pointer;position:absolute;bottom:24px;right:20px;z-index:10;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#1C1C1B,#2A2A29);box-shadow:0 4px 20px rgba(0,0,0,0.2),0 0 0 4px rgba(167,139,218,0.12);display:flex;align-items:center;justify-content:center;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);" onpointerdown="this.style.transform='scale(0.9)'" onpointerup="this.style.transform=''">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01" stroke-linecap="round"/></svg>
-      <div style="position:absolute;top:-2px;right:-2px;width:14px;height:14px;border-radius:50%;background:#a78bda;border:2.5px solid #F2F2F7;"></div>
-    </div>
-
-    <!-- AI Expanded Chat Bar -->
-    <div id="ai-chat-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:10;background:var(--d1);border-radius:24px 24px 0 0;padding:16px 16px 24px;transform:translateY(100%);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 -8px 40px rgba(0,0,0,0.15);">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,rgba(167,139,218,0.25),rgba(167,139,218,0.1));display:flex;align-items:center;justify-content:center;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          </div>
-          <div style="font-size:15px;font-weight:800;color:#fff;">AI ასისტენტი</div>
-        </div>
-        <button onclick="collapseAiBubble()" style="cursor:pointer;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.08);border:none;display:flex;align-items:center;justify-content:center;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
+    <!-- AI Bubble → expands horizontally into chat input -->
+    <div id="ai-wrap" style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;height:56px;width:56px;border-radius:28px;background:linear-gradient(135deg,#1C1C1B,#2A2A29);box-shadow:0 4px 24px rgba(0,0,0,0.2),0 0 0 4px rgba(167,139,218,0.1);transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);overflow:hidden;cursor:pointer;" onclick="expandAiBubble()">
+      <!-- Input (hidden initially) -->
+      <input id="ai-chat-input" type="text" placeholder="რა გჭირდება?..." onclick="event.stopPropagation()" style="flex:1;min-width:0;height:100%;border:none;background:transparent;color:#fff;padding:0 0 0 18px;font-size:14px;font-weight:500;outline:none;opacity:0;transition:opacity 0.25s ease 0.15s;pointer-events:none;" onkeydown="if(event.key==='Enter'){event.stopPropagation();navigateTo('chat');collapseAiBubble();}">
+      <!-- Bubble icon (centered initially, becomes send btn) -->
+      <div id="ai-btn" style="width:56px;height:56px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;">
+        <svg id="ai-icon-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="1.8" style="transition:opacity 0.2s;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01" stroke-linecap="round"/></svg>
+        <svg id="ai-icon-send" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" style="position:absolute;opacity:0;transition:opacity 0.2s;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <input id="ai-chat-input" type="text" placeholder="რა გჭირდება? AI დაგეხმარება..." style="flex:1;height:48px;border-radius:16px;border:none;background:rgba(255,255,255,0.08);color:#fff;padding:0 16px;font-size:14px;font-weight:500;outline:none;" onfocus="this.style.background='rgba(255,255,255,0.12)'" onblur="this.style.background='rgba(255,255,255,0.08)'" onkeydown="if(event.key==='Enter'){navigateTo('chat');collapseAiBubble();}">
-        <button onclick="navigateTo('chat');collapseAiBubble();" style="cursor:pointer;width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#a78bda,#8b6fc0);border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.1s;" onpointerdown="this.style.transform='scale(0.92)'" onpointerup="this.style.transform=''">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        </button>
-      </div>
+      <div id="ai-dot" style="position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#a78bda;border:2.5px solid #F2F2F7;transition:opacity 0.2s;"></div>
     </div>
   </div>
 
@@ -4337,19 +4322,67 @@
   }
 
   // ============ HAMBURGER MENU ============
+  let aiExpanded = false;
   function expandAiBubble() {
-    document.getElementById('ai-bubble').style.transform = 'scale(0)';
-    document.getElementById('ai-bubble').style.opacity = '0';
-    document.getElementById('ai-chat-bar').style.transform = 'translateY(0)';
-    setTimeout(() => { document.getElementById('ai-chat-input').focus(); }, 400);
+    if (aiExpanded) return;
+    aiExpanded = true;
+    const wrap = document.getElementById('ai-wrap');
+    const input = document.getElementById('ai-chat-input');
+    const dot = document.getElementById('ai-dot');
+    const iconChat = document.getElementById('ai-icon-chat');
+    const iconSend = document.getElementById('ai-icon-send');
+    const btn = document.getElementById('ai-btn');
+    // Expand horizontally
+    wrap.style.width = 'calc(100% - 32px)';
+    wrap.style.cursor = 'default';
+    wrap.onclick = null;
+    // Hide dot, swap icons
+    dot.style.opacity = '0';
+    iconChat.style.opacity = '0';
+    setTimeout(() => {
+      iconSend.style.opacity = '1';
+      btn.style.background = 'linear-gradient(135deg,#a78bda,#8b6fc0)';
+      btn.style.borderRadius = '16px';
+      btn.style.width = '48px';
+      btn.style.height = '44px';
+      btn.style.margin = '0 6px 0 0';
+      btn.style.cursor = 'pointer';
+      btn.onclick = function(){ navigateTo('chat'); collapseAiBubble(); };
+    }, 150);
+    // Show input
+    setTimeout(() => {
+      input.style.opacity = '1';
+      input.style.pointerEvents = 'auto';
+      input.focus();
+    }, 250);
   }
   function collapseAiBubble() {
-    document.getElementById('ai-chat-bar').style.transform = 'translateY(100%)';
-    document.getElementById('ai-chat-input').value = '';
+    aiExpanded = false;
+    const wrap = document.getElementById('ai-wrap');
+    const input = document.getElementById('ai-chat-input');
+    const dot = document.getElementById('ai-dot');
+    const iconChat = document.getElementById('ai-icon-chat');
+    const iconSend = document.getElementById('ai-icon-send');
+    const btn = document.getElementById('ai-btn');
+    input.value = '';
+    input.blur();
+    input.style.opacity = '0';
+    input.style.pointerEvents = 'none';
+    iconSend.style.opacity = '0';
+    btn.style.background = 'none';
+    btn.style.borderRadius = '';
+    btn.style.width = '56px';
+    btn.style.height = '56px';
+    btn.style.margin = '0';
+    btn.style.cursor = '';
+    btn.onclick = null;
     setTimeout(() => {
-      document.getElementById('ai-bubble').style.transform = 'scale(1)';
-      document.getElementById('ai-bubble').style.opacity = '1';
-    }, 200);
+      iconChat.style.opacity = '1';
+      dot.style.opacity = '1';
+    }, 100);
+    wrap.style.width = '56px';
+    wrap.style.cursor = 'pointer';
+    wrap.onclick = expandAiBubble;
   }
 
   function openHamburger() {
