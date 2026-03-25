@@ -1018,7 +1018,7 @@
   </div>
 
   <!-- ==================== HOME (Main Menu Hub) ==================== -->
-  <div class="screen" id="screen-home" style="background:#F2F2F7;overflow:hidden;display:flex;flex-direction:column;">
+  <div class="screen" id="screen-home" style="background:#F2F2F7;overflow:hidden;">
     <!-- Warm gradient background -->
     <div style="position:absolute;top:0;left:0;right:0;height:55%;background:linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 15%, #FFFAED 40%, #F2F2F7 100%);pointer-events:none;"></div>
     <div style="position:absolute;top:5%;right:-15%;width:60%;height:35%;background:radial-gradient(ellipse, rgba(253,206,54,0.12) 0%, transparent 70%);pointer-events:none;"></div>
@@ -1058,11 +1058,11 @@
     </div>
 
     <!-- Navigation Hub -->
-    <div style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;padding:16px 16px 12px;overflow:hidden;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-height:0;">
+    <div style="position:relative;z-index:1;padding:12px 16px 16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
 
         <!-- 1. ქვაბის კომპლექტი (yellow) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;" onclick="switchTab('kit')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
+        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;position:relative;overflow:hidden;" onclick="switchTab('kit')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
           <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(201,162,39,0.06);"></div>
           <div>
             <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(201,162,39,0.15),rgba(201,162,39,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
@@ -1078,7 +1078,7 @@
         </div>
 
         <!-- 2. პროდუქცია (green) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;" onclick="navigateTo('categories')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
+        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;position:relative;overflow:hidden;" onclick="navigateTo('categories')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
           <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(74,140,74,0.06);"></div>
           <div>
             <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(74,140,74,0.15),rgba(74,140,74,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
@@ -1094,7 +1094,7 @@
         </div>
 
         <!-- 3. ბოლო შეკვეთები (red) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;" onclick="switchTab('orders')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
+        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;position:relative;overflow:hidden;" onclick="switchTab('orders')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
           <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(179,71,71,0.06);"></div>
           <div>
             <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(179,71,71,0.15),rgba(179,71,71,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
@@ -1110,7 +1110,7 @@
         </div>
 
         <!-- 4. აქციები (blue) -->
-        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;" onclick="switchTab('promotions')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
+        <div style="cursor:pointer;background:var(--white);border-radius:22px;padding:20px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.06);transition:transform 0.15s ease;display:flex;flex-direction:column;position:relative;overflow:hidden;" onclick="switchTab('promotions')" onpointerdown="this.style.transform='scale(0.96)'" onpointerup="this.style.transform=''">
           <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(91,164,201,0.06);"></div>
           <div>
             <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(91,164,201,0.15),rgba(91,164,201,0.05));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
