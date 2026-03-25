@@ -1125,22 +1125,33 @@
           </div>
         </div>
 
-        <!-- 5. AI ასისტენტი (purple/dark) — spans full width -->
-        <div style="cursor:pointer;background:linear-gradient(135deg,#1C1C1B 0%,#2A2A29 100%);border-radius:22px;padding:20px 22px;box-shadow:0 4px 20px rgba(0,0,0,0.15);transition:transform 0.15s ease;grid-column:1/-1;display:flex;align-items:center;gap:18px;position:relative;overflow:hidden;" onclick="navigateTo('chat')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
-          <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(167,139,218,0.08);"></div>
-          <div style="position:absolute;bottom:-20px;left:30%;width:80px;height:80px;border-radius:50%;background:rgba(167,139,218,0.05);"></div>
-          <div style="width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,rgba(167,139,218,0.25),rgba(167,139,218,0.1));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01" stroke-linecap="round"/></svg>
-          </div>
-          <div style="flex:1;position:relative;z-index:1;">
-            <div style="font-size:17px;font-weight:800;color:#fff;line-height:1.25;letter-spacing:-0.2px;">AI ასისტენტი</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:4px;font-weight:500;">რა გჭირდება? AI დაგეხმარება</div>
-          </div>
-          <div style="width:36px;height:36px;border-radius:12px;background:rgba(167,139,218,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </div>
+      </div>
+    </div>
 
+    <!-- AI Floating Bubble -->
+    <div id="ai-bubble" onclick="expandAiBubble()" style="cursor:pointer;position:absolute;bottom:24px;right:20px;z-index:10;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#1C1C1B,#2A2A29);box-shadow:0 4px 20px rgba(0,0,0,0.2),0 0 0 4px rgba(167,139,218,0.12);display:flex;align-items:center;justify-content:center;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);" onpointerdown="this.style.transform='scale(0.9)'" onpointerup="this.style.transform=''">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01" stroke-linecap="round"/></svg>
+      <div style="position:absolute;top:-2px;right:-2px;width:14px;height:14px;border-radius:50%;background:#a78bda;border:2.5px solid #F2F2F7;"></div>
+    </div>
+
+    <!-- AI Expanded Chat Bar -->
+    <div id="ai-chat-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:10;background:var(--d1);border-radius:24px 24px 0 0;padding:16px 16px 24px;transform:translateY(100%);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 -8px 40px rgba(0,0,0,0.15);">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,rgba(167,139,218,0.25),rgba(167,139,218,0.1));display:flex;align-items:center;justify-content:center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bda" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:800;color:#fff;">AI ასისტენტი</div>
+        </div>
+        <button onclick="collapseAiBubble()" style="cursor:pointer;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.08);border:none;display:flex;align-items:center;justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <input id="ai-chat-input" type="text" placeholder="რა გჭირდება? AI დაგეხმარება..." style="flex:1;height:48px;border-radius:16px;border:none;background:rgba(255,255,255,0.08);color:#fff;padding:0 16px;font-size:14px;font-weight:500;outline:none;" onfocus="this.style.background='rgba(255,255,255,0.12)'" onblur="this.style.background='rgba(255,255,255,0.08)'" onkeydown="if(event.key==='Enter'){navigateTo('chat');collapseAiBubble();}">
+        <button onclick="navigateTo('chat');collapseAiBubble();" style="cursor:pointer;width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#a78bda,#8b6fc0);border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.1s;" onpointerdown="this.style.transform='scale(0.92)'" onpointerup="this.style.transform=''">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -3195,7 +3206,7 @@
   let currentScreen = 'login';
   let navHistory = [];
   const authScreens = ['welcome', 'login', 'register', 'verify-phone', 'google-picker'];
-  const hideTabScreens = ['welcome', 'login', 'register', 'verify-phone', 'google-picker', 'product', 'cart', 'checkout', 'payment', 'promo-detail', 'subcategory', 'transactions', 'contacts', 'favorites', 'notifications', 'search', 'addresses', 'personal-info', 'order-detail', 'order-success', 'guest-prompt', 'categories', 'catalog', 'chat'];
+  const hideTabScreens = ['home', 'welcome', 'login', 'register', 'verify-phone', 'google-picker', 'product', 'cart', 'checkout', 'payment', 'promo-detail', 'subcategory', 'transactions', 'contacts', 'favorites', 'notifications', 'search', 'addresses', 'personal-info', 'order-detail', 'order-success', 'guest-prompt', 'categories', 'catalog', 'chat'];
   let isGuest = false;
 
   // ============ LIVE CLOCK ============
@@ -4326,6 +4337,21 @@
   }
 
   // ============ HAMBURGER MENU ============
+  function expandAiBubble() {
+    document.getElementById('ai-bubble').style.transform = 'scale(0)';
+    document.getElementById('ai-bubble').style.opacity = '0';
+    document.getElementById('ai-chat-bar').style.transform = 'translateY(0)';
+    setTimeout(() => { document.getElementById('ai-chat-input').focus(); }, 400);
+  }
+  function collapseAiBubble() {
+    document.getElementById('ai-chat-bar').style.transform = 'translateY(100%)';
+    document.getElementById('ai-chat-input').value = '';
+    setTimeout(() => {
+      document.getElementById('ai-bubble').style.transform = 'scale(1)';
+      document.getElementById('ai-bubble').style.opacity = '1';
+    }, 200);
+  }
+
   function openHamburger() {
     const overlay = document.getElementById('hamburger-overlay');
     const panel = document.getElementById('hamburger-panel');
