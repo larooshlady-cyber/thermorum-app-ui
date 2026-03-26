@@ -305,12 +305,17 @@
     position: relative; z-index: 1;
   }
   .tab-ai-bubble .tab-ai-side-btn {
-    width: 0; height: 48px; border: none; background: none;
+    width: 0; height: 44px; border: none;
+    background: rgba(255,255,255,0.1);
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; border-radius: 50%; overflow: hidden;
     opacity: 0; padding: 0; cursor: pointer;
     transition: width 0.25s ease, opacity 0.2s ease 0.1s;
     position: relative; z-index: 1;
+    min-width: 0;
+  }
+  .tab-ai-bubble .tab-ai-side-btn:active {
+    background: rgba(255,255,255,0.2);
   }
   .tab-ai-bubble .tab-ai-send {
     width: 72px; height: 72px; flex-shrink: 0;
@@ -3354,7 +3359,7 @@
       </button>
       <div class="tab-ai-send" id="navAiSendWrap">
         <svg class="sparkle-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
-        <svg class="send-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <svg class="send-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </div>
     </div>
     <button class="tab-item" data-tab="favorites" onclick="switchTab('favorites')">
@@ -3512,13 +3517,13 @@
     w.style.cursor = 'default';
     w.onclick = null;
     sparkle.style.opacity = '0';
-    cam.style.width = '48px'; cam.style.opacity = '1'; cam.style.padding = '0 12px 0 16px';
-    mic.style.width = '48px'; mic.style.opacity = '1'; mic.style.padding = '0 12px';
-    inp.style.flex = '1'; inp.style.padding = '0 8px';
+    cam.style.width = '44px'; cam.style.opacity = '1'; cam.style.marginLeft = '14px';
+    mic.style.width = '44px'; mic.style.opacity = '1';
+    inp.style.flex = '1'; inp.style.padding = '0 10px';
     setTimeout(function(){
       send.style.opacity = '1';
       sendWrap.style.background = 'var(--accent)';
-      sendWrap.style.width = '52px'; sendWrap.style.height = '52px';
+      sendWrap.style.width = '50px'; sendWrap.style.height = '50px';
       sendWrap.style.borderRadius = '50%';
       sendWrap.style.margin = '0 10px 0 0';
       sendWrap.style.cursor = 'pointer'; sendWrap.style.flexShrink = '0';
@@ -3540,8 +3545,8 @@
     inp.value = ''; inp.blur();
     inp.style.opacity = '0'; inp.style.pointerEvents = 'none';
     inp.style.flex = '0'; inp.style.padding = '0';
-    cam.style.width = '0'; cam.style.opacity = '0'; cam.style.padding = '0';
-    mic.style.width = '0'; mic.style.opacity = '0'; mic.style.padding = '0';
+    cam.style.width = '0'; cam.style.opacity = '0'; cam.style.marginLeft = '0';
+    mic.style.width = '0'; mic.style.opacity = '0';
     send.style.opacity = '0';
     sendWrap.style.background = 'none';
     sendWrap.style.width = '72px'; sendWrap.style.height = '72px';
