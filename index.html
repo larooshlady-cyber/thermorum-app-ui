@@ -331,6 +331,7 @@
   }
   .tab-ai-bubble .tab-ai-send .stop-icon {
     position: absolute; opacity: 0; transition: opacity 0.15s;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
   }
 
   /* ── Camera hide (same pattern as mic) ── */
@@ -347,14 +348,14 @@
   /* ── Voice recording UI ── */
   .voice-rec-ui {
     display: flex; align-items: center; gap: 12px;
-    flex: 1; height: 100%;
-    padding-left: 20px;
-    opacity: 0; max-width: 0; overflow: hidden;
-    transition: opacity 0.25s ease, max-width 0.3s ease;
+    flex: 0; height: 100%;
+    padding: 0;
+    opacity: 0; width: 0; overflow: hidden;
+    transition: opacity 0.25s ease, flex 0.3s ease, padding 0.3s ease;
     position: relative; z-index: 1;
   }
   .voice-rec-ui.active {
-    opacity: 1; max-width: 500px;
+    opacity: 1; flex: 1; padding-left: 20px;
   }
   .voice-rec-dot {
     width: 10px; height: 10px; border-radius: 50%;
@@ -372,13 +373,15 @@
     min-width: 42px;
   }
   .voice-rec-wave {
-    display: flex; align-items: center; gap: 3px;
+    display: flex; align-items: center; gap: 2.5px;
     flex: 1; height: 32px; overflow: hidden;
   }
   .voice-rec-wave span {
-    width: 3px; border-radius: 2px;
+    flex: 1; min-width: 2px; border-radius: 2px;
     background: rgba(253,206,54,0.6);
+    height: 4px;
     animation: wave-bar 0.8s ease-in-out infinite alternate;
+    animation-delay: var(--d, 0s);
   }
   @keyframes wave-bar {
     0% { height: 4px; }
@@ -3573,11 +3576,11 @@
   function buildWaveBars() {
     var wave = document.getElementById('voiceRecWave');
     wave.innerHTML = '';
-    for (var i = 0; i < 24; i++) {
+    for (var i = 0; i < 32; i++) {
       var bar = document.createElement('span');
       var h = Math.floor(Math.random() * 22) + 6;
       bar.style.setProperty('--h', h + 'px');
-      bar.style.animationDelay = (i * 0.05) + 's';
+      bar.style.setProperty('--d', (i * 0.06) + 's');
       wave.appendChild(bar);
     }
   }
