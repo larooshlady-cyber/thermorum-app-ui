@@ -1228,22 +1228,8 @@
       </div>
     </div>
 
-    <!-- AI Bubble — centered, expands horizontally into full chat bar -->
-    <div id="ai-wrap" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;justify-content:center;height:50px;width:50px;border-radius:25px;background:#FDCE36;box-shadow:0 2px 12px rgba(229,184,32,0.3);transition:width 0.35s cubic-bezier(0.25,1,0.5,1),background 0.25s ease,box-shadow 0.25s ease,border-radius 0.25s ease;overflow:hidden;cursor:pointer;" onclick="expandAiBubble()">
-      <!-- Hidden extras (camera, input, mic) -->
-      <button id="ai-cam" onclick="event.stopPropagation();navigateTo('chat');collapseAiBubble();" style="cursor:pointer;width:0;height:36px;border:none;background:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:50%;overflow:hidden;opacity:0;padding:0;transition:width 0.25s ease,opacity 0.2s ease 0.1s;">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
-      </button>
-      <input id="ai-chat-input" type="text" placeholder="AI ასისტენტი..." onclick="event.stopPropagation()" style="width:0;flex:0;min-width:0;height:100%;border:none;background:transparent;color:var(--d1);padding:0;font-size:14px;font-weight:500;outline:none;opacity:0;transition:opacity 0.2s ease 0.12s,flex 0.3s ease;" onkeydown="if(event.key==='Enter'){event.stopPropagation();navigateTo('chat');collapseAiBubble();}">
-      <button id="ai-mic" onclick="event.stopPropagation();navigateTo('chat');collapseAiBubble();" style="cursor:pointer;width:0;height:36px;border:none;background:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:50%;overflow:hidden;opacity:0;padding:0;transition:width 0.25s ease,opacity 0.2s ease 0.1s;">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-      </button>
-      <!-- Sparkle icon / Send button -->
-      <div id="ai-btn" style="width:50px;height:50px;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;transition:all 0.25s ease;border-radius:50%;">
-        <svg id="ai-icon-sparkle" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:opacity 0.15s;"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
-        <svg id="ai-icon-send" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;opacity:0;transition:opacity 0.15s;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </div>
-    </div>
+
+
   </div>
 
   <!-- ==================== CATEGORIES ==================== -->
@@ -4475,67 +4461,6 @@
   }
 
   // ============ HAMBURGER MENU ============
-
-  let aiExpanded = false;
-  function expandAiBubble() {
-    if (aiExpanded) return;
-    aiExpanded = true;
-    var w = document.getElementById('ai-wrap');
-    var inp = document.getElementById('ai-chat-input');
-    var btn = document.getElementById('ai-btn');
-    var cam = document.getElementById('ai-cam');
-    var mic = document.getElementById('ai-mic');
-    var sp = document.getElementById('ai-icon-sparkle');
-    var sd = document.getElementById('ai-icon-send');
-    w.style.width = 'calc(100% - 32px)';
-    w.style.background = '#FFFFFF';
-    w.style.boxShadow = '0 2px 16px rgba(0,0,0,0.1)';
-    w.style.cursor = 'default';
-    w.onclick = null;
-    sp.style.opacity = '0';
-    cam.style.width = '36px'; cam.style.opacity = '1'; cam.style.padding = '0 2px';
-    mic.style.width = '36px'; mic.style.opacity = '1'; mic.style.padding = '0 2px';
-    inp.style.flex = '1'; inp.style.padding = '0 4px';
-    setTimeout(function(){
-      sd.style.opacity = '1';
-      btn.style.background = '#FDCE36';
-      btn.style.width = '42px'; btn.style.height = '42px';
-      btn.style.margin = '0 4px 0 0';
-      btn.style.cursor = 'pointer';
-      btn.onclick = function(e){ e.stopPropagation(); navigateTo('chat'); collapseAiBubble(); };
-    }, 100);
-    setTimeout(function(){
-      inp.style.opacity = '1';
-      inp.style.pointerEvents = 'auto';
-      inp.focus();
-    }, 180);
-  }
-  function collapseAiBubble() {
-    aiExpanded = false;
-    var w = document.getElementById('ai-wrap');
-    var inp = document.getElementById('ai-chat-input');
-    var btn = document.getElementById('ai-btn');
-    var cam = document.getElementById('ai-cam');
-    var mic = document.getElementById('ai-mic');
-    var sp = document.getElementById('ai-icon-sparkle');
-    var sd = document.getElementById('ai-icon-send');
-    inp.value = ''; inp.blur();
-    inp.style.opacity = '0'; inp.style.pointerEvents = 'none';
-    inp.style.flex = '0'; inp.style.padding = '0';
-    cam.style.width = '0'; cam.style.opacity = '0'; cam.style.padding = '0';
-    mic.style.width = '0'; mic.style.opacity = '0'; mic.style.padding = '0';
-    sd.style.opacity = '0';
-    btn.style.background = 'none';
-    btn.style.width = '50px'; btn.style.height = '50px';
-    btn.style.margin = '0'; btn.style.cursor = '';
-    btn.onclick = null;
-    setTimeout(function(){ sp.style.opacity = '1'; }, 80);
-    w.style.width = '50px';
-    w.style.background = '#FDCE36';
-    w.style.boxShadow = '0 2px 12px rgba(229,184,32,0.3)';
-    w.style.cursor = 'pointer';
-    w.onclick = expandAiBubble;
-  }
 
   function openHamburger() {
     const overlay = document.getElementById('hamburger-overlay');
