@@ -144,7 +144,7 @@
   .tab-bar.hidden { transform: translateY(calc(100% + 28px)); pointer-events: none; }
   .tab-item {
     flex: 1; text-align: center; cursor: pointer; position: relative;
-    padding: 16px 0 0; background: none; border: none; outline: none;
+    padding: 14px 0 0; background: none; border: none; outline: none;
     display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
   }
   .tab-item .indicator {
@@ -155,16 +155,16 @@
     transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   .tab-item.active .indicator { transform: translateX(-50%) scaleX(1); }
-  .tab-item .tab-label { font-size: 10px; color: rgba(255,255,255,0.45); margin-top: 4px; font-family: inherit; transition: color 0.2s; }
+  .tab-item .tab-label { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 4px; font-family: inherit; transition: color 0.2s; }
   .tab-item.active .tab-label { color: var(--accent); font-weight: 600; }
   .tab-center-ai {
     flex: 1; position: relative; padding-top: 0 !important;
     display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-    margin-top: -20px;
+    margin-top: -24px;
   }
   .tab-center-ai .indicator { display: none !important; }
-  .tab-center-ai .tab-label { margin-top: 12px; }
-  .tab-center-ai:active > div:first-child { transform: scale(0.92) !important; }
+  .tab-center-ai .tab-label { margin-top: 8px; }
+  .tab-center-ai:active > div:first-child { transform: scale(0.9) !important; }
 
   /* ═══════════ CARDS ═══════════ */
   .card {
@@ -3197,30 +3197,20 @@
   <div class="tab-bar hidden" id="tabBar">
     <button class="tab-item active" data-tab="home" onclick="switchTab('home')">
       <div class="indicator"></div>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-      <div class="tab-label">პროდუქცია</div>
-    </button>
-    <button class="tab-item" data-tab="kit" onclick="switchTab('kit')">
-      <div class="indicator"></div>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      <div class="tab-label">კომპლექტები</div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <div class="tab-label">მთავარი</div>
     </button>
     <!-- Center AI Chat button -->
     <button class="tab-item tab-center-ai" onclick="navigateTo('chat')">
-      <div style="width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;transition:transform 0.15s;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#FDCE36,#F5A623);display:flex;align-items:center;justify-content:center;transition:transform 0.15s;box-shadow:0 4px 16px rgba(253,206,54,0.4),0 0 0 3px rgba(253,206,54,0.15);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       </div>
       <div class="tab-label">AI ჩატი</div>
     </button>
-    <button class="tab-item" data-tab="orders" onclick="switchTab('orders')">
+    <button class="tab-item" data-tab="favorites" onclick="switchTab('favorites')">
       <div class="indicator"></div>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-      <div class="tab-label">შეკვეთები</div>
-    </button>
-    <button class="tab-item" data-tab="profile" onclick="switchTab('profile')">
-      <div class="indicator"></div>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      <div class="tab-label">პროფილი</div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      <div class="tab-label">ფავორიტები</div>
     </button>
   </div>
 
@@ -3230,7 +3220,7 @@
   let currentScreen = 'login';
   let navHistory = [];
   const authScreens = ['welcome', 'login', 'register', 'verify-phone', 'google-picker'];
-  const hideTabScreens = ['home', 'welcome', 'login', 'register', 'verify-phone', 'google-picker', 'product', 'cart', 'checkout', 'payment', 'promo-detail', 'subcategory', 'transactions', 'contacts', 'favorites', 'notifications', 'search', 'addresses', 'personal-info', 'order-detail', 'order-success', 'guest-prompt', 'categories', 'catalog', 'chat'];
+  const hideTabScreens = ['home', 'welcome', 'login', 'register', 'verify-phone', 'google-picker', 'product', 'cart', 'checkout', 'payment', 'promo-detail', 'subcategory', 'transactions', 'contacts', 'notifications', 'search', 'addresses', 'personal-info', 'order-detail', 'order-success', 'guest-prompt', 'categories', 'catalog', 'chat'];
   let isGuest = false;
 
   // ============ LIVE CLOCK ============
@@ -3352,12 +3342,14 @@
         const aiCircle = item.querySelector('div');
         if (currentScreen === 'chat') {
           aiCircle.style.background = 'var(--d1)';
-          aiCircle.style.boxShadow = '0 4px 18px rgba(0,0,0,0.3)';
+          aiCircle.style.boxShadow = '0 4px 18px rgba(0,0,0,0.3), 0 0 0 3px rgba(28,28,27,0.15)';
           aiCircle.style.transform = 'scale(1.08)';
+          aiCircle.querySelector('svg').setAttribute('stroke', '#FDCE36');
         } else {
-          aiCircle.style.background = 'var(--d1)';
-          aiCircle.style.boxShadow = '0 4px 14px rgba(0,0,0,0.2)';
+          aiCircle.style.background = 'linear-gradient(135deg,#FDCE36,#F5A623)';
+          aiCircle.style.boxShadow = '0 4px 16px rgba(253,206,54,0.4), 0 0 0 3px rgba(253,206,54,0.15)';
           aiCircle.style.transform = 'scale(1)';
+          aiCircle.querySelector('svg').setAttribute('stroke', 'var(--d1)');
         }
         return;
       }
