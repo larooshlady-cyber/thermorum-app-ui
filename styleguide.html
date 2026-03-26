@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thermorum — Style Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #1C1C1B;
+    --d1: #1C1C1B;
+    --d2: #2A2A29;
+    --d3: #3A3A3B;
+    --mid: #6B6B6B;
+    --l3: #8E8E93;
+    --l2: #AEAEB2;
+    --l1: #E5E5EA;
+    --bg: #F2F2F7;
+    --white: #FFFFFF;
+    --accent: #FDCE36;
+    --accent-dark: #E5B820;
+    --accent-soft: rgba(253,206,54,0.12);
+    --blue: #037FF7;
+    --red: #FF3B30;
+    --green: #34C759;
+    --border: 1px solid rgba(0,0,0,0.06);
+    --border-dark: 1px solid rgba(255,255,255,0.1);
+    --radius: 14px;
+    --radius-sm: 10px;
+    --radius-lg: 20px;
+    --radius-pill: 100px;
+    --safe-top: 0px;
+    --safe-bottom: 0px;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: #F2F2F7;
+    color: var(--d1);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  /* ═══════ STYLE GUIDE LAYOUT ═══════ */
+  .sg-page { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+  .sg-hero {
+    background: var(--d1); border-radius: 24px; padding: 48px 32px;
+    margin-bottom: 40px; position: relative; overflow: hidden;
+  }
+  .sg-hero::after {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(253,206,54,0.12) 0%, transparent 70%);
+  }
+  .sg-hero h1 { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 8px; position: relative; z-index: 1; }
+  .sg-hero p { font-size: 14px; color: rgba(255,255,255,0.5); position: relative; z-index: 1; }
+
+  .sg-section { margin-bottom: 48px; }
+  .sg-section-title {
+    font-size: 20px; font-weight: 900; color: var(--d1);
+    margin-bottom: 6px; letter-spacing: -0.3px;
+  }
+  .sg-section-desc { font-size: 13px; color: var(--l3); margin-bottom: 20px; }
+  .sg-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+  .sg-col { flex: 1; min-width: 200px; }
+  .sg-label { font-size: 11px; font-weight: 700; color: var(--l3); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .sg-code {
+    font-size: 11px; font-family: 'SF Mono', 'Fira Code', monospace;
+    color: var(--mid); background: var(--bg); padding: 2px 6px;
+    border-radius: 4px; display: inline-block; margin-top: 4px;
+  }
+  .sg-card { background: var(--white); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 12px; }
+  .sg-dark-bg { background: var(--d1); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 12px; }
+
+  /* ═══════ IMPORT ACTUAL COMPONENT STYLES ═══════ */
+
+  /* Buttons */
+  .btn-primary {
+    width: 100%; padding: 16px 24px;
+    background: linear-gradient(135deg, #FDCE36 0%, #F5A623 50%, #FDCE36 100%);
+    background-size: 200% auto;
+    border: none; border-radius: var(--radius-pill);
+    font-size: 15px; font-weight: 700; color: var(--d1);
+    cursor: pointer; font-family: inherit;
+    transition: transform 0.15s, opacity 0.15s;
+    min-height: 52px; letter-spacing: 0.2px;
+  }
+  .btn-primary:active { transform: scale(0.97); opacity: 0.9; }
+
+  .btn-secondary {
+    padding: 16px 24px; background: var(--white);
+    border: 1.5px solid #E5E5EA; border-radius: var(--radius-pill);
+    font-size: 15px; font-weight: 600; color: var(--d1);
+    cursor: pointer; font-family: inherit; min-height: 52px;
+    transition: transform 0.15s;
+  }
+  .btn-secondary:active { transform: scale(0.97); }
+
+  .btn-outline {
+    padding: 16px 24px; background: transparent;
+    border: 1.5px solid var(--d1); border-radius: var(--radius-pill);
+    font-size: 15px; font-weight: 600; color: var(--d1);
+    cursor: pointer; font-family: inherit; min-height: 52px;
+    transition: transform 0.15s;
+  }
+  .btn-outline:active { transform: scale(0.97); }
+
+  .login-cta-btn {
+    width: 100%; height: 52px; border: none; border-radius: 14px;
+    font-size: 15px; font-weight: 700; font-family: inherit;
+    color: #1C1C1B; cursor: pointer;
+    background: linear-gradient(135deg, #FDCE36 0%, #F5A623 50%, #FDCE36 100%);
+    background-size: 200% auto; transition: all 0.2s ease;
+  }
+  .login-cta-btn:active { transform: scale(0.97); }
+
+  .login-social-btn {
+    width: 100%; height: 50px; border-radius: 14px;
+    font-size: 14px; font-weight: 600; font-family: inherit;
+    cursor: pointer; display: flex; align-items: center;
+    justify-content: center; gap: 10px; transition: all 0.15s ease;
+  }
+  .login-social-btn:active { transform: scale(0.97); }
+
+  /* Cards */
+  .card { background: var(--white); border-radius: var(--radius-lg); padding: 16px; border: none; margin-bottom: 12px; }
+  .card-flat { background: var(--white); border-radius: var(--radius); padding: 16px; border: 1px solid rgba(0,0,0,0.06); margin-bottom: 12px; }
+
+  /* Chips */
+  .chip {
+    flex-shrink: 0; padding: 8px 16px; border-radius: var(--radius-pill);
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    border: 1.5px solid #E5E5EA; background: var(--white);
+    color: var(--d2); font-family: inherit; transition: all 0.15s; min-height: 40px;
+  }
+  .chip-active { background: var(--d1); color: var(--white); border-color: var(--d1); }
+
+  /* Icon Buttons */
+  .icon-btn {
+    width: 42px; height: 42px; border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.06);
+  }
+  .icon-btn-light {
+    width: 42px; height: 42px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; background: rgba(255,255,255,0.08);
+    border: none; transition: transform 0.15s;
+  }
+  .icon-btn-light:active { transform: scale(0.92); }
+
+  .back-btn-light {
+    width: 40px; height: 40px; border-radius: 14px;
+    background: rgba(255,255,255,0.08); border: none;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; flex-shrink: 0; transition: transform 0.15s;
+  }
+  .back-btn-light:active { transform: scale(0.92); }
+
+  .auth-back-btn {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #FFFFFF; border: none;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; flex-shrink: 0; transition: transform 0.15s;
+  }
+  .auth-back-btn:active { transform: scale(0.92); }
+
+  /* Form Fields */
+  .form-label { display: block; font-size: 12px; color: var(--mid); margin-bottom: 4px; font-weight: 500; }
+  .form-label-dark { display: block; font-size: 13px; font-weight: 600; color: var(--d3); margin-bottom: 8px; }
+  .form-input {
+    border: 1.5px solid #E2E2E8; border-radius: 14px;
+    padding: 14px 16px; background: #F8F8FA;
+    display: flex; align-items: center; gap: 8px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .form-input:focus-within { border-color: var(--accent); background: #fff; }
+  .form-input input {
+    background: none; border: none; color: var(--d1);
+    font-size: 14px; width: 100%; font-family: inherit;
+    font-weight: 500; outline: none;
+  }
+  .form-input input::placeholder { color: var(--l2); }
+
+  .otp-input {
+    width: 56px; height: 64px; border: 1.5px solid #EBEBF0;
+    border-radius: 14px; text-align: center;
+    font-size: 26px; font-weight: 800; font-family: inherit;
+    background: #F8F8FA; color: var(--d1); outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  }
+  .otp-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(253,206,54,0.1); background: #fff; }
+
+  .login-input-wrap {
+    display: flex; align-items: center; background: #F8F8FA;
+    border: 1.5px solid #E2E2E8; border-radius: 14px; height: 52px;
+    transition: border-color 0.2s, background 0.2s; overflow: hidden;
+  }
+  .login-input-wrap.focused { border-color: #FDCE36; background: #fff; }
+
+  /* Auth Components */
+  .auth-card { background: #FFFFFF; border-radius: 20px; padding: 24px 20px; }
+  .auth-heading { font-size: 30px; font-weight: 800; color: var(--d1); letter-spacing: -0.5px; line-height: 1.15; }
+  .auth-subheading { font-size: 22px; font-weight: 800; color: var(--d1); }
+  .auth-desc { font-size: 15px; color: var(--l3); margin-top: 8px; line-height: 1.5; }
+
+  /* Layout */
+  .header-row { display: flex; align-items: center; gap: 10px; }
+  .header-row-between { display: flex; align-items: center; justify-content: space-between; }
+  .header-title-text { font-size: 18px; font-weight: 800; color: #fff; }
+  .header-subtitle-text { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  .dark-header-block { background: var(--d1); border-radius: 0 0 16px 16px; }
+  .header-light { background: var(--d1); color: #fff; padding: 0 20px 16px; border-radius: 0 0 16px 16px; }
+
+  .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .section-title { font-size: 17px; font-weight: 800; color: var(--d1); letter-spacing: -0.3px; }
+  .section-link { font-size: 13px; color: var(--accent-dark); font-weight: 700; cursor: pointer; }
+  .section-label { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+
+  .bottom-bar {
+    background: var(--white); padding: 14px 16px;
+    border-top: var(--border);
+  }
+
+  /* Dividers */
+  .divider { height: 1px; background: var(--l1); }
+  .divider-text { display: flex; align-items: center; margin: 22px 0; gap: 14px; }
+  .divider-text::before, .divider-text::after { content: ''; flex: 1; height: 1px; background: #EBEBF0; }
+
+  /* Spec Cells */
+  .spec-cell { background: var(--bg); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+  .spec-cell-label { font-size: 11px; color: var(--l3); margin-bottom: 1px; }
+  .spec-cell-value { font-size: 15px; font-weight: 800; }
+
+  /* Feature Check */
+  .feature-check { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 6px; }
+  .feature-check svg { flex-shrink: 0; margin-top: 2px; }
+  .feature-check span { font-size: 12px; color: var(--d3); }
+
+  /* Info Pill */
+  .info-pill {
+    flex-shrink: 0; padding: 8px 14px;
+    border: var(--border); border-radius: var(--radius-pill);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .info-pill span { font-size: 11px; font-weight: 600; }
+
+  /* Dark Card */
+  .dark-card {
+    background: linear-gradient(135deg, #1C1C1B 0%, #2C2C2B 100%);
+    color: var(--white); border: none; border-radius: var(--radius-lg);
+    padding: 22px; position: relative; overflow: hidden;
+  }
+  .dark-card-glow {
+    position: absolute; top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(253,206,54,0.1) 0%, transparent 70%);
+  }
+
+  /* Mini Product */
+  .mini-product { min-width: 140px; background: var(--bg); border-radius: var(--radius); padding: 10px; cursor: pointer; }
+  .mini-product-img {
+    width: 100%; height: 90px; border-radius: 10px;
+    background: #F0F0F4; display: flex; align-items: center;
+    justify-content: center; margin-bottom: 8px;
+  }
+  .mini-product-brand { font-size: 12px; font-weight: 700; color: var(--d1); margin-bottom: 2px; }
+  .mini-product-info { font-size: 11px; color: var(--mid); margin-bottom: 4px; }
+  .mini-product-price { font-size: 13px; font-weight: 800; color: var(--d1); }
+
+  /* Badges */
+  .badge {
+    min-width: 18px; height: 18px;
+    background: var(--accent); border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 800; color: var(--d1); padding: 0 5px;
+  }
+  .status-badge {
+    padding: 4px 10px; border-radius: 100px;
+    font-size: 11px; font-weight: 700;
+    background: var(--bg); color: var(--d3);
+  }
+
+  /* Order Card */
+  .order-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 18px; border: none; border-left: 4px solid var(--accent);
+    margin-bottom: 12px; cursor: pointer;
+  }
+
+  /* Toggle */
+  .toggle {
+    width: 48px; height: 28px; border-radius: 14px;
+    padding: 2px; display: flex; align-items: center;
+    cursor: pointer; transition: background 0.2s; border: none;
+  }
+  .toggle.on { background: var(--accent); justify-content: flex-end; }
+  .toggle.off { background: var(--l1); justify-content: flex-start; }
+  .toggle-knob { width: 24px; height: 24px; border-radius: 12px; background: var(--white); }
+
+  /* Menu Item */
+  .menu-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 18px; min-height: 60px;
+    cursor: pointer; transition: background 0.15s; border-radius: var(--radius);
+  }
+  .menu-item:active { background: rgba(253,206,54,0.06); }
+  .menu-icon {
+    width: 44px; height: 44px; border-radius: 14px; border: none;
+    background: linear-gradient(135deg, rgba(253,206,54,0.12), rgba(253,206,54,0.04));
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+
+  /* Product Card */
+  .product-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 0; border: none; overflow: hidden; transition: transform 0.1s;
+  }
+  .product-card:active { transform: scale(0.97); }
+  .product-img {
+    width: 100%; height: 140px;
+    background: linear-gradient(135deg, #F5F5F8 0%, #EEEEF2 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+
+  /* Notification */
+  .notif-card-unread {
+    border-left: 4px solid var(--accent);
+    background: rgba(253,206,54,0.06);
+    border-radius: var(--radius); padding: 14px 16px;
+  }
+  .notif-card-read {
+    background: var(--white); border-radius: var(--radius);
+    padding: 14px 16px; opacity: 0.7;
+  }
+
+  /* Qty Button */
+  .qty-btn {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; cursor: pointer;
+    border: 2px solid var(--l1); background: var(--white);
+    font-family: inherit; color: var(--d1);
+  }
+
+  /* Progress */
+  .progress-bar { background: rgba(0,0,0,0.06); border-radius: 4px; height: 8px; overflow: hidden; }
+  .progress-fill { background: linear-gradient(90deg, #FDCE36, #F5A623); border-radius: 4px; height: 100%; }
+
+  /* Toast */
+  .toast-demo {
+    background: var(--d1); color: var(--white);
+    padding: 12px 24px; border-radius: var(--radius-sm);
+    font-size: 13px; font-weight: 600; font-family: inherit;
+    display: inline-block;
+  }
+
+  /* Skeleton */
+  @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+  .skeleton {
+    background: linear-gradient(90deg, var(--l1) 25%, #ECECEC 50%, var(--l1) 75%);
+    background-size: 200% 100%; animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+  }
+</style>
+</head>
+<body>
+
+<div class="sg-page">
+
+  <!-- HERO -->
+  <div class="sg-hero">
+    <h1>Thermorum Style Guide</h1>
+    <p>Design tokens, components, and patterns</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- COLORS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Colors</div>
+    <div class="sg-section-desc">Core palette. Dark-first with gold accent.</div>
+
+    <div class="sg-label">Dark Scale</div>
+    <div class="sg-row" style="margin-bottom:20px;">
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--d1);border-radius:10px;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--d1</div>
+        <div class="sg-code">#1C1C1B</div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--d2);border-radius:10px;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--d2</div>
+        <div class="sg-code">#2A2A29</div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--d3);border-radius:10px;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--d3</div>
+        <div class="sg-code">#3A3A3B</div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--mid);border-radius:10px;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--mid</div>
+        <div class="sg-code">#6B6B6B</div>
+      </div>
+    </div>
+
+    <div class="sg-label">Light Scale</div>
+    <div class="sg-row" style="margin-bottom:20px;">
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--l3);border-radius:10px;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--l3</div>
+        <div class="sg-code">#8E8E93</div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--l2);border-radius:10px;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--l2</div>
+        <div class="sg-code">#AEAEB2</div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--l1);border-radius:10px;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--l1</div>
+        <div class="sg-code">#E5E5EA</div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--bg);border-radius:10px;border:1px solid rgba(0,0,0,0.06);margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--bg</div>
+        <div class="sg-code">#F2F2F7</div>
+      </div>
+    </div>
+
+    <div class="sg-label">Accent & Status</div>
+    <div class="sg-row">
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--accent);border-radius:10px;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--accent</div>
+        <div class="sg-code">#FDCE36</div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--accent-dark);border-radius:10px;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--accent-dark</div>
+        <div class="sg-code">#E5B820</div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--green);border-radius:10px;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--green</div>
+        <div class="sg-code">#34C759</div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="height:56px;background:var(--red);border-radius:10px;margin-bottom:6px;"></div>
+        <div style="font-size:12px;font-weight:700;">--red</div>
+        <div class="sg-code">#FF3B30</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TYPOGRAPHY -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Typography</div>
+    <div class="sg-section-desc">Inter. Weight range 400–900.</div>
+    <div class="sg-card">
+      <div style="font-size:30px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;">Auth Heading <span class="sg-code">.auth-heading · 30/800</span></div>
+      <div style="font-size:22px;font-weight:800;margin-bottom:8px;">Sub Heading <span class="sg-code">.auth-subheading · 22/800</span></div>
+      <div style="font-size:18px;font-weight:800;margin-bottom:8px;">Header Title <span class="sg-code">.header-title-text · 18/800</span></div>
+      <div style="font-size:17px;font-weight:800;letter-spacing:-0.3px;margin-bottom:8px;">Section Title <span class="sg-code">.section-title · 17/800</span></div>
+      <div style="font-size:16px;font-weight:800;margin-bottom:8px;">Card Title <span class="sg-code">16/800</span></div>
+      <div style="font-size:14px;font-weight:700;margin-bottom:8px;">Section Label <span class="sg-code">.section-label · 14/700</span></div>
+      <div style="font-size:14px;font-weight:600;margin-bottom:8px;">Body Semibold <span class="sg-code">14/600</span></div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:8px;">Chip / Link <span class="sg-code">13/600</span></div>
+      <div style="font-size:13px;color:var(--l3);margin-bottom:8px;">Body Light <span class="sg-code">13/400 · --l3</span></div>
+      <div style="font-size:12px;color:var(--mid);margin-bottom:8px;">Caption <span class="sg-code">12/500 · --mid</span></div>
+      <div style="font-size:11px;color:var(--l3);margin-bottom:8px;">Small <span class="sg-code">11/600 · --l3</span></div>
+      <div style="font-size:10px;font-weight:600;color:var(--mid);">Micro <span class="sg-code">10/600 · --mid</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SPACING & RADII -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Spacing & Radii</div>
+    <div class="sg-section-desc">Consistent spacing scale and border radius tokens.</div>
+    <div class="sg-row">
+      <div class="sg-card" style="flex:1;">
+        <div class="sg-label">Spacing</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:4px;height:16px;background:var(--accent);border-radius:2px;"></div><span style="font-size:12px;">4px</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:8px;height:16px;background:var(--accent);border-radius:2px;"></div><span style="font-size:12px;">8px</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:12px;height:16px;background:var(--accent);border-radius:2px;"></div><span style="font-size:12px;">12px</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:16px;height:16px;background:var(--accent);border-radius:2px;"></div><span style="font-size:12px;">16px</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:20px;height:16px;background:var(--accent);border-radius:2px;"></div><span style="font-size:12px;">20px</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:24px;height:16px;background:var(--accent);border-radius:2px;"></div><span style="font-size:12px;">24px</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:32px;height:16px;background:var(--accent);border-radius:2px;"></div><span style="font-size:12px;">32px</span></div>
+        </div>
+      </div>
+      <div class="sg-card" style="flex:1;">
+        <div class="sg-label">Border Radius</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:48px;height:32px;background:var(--bg);border-radius:10px;border:2px solid var(--accent);"></div><span style="font-size:12px;">--radius-sm <span class="sg-code">10px</span></span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:48px;height:32px;background:var(--bg);border-radius:14px;border:2px solid var(--accent);"></div><span style="font-size:12px;">--radius <span class="sg-code">14px</span></span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:48px;height:32px;background:var(--bg);border-radius:20px;border:2px solid var(--accent);"></div><span style="font-size:12px;">--radius-lg <span class="sg-code">20px</span></span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:48px;height:32px;background:var(--bg);border-radius:100px;border:2px solid var(--accent);"></div><span style="font-size:12px;">--radius-pill <span class="sg-code">100px</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- BUTTONS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Buttons</div>
+    <div class="sg-section-desc">Primary uses gold gradient. All have scale(0.97) on press.</div>
+    <div class="sg-row">
+      <div style="flex:1;">
+        <div class="sg-label">Primary</div>
+        <button class="btn-primary" style="width:100%;">შეკვეთის გაფორმება</button>
+        <div class="sg-code" style="margin-top:6px;">.btn-primary</div>
+      </div>
+      <div style="flex:1;">
+        <div class="sg-label">Secondary</div>
+        <button class="btn-secondary" style="width:100%;">გაუქმება</button>
+        <div class="sg-code" style="margin-top:6px;">.btn-secondary</div>
+      </div>
+      <div style="flex:1;">
+        <div class="sg-label">Outline</div>
+        <button class="btn-outline" style="width:100%;">გასვლა</button>
+        <div class="sg-code" style="margin-top:6px;">.btn-outline</div>
+      </div>
+    </div>
+    <div class="sg-row" style="margin-top:16px;">
+      <div style="flex:1;">
+        <div class="sg-label">Auth CTA (pill)</div>
+        <button class="login-cta-btn" style="border-radius:100px;">კოდის გაგზავნა</button>
+        <div class="sg-code" style="margin-top:6px;">.login-cta-btn</div>
+      </div>
+      <div style="flex:1;">
+        <div class="sg-label">Social (light)</div>
+        <button class="login-social-btn" style="background:#F8F8FA;border:1.5px solid #EBEBF0;color:#1C1C1B;border-radius:100px;">Google-ით შესვლა</button>
+        <div class="sg-code" style="margin-top:6px;">.login-social-btn</div>
+      </div>
+      <div style="flex:1;">
+        <div class="sg-label">Social (dark)</div>
+        <button class="login-social-btn" style="background:#1C1C1B;border:none;color:#fff;border-radius:100px;">სტუმრად შესვლა</button>
+        <div class="sg-code" style="margin-top:6px;">.login-social-btn</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- ICON BUTTONS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Icon Buttons & Back Buttons</div>
+    <div class="sg-section-desc">Glass-morphism on dark backgrounds. White circle for auth screens.</div>
+    <div class="sg-row">
+      <div class="sg-dark-bg" style="display:flex;gap:12px;align-items:center;flex:1;">
+        <button class="icon-btn-light">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <button class="back-btn-light">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="icon-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
+        </button>
+        <div style="flex:1;"></div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);">.icon-btn-light · .back-btn-light · .icon-btn</div>
+      </div>
+    </div>
+    <div class="sg-row">
+      <div class="sg-card" style="display:flex;gap:12px;align-items:center;flex:1;">
+        <button class="auth-back-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div style="flex:1;"></div>
+        <div style="font-size:11px;color:var(--l3);">.auth-back-btn (auth screens only)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- FORM INPUTS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Form Inputs</div>
+    <div class="sg-section-desc">Click to see focus states. Gold border on focus.</div>
+    <div class="sg-row">
+      <div style="flex:1;">
+        <label class="form-label">სახელი</label>
+        <div class="form-input"><input type="text" placeholder="გიორგი"></div>
+        <div class="sg-code" style="margin-top:6px;">.form-label + .form-input</div>
+      </div>
+      <div style="flex:1;">
+        <label class="form-label-dark">მობილური</label>
+        <div class="login-input-wrap" style="padding:0 14px;">
+          <input type="tel" placeholder="5XX XXX XXX" style="flex:1;background:none;border:none;color:var(--d1);font-size:15px;font-family:inherit;height:100%;outline:none;">
+        </div>
+        <div class="sg-code" style="margin-top:6px;">.form-label-dark + .login-input-wrap</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <div class="sg-label">OTP Inputs</div>
+      <div style="display:flex;gap:12px;margin-bottom:6px;">
+        <input class="otp-input" type="text" maxlength="1" value="4">
+        <input class="otp-input" type="text" maxlength="1" value="2">
+        <input class="otp-input" type="text" maxlength="1">
+        <input class="otp-input" type="text" maxlength="1">
+      </div>
+      <div class="sg-code">.otp-input (CSS :focus — no inline JS)</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CHIPS & BADGES -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Chips & Badges</div>
+    <div class="sg-row">
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <button class="chip chip-active">ყველა</button>
+        <button class="chip">ფასდაკლება</button>
+        <button class="chip">ექსკლუზივი</button>
+        <div style="width:1px;height:24px;background:var(--l1);margin:0 4px;"></div>
+        <div class="badge">3</div>
+        <div class="status-badge">დასრულებული</div>
+        <div class="status-badge" style="background:var(--accent);color:var(--d1);">აქტიური</div>
+      </div>
+    </div>
+    <div class="sg-code">.chip · .chip-active · .badge · .status-badge</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CARDS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Cards</div>
+    <div class="sg-row">
+      <div style="flex:1;">
+        <div class="sg-label">Standard Card</div>
+        <div class="card">
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">Card Title</div>
+          <div style="font-size:12px;color:var(--l3);">Card content goes here</div>
+        </div>
+        <div class="sg-code">.card</div>
+      </div>
+      <div style="flex:1;">
+        <div class="sg-label">Auth Card</div>
+        <div class="auth-card">
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">Auth Card Title</div>
+          <div style="font-size:12px;color:var(--l3);">For login/register forms</div>
+        </div>
+        <div class="sg-code">.auth-card (20px radius)</div>
+      </div>
+    </div>
+    <div class="sg-row">
+      <div style="flex:1;">
+        <div class="sg-label">Dark Card</div>
+        <div class="dark-card">
+          <div class="dark-card-glow"></div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:4px;position:relative;">ბალანსი</div>
+          <div style="font-size:24px;font-weight:900;position:relative;">₾ 1,250.00</div>
+        </div>
+        <div class="sg-code">.dark-card + .dark-card-glow</div>
+      </div>
+      <div style="flex:1;">
+        <div class="sg-label">Order Card</div>
+        <div class="order-card">
+          <div style="display:flex;justify-content:space-between;">
+            <div><div style="font-size:14px;font-weight:800;">#TH-2847</div><div style="font-size:11px;color:var(--l3);">10 მარტი</div></div>
+            <div class="status-badge" style="background:var(--accent);color:var(--d1);height:fit-content;">მზადდება</div>
+          </div>
+        </div>
+        <div class="sg-code">.order-card</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- HEADERS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Headers</div>
+    <div class="sg-section-desc">All content screens use dark headers with rounded bottom corners.</div>
+    <div style="margin-bottom:16px;">
+      <div class="sg-label">Dark Header (content screens)</div>
+      <div class="header-light" style="padding-top:12px;">
+        <div class="header-row">
+          <button class="back-btn-light">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span class="header-title-text">პროდუქცია</span>
+        </div>
+      </div>
+      <div class="sg-code" style="margin-top:6px;">.header-light > .header-row > .back-btn-light + .header-title-text</div>
+    </div>
+    <div>
+      <div class="sg-label">Dark Header Block (home, chat)</div>
+      <div class="dark-header-block" style="padding:16px 20px;">
+        <div style="font-size:12px;color:rgba(255,255,255,0.5);">გამარჯობა,</div>
+        <div style="font-size:22px;font-weight:900;color:#fff;">გიორგი</div>
+      </div>
+      <div class="sg-code" style="margin-top:6px;">.dark-header-block</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- DIVIDERS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Dividers</div>
+    <div class="sg-card">
+      <div class="sg-label">Simple</div>
+      <div class="divider" style="margin:12px 0;"></div>
+      <div class="sg-code">.divider</div>
+      <div class="sg-label" style="margin-top:16px;">With Text</div>
+      <div class="divider-text"><span style="font-size:11px;font-weight:600;color:#C7C7CC;">ან</span></div>
+      <div class="sg-code">.divider-text</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SPEC CELLS & INFO PILLS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Product Components</div>
+    <div class="sg-row">
+      <div style="flex:1;">
+        <div class="sg-label">Spec Cells</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div class="spec-cell"><div class="spec-cell-label">სიმძლავრე</div><div class="spec-cell-value">24 kW</div></div>
+          <div class="spec-cell"><div class="spec-cell-label">ენერგოკლასი</div><div class="spec-cell-value">A++</div></div>
+        </div>
+        <div class="sg-code" style="margin-top:6px;">.spec-cell > .spec-cell-label + .spec-cell-value</div>
+      </div>
+      <div style="flex:1;">
+        <div class="sg-label">Info Pills</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <div class="info-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <span>98% ეფექტურობა</span>
+          </div>
+          <div class="info-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>5 წ. გარანტია</span>
+          </div>
+        </div>
+        <div class="sg-code" style="margin-top:6px;">.info-pill</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <div class="sg-label">Feature Checks</div>
+      <div class="sg-card">
+        <div class="feature-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>ინტეგრირებული Wi-Fi მოდული</span>
+        </div>
+        <div class="feature-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>კონდენსაციური ტექნოლოგია — 98% ეფექტურობა</span>
+        </div>
+      </div>
+      <div class="sg-code">.feature-check</div>
+    </div>
+    <div style="margin-top:16px;">
+      <div class="sg-label">Mini Product Cards</div>
+      <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;">
+        <div class="mini-product">
+          <div class="mini-product-img">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
+          </div>
+          <div class="mini-product-brand">Vaillant ecoTEC</div>
+          <div class="mini-product-info">24.6 kW · A+</div>
+          <div class="mini-product-price">₾ 2,950</div>
+        </div>
+        <div class="mini-product">
+          <div class="mini-product-img">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
+          </div>
+          <div class="mini-product-brand">Buderus GB172i</div>
+          <div class="mini-product-info">24 kW · A++</div>
+          <div class="mini-product-price">₾ 2,480</div>
+        </div>
+      </div>
+      <div class="sg-code">.mini-product > .mini-product-img + .mini-product-brand + .mini-product-info + .mini-product-price</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MENU & TOGGLES -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Menu Items & Toggles</div>
+    <div class="sg-card" style="padding:0;">
+      <div class="menu-item" style="border-bottom:var(--border);">
+        <div class="menu-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div style="flex:1;"><div style="font-size:14px;font-weight:600;">პირადი ინფორმაცია</div><div style="font-size:11px;color:var(--l3);">სახელი, ტელეფონი</div></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--l2)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
+        </div>
+        <div style="flex:1;font-size:14px;font-weight:600;">შეტყობინებები</div>
+        <button class="toggle on"><div class="toggle-knob"></div></button>
+      </div>
+    </div>
+    <div class="sg-code">.menu-item > .menu-icon + content + chevron/toggle</div>
+    <div style="display:flex;gap:12px;align-items:center;margin-top:16px;">
+      <div class="sg-label" style="margin:0;">Toggles:</div>
+      <button class="toggle on"><div class="toggle-knob"></div></button>
+      <button class="toggle off"><div class="toggle-knob"></div></button>
+      <div class="sg-code">.toggle.on · .toggle.off</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MISC -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Other Components</div>
+    <div class="sg-row">
+      <div style="flex:1;">
+        <div class="sg-label">Progress Bar</div>
+        <div class="progress-bar" style="margin-bottom:6px;"><div class="progress-fill" style="width:65%;"></div></div>
+        <div class="sg-code">.progress-bar > .progress-fill</div>
+      </div>
+      <div style="flex:1;">
+        <div class="sg-label">Qty Buttons</div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <button class="qty-btn">−</button>
+          <span style="font-size:16px;font-weight:800;width:24px;text-align:center;">2</span>
+          <button class="qty-btn" style="background:var(--accent);border-color:var(--accent);">+</button>
+        </div>
+        <div class="sg-code" style="margin-top:6px;">.qty-btn</div>
+      </div>
+    </div>
+    <div class="sg-row" style="margin-top:16px;">
+      <div style="flex:1;">
+        <div class="sg-label">Toast</div>
+        <div class="toast-demo">კალათაში დაემატა</div>
+        <div class="sg-code" style="margin-top:6px;">.toast.show</div>
+      </div>
+      <div style="flex:1;">
+        <div class="sg-label">Skeleton Loader</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="skeleton" style="width:100%;height:14px;"></div>
+          <div class="skeleton" style="width:80%;height:14px;"></div>
+          <div class="skeleton" style="width:60%;height:14px;"></div>
+        </div>
+        <div class="sg-code" style="margin-top:6px;">.skeleton</div>
+      </div>
+    </div>
+    <div class="sg-row" style="margin-top:16px;">
+      <div style="flex:1;">
+        <div class="sg-label">Section Header</div>
+        <div class="section-header">
+          <span class="section-title">ბრენდები</span>
+          <span class="section-link">ყველა</span>
+        </div>
+        <div class="sg-code">.section-header > .section-title + .section-link</div>
+      </div>
+      <div style="flex:1;">
+        <div class="sg-label">Bottom Bar</div>
+        <div class="bottom-bar" style="position:relative;border-radius:var(--radius);">
+          <button class="btn-primary">შეკვეთის გაფორმება</button>
+        </div>
+        <div class="sg-code" style="margin-top:6px;">.bottom-bar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- NOTIFICATIONS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="sg-section">
+    <div class="sg-section-title">Notifications</div>
+    <div class="sg-row">
+      <div style="flex:1;">
+        <div class="sg-label">Unread</div>
+        <div class="notif-card-unread">
+          <div style="font-size:13px;font-weight:700;margin-bottom:2px;">შეკვეთა #TH-2847 მზადდება</div>
+          <div style="font-size:12px;color:var(--d3);">თქვენი შეკვეთა დაკომპლექტების პროცესშია.</div>
+          <div style="font-size:11px;color:var(--l3);margin-top:4px;">2 საათის წინ</div>
+        </div>
+        <div class="sg-code">.notif-card-unread</div>
+      </div>
+      <div style="flex:1;">
+        <div class="sg-label">Read</div>
+        <div class="notif-card-read">
+          <div style="font-size:13px;font-weight:600;margin-bottom:2px;">შეკვეთა მიტანილია</div>
+          <div style="font-size:12px;color:var(--d3);">წარმატებით მიტანილია.</div>
+          <div style="font-size:11px;color:var(--l3);margin-top:4px;">3 დღის წინ</div>
+        </div>
+        <div class="sg-code">.notif-card-read</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
