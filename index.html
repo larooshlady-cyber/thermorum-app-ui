@@ -129,42 +129,77 @@
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
   /* ═══════════ TAB BAR (PRESERVED) ═══════════ */
+  /* ═══════════ FLOATING BOTTOM NAV ═══════════ */
   .tab-bar {
     position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: calc(72px + var(--safe-bottom));
+    bottom: 12px; left: 16px; right: 16px;
+    height: 68px;
     padding-bottom: var(--safe-bottom);
-    background: var(--d1);
+    margin-bottom: var(--safe-bottom);
+    background: rgba(28,28,27,0.92);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border-radius: 22px;
     display: flex;
-    align-items: stretch;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-evenly;
     z-index: 50;
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.06);
   }
-  .tab-bar.hidden { transform: translateY(calc(100% + 28px)); pointer-events: none; }
+  .tab-bar.hidden { transform: translateY(calc(100% + 40px)); opacity: 0; pointer-events: none; }
+
   .tab-item {
-    flex: 1; text-align: center; cursor: pointer; position: relative;
-    padding: 14px 0 0; background: none; border: none; outline: none;
-    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    flex: 0 0 auto; text-align: center; cursor: pointer; position: relative;
+    padding: 8px 20px; background: none; border: none; outline: none;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 3px; border-radius: 16px; transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    -webkit-tap-highlight-color: transparent;
   }
-  .tab-item .indicator {
-    position: absolute; top: 0; left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    width: 24px; height: 3px;
-    background: var(--accent); border-radius: 2px;
+  .tab-item:active { transform: scale(0.9); }
+  .tab-item .tab-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.3px;
+    color: rgba(255,255,255,0.4); font-family: inherit;
+    transition: color 0.25s, transform 0.25s;
+  }
+  .tab-item .tab-icon {
+    width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
     transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  .tab-item.active .indicator { transform: translateX(-50%) scaleX(1); }
-  .tab-item .tab-label { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 4px; font-family: inherit; transition: color 0.2s; }
-  .tab-item.active .tab-label { color: var(--accent); font-weight: 600; }
+  .tab-item.active { background: rgba(253,206,54,0.12); }
+  .tab-item.active .tab-label { color: #FDCE36; }
+  .tab-item.active .tab-icon { transform: scale(1.1); }
+  .tab-item.active .tab-icon svg { stroke: #FDCE36 !important; }
+
+  /* Center AI button */
   .tab-center-ai {
-    flex: 1; position: relative; padding-top: 0 !important;
-    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-    margin-top: -24px;
+    flex: 0 0 auto; position: relative; padding: 0 !important;
+    background: none !important;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0; border-radius: 0; margin-top: -32px;
   }
-  .tab-center-ai .indicator { display: none !important; }
-  .tab-center-ai .tab-label { margin-top: 8px; }
-  .tab-center-ai:active > div:first-child { transform: scale(0.9) !important; }
+  .tab-center-ai:active { transform: none; }
+  .tab-center-ai .tab-label { margin-top: 6px; color: rgba(255,255,255,0.4); font-size: 10px; font-weight: 600; letter-spacing: 0.3px; }
+  .tab-ai-orb {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, #FDCE36 0%, #F5A623 100%);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(253,206,54,0.45), 0 0 0 4px rgba(28,28,27,0.92);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+    position: relative;
+  }
+  .tab-ai-orb::after {
+    content: ''; position: absolute; inset: -3px; border-radius: 50%;
+    background: conic-gradient(from 0deg, rgba(253,206,54,0.3), transparent 40%, rgba(245,166,35,0.3), transparent 80%, rgba(253,206,54,0.3));
+    z-index: -1; opacity: 0; transition: opacity 0.3s;
+  }
+  .tab-center-ai:active .tab-ai-orb { transform: scale(0.88); }
+  .tab-center-ai.active .tab-ai-orb {
+    background: var(--d1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35), 0 0 0 4px rgba(28,28,27,0.92);
+  }
+  .tab-center-ai.active .tab-ai-orb::after { opacity: 1; }
+  .tab-center-ai.active .tab-ai-orb svg { stroke: #FDCE36 !important; }
+  .tab-center-ai.active .tab-label { color: #FDCE36; }
 
   /* ═══════════ CARDS ═══════════ */
   .card {
@@ -3193,26 +3228,23 @@
   <!-- Toast -->
   <div class="toast" id="toast"></div>
 
-  <!-- TAB BAR -->
-  <div class="tab-bar hidden" id="tabBar">
+  <!-- FLOATING BOTTOM NAV -->
+  <nav class="tab-bar hidden" id="tabBar">
     <button class="tab-item active" data-tab="home" onclick="switchTab('home')">
-      <div class="indicator"></div>
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <div class="tab-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
       <div class="tab-label">მთავარი</div>
     </button>
-    <!-- Center AI Chat button -->
-    <button class="tab-item tab-center-ai" onclick="navigateTo('chat')">
-      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#FDCE36,#F5A623);display:flex;align-items:center;justify-content:center;transition:transform 0.15s;box-shadow:0 4px 16px rgba(253,206,54,0.4),0 0 0 3px rgba(253,206,54,0.15);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    <button class="tab-item tab-center-ai" data-tab="chat" onclick="navigateTo('chat')">
+      <div class="tab-ai-orb">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       </div>
       <div class="tab-label">AI ჩატი</div>
     </button>
     <button class="tab-item" data-tab="favorites" onclick="switchTab('favorites')">
-      <div class="indicator"></div>
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      <div class="tab-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
       <div class="tab-label">ფავორიტები</div>
     </button>
-  </div>
+  </nav>
 
 </div>
 
@@ -3220,7 +3252,7 @@
   let currentScreen = 'login';
   let navHistory = [];
   const authScreens = ['welcome', 'login', 'register', 'verify-phone', 'google-picker'];
-  const hideTabScreens = ['home', 'welcome', 'login', 'register', 'verify-phone', 'google-picker', 'product', 'cart', 'checkout', 'payment', 'promo-detail', 'subcategory', 'transactions', 'contacts', 'notifications', 'search', 'addresses', 'personal-info', 'order-detail', 'order-success', 'guest-prompt', 'categories', 'catalog', 'chat'];
+  const hideTabScreens = ['welcome', 'login', 'register', 'verify-phone', 'google-picker', 'order-success', 'guest-prompt'];
   let isGuest = false;
 
   // ============ LIVE CLOCK ============
@@ -3337,28 +3369,16 @@
     tabBar.classList.toggle('hidden', hideTabScreens.includes(currentScreen));
 
     document.querySelectorAll('.tab-item').forEach(item => {
-      if (item.classList.contains('tab-center-ai')) {
-        // Highlight center AI button when on chat screen
-        const aiCircle = item.querySelector('div');
-        if (currentScreen === 'chat') {
-          aiCircle.style.background = 'var(--d1)';
-          aiCircle.style.boxShadow = '0 4px 18px rgba(0,0,0,0.3), 0 0 0 3px rgba(28,28,27,0.15)';
-          aiCircle.style.transform = 'scale(1.08)';
-          aiCircle.querySelector('svg').setAttribute('stroke', '#FDCE36');
-        } else {
-          aiCircle.style.background = 'linear-gradient(135deg,#FDCE36,#F5A623)';
-          aiCircle.style.boxShadow = '0 4px 16px rgba(253,206,54,0.4), 0 0 0 3px rgba(253,206,54,0.15)';
-          aiCircle.style.transform = 'scale(1)';
-          aiCircle.querySelector('svg').setAttribute('stroke', 'var(--d1)');
-        }
-        return;
-      }
       const tab = item.dataset.tab;
       const isActive = tab === currentScreen;
       item.classList.toggle('active', isActive);
-      const svg = item.querySelector('svg');
-      svg.setAttribute('fill', isActive ? 'none' : 'none');
-      svg.setAttribute('stroke', isActive ? '#FDCE36' : 'rgba(255,255,255,0.45)');
+
+      // Skip AI center — CSS handles active state via .active class
+      if (item.classList.contains('tab-center-ai')) return;
+
+      // Update icon stroke for side tabs
+      const svg = item.querySelector('.tab-icon svg');
+      if (svg) svg.setAttribute('stroke', isActive ? '#FDCE36' : 'rgba(255,255,255,0.4)');
     });
   }
 
