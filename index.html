@@ -137,7 +137,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 32px;
+    gap: 28px;
     z-index: 50;
     background: none;
     pointer-events: none;
@@ -145,22 +145,22 @@
   }
   .tab-bar.hidden { transform: translateY(calc(100% + 60px)); opacity: 0; }
 
-  /* ── Side pills — stadium pill shape ── */
+  /* ── Side pills — frosted glass circles ── */
   .tab-item {
-    width: 64px; height: 48px; cursor: pointer; position: relative;
+    width: 50px; height: 50px; cursor: pointer; position: relative;
     padding: 0; border: none; outline: none;
     display: flex; align-items: center; justify-content: center;
-    border-radius: 22px;
-    background: linear-gradient(165deg, #2A2A29 0%, #1C1C1B 100%);
-    border: 0.5px solid rgba(255,255,255,0.08);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.35),
-                0 4px 12px rgba(0,0,0,0.25),
-                0 8px 28px rgba(0,0,0,0.15);
-    transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.2);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.25s ease, border-color 0.25s ease;
     -webkit-tap-highlight-color: transparent;
     pointer-events: all;
   }
-  .tab-item:active { transform: scale(0.88); }
+  .tab-item:active { transform: scale(0.9); }
 
   .tab-item .tab-label { display: none; }
   .tab-item .tab-icon {
@@ -168,39 +168,33 @@
     display: flex; align-items: center; justify-content: center;
   }
 
-  /* ── Active: yellow icon + dot below + breathing ── */
+  /* ── Active ── */
   .tab-item.active {
-    border-color: rgba(253,206,54,0.15);
-    animation: pill-breathe 4s ease-in-out infinite;
+    background: rgba(0,0,0,0.35);
+    border-color: rgba(253,206,54,0.12);
   }
   .tab-item.active .tab-icon svg { stroke: var(--accent) !important; transition: stroke 0.25s ease; }
   .tab-item.active::after {
     content: '';
     position: absolute;
-    bottom: -10px; left: 50%; transform: translateX(-50%);
-    width: 5px; height: 5px;
+    bottom: -8px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px;
     border-radius: 50%;
     background: var(--accent);
-    box-shadow: 0 0 8px rgba(253,206,54,0.4);
   }
 
   /* ── Inactive ── */
-  .tab-item:not(.active) .tab-icon svg { stroke: rgba(255,255,255,0.35) !important; transition: stroke 0.25s ease; }
+  .tab-item:not(.active) .tab-icon svg { stroke: rgba(255,255,255,0.4) !important; transition: stroke 0.25s ease; }
 
-  /* ── Center AI bubble — rich gold gradient ── */
+  /* ── Center AI bubble — solid gold, no shadow ── */
   .tab-ai-bubble {
     width: 72px; height: 72px; flex-shrink: 0;
     border-radius: 36px;
-    background: linear-gradient(145deg, #FFE066 0%, #FDCE36 50%, #E5B820 100%);
-    box-shadow: 0 1px 3px rgba(229,184,32,0.4),
-                0 4px 12px rgba(253,206,54,0.35),
-                0 8px 24px rgba(253,206,54,0.15),
-                0 12px 36px rgba(0,0,0,0.2);
+    background: var(--accent);
     display: flex; align-items: center; justify-content: center;
     overflow: visible; cursor: pointer;
     pointer-events: all;
-    transition: width 0.4s ease, background 0.4s ease,
-                box-shadow 0.4s ease, transform 0.2s ease;
+    transition: width 0.4s ease, background 0.4s ease, transform 0.2s ease;
     position: relative;
     animation: ai-float 4s ease-in-out infinite;
   }
@@ -212,19 +206,8 @@
     50% { transform: translateY(-4px); }
   }
 
-  /* ── Pulsing glow shadow ── */
-  .tab-ai-bubble::after {
-    content: '';
-    position: absolute; inset: 0;
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgba(253,206,54,0.4), 0 0 40px rgba(253,206,54,0.15);
-    animation: ai-glow 2.5s ease-in-out infinite;
-    pointer-events: none;
-  }
-  @keyframes ai-glow {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.05); }
-  }
+  /* ── (glow removed — clean flat) ── */
+  .tab-ai-bubble::after { display: none; }
 
   /* ── Outer ring pulse 1 ── */
   .tab-ai-bubble::before {
@@ -253,13 +236,10 @@
     50% { transform: scale(1.25); opacity: 0; }
   }
 
-  /* ── Expanded state: premium dark bar — kill all animations ── */
+  /* ── Expanded state: solid dark bar, no shadows ── */
   .tab-ai-bubble.expanded {
-    background: linear-gradient(180deg, #242424 0%, #1C1C1B 100%);
+    background: #1C1C1B;
     border: 0.5px solid rgba(255,255,255,0.06);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.4),
-                0 6px 20px rgba(0,0,0,0.3),
-                0 14px 40px rgba(0,0,0,0.15);
     animation: none;
     overflow: hidden;
   }
@@ -316,11 +296,11 @@
     position: relative; z-index: 1;
   }
   .tab-ai-bubble .tab-ai-side-btn {
-    width: 42px; height: 42px; border: none;
-    background: rgba(255,255,255,0.1);
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.08);
     border: 0.5px solid rgba(255,255,255,0.06);
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; border-radius: 14px;
+    flex-shrink: 0; border-radius: 12px;
     padding: 0; cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -379,7 +359,6 @@
   .voice-rec-dot {
     width: 10px; height: 10px; border-radius: 50%;
     background: #FF3B30; flex-shrink: 0;
-    box-shadow: 0 0 8px rgba(255,59,48,0.4);
     animation: rec-pulse 1.2s ease-in-out infinite;
   }
   @keyframes rec-pulse {
@@ -409,11 +388,7 @@
     100% { height: var(--h, 20px); }
   }
 
-  /* ── New keyframes: pill breathe + sparkle idle ── */
-  @keyframes pill-breathe {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-  }
+  /* ── Sparkle idle sway ── */
   @keyframes sparkle-idle {
     0%, 100% { transform: rotate(0deg); }
     50% { transform: rotate(8deg); }
