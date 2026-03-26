@@ -304,9 +304,14 @@
     flex-shrink: 0; border-radius: 50%;
     padding: 0; cursor: pointer;
     position: relative;
+    transition: width 0.25s ease, opacity 0.2s ease, margin 0.25s ease;
+    overflow: hidden;
   }
   .tab-ai-bubble .tab-ai-side-btn:active {
     background: rgba(255,255,255,0.2);
+  }
+  .tab-ai-bubble .tab-ai-side-btn.hidden-btn {
+    width: 0; opacity: 0; margin: 0;
   }
   .tab-ai-bubble .tab-ai-send {
     width: 72px; height: 72px; flex-shrink: 0;
@@ -3341,7 +3346,7 @@
     <div class="tab-ai-bubble" id="navAiBubble" onclick="expandNavAi()">
       <div class="ai-ring-2"></div>
       <div class="ai-ripple" id="aiRipple"></div>
-      <input class="tab-ai-inner-input" id="navAiInput" type="text" placeholder="AI ასისტენტი..." onclick="event.stopPropagation()" onkeydown="if(event.key==='Enter'){event.stopPropagation();navigateTo('chat');collapseNavAi();}">
+      <input class="tab-ai-inner-input" id="navAiInput" type="text" placeholder="AI ასისტენტი..." onclick="event.stopPropagation()" oninput="toggleMicBtn()" onkeydown="if(event.key==='Enter'){event.stopPropagation();navigateTo('chat');collapseNavAi();}">
       <div class="tab-ai-actions" id="navAiActions">
         <button class="tab-ai-side-btn" id="navAiCam" onclick="event.stopPropagation();navigateTo('chat');collapseNavAi();">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
@@ -3493,6 +3498,16 @@
   }
 
   /* ── Nav AI Bubble expand/collapse ── */
+  function toggleMicBtn() {
+    var mic = document.getElementById('navAiMic');
+    var hasText = document.getElementById('navAiInput').value.length > 0;
+    if (hasText) {
+      mic.classList.add('hidden-btn');
+    } else {
+      mic.classList.remove('hidden-btn');
+    }
+  }
+
   var navAiExpanded = false;
   function expandNavAi() {
     if (navAiExpanded) return;
@@ -3535,6 +3550,7 @@
     inp.style.opacity = '0'; inp.style.pointerEvents = 'none';
     inp.style.flex = '0'; inp.style.padding = '0';
     actions.style.maxWidth = '0'; actions.style.opacity = '0';
+    document.getElementById('navAiMic').classList.remove('hidden-btn');
     send.style.opacity = '0';
     sendWrap.style.background = 'none';
     sendWrap.style.width = '72px'; sendWrap.style.height = '72px';
