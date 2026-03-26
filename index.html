@@ -128,70 +128,62 @@
   .hide-scrollbar::-webkit-scrollbar { display: none; }
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-  /* ═══════════ BOTTOM NAV — SOLID BAR ═══════════ */
+  /* ═══════════ BOTTOM NAV — FLOATING PILL DOCK ═══════════ */
   .tab-bar {
     position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 0;
-    padding-bottom: var(--safe-bottom);
+    bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 6px;
     display: flex;
-    align-items: stretch;
+    align-items: center;
+    gap: 4px;
     z-index: 50;
     background: var(--d1);
-    border-radius: 20px 20px 0 0;
+    border-radius: 100px;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s;
   }
-  .tab-bar.hidden { transform: translateY(100%); opacity: 0; }
+  .tab-bar.hidden { transform: translateX(-50%) translateY(calc(100% + 40px)); opacity: 0; }
 
-  /* ── Tab items ── */
+  /* ── Side tab items ── */
   .tab-item {
-    flex: 1; cursor: pointer; position: relative;
-    padding: 14px 0 12px; border: none; outline: none;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-    background: none;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 52px; height: 52px; cursor: pointer; position: relative;
+    padding: 0; border: none; outline: none;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: transparent;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease;
     -webkit-tap-highlight-color: transparent;
   }
-  .tab-item:active { transform: scale(0.9); }
+  .tab-item:active { transform: scale(0.85); }
 
   .tab-item .tab-icon {
-    width: 24px; height: 24px;
+    width: 22px; height: 22px;
     display: flex; align-items: center; justify-content: center;
   }
-  .tab-item .tab-label {
-    display: block;
-    font-size: 10px; font-weight: 600;
-    color: rgba(255,255,255,0.4);
-    font-family: inherit;
-  }
+  .tab-item .tab-label { display: none; }
 
   /* ── Active ── */
+  .tab-item.active {
+    background: rgba(255,255,255,0.1);
+  }
   .tab-item.active .tab-icon svg { stroke: var(--accent) !important; transition: stroke 0.25s ease; }
-  .tab-item.active .tab-label { color: var(--accent); }
 
   /* ── Inactive ── */
-  .tab-item:not(.active) .tab-icon svg { stroke: rgba(255,255,255,0.4) !important; transition: stroke 0.25s ease; }
+  .tab-item:not(.active) .tab-icon svg { stroke: rgba(255,255,255,0.35) !important; transition: stroke 0.25s ease; }
 
-  /* ── Center AI tab ── */
+  /* ── Center AI button ── */
   .tab-ai-center {
-    flex: 1; cursor: pointer; position: relative;
-    padding: 8px 0 12px; border: none; outline: none;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-    background: none;
+    width: 56px; height: 56px; cursor: pointer; position: relative;
+    padding: 0; border: none; outline: none;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: var(--accent);
+    margin: 0 4px;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     -webkit-tap-highlight-color: transparent;
   }
-  .tab-ai-center:active .tab-ai-icon { transform: scale(0.88); }
-  .tab-ai-icon {
-    width: 44px; height: 44px; border-radius: 50%;
-    background: var(--accent);
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  .tab-ai-label {
-    font-size: 10px; font-weight: 600;
-    color: var(--accent);
-    font-family: inherit;
-  }
+  .tab-ai-center:active { transform: scale(0.85); }
+  .tab-ai-label { display: none; }
 
   /* ── Center AI bubble — solid gold, no shadow ── */
   .tab-ai-bubble {
@@ -3421,10 +3413,7 @@
       <span class="tab-label">მთავარი</span>
     </button>
     <button class="tab-ai-center" onclick="navigateTo('chat')">
-      <div class="tab-ai-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
-      </div>
-      <span class="tab-ai-label">AI ჩატი</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
     </button>
     <button class="tab-item" data-tab="favorites" onclick="switchTab('favorites')">
       <div class="tab-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
