@@ -417,7 +417,6 @@
     padding: 16px;
     border: none;
     margin-bottom: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.05);
   }
   .card-flat {
     background: var(--white);
@@ -440,7 +439,6 @@
     transition: transform 0.15s, opacity 0.15s;
     min-height: 52px;
     letter-spacing: 0.2px;
-    box-shadow: 0 4px 16px rgba(253,206,54,0.3), 0 1px 3px rgba(0,0,0,0.06);
   }
   .btn-primary:active { transform: scale(0.97); opacity: 0.9; }
 
@@ -475,7 +473,6 @@
   .chip-active {
     background: var(--d1); color: var(--white);
     border-color: var(--d1);
-    box-shadow: 0 2px 8px rgba(28,28,27,0.2);
   }
 
   /* ═══════════ BADGE ═══════════ */
@@ -546,7 +543,6 @@
     padding: 0; border: none;
     overflow: hidden;
     transition: transform 0.1s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.05);
   }
   .product-card:active { transform: scale(0.97); }
   .product-img {
@@ -572,7 +568,6 @@
     background: rgba(255,255,255,0.85);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     cursor: pointer; border: none;
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   }
@@ -608,7 +603,6 @@
     border-left: 4px solid var(--accent);
     margin-bottom: 12px; cursor: pointer;
     transition: transform 0.12s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.05);
   }
   .order-card:active { transform: scale(0.98); }
 
@@ -625,7 +619,6 @@
   .chat-ai {
     background: var(--white); border-radius: 18px 18px 18px 4px;
     border: none; max-width: 82%;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.03);
   }
   .chat-user {
     background: linear-gradient(135deg, #1C1C1B, #2A2A29); color: var(--white);
@@ -674,7 +667,6 @@
   .cart-item {
     background: var(--white); border-radius: var(--radius-lg);
     padding: 12px; border: none; margin-bottom: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
   }
   .qty-btn {
     width: 36px; height: 36px; border-radius: 8px;
@@ -798,7 +790,6 @@
     cursor: pointer; font-size: 13px; font-weight: 800;
     color: var(--d1); transition: transform 0.1s;
     letter-spacing: 0.3px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     border: 1px solid rgba(0,0,0,0.04);
   }
   .brand-chip:active { transform: scale(0.95); }
@@ -807,7 +798,6 @@
   .stat-card {
     text-align: center; padding: 18px 12px;
     background: var(--white); border-radius: var(--radius-lg);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.05);
   }
   .stat-card .stat-value { font-size: 24px; font-weight: 900; color: var(--d1); }
   .stat-card .stat-label { font-size: 12px; color: var(--l3); font-weight: 600; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px; }
@@ -816,7 +806,6 @@
   .notif-card-unread {
     border-left: 4px solid var(--accent);
     background: rgba(253,206,54,0.06);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
     border-radius: var(--radius);
     padding: 14px 16px;
   }
@@ -857,25 +846,25 @@
   .status-bar-light .icons svg { width: 16px; height: 16px; fill: var(--d1) !important; }
 
   .header-light {
-    background: transparent;
-    color: var(--d1);
+    background: var(--d1);
+    color: #fff;
     padding: 0 20px 16px;
     flex-shrink: 0;
     position: relative;
     z-index: 10;
+    border-radius: 0 0 16px 16px;
   }
-  .header-light .back-btn-light svg { stroke: var(--d1) !important; }
-  .header-light .icon-btn-light svg { stroke: var(--d1) !important; }
-  .header-light .header-title { color: var(--d1); }
-  .header-light .header-subtitle { color: var(--l3); }
+  .header-light .back-btn-light svg { stroke: #fff !important; }
+  .header-light .icon-btn-light svg { stroke: #fff !important; }
+  .header-light .header-title { color: #fff; }
+  .header-light .header-subtitle { color: rgba(255,255,255,0.5); }
 
   .icon-btn-light {
     width: 42px; height: 42px;
-    border-radius: 50%;
+    border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    background: #FFFFFF;
-    border: 1px solid rgba(0,0,0,0.06);
+    background: rgba(255,255,255,0.08);
     border: none;
     position: relative; flex-shrink: 0;
     transition: transform 0.15s;
@@ -886,17 +875,16 @@
 
   .back-btn-light {
     width: 40px; height: 40px;
-    border-radius: 50%;
-    background: #FFFFFF;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.08);
     border: none;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    border: 1px solid rgba(0,0,0,0.06);
     flex-shrink: 0;
     transition: transform 0.15s;
   }
   .back-btn-light:active { transform: scale(0.92); }
-  .back-btn-light svg { stroke: var(--d1) !important; }
+  .back-btn-light svg { stroke: #fff !important; }
 
   .input-field-light {
     display: flex; align-items: center;
@@ -904,11 +892,10 @@
     border: 1.5px solid #E2E2E8;
     border-radius: 14px;
     height: 52px; padding: 0 14px; gap: 10px;
-    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    transition: border-color 0.2s, background 0.2s;
   }
   .input-field-light:focus-within {
     border-color: #FDCE36;
-    box-shadow: 0 0 0 4px rgba(253,206,54,0.1);
     background: #fff;
   }
   .input-field-light input {
@@ -942,13 +929,11 @@
     color: #1C1C1B; cursor: pointer; position: relative;
     background: linear-gradient(135deg, #FDCE36 0%, #F5A623 50%, #FDCE36 100%);
     background-size: 200% auto;
-    box-shadow: 0 4px 16px rgba(253,206,54,0.35), 0 1px 3px rgba(0,0,0,0.08);
     transition: all 0.2s ease;
     letter-spacing: 0.02em;
   }
   .login-cta-btn:active {
     transform: scale(0.97);
-    box-shadow: 0 2px 8px rgba(253,206,54,0.25);
   }
   .login-social-btn {
     width: 100%; height: 50px; border-radius: 14px;
@@ -961,12 +946,11 @@
   .login-input-wrap {
     display: flex; align-items: center; background: #F8F8FA;
     border: 1.5px solid #E2E2E8; border-radius: 14px; height: 52px;
-    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    transition: border-color 0.2s, background 0.2s;
     overflow: hidden;
   }
   .login-input-wrap.focused {
     border-color: #FDCE36;
-    box-shadow: 0 0 0 4px rgba(253,206,54,0.1);
     background: #fff;
   }
 
@@ -1010,7 +994,7 @@
       </div>
 
       <!-- Form card -->
-      <div style="margin-top:32px;background:#FFFFFF;border-radius:20px;padding:24px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);animation:loginCardUp 0.5s ease 0.2s both;">
+      <div style="margin-top:32px;background:#FFFFFF;border-radius:20px;padding:24px 20px;animation:loginCardUp 0.5s ease 0.2s both;">
 
         <!-- Phone input -->
         <label style="font-size:13px;font-weight:600;color:#3A3A3B;margin-bottom:8px;display:block;">მობილურის ნომერი</label>
@@ -1072,7 +1056,7 @@
 
       <!-- Back + Title -->
       <div style="display:flex;align-items:center;gap:12px;animation:loginFadeIn 0.4s ease both;">
-        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
         <span style="font-size:18px;font-weight:800;color:#1C1C1B;">რეგისტრაცია</span>
@@ -1081,7 +1065,7 @@
       <p style="margin-top:8px;padding-left:52px;font-size:14px;color:#8E8E93;animation:loginFadeIn 0.4s ease 0.05s both;">შექმენით პარტნიორული ანგარიში</p>
 
       <!-- Form card -->
-      <div style="margin-top:24px;background:#FFFFFF;border-radius:20px;padding:24px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);animation:loginCardUp 0.5s ease 0.15s both;">
+      <div style="margin-top:24px;background:#FFFFFF;border-radius:20px;padding:24px 20px;animation:loginCardUp 0.5s ease 0.15s both;">
 
         <!-- Name fields -->
         <div style="display:flex;gap:10px;margin-bottom:16px;">
@@ -1160,14 +1144,14 @@
 
       <!-- Back -->
       <div style="animation:loginFadeIn 0.4s ease both;">
-        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
       </div>
 
       <!-- Icon + heading -->
       <div style="text-align:center;margin-top:32px;animation:loginFadeIn 0.5s ease 0.1s both;">
-        <div style="width:64px;height:64px;margin:0 auto 20px;border-radius:18px;background:linear-gradient(145deg, #FDCE36 0%, #F0B90B 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(253,206,54,0.25);">
+        <div style="width:64px;height:64px;margin:0 auto 20px;border-radius:18px;background:linear-gradient(145deg, #FDCE36 0%, #F0B90B 100%);display:flex;align-items:center;justify-content:center;">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
         </div>
         <div style="font-size:22px;font-weight:800;color:#1C1C1B;margin-bottom:8px;">SMS კოდის დადასტურება</div>
@@ -1178,7 +1162,7 @@
       </div>
 
       <!-- OTP card -->
-      <div style="margin-top:28px;background:#FFFFFF;border-radius:20px;padding:28px 24px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);text-align:center;animation:loginCardUp 0.5s ease 0.2s both;">
+      <div style="margin-top:28px;background:#FFFFFF;border-radius:20px;padding:28px 24px;text-align:center;animation:loginCardUp 0.5s ease 0.2s both;">
 
         <!-- OTP inputs -->
         <div style="display:flex;gap:12px;justify-content:center;margin-bottom:24px;">
@@ -1209,7 +1193,7 @@
 
       <!-- Back -->
       <div style="animation:loginFadeIn 0.4s ease both;">
-        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
       </div>
@@ -1227,7 +1211,7 @@
       </div>
 
       <!-- Accounts card -->
-      <div style="margin-top:24px;background:#FFFFFF;border-radius:20px;padding:8px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 32px rgba(0,0,0,0.06);animation:loginCardUp 0.5s ease 0.2s both;">
+      <div style="margin-top:24px;background:#FFFFFF;border-radius:20px;padding:8px;animation:loginCardUp 0.5s ease 0.2s both;">
 
         <!-- Account 1 -->
         <div style="border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background 0.15s;" onclick="navigateTo('home')" onpointerdown="this.style.background='#F8F8FA'" onpointerup="this.style.background=''">
@@ -1410,12 +1394,12 @@
 
   <!-- ==================== CATEGORIES ==================== -->
   <div class="screen warm-wash" id="screen-categories" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
         <div style="display:flex;align-items:center;gap:10px;">
-          <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-          <span style="font-size:18px;font-weight:800;color:var(--d1);">პროდუქცია</span>
+          <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <span style="font-size:18px;font-weight:800;color:#fff;">პროდუქცია</span>
         </div>
         <button class="icon-btn-light" onclick="navigateTo('chat')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -1490,19 +1474,19 @@
       <div style="margin-top:16px;">
         <div class="section-header"><span class="section-title">ბრენდები</span><span class="section-link" onclick="navigateTo('catalog')">ყველა</span></div>
         <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;">
-          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.03);" onclick="navigateTo('catalog')">
+          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="navigateTo('catalog')">
             <span style="font-size:11px;font-weight:800;color:var(--d2);">Bosch</span>
           </div>
-          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.03);" onclick="navigateTo('catalog')">
+          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="navigateTo('catalog')">
             <span style="font-size:11px;font-weight:800;color:var(--d2);">Vaillant</span>
           </div>
-          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.03);" onclick="navigateTo('catalog')">
+          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="navigateTo('catalog')">
             <span style="font-size:11px;font-weight:800;color:var(--d2);">Kermi</span>
           </div>
-          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.03);" onclick="navigateTo('catalog')">
+          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="navigateTo('catalog')">
             <span style="font-size:11px;font-weight:800;color:var(--d2);">Grundfos</span>
           </div>
-          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.03);" onclick="navigateTo('catalog')">
+          <div style="flex-shrink:0;width:80px;height:48px;border:1.5px solid rgba(253,206,54,0.2);border-radius:14px;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="navigateTo('catalog')">
             <span style="font-size:11px;font-weight:800;color:var(--d2);">Watts</span>
           </div>
         </div>
@@ -1512,12 +1496,12 @@
 
   <!-- ==================== SUBCATEGORY (Heating) ==================== -->
   <div class="screen warm-wash" id="screen-subcategory" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;justify-content:space-between;">
         <div style="display:flex;align-items:center;gap:10px;">
-          <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-          <span style="font-size:18px;font-weight:800;color:var(--d1);">გათბობის სისტემები</span>
+          <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <span style="font-size:18px;font-weight:800;color:#fff;">გათბობის სისტემები</span>
         </div>
         <button class="icon-btn-light" onclick="navigateTo('chat')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -1610,10 +1594,10 @@
 
   <!-- ==================== PROMOTIONS ==================== -->
   <div class="screen warm-wash" id="screen-promotions" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-        <span style="font-size:18px;font-weight:800;color:var(--d1);">აქციები</span>
+        <span style="font-size:18px;font-weight:800;color:#fff;">აქციები</span>
       </div>
       <div style="display:flex;gap:6px;">
         <button class="chip chip-active" onclick="setChip(this)">ყველა</button>
@@ -1660,11 +1644,11 @@
 
   <!-- ==================== PROMO DETAIL ==================== -->
   <div class="screen warm-wash" id="screen-promo-detail" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;gap:10px;">
-        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:var(--d1);">აქცია: -15%</span>
+        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span style="font-size:18px;font-weight:800;color:#fff;">აქცია: -15%</span>
       </div>
     </div>
     <div class="content" style="padding-bottom:100px;">
@@ -1719,11 +1703,11 @@
 
   <!-- ==================== CHECKOUT ==================== -->
   <div class="screen warm-wash" id="screen-checkout" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;gap:10px;">
-        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:var(--d1);">შეკვეთის გაფორმება</span>
+        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span style="font-size:18px;font-weight:800;color:#fff;">შეკვეთის გაფორმება</span>
       </div>
     </div>
     <div class="content" style="padding-bottom:180px;">
@@ -1754,7 +1738,7 @@
             <div style="font-size:13px;font-weight:600;">ვაჟა-ფშაველას გამზ. 71</div>
             <div style="font-size:11px;color:var(--l3);">თბილისი, 0186</div>
           </div>
-          <span style="font-size:12px;color:var(--mid);cursor:pointer;text-decoration:underline;">შეცვლა</span>
+          <span style="font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;text-decoration:underline;">შეცვლა</span>
         </div>
       </div>
 
@@ -1767,7 +1751,7 @@
             <div style="font-size:13px;font-weight:600;">Visa •••• 4521</div>
             <div style="font-size:11px;color:var(--l3);">ვადა: 08/28</div>
           </div>
-          <span style="font-size:12px;color:var(--mid);cursor:pointer;text-decoration:underline;">შეცვლა</span>
+          <span style="font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;text-decoration:underline;">შეცვლა</span>
         </div>
       </div>
 
@@ -1791,11 +1775,11 @@
 
   <!-- ==================== PAYMENT ==================== -->
   <div class="screen warm-wash" id="screen-payment" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div style="flex:1;display:flex;flex-direction:column;padding:0 16px;">
       <div style="display:flex;align-items:center;gap:10px;padding:12px 0 24px;">
-        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:var(--d1);">გადახდა</span>
+        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span style="font-size:18px;font-weight:800;color:#fff;">გადახდა</span>
       </div>
       <!-- Bank branding -->
       <div style="display:flex;justify-content:center;gap:16px;margin-bottom:20px;">
@@ -1855,11 +1839,11 @@
 
   <!-- ==================== TRANSACTIONS ==================== -->
   <div class="screen warm-wash" id="screen-transactions" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;gap:10px;">
-        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:var(--d1);">ტრანზაქციები</span>
+        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span style="font-size:18px;font-weight:800;color:#fff;">ტრანზაქციები</span>
       </div>
     </div>
     <div class="content">
@@ -1870,7 +1854,7 @@
         <div style="font-size:30px;font-weight:900;margin-bottom:4px;">₾ 1,250.00</div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;position:relative;">
           <div><div style="font-size:11px;color:rgba(255,255,255,0.5);font-weight:500;">ჯამური საკომისიო</div><div style="font-size:16px;font-weight:800;color:var(--accent);margin-top:2px;">₾ 4,820.00</div></div>
-          <button style="padding:10px 22px;background:linear-gradient(135deg,#FDCE36,#F5A623);border:none;border-radius:var(--radius-pill);font-size:13px;font-weight:700;color:var(--d1);cursor:pointer;box-shadow:0 4px 12px rgba(253,206,54,0.3);">გამოტანა</button>
+          <button style="padding:10px 22px;background:linear-gradient(135deg,#FDCE36,#F5A623);border:none;border-radius:var(--radius-pill);font-size:13px;font-weight:700;color:var(--d1);cursor:pointer;">გამოტანა</button>
         </div>
       </div>
 
@@ -1929,11 +1913,11 @@
 
   <!-- ==================== CONTACTS ==================== -->
   <div class="screen warm-wash" id="screen-contacts" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;gap:10px;">
-        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:var(--d1);">კონტაქტი</span>
+        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span style="font-size:18px;font-weight:800;color:#fff;">კონტაქტი</span>
       </div>
     </div>
     <div class="content">
@@ -2010,9 +1994,9 @@
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
         <div style="display:flex;align-items:center;gap:10px;">
-          <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
           <div>
-            <div style="font-size:18px;font-weight:800;color:var(--d1);">ქვაბები</div>
+            <div style="font-size:18px;font-weight:800;color:#fff;">ქვაბები</div>
             <div style="font-size:11px;color:#8E8E93;font-weight:500;">72 პროდუქტი</div>
           </div>
         </div>
@@ -2599,9 +2583,9 @@
 
   <!-- ==================== ORDERS ==================== -->
   <div class="screen warm-wash" id="screen-orders" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="font-size:18px;font-weight:800;color:var(--d1);margin-bottom:12px;">ჩემი შეკვეთები</div>
+      <div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:12px;">ჩემი შეკვეთები</div>
       <div style="display:flex;gap:6px;">
         <button class="chip chip-active">ყველა</button>
         <button class="chip">აქტიური</button>
@@ -2648,11 +2632,11 @@
 
   <!-- ==================== ORDER DETAIL ==================== -->
   <div class="screen warm-wash" id="screen-order-detail" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;gap:10px;">
-        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:var(--d1);">შეკვეთა #TH-2847</span>
+        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span style="font-size:18px;font-weight:800;color:#fff;">შეკვეთა #TH-2847</span>
       </div>
     </div>
     <div class="content">
@@ -2885,15 +2869,15 @@
 
         <!-- ==================== CART (Invoice-style) ==================== -->
   <div class="screen warm-wash" id="screen-cart" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;justify-content:space-between;">
         <div style="display:flex;align-items:center;gap:10px;">
-          <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-          <span style="font-size:18px;font-weight:800;color:var(--d1);">კალათა</span>
-          <span id="cart-header-count" style="font-size:13px;color:#8E8E93;">(3)</span>
+          <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <span style="font-size:18px;font-weight:800;color:#fff;">კალათა</span>
+          <span id="cart-header-count" style="font-size:13px;color:rgba(255,255,255,0.5);">(3)</span>
         </div>
-        <span style="font-size:12px;color:var(--mid);cursor:pointer;text-decoration:underline;" onclick="[...document.querySelectorAll('.cart-item')].forEach(i=>{i.style.transition='opacity 0.2s';i.style.opacity='0';});setTimeout(()=>{document.querySelectorAll('.cart-item').forEach(i=>i.remove());recalcCart();},250)">გასუფთავება</span>
+        <span style="font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;text-decoration:underline;" onclick="[...document.querySelectorAll('.cart-item')].forEach(i=>{i.style.transition='opacity 0.2s';i.style.opacity='0';});setTimeout(()=>{document.querySelectorAll('.cart-item').forEach(i=>i.remove());recalcCart();},250)">გასუფთავება</span>
       </div>
     </div>
     <div id="cart-items" class="content" style="padding-bottom:280px;">
@@ -3030,7 +3014,7 @@
     <div class="status-bar-light" style="position:relative;z-index:2;"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;text-align:center;padding-bottom:24px;position:relative;z-index:2;">
       <div style="font-size:18px;font-weight:800;margin-bottom:16px;color:var(--d1);">პროფილი</div>
-      <div style="width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.15),rgba(253,206,54,0.06));border:3px solid var(--accent);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(253,206,54,0.2);">
+      <div style="width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.15),rgba(253,206,54,0.06));border:3px solid var(--accent);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;">
         <span style="font-size:24px;font-weight:900;color:var(--accent-dark);">გმ</span>
       </div>
       <div style="font-size:16px;font-weight:800;color:var(--d1);">გიორგი მათიაშვილი</div>
@@ -3109,11 +3093,11 @@
 
   <!-- ==================== KIT BUILDER (Complectation) ==================== -->
   <div class="screen warm-wash" id="screen-kit" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;justify-content:space-between;">
         <div style="display:flex;align-items:center;gap:10px;">
-          <span style="font-size:18px;font-weight:800;color:var(--d1);">კომპლექტები</span>
+          <span style="font-size:18px;font-weight:800;color:#fff;">კომპლექტები</span>
         </div>
         <div style="display:flex;gap:8px;">
           <button class="icon-btn-light" onclick="kitSelectAll()">
@@ -3163,11 +3147,11 @@
 
   <!-- ==================== FAVORITES ==================== -->
   <div class="screen warm-wash" id="screen-favorites" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;gap:10px;">
-        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:var(--d1);">ფავორიტები</span>
+        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span style="font-size:18px;font-weight:800;color:#fff;">ფავორიტები</span>
       </div>
     </div>
     <div class="content" style="padding-top:14px;">
@@ -3204,21 +3188,21 @@
 
   <!-- ==================== NOTIFICATIONS ==================== -->
   <div class="screen warm-wash" id="screen-notifications" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;justify-content:space-between;">
         <div style="display:flex;align-items:center;gap:10px;">
-          <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-          <span style="font-size:18px;font-weight:800;color:var(--d1);">შეტყობინებები</span>
+          <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <span style="font-size:18px;font-weight:800;color:#fff;">შეტყობინებები</span>
         </div>
-        <span style="font-size:12px;color:var(--mid);cursor:pointer;text-decoration:underline;">ყველა წაკითხული</span>
+        <span style="font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;text-decoration:underline;">ყველა წაკითხული</span>
       </div>
     </div>
     <div class="content" style="padding-top:10px;">
       <!-- Unread -->
       <div class="card notif-card-unread" style="cursor:pointer;" onclick="navigateTo('order-detail')">
         <div style="display:flex;gap:10px;align-items:flex-start;">
-          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FDCE36,#F5A623);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(253,206,54,0.25);">
+          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FDCE36,#F5A623);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
           </div>
           <div style="flex:1;">
@@ -3230,7 +3214,7 @@
       </div>
       <div class="card notif-card-unread" style="cursor:pointer;" onclick="navigateTo('promotions')">
         <div style="display:flex;gap:10px;align-items:flex-start;">
-          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FDCE36,#F5A623);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(253,206,54,0.25);">
+          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FDCE36,#F5A623);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <div style="flex:1;">
@@ -3270,10 +3254,10 @@
 
   <!-- ==================== SEARCH RESULTS ==================== -->
   <div class="screen warm-wash" id="screen-search" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;gap:8px;">
-        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
         <div class="input-wrap" style="flex:1;border:1.5px solid #E2E2E8;border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:10px;background:#F8F8FA;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
           <input type="text" id="search-input" placeholder="ძიება..." value="bosch" style="background:none;border:none;color:var(--d1);font-size:15px;width:100%;font-family:inherit;">
@@ -3337,11 +3321,11 @@
 
   <!-- ==================== ADDRESSES ==================== -->
   <div class="screen warm-wash" id="screen-addresses" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;gap:10px;">
-        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:var(--d1);">შენახული მისამართები</span>
+        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span style="font-size:18px;font-weight:800;color:#fff;">შენახული მისამართები</span>
       </div>
     </div>
     <div class="content" style="padding-top:14px;">
@@ -3386,16 +3370,16 @@
 
   <!-- ==================== PERSONAL INFO ==================== -->
   <div class="screen warm-wash" id="screen-personal-info" style="background:#F2F2F7;">
-    <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
       <div style="display:flex;align-items:center;gap:10px;">
-        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:var(--d1);">პირადი ინფორმაცია</span>
+        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span style="font-size:18px;font-weight:800;color:#fff;">პირადი ინფორმაცია</span>
       </div>
     </div>
     <div class="content" style="padding-top:14px;">
       <div style="text-align:center;margin-bottom:24px;">
-        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.15),rgba(253,206,54,0.06));border:3px solid var(--accent);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 4px 16px rgba(253,206,54,0.2);">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.15),rgba(253,206,54,0.06));border:3px solid var(--accent);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;position:relative;">
           <span style="font-size:26px;font-weight:900;color:var(--accent-dark);">გმ</span>
           <div style="position:absolute;bottom:0;right:0;width:24px;height:24px;border-radius:50%;background:var(--d1);display:flex;align-items:center;justify-content:center;border:2px solid var(--white);">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
@@ -4583,7 +4567,7 @@
     const typing = document.createElement('div');
     typing.id = 'typing-indicator';
     typing.style.cssText = 'display:flex;gap:8px;align-items:flex-end;margin-bottom:14px;';
-    typing.innerHTML = '<div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.2),rgba(253,206,54,0.08));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(253,206,54,0.15);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg></div><div style="background:var(--white);border-radius:12px 12px 12px 2px;padding:12px 16px;border:var(--border);display:flex;gap:4px;"><div class="typing-dot" style="width:6px;height:6px;border-radius:50%;background:var(--l3);"></div><div class="typing-dot" style="width:6px;height:6px;border-radius:50%;background:var(--l2);"></div><div class="typing-dot" style="width:6px;height:6px;border-radius:50%;background:var(--l1);"></div></div>';
+    typing.innerHTML = '<div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.2),rgba(253,206,54,0.08));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg></div><div style="background:var(--white);border-radius:12px 12px 12px 2px;padding:12px 16px;border:var(--border);display:flex;gap:4px;"><div class="typing-dot" style="width:6px;height:6px;border-radius:50%;background:var(--l3);"></div><div class="typing-dot" style="width:6px;height:6px;border-radius:50%;background:var(--l2);"></div><div class="typing-dot" style="width:6px;height:6px;border-radius:50%;background:var(--l1);"></div></div>';
     container.appendChild(typing);
     container.scrollTop = container.scrollHeight;
 
@@ -4600,7 +4584,7 @@
         'გთხოვთ დააზუსტოთ — საცხოვრებელი ფართია თუ კომერციული?'
       ];
       const aiReply = responses[Math.floor(Math.random() * responses.length)];
-      aiDiv.innerHTML = '<div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.2),rgba(253,206,54,0.08));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(253,206,54,0.15);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg></div><div class="chat-bubble chat-ai"><div>' + aiReply + '</div><div class="chat-time">' + time + '</div></div>';
+      aiDiv.innerHTML = '<div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.2),rgba(253,206,54,0.08));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg></div><div class="chat-bubble chat-ai"><div>' + aiReply + '</div><div class="chat-time">' + time + '</div></div>';
       container.appendChild(aiDiv);
       container.scrollTop = container.scrollHeight;
     }, 1200 + Math.random() * 800);
@@ -4944,7 +4928,7 @@
 
       const aiDiv = document.createElement('div');
       aiDiv.style.cssText = 'display:flex;gap:8px;margin-bottom:14px;align-items:flex-end;';
-      aiDiv.innerHTML = '<div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.2),rgba(253,206,54,0.08));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(253,206,54,0.15);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg></div>' +
+      aiDiv.innerHTML = '<div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.2),rgba(253,206,54,0.08));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg></div>' +
         '<div style="max-width:80%;">' +
         '<div class="chat-bubble chat-ai" style="margin-bottom:6px;"><div>120 მ²-ისთვის შემოგთავაზებთ ოპტიმალურ ბანდლს:</div><div class="chat-time">' + time + '</div></div>' +
         '<div style="background:var(--white);border-radius:var(--radius);padding:12px;border:var(--border);">' +
