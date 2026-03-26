@@ -181,9 +181,9 @@
 
   /* ── Center AI button — lifted ── */
   .tab-ai-center {
-    width: 78px; height: 78px; flex-shrink: 0; cursor: pointer; position: relative;
-    padding: 0; border: 0; outline: 6px solid #ffffff;
-    display: flex; align-items: center; justify-content: center;
+    width: 72px; height: 72px; flex-shrink: 0; cursor: pointer; position: relative;
+    padding: 0; border: 0; outline: 5px solid #ffffff;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
     border-radius: 100%;
     background: #FDCE36;
     margin: 0 4px;
@@ -192,7 +192,15 @@
     -webkit-tap-highlight-color: transparent;
   }
   .tab-ai-center:active { transform: scale(0.88); }
-  .tab-ai-label { display: none; }
+  .tab-ai-label {
+    position: absolute;
+    bottom: -20px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: rgba(255,255,255,0.35);
+    white-space: nowrap;
+  }
 
   /* ── Center AI bubble — solid gold, no shadow ── */
   .tab-ai-bubble {
@@ -3513,6 +3521,7 @@
     </button>
     <button class="tab-ai-center" onclick="navigateTo('chat')">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
+      <span class="tab-ai-label">AI</span>
     </button>
     <button class="tab-item" data-tab="favorites" onclick="switchTab('favorites')">
       <div class="tab-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
