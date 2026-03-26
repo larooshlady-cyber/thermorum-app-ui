@@ -148,42 +148,27 @@
 
   /* ── Each nav pill ── */
   .tab-item {
-    height: 60px; cursor: pointer; position: relative;
-    padding: 0 22px; border: none; outline: none;
+    width: 60px; height: 60px; cursor: pointer; position: relative;
+    padding: 0; border: none; outline: none;
     display: flex; align-items: center; justify-content: center;
-    gap: 10px; border-radius: 100px;
+    border-radius: 100px;
     background: #1C1C1B;
     box-shadow: 0 6px 24px rgba(0,0,0,0.3);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: box-shadow 0.3s ease, background 0.3s ease;
     -webkit-tap-highlight-color: transparent;
-    overflow: hidden;
     pointer-events: all;
   }
-  .tab-item:active { transform: scale(0.92); }
+  .tab-item:active { transform: scale(0.92); transition: transform 0.1s; }
 
-  .tab-item .tab-label {
-    font-size: 13px; font-weight: 700;
-    color: #FDCE36; font-family: inherit;
-    white-space: nowrap;
-    max-width: 0; opacity: 0; overflow: hidden;
-    transition: max-width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-                opacity 0.25s ease 0.05s,
-                padding 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    padding-left: 0;
-  }
+  .tab-item .tab-label { display: none; }
   .tab-item .tab-icon {
     width: 26px; height: 26px;
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
   }
 
-  /* ── Active: pill expands with label ── */
+  /* ── Active: golden glow, no size change ── */
   .tab-item.active {
-    background: #1C1C1B;
-    padding: 0 24px;
-  }
-  .tab-item.active .tab-label {
-    max-width: 120px; opacity: 1; padding-left: 2px;
+    box-shadow: 0 0 0 2.5px rgba(253,206,54,0.5), 0 6px 24px rgba(0,0,0,0.3);
   }
   .tab-item.active .tab-icon svg { stroke: #FDCE36 !important; }
 
