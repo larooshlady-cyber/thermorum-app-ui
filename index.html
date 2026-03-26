@@ -137,7 +137,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 32px;
     z-index: 50;
     background: none;
     pointer-events: none;
@@ -145,19 +145,22 @@
   }
   .tab-bar.hidden { transform: translateY(calc(100% + 60px)); opacity: 0; }
 
-  /* ── Side pills — dark circles ── */
+  /* ── Side pills — stadium pill shape ── */
   .tab-item {
-    width: 52px; height: 52px; cursor: pointer; position: relative;
+    width: 64px; height: 48px; cursor: pointer; position: relative;
     padding: 0; border: none; outline: none;
     display: flex; align-items: center; justify-content: center;
-    border-radius: 50%;
-    background: var(--black);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    transition: transform 0.2s ease;
+    border-radius: 22px;
+    background: linear-gradient(165deg, #2A2A29 0%, #1C1C1B 100%);
+    border: 0.5px solid rgba(255,255,255,0.08);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.35),
+                0 4px 12px rgba(0,0,0,0.25),
+                0 8px 28px rgba(0,0,0,0.15);
+    transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
     -webkit-tap-highlight-color: transparent;
     pointer-events: all;
   }
-  .tab-item:active { transform: scale(0.9); }
+  .tab-item:active { transform: scale(0.88); }
 
   .tab-item .tab-label { display: none; }
   .tab-item .tab-icon {
@@ -165,8 +168,12 @@
     display: flex; align-items: center; justify-content: center;
   }
 
-  /* ── Active: yellow icon + dot below ── */
-  .tab-item.active .tab-icon svg { stroke: var(--accent) !important; }
+  /* ── Active: yellow icon + dot below + breathing ── */
+  .tab-item.active {
+    border-color: rgba(253,206,54,0.15);
+    animation: pill-breathe 4s ease-in-out infinite;
+  }
+  .tab-item.active .tab-icon svg { stroke: var(--accent) !important; transition: stroke 0.25s ease; }
   .tab-item.active::after {
     content: '';
     position: absolute;
@@ -174,17 +181,21 @@
     width: 5px; height: 5px;
     border-radius: 50%;
     background: var(--accent);
+    box-shadow: 0 0 8px rgba(253,206,54,0.4);
   }
 
   /* ── Inactive ── */
-  .tab-item:not(.active) .tab-icon svg { stroke: rgba(255,255,255,0.35) !important; }
+  .tab-item:not(.active) .tab-icon svg { stroke: rgba(255,255,255,0.35) !important; transition: stroke 0.25s ease; }
 
-  /* ── Center AI bubble — flat brand yellow ── */
+  /* ── Center AI bubble — rich gold gradient ── */
   .tab-ai-bubble {
     width: 72px; height: 72px; flex-shrink: 0;
     border-radius: 36px;
-    background: var(--accent);
-    box-shadow: 0 4px 20px rgba(253,206,54,0.3);
+    background: linear-gradient(145deg, #FFE066 0%, #FDCE36 50%, #E5B820 100%);
+    box-shadow: 0 1px 3px rgba(229,184,32,0.4),
+                0 4px 12px rgba(253,206,54,0.35),
+                0 8px 24px rgba(253,206,54,0.15),
+                0 12px 36px rgba(0,0,0,0.2);
     display: flex; align-items: center; justify-content: center;
     overflow: visible; cursor: pointer;
     pointer-events: all;
@@ -242,10 +253,13 @@
     50% { transform: scale(1.25); opacity: 0; }
   }
 
-  /* ── Expanded state: dark bar — kill all animations ── */
+  /* ── Expanded state: premium dark bar — kill all animations ── */
   .tab-ai-bubble.expanded {
-    background: var(--black);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    background: linear-gradient(180deg, #242424 0%, #1C1C1B 100%);
+    border: 0.5px solid rgba(255,255,255,0.06);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4),
+                0 6px 20px rgba(0,0,0,0.3),
+                0 14px 40px rgba(0,0,0,0.15);
     animation: none;
     overflow: hidden;
   }
@@ -257,7 +271,7 @@
     color: var(--white);
   }
   .tab-ai-bubble.expanded .tab-ai-inner-input::placeholder {
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.3);
   }
   .tab-ai-bubble.expanded .tab-ai-side-btn svg {
     stroke: rgba(255,255,255,0.5) !important;
@@ -281,11 +295,15 @@
     display: flex; align-items: center; justify-content: center;
     transition: opacity 0.15s;
     position: relative; z-index: 1;
+    animation: sparkle-idle 6s ease-in-out infinite;
+  }
+  .tab-ai-bubble.expanded .tab-ai-sparkle {
+    animation: none;
   }
   .tab-ai-bubble .tab-ai-inner-input {
     width: 0; flex: 0; min-width: 0; height: 100%;
     border: none; background: transparent; color: var(--white);
-    padding: 0; font-size: 14px; font-weight: 500; outline: none;
+    padding: 0; font-size: 15px; font-weight: 500; outline: none;
     opacity: 0; font-family: inherit;
     transition: opacity 0.2s ease 0.12s, flex 0.3s ease;
     position: relative; z-index: 1;
@@ -298,10 +316,11 @@
     position: relative; z-index: 1;
   }
   .tab-ai-bubble .tab-ai-side-btn {
-    width: 44px; height: 44px; border: none;
+    width: 42px; height: 42px; border: none;
     background: rgba(255,255,255,0.1);
+    border: 0.5px solid rgba(255,255,255,0.06);
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; border-radius: 50%;
+    flex-shrink: 0; border-radius: 14px;
     padding: 0; cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -360,6 +379,7 @@
   .voice-rec-dot {
     width: 10px; height: 10px; border-radius: 50%;
     background: #FF3B30; flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(255,59,48,0.4);
     animation: rec-pulse 1.2s ease-in-out infinite;
   }
   @keyframes rec-pulse {
@@ -367,18 +387,19 @@
     50% { opacity: 0.4; transform: scale(0.75); }
   }
   .voice-rec-timer {
-    font-size: 15px; font-weight: 600; color: var(--white);
+    font-size: 14px; font-weight: 700; color: var(--white);
     font-variant-numeric: tabular-nums;
     font-family: inherit; flex-shrink: 0;
     min-width: 42px;
+    letter-spacing: 0.5px;
   }
   .voice-rec-wave {
     display: flex; align-items: center; gap: 2.5px;
     flex: 1; height: 32px; overflow: hidden;
   }
   .voice-rec-wave span {
-    flex: 1; min-width: 2px; border-radius: 2px;
-    background: rgba(253,206,54,0.6);
+    flex: 1; min-width: 2px; border-radius: 1.5px;
+    background: rgba(253,206,54,0.5);
     height: 4px;
     animation: wave-bar 0.8s ease-in-out infinite alternate;
     animation-delay: var(--d, 0s);
@@ -386,6 +407,16 @@
   @keyframes wave-bar {
     0% { height: 4px; }
     100% { height: var(--h, 20px); }
+  }
+
+  /* ── New keyframes: pill breathe + sparkle idle ── */
+  @keyframes pill-breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+  @keyframes sparkle-idle {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(8deg); }
   }
 
   /* ═══════════ CARDS ═══════════ */
