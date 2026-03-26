@@ -137,7 +137,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 28px;
+    gap: 32px;
     z-index: 50;
     background: none;
     pointer-events: none;
@@ -145,18 +145,15 @@
   }
   .tab-bar.hidden { transform: translateY(calc(100% + 60px)); opacity: 0; }
 
-  /* ── Side pills — frosted glass circles ── */
+  /* ── Side pills — clean white circles ── */
   .tab-item {
-    width: 50px; height: 50px; cursor: pointer; position: relative;
-    padding: 0; border: none; outline: none;
+    width: 48px; height: 48px; cursor: pointer; position: relative;
+    padding: 0; outline: none;
     display: flex; align-items: center; justify-content: center;
     border-radius: 50%;
-    background: rgba(0,0,0,0.2);
-    -webkit-backdrop-filter: blur(24px);
-    backdrop-filter: blur(24px);
-    border: 0.5px solid rgba(255,255,255,0.1);
-    transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
-                background 0.25s ease, border-color 0.25s ease;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
     -webkit-tap-highlight-color: transparent;
     pointer-events: all;
   }
@@ -169,11 +166,7 @@
   }
 
   /* ── Active ── */
-  .tab-item.active {
-    background: rgba(0,0,0,0.35);
-    border-color: rgba(253,206,54,0.12);
-  }
-  .tab-item.active .tab-icon svg { stroke: var(--accent) !important; transition: stroke 0.25s ease; }
+  .tab-item.active .tab-icon svg { stroke: var(--accent-dark) !important; transition: stroke 0.25s ease; }
   .tab-item.active::after {
     content: '';
     position: absolute;
@@ -184,7 +177,7 @@
   }
 
   /* ── Inactive ── */
-  .tab-item:not(.active) .tab-icon svg { stroke: rgba(255,255,255,0.4) !important; transition: stroke 0.25s ease; }
+  .tab-item:not(.active) .tab-icon svg { stroke: var(--l3) !important; transition: stroke 0.25s ease; }
 
   /* ── Center AI bubble — solid gold, no shadow ── */
   .tab-ai-bubble {
