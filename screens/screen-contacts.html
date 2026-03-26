@@ -171,10 +171,10 @@
 
   /* ── Active ── */
   .tab-item.active {
-    background: rgba(253,206,54,0.12);
+    background: var(--d1);
   }
-  .tab-item.active .tab-icon svg { stroke: var(--accent) !important; transition: stroke 0.25s ease; }
-  .tab-item.active .tab-label { color: var(--accent); font-weight: 700; }
+  .tab-item.active .tab-icon svg { stroke: #fff !important; transition: stroke 0.25s ease; }
+  .tab-item.active .tab-label { color: #fff; font-weight: 700; }
 
   /* ── Inactive ── */
   .tab-item:not(.active) .tab-icon svg { stroke: rgba(255,255,255,0.35) !important; transition: stroke 0.25s ease; }
@@ -1434,7 +1434,7 @@
             </button>
             <button style="width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--accent);border:none;position:relative;flex-shrink:0;" onclick="navigateTo('cart')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-              <div class="badge" id="home-cart-badge" style="background:var(--d1);color:var(--white);top:-4px;right:-4px;">3</div>
+              <div class="badge" id="home-cart-badge" style="background:var(--red);color:var(--white);top:-4px;right:-4px;">3</div>
             </button>
           </div>
         </div>
@@ -1475,33 +1475,33 @@
     </div>
 
     <!-- 4 Navigation Buttons — 1x4 vertical -->
-    <div style="position:relative;z-index:1;padding:24px 16px 80px;display:flex;flex-direction:column;gap:14px;">
+    <div style="position:relative;z-index:1;padding:28px 16px 80px;display:flex;flex-direction:column;gap:16px;">
       <div style="cursor:pointer;background:#FFF8E1;border-radius:20px;padding:24px 20px;border:1.5px solid rgba(253,206,54,0.35);transition:transform 0.12s ease;display:flex;align-items:center;gap:16px;" onclick="switchTab('kit')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
         <div style="width:52px;height:52px;border-radius:14px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
         </div>
-        <div style="flex:1;"><div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.2;">ქვაბის კომპლექტი</div></div>
+        <div style="flex:1;"><div style="font-size:18px;font-weight:900;color:var(--d1);line-height:1.2;">ქვაბის კომპლექტი</div></div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" opacity="0.4"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
       <div style="cursor:pointer;background:#FFF8E1;border-radius:20px;padding:24px 20px;border:1.5px solid rgba(253,206,54,0.35);transition:transform 0.12s ease;display:flex;align-items:center;gap:16px;" onclick="navigateTo('categories')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
         <div style="width:52px;height:52px;border-radius:14px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         </div>
-        <div style="flex:1;"><div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.2;">პროდუქცია</div></div>
+        <div style="flex:1;"><div style="font-size:18px;font-weight:900;color:var(--d1);line-height:1.2;">პროდუქცია</div></div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" opacity="0.4"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
       <div style="cursor:pointer;background:#FFF8E1;border-radius:20px;padding:24px 20px;border:1.5px solid rgba(253,206,54,0.35);transition:transform 0.12s ease;display:flex;align-items:center;gap:16px;" onclick="switchTab('orders')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
         <div style="width:52px;height:52px;border-radius:14px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
-        <div style="flex:1;"><div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.2;">შეკვეთები</div></div>
+        <div style="flex:1;"><div style="font-size:18px;font-weight:900;color:var(--d1);line-height:1.2;">შეკვეთები</div></div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" opacity="0.4"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
       <div style="cursor:pointer;background:#FFF8E1;border-radius:20px;padding:24px 20px;border:1.5px solid rgba(253,206,54,0.35);transition:transform 0.12s ease;display:flex;align-items:center;gap:16px;" onclick="switchTab('promotions')" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
         <div style="width:52px;height:52px;border-radius:14px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="1.8"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
         </div>
-        <div style="flex:1;"><div style="font-size:16px;font-weight:800;color:var(--d1);line-height:1.2;">აქციები</div></div>
+        <div style="flex:1;"><div style="font-size:18px;font-weight:900;color:var(--d1);line-height:1.2;">აქციები</div></div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" opacity="0.4"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
     </div>
@@ -3656,7 +3656,7 @@
       <span class="tab-label">მთავარი</span>
     </button>
     <button class="tab-ai-center" onclick="navigateTo('chat')">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
     </button>
     <button class="tab-item" data-tab="favorites" onclick="switchTab('favorites')">
       <div class="tab-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
@@ -3687,10 +3687,10 @@
   function updateGreeting() {
     var h = new Date().getHours();
     var g;
-    if (h >= 5 && h < 12) g = 'დილა მშვიდობისა,';
-    else if (h >= 12 && h < 17) g = 'შუადღე მშვიდობისა,';
-    else if (h >= 17 && h < 21) g = 'საღამო მშვიდობისა,';
-    else g = 'ღამე მშვიდობისა,';
+    if (h >= 5 && h < 12) g = 'დილა მშვიდობისა';
+    else if (h >= 12 && h < 17) g = 'შუადღე მშვიდობისა';
+    else if (h >= 17 && h < 21) g = 'საღამო მშვიდობისა';
+    else g = 'ღამე მშვიდობისა';
     var el = document.getElementById('greeting-text');
     if (el) el.textContent = g;
   }
