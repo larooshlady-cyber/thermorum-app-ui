@@ -128,7 +128,7 @@
   .hide-scrollbar::-webkit-scrollbar { display: none; }
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-  /* ═══════════ BOTTOM NAV — PREMIUM FLOATING DOCK ═══════════ */
+  /* ═══════════ BOTTOM NAV — FLOATING DOCK ═══════════ */
   .tab-bar {
     position: absolute;
     bottom: 24px; left: 0; right: 0;
@@ -137,7 +137,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 18px;
+    gap: 40px;
     z-index: 50;
     background: none;
     pointer-events: none;
@@ -145,18 +145,15 @@
   }
   .tab-bar.hidden { transform: translateY(calc(100% + 60px)); opacity: 0; }
 
-  /* ── Side pills — frosted glass dark ── */
+  /* ── Side pills — dark circles ── */
   .tab-item {
     width: 64px; height: 64px; cursor: pointer; position: relative;
     padding: 0; border: none; outline: none;
     display: flex; align-items: center; justify-content: center;
     border-radius: 50%;
-    background: rgba(28,28,27,0.85);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.06);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15),
-                inset 0 1px 0 rgba(255,255,255,0.05);
-    transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.2s ease;
+    background: var(--black);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease;
     -webkit-tap-highlight-color: transparent;
     pointer-events: all;
   }
@@ -164,73 +161,78 @@
 
   .tab-item .tab-label { display: none; }
   .tab-item .tab-icon {
-    width: 26px; height: 26px;
+    width: 24px; height: 24px;
     display: flex; align-items: center; justify-content: center;
-    transition: transform 0.25s ease;
   }
 
-  /* ── Active: warm amber glow ── */
-  .tab-item.active {
-    border-color: rgba(229,184,32,0.35);
-    box-shadow: 0 0 0 1.5px rgba(229,184,32,0.25),
-                0 4px 24px rgba(229,184,32,0.15),
-                0 8px 32px rgba(0,0,0,0.2),
-                inset 0 1px 0 rgba(255,255,255,0.08);
-  }
-  .tab-item.active .tab-icon { transform: scale(1.08); }
-  .tab-item.active .tab-icon svg { stroke: #E5B820 !important; }
-
-  /* ── Active dot indicator ── */
+  /* ── Active: yellow icon + dot below ── */
+  .tab-item.active .tab-icon svg { stroke: var(--accent) !important; }
   .tab-item.active::after {
     content: '';
     position: absolute;
-    bottom: -8px; left: 50%; transform: translateX(-50%);
-    width: 4px; height: 4px;
+    bottom: -10px; left: 50%; transform: translateX(-50%);
+    width: 5px; height: 5px;
     border-radius: 50%;
-    background: #E5B820;
-    box-shadow: 0 0 6px rgba(229,184,32,0.6);
+    background: var(--accent);
   }
 
   /* ── Inactive ── */
-  .tab-item:not(.active) .tab-icon svg { stroke: rgba(255,255,255,0.4) !important; }
+  .tab-item:not(.active) .tab-icon svg { stroke: rgba(255,255,255,0.35) !important; }
 
-  /* ── Center AI orb ── */
+  /* ── Center AI bubble — flat brand yellow ── */
   .tab-ai-bubble {
     width: 72px; height: 72px; flex-shrink: 0;
     border-radius: 50%;
-    background: linear-gradient(145deg, #F5CE3E 0%, #D4A312 50%, #C49620 100%);
-    box-shadow: 0 4px 20px rgba(196,150,32,0.35),
-                0 8px 40px rgba(196,150,32,0.15),
-                inset 0 2px 4px rgba(255,255,255,0.3),
-                inset 0 -2px 6px rgba(160,120,10,0.2);
+    background: var(--accent);
+    box-shadow: 0 4px 20px rgba(253,206,54,0.3);
     display: flex; align-items: center; justify-content: center;
     overflow: hidden; cursor: pointer;
     pointer-events: all;
     transition: width 0.35s cubic-bezier(0.25,1,0.5,1),
+                height 0.35s cubic-bezier(0.25,1,0.5,1),
+                border-radius 0.35s cubic-bezier(0.25,1,0.5,1),
+                background 0.3s ease,
                 box-shadow 0.3s ease, transform 0.2s ease;
     position: relative;
   }
-  .tab-ai-bubble:active { transform: scale(0.9); }
+  .tab-ai-bubble:active { transform: scale(0.92); }
 
   /* ── Breathing pulse ring ── */
   .tab-ai-bubble::before {
     content: '';
-    position: absolute; inset: -6px;
+    position: absolute; inset: -5px;
     border-radius: 50%;
-    border: 1.5px solid rgba(229,184,32,0.25);
+    border: 1.5px solid rgba(253,206,54,0.3);
     animation: ai-breathe 3s ease-in-out infinite;
     pointer-events: none;
   }
   @keyframes ai-breathe {
-    0%, 100% { transform: scale(1); opacity: 0.4; }
-    50% { transform: scale(1.12); opacity: 0; }
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.15); opacity: 0; }
+  }
+
+  /* ── Expanded state: dark bar ── */
+  .tab-ai-bubble.expanded {
+    background: var(--black);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border-radius: 28px;
+  }
+  .tab-ai-bubble.expanded::before { display: none; }
+  .tab-ai-bubble.expanded .tab-ai-inner-input {
+    color: var(--white);
+  }
+  .tab-ai-bubble.expanded .tab-ai-inner-input::placeholder {
+    color: rgba(255,255,255,0.4);
+  }
+  .tab-ai-bubble.expanded .tab-ai-side-btn svg {
+    stroke: rgba(255,255,255,0.5) !important;
   }
 
   /* ── Ripple on tap ── */
   .tab-ai-bubble .ai-ripple {
     position: absolute; inset: 0;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
     transform: scale(0); opacity: 0;
     pointer-events: none;
   }
@@ -250,7 +252,7 @@
   }
   .tab-ai-bubble .tab-ai-inner-input {
     width: 0; flex: 0; min-width: 0; height: 100%;
-    border: none; background: transparent; color: var(--d1);
+    border: none; background: transparent; color: var(--white);
     padding: 0; font-size: 14px; font-weight: 500; outline: none;
     opacity: 0; font-family: inherit;
     transition: opacity 0.2s ease 0.12s, flex 0.3s ease;
@@ -3290,7 +3292,7 @@
   <!-- BOTTOM NAV -->
   <nav class="tab-bar hidden" id="tabBar">
     <button class="tab-item active" data-tab="home" onclick="switchTab('home')">
-      <div class="tab-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E5B820" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="tab-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FDCE36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
       <span class="tab-label">მთავარი</span>
     </button>
     <!-- AI Chat — expanding bubble (same as home screen) -->
@@ -3304,7 +3306,7 @@
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
       </button>
       <div class="tab-ai-send" id="navAiSendWrap">
-        <svg class="sparkle-icon" width="26" height="26" viewBox="0 0 24 24" fill="rgba(28,28,27,0.85)" stroke="none"><path d="M12 1L9.2 9.2 1 12l8.2 2.8L12 23l2.8-8.2L23 12l-8.2-2.8z"/></svg>
+        <svg class="sparkle-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
         <svg class="send-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </div>
     </div>
@@ -3465,19 +3467,20 @@
     var sendWrap = document.getElementById('navAiSendWrap');
     var sparkle = sendWrap.querySelector('.sparkle-icon');
     var send = sendWrap.querySelector('.send-icon');
+    w.classList.add('expanded');
     w.style.width = 'calc(100vw - 40px)';
-    w.style.background = '#FFFFFF';
-    w.style.boxShadow = '0 4px 24px rgba(0,0,0,0.12)';
+    w.style.height = '56px';
     w.style.cursor = 'default';
     w.onclick = null;
     sparkle.style.opacity = '0';
-    cam.style.width = '38px'; cam.style.opacity = '1'; cam.style.padding = '0 2px';
-    mic.style.width = '38px'; mic.style.opacity = '1'; mic.style.padding = '0 2px';
-    inp.style.flex = '1'; inp.style.padding = '0 4px';
+    cam.style.width = '38px'; cam.style.opacity = '1'; cam.style.padding = '0 6px';
+    mic.style.width = '38px'; mic.style.opacity = '1'; mic.style.padding = '0 6px';
+    inp.style.flex = '1'; inp.style.padding = '0 8px';
     setTimeout(function(){
       send.style.opacity = '1';
-      sendWrap.style.background = '#FDCE36';
-      sendWrap.style.width = '44px'; sendWrap.style.height = '44px';
+      sendWrap.style.background = 'var(--accent)';
+      sendWrap.style.width = '40px'; sendWrap.style.height = '40px';
+      sendWrap.style.borderRadius = '50%';
       sendWrap.style.margin = '0 8px 0 0';
       sendWrap.style.cursor = 'pointer'; sendWrap.style.flexShrink = '0';
       sendWrap.onclick = function(e){ e.stopPropagation(); navigateTo('chat'); collapseNavAi(); };
@@ -3502,15 +3505,16 @@
     mic.style.width = '0'; mic.style.opacity = '0'; mic.style.padding = '0';
     send.style.opacity = '0';
     sendWrap.style.background = 'none';
-    sendWrap.style.width = '60px'; sendWrap.style.height = '60px';
+    sendWrap.style.width = '72px'; sendWrap.style.height = '72px';
+    sendWrap.style.borderRadius = '50%';
     sendWrap.style.margin = '0'; sendWrap.style.cursor = '';
     sendWrap.onclick = null;
     setTimeout(function(){ sparkle.style.opacity = '1'; }, 80);
-    w.style.width = '60px';
-    w.style.background = '#FDCE36';
-    w.style.boxShadow = '0 4px 16px rgba(229,184,32,0.35)';
+    w.classList.remove('expanded');
+    w.style.width = '72px';
+    w.style.height = '72px';
     w.style.cursor = 'pointer';
-    w.onclick = expandNavAi;
+    w.onclick = function(){ triggerAiRipple(); expandNavAi(); };
   }
   // Collapse nav AI when clicking outside
   document.addEventListener('pointerdown', function(e) {
