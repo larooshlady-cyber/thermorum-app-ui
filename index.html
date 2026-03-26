@@ -329,6 +329,61 @@
   .tab-ai-bubble .tab-ai-send .send-icon {
     position: absolute; opacity: 0; transition: opacity 0.15s;
   }
+  .tab-ai-bubble .tab-ai-send .stop-icon {
+    position: absolute; opacity: 0; transition: opacity 0.15s;
+  }
+
+  /* ── Camera hide (same pattern as mic) ── */
+  #navAiCam {
+    transition: transform 0.25s ease, opacity 0.2s ease, max-width 0.25s ease;
+    max-width: 44px;
+  }
+  #navAiCam.hidden-btn {
+    transform: translateX(20px);
+    opacity: 0; max-width: 0;
+    pointer-events: none;
+  }
+
+  /* ── Voice recording UI ── */
+  .voice-rec-ui {
+    display: flex; align-items: center; gap: 12px;
+    flex: 1; height: 100%;
+    padding-left: 20px;
+    opacity: 0; max-width: 0; overflow: hidden;
+    transition: opacity 0.25s ease, max-width 0.3s ease;
+    position: relative; z-index: 1;
+  }
+  .voice-rec-ui.active {
+    opacity: 1; max-width: 500px;
+  }
+  .voice-rec-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #FF3B30; flex-shrink: 0;
+    animation: rec-pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes rec-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.75); }
+  }
+  .voice-rec-timer {
+    font-size: 15px; font-weight: 600; color: var(--white);
+    font-variant-numeric: tabular-nums;
+    font-family: inherit; flex-shrink: 0;
+    min-width: 42px;
+  }
+  .voice-rec-wave {
+    display: flex; align-items: center; gap: 3px;
+    flex: 1; height: 32px; overflow: hidden;
+  }
+  .voice-rec-wave span {
+    width: 3px; border-radius: 2px;
+    background: rgba(253,206,54,0.6);
+    animation: wave-bar 0.8s ease-in-out infinite alternate;
+  }
+  @keyframes wave-bar {
+    0% { height: 4px; }
+    100% { height: var(--h, 20px); }
+  }
 
   /* ═══════════ CARDS ═══════════ */
   .card {
@@ -3354,17 +3409,23 @@
       <div class="ai-ring-2"></div>
       <div class="ai-ripple" id="aiRipple"></div>
       <input class="tab-ai-inner-input" id="navAiInput" type="text" placeholder="AI ასისტენტი..." onclick="event.stopPropagation()" oninput="toggleMicBtn()" onkeydown="if(event.key==='Enter'){event.stopPropagation();navigateTo('chat');collapseNavAi();}">
+      <div class="voice-rec-ui" id="voiceRecUI">
+        <div class="voice-rec-dot"></div>
+        <span class="voice-rec-timer" id="voiceRecTimer">0:00</span>
+        <div class="voice-rec-wave" id="voiceRecWave"></div>
+      </div>
       <div class="tab-ai-actions" id="navAiActions">
         <button class="tab-ai-side-btn" id="navAiCam" onclick="event.stopPropagation();navigateTo('chat');collapseNavAi();">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
         </button>
-        <button class="tab-ai-side-btn" id="navAiMic" onclick="event.stopPropagation();navigateTo('chat');collapseNavAi();">
+        <button class="tab-ai-side-btn" id="navAiMic" onclick="event.stopPropagation();startVoiceRec();">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
         </button>
       </div>
       <div class="tab-ai-send" id="navAiSendWrap">
         <svg class="sparkle-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
         <svg class="send-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <svg class="stop-icon" width="18" height="18" viewBox="0 0 24 24" fill="var(--white)" stroke="none"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>
       </div>
     </div>
     <button class="tab-item" data-tab="favorites" onclick="switchTab('favorites')">
@@ -3504,6 +3565,94 @@
     });
   }
 
+  /* ── Voice Recording ── */
+  var voiceRecording = false;
+  var voiceTimer = null;
+  var voiceSecs = 0;
+
+  function buildWaveBars() {
+    var wave = document.getElementById('voiceRecWave');
+    wave.innerHTML = '';
+    for (var i = 0; i < 24; i++) {
+      var bar = document.createElement('span');
+      var h = Math.floor(Math.random() * 22) + 6;
+      bar.style.setProperty('--h', h + 'px');
+      bar.style.animationDelay = (i * 0.05) + 's';
+      wave.appendChild(bar);
+    }
+  }
+
+  function startVoiceRec() {
+    if (voiceRecording) return;
+    voiceRecording = true;
+    voiceSecs = 0;
+
+    // Hide input, camera; show recording UI
+    var inp = document.getElementById('navAiInput');
+    var cam = document.getElementById('navAiCam');
+    var mic = document.getElementById('navAiMic');
+    var actions = document.getElementById('navAiActions');
+    var recUI = document.getElementById('voiceRecUI');
+    var sendWrap = document.getElementById('navAiSendWrap');
+    var sendIcon = sendWrap.querySelector('.send-icon');
+    var stopIcon = sendWrap.querySelector('.stop-icon');
+
+    inp.style.opacity = '0'; inp.style.flex = '0'; inp.style.padding = '0';
+    cam.classList.add('hidden-btn');
+    mic.classList.add('hidden-btn');
+    actions.style.gap = '0px';
+
+    buildWaveBars();
+    recUI.classList.add('active');
+
+    // Transform send → stop (red bg)
+    sendWrap.style.background = '#FF3B30';
+    sendIcon.style.opacity = '0';
+    stopIcon.style.opacity = '1';
+    sendWrap.onclick = function(e) { e.stopPropagation(); stopVoiceRec(); };
+
+    // Start timer
+    document.getElementById('voiceRecTimer').textContent = '0:00';
+    voiceTimer = setInterval(function() {
+      voiceSecs++;
+      var m = Math.floor(voiceSecs / 60);
+      var s = voiceSecs % 60;
+      document.getElementById('voiceRecTimer').textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    }, 1000);
+  }
+
+  function stopVoiceRec() {
+    if (!voiceRecording) return;
+    voiceRecording = false;
+    clearInterval(voiceTimer);
+
+    var inp = document.getElementById('navAiInput');
+    var cam = document.getElementById('navAiCam');
+    var mic = document.getElementById('navAiMic');
+    var actions = document.getElementById('navAiActions');
+    var recUI = document.getElementById('voiceRecUI');
+    var sendWrap = document.getElementById('navAiSendWrap');
+    var sendIcon = sendWrap.querySelector('.send-icon');
+    var stopIcon = sendWrap.querySelector('.stop-icon');
+
+    recUI.classList.remove('active');
+    cam.classList.remove('hidden-btn');
+    mic.classList.remove('hidden-btn');
+    actions.style.gap = '8px';
+
+    inp.style.flex = '1'; inp.style.padding = '0 12px 0 20px';
+    setTimeout(function() { inp.style.opacity = '1'; }, 100);
+
+    sendWrap.style.background = 'var(--accent)';
+    stopIcon.style.opacity = '0';
+    sendIcon.style.opacity = '1';
+    sendWrap.onclick = function(e) { e.stopPropagation(); navigateTo('chat'); collapseNavAi(); };
+
+    // Navigate to chat with voice
+    navigateTo('chat');
+    collapseNavAi();
+  }
+
   /* ── Nav AI Bubble expand/collapse ── */
   function toggleMicBtn() {
     var mic = document.getElementById('navAiMic');
@@ -3549,6 +3698,10 @@
     }, 150);
   }
   function collapseNavAi() {
+    // Reset voice recording if active
+    if (voiceRecording) { voiceRecording = false; clearInterval(voiceTimer); }
+    document.getElementById('voiceRecUI').classList.remove('active');
+
     navAiExpanded = false;
     var w = document.getElementById('navAiBubble');
     var inp = document.getElementById('navAiInput');
@@ -3556,12 +3709,14 @@
     var sendWrap = document.getElementById('navAiSendWrap');
     var sparkle = sendWrap.querySelector('.sparkle-icon');
     var send = sendWrap.querySelector('.send-icon');
+    var stop = sendWrap.querySelector('.stop-icon');
     inp.value = ''; inp.blur();
     inp.style.opacity = '0'; inp.style.pointerEvents = 'none';
     inp.style.flex = '0'; inp.style.padding = '0';
-    actions.style.maxWidth = '0'; actions.style.opacity = '0';
+    actions.style.maxWidth = '0'; actions.style.opacity = '0'; actions.style.gap = '8px';
     document.getElementById('navAiMic').classList.remove('hidden-btn');
-    send.style.opacity = '0';
+    document.getElementById('navAiCam').classList.remove('hidden-btn');
+    send.style.opacity = '0'; stop.style.opacity = '0';
     sendWrap.style.background = 'none';
     sendWrap.style.width = '72px'; sendWrap.style.height = '72px';
     sendWrap.style.borderRadius = '50%';
