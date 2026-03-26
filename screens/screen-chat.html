@@ -958,6 +958,137 @@
   .elevation-1 { border: var(--border); }
   .elevation-2 { border: var(--border); }
   .elevation-3 { border: 2px solid var(--l1); }
+
+  /* ═══════════ STYLE GUIDE — REUSABLE COMPONENTS ═══════════ */
+
+  /* ── Auth Screen Base ── */
+  .auth-screen { background: #F2F2F7; display: flex; flex-direction: column; overflow: hidden; }
+  .auth-gradient { position: absolute; top: 0; left: 0; right: 0; pointer-events: none; }
+  .auth-gradient-tall { height: 75%; background: linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 12%, #FFFAED 35%, #F8F6F1 60%, #F2F2F7 100%); }
+  .auth-gradient-med { height: 50%; background: linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 12%, #FFFAED 35%, #F2F2F7 100%); }
+  .auth-gradient-short { height: 45%; background: linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 12%, #FFFAED 35%, #F2F2F7 100%); }
+  .auth-gradient-welcome { height: 65%; background: linear-gradient(180deg, #FFF3C4 0%, #FFF8E1 20%, #FFFAED 45%, #F2F2F7 100%); }
+  .auth-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+  .auth-back-btn {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #FFFFFF; border: none;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; flex-shrink: 0;
+    transition: transform 0.15s;
+  }
+  .auth-back-btn:active { transform: scale(0.92); }
+  .auth-back-btn svg { stroke: var(--d1) !important; }
+  .auth-card { background: #FFFFFF; border-radius: 20px; padding: 24px 20px; }
+  .auth-heading { font-size: 30px; font-weight: 800; color: var(--d1); letter-spacing: -0.5px; line-height: 1.15; }
+  .auth-subheading { font-size: 22px; font-weight: 800; color: var(--d1); }
+  .auth-desc { font-size: 15px; color: var(--l3); margin-top: 8px; line-height: 1.5; }
+  .auth-footer { text-align: center; padding-bottom: calc(20px + var(--safe-bottom)); }
+  .auth-footer .auth-footer-text { font-size: 14px; color: var(--l3); }
+  .auth-footer .auth-footer-link { font-size: 14px; font-weight: 700; color: var(--d1); cursor: pointer; }
+
+  /* ── Form Fields ── */
+  .form-label { display: block; font-size: 12px; color: var(--mid); margin-bottom: 4px; font-weight: 500; }
+  .form-label-dark { display: block; font-size: 13px; font-weight: 600; color: var(--d3); margin-bottom: 8px; }
+  .form-input {
+    border: 1.5px solid #E2E2E8; border-radius: 14px;
+    padding: 14px 16px; background: #F8F8FA;
+    display: flex; align-items: center; gap: 8px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .form-input:focus-within { border-color: var(--accent); background: #fff; }
+  .form-input input {
+    background: none; border: none; color: var(--d1);
+    font-size: 14px; width: 100%; font-family: inherit;
+    font-weight: 500; outline: none;
+  }
+  .form-input input::placeholder { color: var(--l2); }
+
+  /* ── OTP Input ── */
+  .otp-input {
+    width: 56px; height: 64px; border: 1.5px solid #EBEBF0;
+    border-radius: 14px; text-align: center;
+    font-size: 26px; font-weight: 800; font-family: inherit;
+    background: #F8F8FA; color: var(--d1); outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  }
+  .otp-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(253,206,54,0.1); background: #fff; }
+
+  /* ── Dividers ── */
+  .divider { height: 1px; background: var(--l1); }
+  .divider-text { display: flex; align-items: center; margin: 22px 0; gap: 14px; }
+  .divider-text::before, .divider-text::after { content: ''; flex: 1; height: 1px; background: #EBEBF0; }
+
+  /* ── Dark Header Block (Home, Chat) ── */
+  .dark-header-block {
+    position: relative; z-index: 10;
+    background: var(--d1);
+    border-radius: 0 0 16px 16px;
+  }
+
+  /* ── Bottom Action Bar ── */
+  .bottom-bar {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    padding: 14px 16px calc(14px + var(--safe-bottom));
+    border-top: var(--border); z-index: 10;
+  }
+
+  /* ── Header Row (back btn + title) ── */
+  .header-row { display: flex; align-items: center; gap: 10px; }
+  .header-row-between { display: flex; align-items: center; justify-content: space-between; }
+  .header-title-text { font-size: 18px; font-weight: 800; color: #fff; }
+  .header-subtitle-text { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* ── Section Label ── */
+  .section-label { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+
+  /* ── Warmth blob ── */
+  .warmth-blob { position: absolute; pointer-events: none; background: radial-gradient(ellipse, rgba(253,206,54,0.12) 0%, transparent 70%); }
+
+  /* ── Spec Grid Cell ── */
+  .spec-cell { background: var(--bg); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+  .spec-cell-label { font-size: 11px; color: var(--l3); margin-bottom: 1px; }
+  .spec-cell-value { font-size: 15px; font-weight: 800; }
+
+  /* ── Feature Check Item ── */
+  .feature-check { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 6px; }
+  .feature-check svg { flex-shrink: 0; margin-top: 2px; }
+  .feature-check span { font-size: 12px; color: var(--d3); }
+
+  /* ── Info Pill (tech specs) ── */
+  .info-pill {
+    flex-shrink: 0; padding: 8px 14px;
+    border: var(--border); border-radius: var(--radius-pill);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .info-pill span { font-size: 11px; font-weight: 600; }
+
+  /* ── Dark Card (transactions balance, profile partner) ── */
+  .dark-card {
+    background: linear-gradient(135deg, #1C1C1B 0%, #2C2C2B 100%);
+    color: var(--white); border: none;
+    border-radius: var(--radius-lg);
+    padding: 22px; position: relative; overflow: hidden;
+  }
+  .dark-card-glow {
+    position: absolute; top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(253,206,54,0.1) 0%, transparent 70%);
+  }
+
+  /* ── Mini Product Card (related/recent) ── */
+  .mini-product {
+    min-width: 140px; background: var(--bg);
+    border-radius: var(--radius); padding: 10px; cursor: pointer;
+  }
+  .mini-product-img {
+    width: 100%; height: 90px; border-radius: 10px;
+    background: #F0F0F4; display: flex; align-items: center;
+    justify-content: center; margin-bottom: 8px;
+  }
+  .mini-product-brand { font-size: 12px; font-weight: 700; color: var(--d1); margin-bottom: 2px; }
+  .mini-product-info { font-size: 11px; color: var(--mid); margin-bottom: 4px; }
+  .mini-product-price { font-size: 13px; font-weight: 800; color: var(--d1); }
 </style>
 </head>
 <body>
@@ -973,14 +1104,12 @@
   </div>
 
   <!-- ==================== LOGIN ==================== -->
-  <div class="screen" id="screen-login" style="background:#F2F2F7;display:flex;flex-direction:column;overflow:hidden;">
-    <!-- Soft yellow gradient wash at top — inspired by fitness app ref -->
-    <div style="position:absolute;top:0;left:0;right:0;height:75%;background:linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 12%, #FFFAED 35%, #F8F6F1 60%, #F2F2F7 100%);pointer-events:none;"></div>
-    <!-- Extra warmth blob -->
-    <div style="position:absolute;top:5%;right:-15%;width:60%;height:35%;background:radial-gradient(ellipse, rgba(253,206,54,0.12) 0%, transparent 70%);pointer-events:none;"></div>
+  <div class="screen auth-screen" id="screen-login">
+    <div class="auth-gradient auth-gradient-tall"></div>
+    <div class="warmth-blob" style="top:5%;right:-15%;width:60%;height:35%;"></div>
 
     <!-- Scrollable content -->
-    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:calc(var(--safe-top) + 48px) 24px 0;overflow-y:auto;">
+    <div class="auth-content" style="padding:calc(var(--safe-top) + 48px) 24px 0;">
 
       <!-- Brand top-left -->
       <div style="display:flex;align-items:center;gap:0;animation:loginFadeIn 0.5s ease both;">
@@ -989,15 +1118,15 @@
 
       <!-- Welcome -->
       <div style="margin-top:44px;animation:loginFadeIn 0.5s ease 0.1s both;">
-        <div style="font-size:30px;font-weight:800;color:#1C1C1B;letter-spacing:-0.5px;line-height:1.15;">მოგესალმებით</div>
-        <div style="font-size:15px;color:#6B6B6B;margin-top:8px;line-height:1.5;">შედით თქვენს პარტნიორულ<br>ანგარიშზე</div>
+        <div class="auth-heading">მოგესალმებით</div>
+        <div class="auth-desc">შედით თქვენს პარტნიორულ<br>ანგარიშზე</div>
       </div>
 
       <!-- Form card -->
-      <div style="margin-top:32px;background:#FFFFFF;border-radius:20px;padding:24px 20px;animation:loginCardUp 0.5s ease 0.2s both;">
+      <div class="auth-card" style="margin-top:32px;animation:loginCardUp 0.5s ease 0.2s both;">
 
         <!-- Phone input -->
-        <label style="font-size:13px;font-weight:600;color:#3A3A3B;margin-bottom:8px;display:block;">მობილურის ნომერი</label>
+        <label class="form-label-dark">მობილურის ნომერი</label>
         <div id="login-phone-wrap" class="login-input-wrap" style="background:#F8F8FA;border-color:#EBEBF0;">
           <div style="display:flex;align-items:center;gap:8px;padding:0 14px;height:100%;flex-shrink:0;">
             <span style="font-size:14px;color:#1C1C1B;font-weight:600;">+995</span>
@@ -1012,11 +1141,7 @@
         <p style="text-align:center;margin-top:10px;font-size:11px;color:#AEAEB2;">SMS კოდი გამოგეგზავნებათ მითითებულ ნომერზე</p>
 
         <!-- Divider -->
-        <div style="display:flex;align-items:center;margin:22px 0;gap:14px;">
-          <div style="flex:1;height:1px;background:#EBEBF0;"></div>
-          <span style="font-size:11px;font-weight:600;color:#C7C7CC;">ან</span>
-          <div style="flex:1;height:1px;background:#EBEBF0;"></div>
-        </div>
+        <div class="divider-text"><span style="font-size:11px;font-weight:600;color:#C7C7CC;">ან</span></div>
 
         <!-- Google -->
         <button class="login-social-btn" onclick="navigateTo('google-picker')" style="background:#F8F8FA;border:1.5px solid #EBEBF0;color:#1C1C1B;border-radius:100px;">
@@ -1039,44 +1164,42 @@
       <div style="flex:1;min-height:24px;"></div>
 
       <!-- Register -->
-      <div style="text-align:center;padding-bottom:calc(20px + var(--safe-bottom));animation:loginFadeIn 0.5s ease 0.4s both;">
-        <span style="font-size:14px;color:#8E8E93;">არ გაქვს ანგარიში? </span>
-        <span style="font-size:14px;font-weight:700;color:#1C1C1B;cursor:pointer;" onclick="navigateTo('register')">რეგისტრაცია</span>
+      <div class="auth-footer" style="animation:loginFadeIn 0.5s ease 0.4s both;">
+        <span class="auth-footer-text">არ გაქვს ანგარიში? </span>
+        <span class="auth-footer-link" onclick="navigateTo('register')">რეგისტრაცია</span>
       </div>
     </div>
   </div>
 
   <!-- ==================== REGISTER ==================== -->
-  <div class="screen" id="screen-register" style="background:#F2F2F7;display:flex;flex-direction:column;overflow:hidden;">
-    <!-- Yellow gradient wash -->
-    <div style="position:absolute;top:0;left:0;right:0;height:45%;background:linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 12%, #FFFAED 35%, #F2F2F7 100%);pointer-events:none;"></div>
+  <div class="screen auth-screen" id="screen-register">
+    <div class="auth-gradient auth-gradient-short"></div>
 
-    <!-- Content -->
-    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:calc(var(--safe-top) + 16px) 24px 0;overflow-y:auto;">
+    <div class="auth-content" style="padding:calc(var(--safe-top) + 16px) 24px 0;">
 
       <!-- Back + Title -->
-      <div style="display:flex;align-items:center;gap:12px;animation:loginFadeIn 0.4s ease both;">
-        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+      <div class="header-row" style="gap:12px;animation:loginFadeIn 0.4s ease both;">
+        <button class="auth-back-btn" onclick="goBack()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
-        <span style="font-size:18px;font-weight:800;color:#1C1C1B;">რეგისტრაცია</span>
+        <span class="auth-subheading" style="font-size:18px;">რეგისტრაცია</span>
       </div>
 
-      <p style="margin-top:8px;padding-left:52px;font-size:14px;color:#8E8E93;animation:loginFadeIn 0.4s ease 0.05s both;">შექმენით პარტნიორული ანგარიში</p>
+      <p style="margin-top:8px;padding-left:52px;font-size:14px;color:var(--l3);animation:loginFadeIn 0.4s ease 0.05s both;">შექმენით პარტნიორული ანგარიში</p>
 
       <!-- Form card -->
-      <div style="margin-top:24px;background:#FFFFFF;border-radius:20px;padding:24px 20px;animation:loginCardUp 0.5s ease 0.15s both;">
+      <div class="auth-card" style="margin-top:24px;animation:loginCardUp 0.5s ease 0.15s both;">
 
         <!-- Name fields -->
         <div style="display:flex;gap:10px;margin-bottom:16px;">
           <div style="flex:1;">
-            <label style="font-size:13px;font-weight:600;color:#3A3A3B;margin-bottom:8px;display:block;">სახელი</label>
+            <label class="form-label-dark">სახელი</label>
             <div class="login-input-wrap" style="background:#F8F8FA;border-color:#EBEBF0;">
               <input type="text" id="reg-fname" placeholder="სახელი" style="flex:1;background:none;border:none;color:#1C1C1B;font-size:16px;font-family:inherit;font-weight:500;padding:0 14px;height:100%;outline:none;" onfocus="this.parentElement.classList.add('focused')" onblur="this.parentElement.classList.remove('focused')">
             </div>
           </div>
           <div style="flex:1;">
-            <label style="font-size:13px;font-weight:600;color:#3A3A3B;margin-bottom:8px;display:block;">გვარი</label>
+            <label class="form-label-dark">გვარი</label>
             <div class="login-input-wrap" style="background:#F8F8FA;border-color:#EBEBF0;">
               <input type="text" id="reg-lname" placeholder="გვარი" style="flex:1;background:none;border:none;color:#1C1C1B;font-size:16px;font-family:inherit;font-weight:500;padding:0 14px;height:100%;outline:none;" onfocus="this.parentElement.classList.add('focused')" onblur="this.parentElement.classList.remove('focused')">
             </div>
@@ -1084,7 +1207,7 @@
         </div>
 
         <!-- Phone -->
-        <label style="font-size:13px;font-weight:600;color:#3A3A3B;margin-bottom:8px;display:block;">მობილურის ნომერი</label>
+        <label class="form-label-dark">მობილურის ნომერი</label>
         <div id="reg-phone-wrap" class="login-input-wrap" style="background:#F8F8FA;border-color:#EBEBF0;margin-bottom:20px;">
           <div style="display:flex;align-items:center;gap:8px;padding:0 14px;height:100%;flex-shrink:0;">
             <span style="font-size:14px;color:#1C1C1B;font-weight:600;">+995</span>
@@ -1108,11 +1231,7 @@
         <p style="text-align:center;margin-top:10px;font-size:11px;color:#AEAEB2;">SMS კოდი გამოგეგზავნებათ მითითებულ ნომერზე</p>
 
         <!-- Divider -->
-        <div style="display:flex;align-items:center;margin:22px 0;gap:14px;">
-          <div style="flex:1;height:1px;background:#EBEBF0;"></div>
-          <span style="font-size:11px;font-weight:600;color:#C7C7CC;">ან</span>
-          <div style="flex:1;height:1px;background:#EBEBF0;"></div>
-        </div>
+        <div class="divider-text"><span style="font-size:11px;font-weight:600;color:#C7C7CC;">ან</span></div>
 
         <!-- Google -->
         <button class="login-social-btn" onclick="navigateTo('google-picker')" style="background:#F8F8FA;border:1.5px solid #EBEBF0;color:#1C1C1B;border-radius:100px;">
@@ -1129,22 +1248,22 @@
       <div style="flex:1;min-height:20px;"></div>
 
       <!-- Login link -->
-      <div style="text-align:center;padding-bottom:calc(20px + var(--safe-bottom));">
-        <span style="font-size:14px;color:#8E8E93;">უკვე გაქვს ანგარიში? </span>
-        <span style="font-size:14px;font-weight:700;color:#1C1C1B;cursor:pointer;" onclick="navigateTo('login')">შესვლა</span>
+      <div class="auth-footer">
+        <span class="auth-footer-text">უკვე გაქვს ანგარიში? </span>
+        <span class="auth-footer-link" onclick="navigateTo('login')">შესვლა</span>
       </div>
     </div>
   </div>
 
   <!-- ==================== VERIFY PHONE (OTP) ==================== -->
-  <div class="screen" id="screen-verify-phone" style="background:#F2F2F7;display:flex;flex-direction:column;overflow:hidden;">
-    <div style="position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 12%, #FFFAED 35%, #F2F2F7 100%);pointer-events:none;"></div>
+  <div class="screen auth-screen" id="screen-verify-phone">
+    <div class="auth-gradient auth-gradient-med"></div>
 
-    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:calc(var(--safe-top) + 16px) 24px 0;">
+    <div class="auth-content" style="padding:calc(var(--safe-top) + 16px) 24px 0;">
 
       <!-- Back -->
       <div style="animation:loginFadeIn 0.4s ease both;">
-        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+        <button class="auth-back-btn" onclick="goBack()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
       </div>
@@ -1154,22 +1273,22 @@
         <div style="width:64px;height:64px;margin:0 auto 20px;border-radius:18px;background:linear-gradient(145deg, #FDCE36 0%, #F0B90B 100%);display:flex;align-items:center;justify-content:center;">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
         </div>
-        <div style="font-size:22px;font-weight:800;color:#1C1C1B;margin-bottom:8px;">SMS კოდის დადასტურება</div>
-        <div style="font-size:14px;color:#8E8E93;line-height:1.5;">
+        <div class="auth-subheading" style="margin-bottom:8px;">SMS კოდის დადასტურება</div>
+        <div style="font-size:14px;color:var(--l3);line-height:1.5;">
           4-ნიშნა კოდი გამოგზავნილია<br>
           <span class="otp-phone" style="font-weight:600;color:#1C1C1B;">+995 5** *** **9</span>
         </div>
       </div>
 
       <!-- OTP card -->
-      <div style="margin-top:28px;background:#FFFFFF;border-radius:20px;padding:28px 24px;text-align:center;animation:loginCardUp 0.5s ease 0.2s both;">
+      <div class="auth-card" style="margin-top:28px;padding:28px 24px;text-align:center;animation:loginCardUp 0.5s ease 0.2s both;">
 
         <!-- OTP inputs -->
         <div style="display:flex;gap:12px;justify-content:center;margin-bottom:24px;">
-          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1.5px solid #EBEBF0;border-radius:14px;text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:#F8F8FA;color:#1C1C1B;outline:none;transition:border-color 0.15s,box-shadow 0.15s;" onfocus="this.style.borderColor='#FDCE36';this.style.boxShadow='0 0 0 4px rgba(253,206,54,0.1)';this.style.background='#fff'" onblur="this.style.borderColor='#EBEBF0';this.style.boxShadow='none';this.style.background='#F8F8FA'">
-          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1.5px solid #EBEBF0;border-radius:14px;text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:#F8F8FA;color:#1C1C1B;outline:none;transition:border-color 0.15s,box-shadow 0.15s;" onfocus="this.style.borderColor='#FDCE36';this.style.boxShadow='0 0 0 4px rgba(253,206,54,0.1)';this.style.background='#fff'" onblur="this.style.borderColor='#EBEBF0';this.style.boxShadow='none';this.style.background='#F8F8FA'">
-          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1.5px solid #EBEBF0;border-radius:14px;text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:#F8F8FA;color:#1C1C1B;outline:none;transition:border-color 0.15s,box-shadow 0.15s;" onfocus="this.style.borderColor='#FDCE36';this.style.boxShadow='0 0 0 4px rgba(253,206,54,0.1)';this.style.background='#fff'" onblur="this.style.borderColor='#EBEBF0';this.style.boxShadow='none';this.style.background='#F8F8FA'">
-          <input type="text" maxlength="1" inputmode="numeric" style="width:56px;height:64px;border:1.5px solid #EBEBF0;border-radius:14px;text-align:center;font-size:26px;font-weight:800;font-family:inherit;background:#F8F8FA;color:#1C1C1B;outline:none;transition:border-color 0.15s,box-shadow 0.15s;" onfocus="this.style.borderColor='#FDCE36';this.style.boxShadow='0 0 0 4px rgba(253,206,54,0.1)';this.style.background='#fff'" onblur="this.style.borderColor='#EBEBF0';this.style.boxShadow='none';this.style.background='#F8F8FA'">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric">
         </div>
 
         <button class="login-cta-btn" onclick="navigateTo('home')" style="border-radius:100px;">დადასტურება</button>
@@ -1186,14 +1305,14 @@
   <!-- Forgot password, reset OTP, new password, and password success screens removed — phone OTP is used for auth -->
 
   <!-- ==================== GOOGLE ACCOUNT PICKER ==================== -->
-  <div class="screen" id="screen-google-picker" style="background:#F2F2F7;display:flex;flex-direction:column;overflow:hidden;">
-    <div style="position:absolute;top:0;left:0;right:0;height:45%;background:linear-gradient(180deg, #FFF8E1 0%, #FFF4CC 12%, #FFFAED 35%, #F2F2F7 100%);pointer-events:none;"></div>
+  <div class="screen auth-screen" id="screen-google-picker">
+    <div class="auth-gradient auth-gradient-short"></div>
 
-    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:calc(var(--safe-top) + 16px) 24px 0;">
+    <div class="auth-content" style="padding:calc(var(--safe-top) + 16px) 24px 0;">
 
       <!-- Back -->
       <div style="animation:loginFadeIn 0.4s ease both;">
-        <button onclick="goBack()" style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+        <button class="auth-back-btn" onclick="goBack()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
       </div>
@@ -1206,12 +1325,12 @@
           <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
         </svg>
-        <div style="font-size:20px;font-weight:800;color:#1C1C1B;margin-bottom:4px;">აირჩიეთ ანგარიში</div>
-        <div style="font-size:13px;color:#8E8E93;">Thermorum-ში გასაგრძელებლად</div>
+        <div class="auth-subheading" style="font-size:20px;margin-bottom:4px;">აირჩიეთ ანგარიში</div>
+        <div style="font-size:13px;color:var(--l3);">Thermorum-ში გასაგრძელებლად</div>
       </div>
 
       <!-- Accounts card -->
-      <div style="margin-top:24px;background:#FFFFFF;border-radius:20px;padding:8px;animation:loginCardUp 0.5s ease 0.2s both;">
+      <div class="auth-card" style="margin-top:24px;padding:8px;animation:loginCardUp 0.5s ease 0.2s both;">
 
         <!-- Account 1 -->
         <div style="border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background 0.15s;" onclick="navigateTo('home')" onpointerdown="this.style.background='#F8F8FA'" onpointerup="this.style.background=''">
@@ -1261,10 +1380,9 @@
   </div>
 
   <!-- ==================== WELCOME ==================== -->
-  <div class="screen" id="screen-welcome" style="background:#F2F2F7;display:flex;flex-direction:column;overflow:hidden;">
-    <!-- Large yellow gradient wash -->
-    <div style="position:absolute;top:0;left:0;right:0;height:65%;background:linear-gradient(180deg, #FFF3C4 0%, #FFF8E1 20%, #FFFAED 45%, #F2F2F7 100%);pointer-events:none;"></div>
-    <div style="position:absolute;top:10%;right:-10%;width:50%;height:40%;background:radial-gradient(ellipse, rgba(253,206,54,0.1) 0%, transparent 70%);pointer-events:none;"></div>
+  <div class="screen auth-screen" id="screen-welcome">
+    <div class="auth-gradient auth-gradient-welcome"></div>
+    <div class="warmth-blob" style="top:10%;right:-10%;width:50%;height:40%;"></div>
 
     <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 28px;">
 
@@ -1287,7 +1405,7 @@
   <!-- ==================== HOME (Main Menu Hub) ==================== -->
   <div class="screen" id="screen-home" style="background:#FFFFFF;overflow:hidden;">
     <!-- Dark header block -->
-    <div style="position:relative;z-index:10;background:var(--d1);border-radius:0 0 16px 16px;padding-bottom:22px;">
+    <div class="dark-header-block" style="padding-bottom:22px;">
       <!-- Status bar -->
       <div class="status-bar" style="position:relative;">
         <span class="time">17:42</span>
@@ -1396,10 +1514,10 @@
   <div class="screen warm-wash" id="screen-categories" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-        <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row-between" style="margin-bottom:12px;">
+        <div class="header-row">
           <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-          <span style="font-size:18px;font-weight:800;color:#fff;">პროდუქცია</span>
+          <span class="header-title-text">პროდუქცია</span>
         </div>
         <button class="icon-btn-light" onclick="navigateTo('chat')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -1498,10 +1616,10 @@
   <div class="screen warm-wash" id="screen-subcategory" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;">
-        <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row-between">
+        <div class="header-row">
           <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-          <span style="font-size:18px;font-weight:800;color:#fff;">გათბობის სისტემები</span>
+          <span class="header-title-text">გათბობის სისტემები</span>
         </div>
         <button class="icon-btn-light" onclick="navigateTo('chat')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -1596,8 +1714,8 @@
   <div class="screen warm-wash" id="screen-promotions" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-        <span style="font-size:18px;font-weight:800;color:#fff;">აქციები</span>
+      <div class="header-row" style="margin-bottom:12px;">
+        <span class="header-title-text">აქციები</span>
       </div>
       <div style="display:flex;gap:6px;">
         <button class="chip chip-active" onclick="setChip(this)">ყველა</button>
@@ -1646,9 +1764,9 @@
   <div class="screen warm-wash" id="screen-promo-detail" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row">
         <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:#fff;">აქცია: -15%</span>
+        <span class="header-title-text">აქცია: -15%</span>
       </div>
     </div>
     <div class="content" style="padding-bottom:100px;">
@@ -1659,7 +1777,7 @@
       <div style="font-size:13px;color:var(--l3);margin-bottom:4px;">01.03 — 31.03.2026</div>
       <div style="font-size:13px;color:var(--d3);line-height:1.6;margin-bottom:16px;">Bosch, Vaillant და Viessmann ბრენდების ყველა კონდენსაციურ ქვაბზე მოქმედებს 15%-იანი ფასდაკლება.</div>
       <!-- Promo products with checkboxes -->
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">აქციის პროდუქტები</div>
+      <div class="section-label">აქციის პროდუქტები</div>
       <div class="card" style="padding:10px;">
         <div style="display:flex;gap:10px;align-items:center;padding-bottom:10px;margin-bottom:10px;border-bottom:var(--border);">
           <div id="promo-check-1" style="width:20px;height:20px;border:var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;" onclick="toggleCheckbox(this)"></div>
@@ -1696,7 +1814,7 @@
         </div>
       </div>
     </div>
-    <div style="position:absolute;bottom:0;left:0;right:0;background:var(--white);padding:14px 16px calc(14px + var(--safe-bottom));border-top:var(--border);z-index:10;">
+    <div class="bottom-bar">
       <button class="btn-primary" onclick="addToCart();goBack()">არჩეულის კალათაში დამატება</button>
     </div>
   </div>
@@ -1705,14 +1823,14 @@
   <div class="screen warm-wash" id="screen-checkout" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row">
         <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:#fff;">შეკვეთის გაფორმება</span>
+        <span class="header-title-text">შეკვეთის გაფორმება</span>
       </div>
     </div>
     <div class="content" style="padding-bottom:180px;">
       <!-- Delivery option -->
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">მიწოდების მეთოდი</div>
+      <div class="section-label">მიწოდების მეთოდი</div>
       <div class="card" style="padding:0;margin-bottom:16px;">
         <div id="delivery-pickup" class="menu-item" style="border-bottom:var(--border);cursor:pointer;" onclick="selectDelivery('pickup')">
           <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--d1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -1730,7 +1848,7 @@
       </div>
 
       <!-- Delivery address -->
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">მისამართი</div>
+      <div class="section-label">მისამართი</div>
       <div class="card" style="margin-bottom:16px;">
         <div style="display:flex;gap:10px;align-items:center;">
           <div class="menu-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -1738,12 +1856,12 @@
             <div style="font-size:13px;font-weight:600;">ვაჟა-ფშაველას გამზ. 71</div>
             <div style="font-size:11px;color:var(--l3);">თბილისი, 0186</div>
           </div>
-          <span style="font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;text-decoration:underline;">შეცვლა</span>
+          <span style="font-size:12px;color:var(--accent-dark);cursor:pointer;font-weight:600;">შეცვლა</span>
         </div>
       </div>
 
       <!-- Payment method -->
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">გადახდის მეთოდი</div>
+      <div class="section-label">გადახდის მეთოდი</div>
       <div class="card" style="margin-bottom:16px;">
         <div style="display:flex;gap:10px;align-items:center;">
           <div class="menu-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
@@ -1751,12 +1869,12 @@
             <div style="font-size:13px;font-weight:600;">Visa •••• 4521</div>
             <div style="font-size:11px;color:var(--l3);">ვადა: 08/28</div>
           </div>
-          <span style="font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;text-decoration:underline;">შეცვლა</span>
+          <span style="font-size:12px;color:var(--accent-dark);cursor:pointer;font-weight:600;">შეცვლა</span>
         </div>
       </div>
 
       <!-- Order summary -->
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">შეჯამება</div>
+      <div class="section-label">შეჯამება</div>
       <div class="card">
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span id="checkout-count-label" style="font-size:13px;color:var(--l3);">ქვეჯამი (3 ერთეული)</span><span id="checkout-subtotal" style="font-size:13px;">₾ 3,400</span></div>
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-size:13px;color:var(--l3);">მიწოდება</span><span id="checkout-delivery-fee" style="font-size:13px;font-weight:600;">უფასო</span></div>
@@ -1765,7 +1883,7 @@
         <div style="display:flex;justify-content:space-between;"><span style="font-size:16px;font-weight:900;">ჯამი</span><span id="checkout-total" style="font-size:18px;font-weight:900;">₾ 2,890</span></div>
       </div>
     </div>
-    <div style="position:absolute;bottom:0;left:0;right:0;background:var(--white);padding:14px 16px calc(14px + var(--safe-bottom));border-top:var(--border);z-index:10;">
+    <div class="bottom-bar">
       <div style="display:flex;gap:10px;">
         <button class="btn-outline" style="flex:1;" onclick="showToast('ინვოისი გაგზავნილია');goBack()">ინვოისის გაგზავნა</button>
         <button class="btn-primary" style="flex:1;" onclick="navigateTo('payment')">ახლა გადახდა</button>
@@ -1776,11 +1894,13 @@
   <!-- ==================== PAYMENT ==================== -->
   <div class="screen warm-wash" id="screen-payment" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
-    <div style="flex:1;display:flex;flex-direction:column;padding:0 16px;">
-      <div style="display:flex;align-items:center;gap:10px;padding:12px 0 24px;">
+    <div class="header-light" style="padding-top:12px;">
+      <div class="header-row">
         <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:#fff;">გადახდა</span>
+        <span class="header-title-text">გადახდა</span>
       </div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;padding:0 16px;overflow-y:auto;">
       <!-- Bank branding -->
       <div style="display:flex;justify-content:center;gap:16px;margin-bottom:20px;">
         <div style="padding:6px 14px;border:var(--border);border-radius:var(--radius-sm);display:flex;align-items:center;gap:6px;cursor:pointer;background:var(--bg);">
@@ -1802,29 +1922,29 @@
       </div>
       <div style="width:100%;max-width:340px;margin:0 auto;">
         <div style="margin-bottom:14px;">
-          <label style="display:block;font-size:12px;color:var(--mid);margin-bottom:4px;font-weight:500;">ბარათის ნომერი</label>
-          <div class="input-wrap" style="border:1.5px solid #E2E2E8;border-radius:14px;padding:14px 16px;background:#F8F8FA;display:flex;align-items:center;gap:8px;">
+          <label class="form-label">ბარათის ნომერი</label>
+          <div class="form-input">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AAAAAA" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
             <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19" style="background:none;border:none;color:var(--d1);font-size:14px;width:100%;font-family:inherit;letter-spacing:1px;" oninput="formatCardNumber(this)">
           </div>
         </div>
         <div style="display:flex;gap:10px;margin-bottom:14px;">
           <div style="flex:1;">
-            <label style="display:block;font-size:12px;color:var(--mid);margin-bottom:4px;font-weight:500;">ვადა</label>
-            <div class="input-wrap" style="border:1.5px solid #E2E2E8;border-radius:14px;padding:14px 16px;background:#F8F8FA;">
+            <label class="form-label">ვადა</label>
+            <div class="form-input">
               <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" style="background:none;border:none;color:var(--d1);font-size:14px;width:100%;font-family:inherit;" oninput="formatExpiry(this)">
             </div>
           </div>
           <div style="flex:1;">
-            <label style="display:block;font-size:12px;color:var(--mid);margin-bottom:4px;font-weight:500;">CVV</label>
-            <div class="input-wrap" style="border:1.5px solid #E2E2E8;border-radius:14px;padding:14px 16px;background:#F8F8FA;">
+            <label class="form-label">CVV</label>
+            <div class="form-input">
               <input type="password" id="card-cvv" placeholder="•••" maxlength="3" inputmode="numeric" style="background:none;border:none;color:var(--d1);font-size:14px;width:100%;font-family:inherit;">
             </div>
           </div>
         </div>
         <div style="margin-bottom:24px;">
-          <label style="display:block;font-size:12px;color:var(--mid);margin-bottom:4px;font-weight:500;">ბარათის მფლობელი</label>
-          <div class="input-wrap" style="border:1.5px solid #E2E2E8;border-radius:14px;padding:14px 16px;background:#F8F8FA;">
+          <label class="form-label">ბარათის მფლობელი</label>
+          <div class="form-input">
             <input type="text" placeholder="სახელი გვარი" style="background:none;border:none;color:var(--d1);font-size:14px;width:100%;font-family:inherit;text-transform:uppercase;">
           </div>
         </div>
@@ -1841,15 +1961,15 @@
   <div class="screen warm-wash" id="screen-transactions" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row">
         <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:#fff;">ტრანზაქციები</span>
+        <span class="header-title-text">ტრანზაქციები</span>
       </div>
     </div>
     <div class="content">
       <!-- Balance card -->
-      <div class="card" style="background:linear-gradient(135deg,#1C1C1B 0%,#2C2C2B 100%);color:var(--white);border:none;margin-bottom:16px;padding:22px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(253,206,54,0.1) 0%,transparent 70%);"></div>
+      <div class="dark-card" style="margin-bottom:16px;">
+        <div class="dark-card-glow"></div>
         <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:6px;font-weight:500;">ხელმისაწვდომი ბალანსი</div>
         <div style="font-size:30px;font-weight:900;margin-bottom:4px;">₾ 1,250.00</div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;position:relative;">
@@ -1858,7 +1978,7 @@
         </div>
       </div>
 
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">ისტორია</div>
+      <div class="section-label">ისტორია</div>
       <!-- Transaction items -->
       <div class="card" style="padding:12px;margin-bottom:8px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;">
@@ -1915,14 +2035,14 @@
   <div class="screen warm-wash" id="screen-contacts" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row">
         <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:#fff;">კონტაქტი</span>
+        <span class="header-title-text">კონტაქტი</span>
       </div>
     </div>
     <div class="content">
       <!-- Sales manager -->
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">თქვენი გაყიდვების მენეჯერი</div>
+      <div class="section-label">თქვენი გაყიდვების მენეჯერი</div>
       <div class="card" style="margin-bottom:16px;">
         <div style="display:flex;gap:12px;align-items:center;">
           <div style="width:48px;height:48px;border-radius:50%;background:var(--l1);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--d2);flex-shrink:0;">ნკ</div>
@@ -1939,7 +2059,7 @@
       </div>
 
       <!-- Hotline -->
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">ცხელი ხაზი</div>
+      <div class="section-label">ცხელი ხაზი</div>
       <div class="card" style="margin-bottom:16px;">
         <div style="display:flex;gap:12px;align-items:center;">
           <div class="menu-icon" style="width:44px;height:44px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
@@ -1951,7 +2071,7 @@
       </div>
 
       <!-- Main office -->
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">მთავარი ოფისი</div>
+      <div class="section-label">მთავარი ოფისი</div>
       <div class="card" style="margin-bottom:16px;">
         <div style="display:flex;gap:10px;align-items:flex-start;">
           <div class="menu-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -1964,7 +2084,7 @@
       </div>
 
       <!-- Branch locations -->
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">ფილიალები</div>
+      <div class="section-label">ფილიალები</div>
       <div class="card" style="padding:0;">
         <div class="menu-item" style="border-bottom:var(--border);">
           <div class="menu-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -2291,7 +2411,7 @@
       <div style="padding:0 20px 20px;">
         <!-- Price range -->
         <div style="margin-bottom:20px;">
-          <div style="font-size:14px;font-weight:700;margin-bottom:10px;">ფასი</div>
+          <div class="section-label">ფასი</div>
           <div style="display:flex;gap:10px;align-items:center;">
             <div style="flex:1;border:var(--border);border-radius:var(--radius-sm);padding:12px 14px;">
               <div style="font-size:11px;color:var(--l3);margin-bottom:2px;">მინიმუმი</div>
@@ -2311,7 +2431,7 @@
 
         <!-- Brand -->
         <div style="margin-bottom:20px;">
-          <div style="font-size:14px;font-weight:700;margin-bottom:10px;">ბრენდი</div>
+          <div class="section-label">ბრენდი</div>
           <div style="display:flex;flex-wrap:wrap;gap:8px;">
             <button class="filter-tag filter-tag-active" onclick="toggleFilterTag(this)">Bosch</button>
             <button class="filter-tag" onclick="toggleFilterTag(this)">Vaillant</button>
@@ -2326,7 +2446,7 @@
 
         <!-- Power -->
         <div style="margin-bottom:20px;">
-          <div style="font-size:14px;font-weight:700;margin-bottom:10px;">სიმძლავრე</div>
+          <div class="section-label">სიმძლავრე</div>
           <div style="display:flex;flex-wrap:wrap;gap:8px;">
             <button class="filter-tag" onclick="toggleFilterTag(this)">12-18 kW</button>
             <button class="filter-tag filter-tag-active" onclick="toggleFilterTag(this)">20-28 kW</button>
@@ -2337,7 +2457,7 @@
 
         <!-- Energy class -->
         <div style="margin-bottom:20px;">
-          <div style="font-size:14px;font-weight:700;margin-bottom:10px;">ენერგოკლასი</div>
+          <div class="section-label">ენერგოკლასი</div>
           <div style="display:flex;flex-wrap:wrap;gap:8px;">
             <button class="filter-tag" onclick="toggleFilterTag(this)">A++</button>
             <button class="filter-tag" onclick="toggleFilterTag(this)">A+</button>
@@ -2348,7 +2468,7 @@
 
         <!-- Availability -->
         <div style="margin-bottom:24px;">
-          <div style="font-size:14px;font-weight:700;margin-bottom:10px;">ხელმისაწვდომობა</div>
+          <div class="section-label">ხელმისაწვდომობა</div>
           <div style="display:flex;flex-direction:column;gap:10px;">
             <label style="display:flex;align-items:center;gap:12px;cursor:pointer;min-height:44px;padding:4px 0;">
               <div class="filter-checkbox checked" onclick="toggleFilterCheck(this)">
@@ -2378,8 +2498,9 @@
 
   <!-- ==================== PRODUCT DETAIL ==================== -->
   <div class="screen" id="screen-product" style="background:var(--white);">
-    <div style="height:calc(44px + var(--safe-top));background:var(--d1);"></div>
-    <div style="background:var(--d1);height:240px;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+    <div class="dark-header-block" style="border-radius:0;">
+    <div style="height:calc(44px + var(--safe-top));"></div>
+    <div style="height:240px;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
       <button class="icon-btn" style="position:absolute;top:8px;left:16px;" onclick="goBack()">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
@@ -2400,6 +2521,7 @@
       <div style="position:absolute;top:12px;right:60px;background:rgba(0,0,0,0.5);padding:3px 8px;border-radius:var(--radius-pill);"><span style="font-size:11px;font-weight:600;color:var(--white);">1/3</span></div>
       <div style="position:absolute;bottom:12px;right:16px;background:var(--accent);padding:4px 12px;border-radius:var(--radius-pill);"><span style="font-size:11px;font-weight:700;color:var(--d1);">-15%</span></div>
     </div>
+    </div><!-- /dark-header-block -->
     <div style="flex:1;overflow-y:auto;padding:16px;padding-bottom:100px;background:var(--white);border-top-left-radius:20px;border-top-right-radius:20px;margin-top:-16px;position:relative;">
       <div style="font-size:12px;color:var(--mid);font-weight:600;margin-bottom:2px;">Bosch</div>
       <div style="font-size:20px;font-weight:900;margin-bottom:2px;">Condens GC7000iW 24</div>
@@ -2424,28 +2546,28 @@
         <div style="font-size:12px;color:var(--mid);font-weight:600;">შედით ფასის სანახავად</div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">
-        <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px;text-align:center;"><div style="font-size:11px;color:var(--l3);margin-bottom:1px;">სიმძლავრე</div><div style="font-size:15px;font-weight:800;">24 kW</div></div>
-        <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px;text-align:center;"><div style="font-size:11px;color:var(--l3);margin-bottom:1px;">ენერგოკლასი</div><div style="font-size:15px;font-weight:800;">A++</div></div>
-        <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px;text-align:center;"><div style="font-size:11px;color:var(--l3);margin-bottom:1px;">ფართობი</div><div style="font-size:15px;font-weight:800;">240 მ²</div></div>
-        <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px;text-align:center;"><div style="font-size:11px;color:var(--l3);margin-bottom:1px;">გარანტია</div><div style="font-size:15px;font-weight:800;">5 წელი</div></div>
+        <div class="spec-cell"><div class="spec-cell-label">სიმძლავრე</div><div class="spec-cell-value">24 kW</div></div>
+        <div class="spec-cell"><div class="spec-cell-label">ენერგოკლასი</div><div class="spec-cell-value">A++</div></div>
+        <div class="spec-cell"><div class="spec-cell-label">ფართობი</div><div class="spec-cell-value">240 მ²</div></div>
+        <div class="spec-cell"><div class="spec-cell-label">გარანტია</div><div class="spec-cell-value">5 წელი</div></div>
       </div>
       <!-- Technical specs row -->
       <div style="display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:2px;" class="hide-scrollbar">
-        <div style="flex-shrink:0;padding:8px 14px;border:var(--border);border-radius:var(--radius-pill);display:flex;align-items:center;gap:6px;">
+        <div class="info-pill">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          <span style="font-size:11px;font-weight:600;">98% ეფექტურობა</span>
+          <span>98% ეფექტურობა</span>
         </div>
-        <div style="flex-shrink:0;padding:8px 14px;border:var(--border);border-radius:var(--radius-pill);display:flex;align-items:center;gap:6px;">
+        <div class="info-pill">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          <span style="font-size:11px;font-weight:600;">Wi-Fi</span>
+          <span>Wi-Fi</span>
         </div>
-        <div style="flex-shrink:0;padding:8px 14px;border:var(--border);border-radius:var(--radius-pill);display:flex;align-items:center;gap:6px;">
+        <div class="info-pill">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span style="font-size:11px;font-weight:600;">5 წ. გარანტია</span>
+          <span>5 წ. გარანტია</span>
         </div>
-        <div style="flex-shrink:0;padding:8px 14px;border:var(--border);border-radius:var(--radius-pill);display:flex;align-items:center;gap:6px;">
+        <div class="info-pill">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-          <span style="font-size:11px;font-weight:600;">36 dB(A)</span>
+          <span>36 dB(A)</span>
         </div>
       </div>
 
@@ -2455,25 +2577,25 @@
       <!-- Features list -->
       <div style="font-size:14px;font-weight:700;margin-bottom:8px;">მახასიათებლები</div>
       <div style="margin-bottom:16px;">
-        <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span style="font-size:12px;color:var(--d3);">ინტეგრირებული Wi-Fi მოდული — მართვა სმარტფონიდან</span>
+        <div class="feature-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>ინტეგრირებული Wi-Fi მოდული — მართვა სმარტფონიდან</span>
         </div>
-        <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span style="font-size:12px;color:var(--d3);">კონდენსაციური ტექნოლოგია — 98% ეფექტურობა</span>
+        <div class="feature-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>კონდენსაციური ტექნოლოგია — 98% ეფექტურობა</span>
         </div>
-        <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span style="font-size:12px;color:var(--d3);">უხმო მუშაობა — 36 dB(A)</span>
+        <div class="feature-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>უხმო მუშაობა — 36 dB(A)</span>
         </div>
-        <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span style="font-size:12px;color:var(--d3);">გარე ტემპერატურის სენსორთან თავსებადი</span>
+        <div class="feature-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>გარე ტემპერატურის სენსორთან თავსებადი</span>
         </div>
-        <div style="display:flex;gap:8px;align-items:flex-start;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span style="font-size:12px;color:var(--d3);">კომპაქტური ზომა — კედლის მონტაჟი</span>
+        <div class="feature-check" style="margin-bottom:0;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>კომპაქტური ზომა — კედლის მონტაჟი</span>
         </div>
       </div>
 
@@ -2493,37 +2615,37 @@
       <div style="margin-bottom:16px;">
         <div style="font-size:15px;font-weight:800;color:var(--d1);margin-bottom:12px;">მსგავსი პროდუქტები</div>
         <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;">
-          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Vaillant ecoTEC — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:#F0F0F4;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div class="mini-product" onclick="showToast('Vaillant ecoTEC — მალე')">
+            <div class="mini-product-img">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
             </div>
-            <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Vaillant ecoTEC</div>
-            <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">24.6 kW · A+</div>
-            <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 2,950</div>
+            <div class="mini-product-brand">Vaillant ecoTEC</div>
+            <div class="mini-product-info">24.6 kW · A+</div>
+            <div class="mini-product-price">₾ 2,950</div>
           </div>
-          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Buderus GB172i — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:#F0F0F4;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div class="mini-product" onclick="showToast('Buderus GB172i — მალე')">
+            <div class="mini-product-img">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
             </div>
-            <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Buderus GB172i</div>
-            <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">24 kW · A++</div>
-            <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 2,480</div>
+            <div class="mini-product-brand">Buderus GB172i</div>
+            <div class="mini-product-info">24 kW · A++</div>
+            <div class="mini-product-price">₾ 2,480</div>
           </div>
-          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Sime Go 25 — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:#F0F0F4;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div class="mini-product" onclick="showToast('Sime Go 25 — მალე')">
+            <div class="mini-product-img">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
             </div>
-            <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Sime Go 25</div>
-            <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">25 kW · ეკონომ</div>
-            <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 1,890</div>
+            <div class="mini-product-brand">Sime Go 25</div>
+            <div class="mini-product-info">25 kW · ეკონომ</div>
+            <div class="mini-product-price">₾ 1,890</div>
           </div>
-          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Ariston ALTEAS — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:#F0F0F4;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div class="mini-product" onclick="showToast('Ariston ALTEAS — მალე')">
+            <div class="mini-product-img">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
             </div>
-            <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Ariston ALTEAS</div>
-            <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">28 kW · A+</div>
-            <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 3,120</div>
+            <div class="mini-product-brand">Ariston ALTEAS</div>
+            <div class="mini-product-info">28 kW · A+</div>
+            <div class="mini-product-price">₾ 3,120</div>
           </div>
         </div>
       </div>
@@ -2532,29 +2654,29 @@
       <div style="margin-bottom:100px;">
         <div style="font-size:15px;font-weight:800;color:var(--d1);margin-bottom:12px;">ნანახი პროდუქტები</div>
         <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;">
-          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Kermi FKO — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:#F0F0F4;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div class="mini-product" onclick="showToast('Kermi FKO — მალე')">
+            <div class="mini-product-img">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="7" y1="4" x2="7" y2="20"/><line x1="11" y1="4" x2="11" y2="20"/></svg>
             </div>
-            <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Kermi FKO 22</div>
-            <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">500/1200 · პანელური</div>
-            <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 350</div>
+            <div class="mini-product-brand">Kermi FKO 22</div>
+            <div class="mini-product-info">500/1200 · პანელური</div>
+            <div class="mini-product-price">₾ 350</div>
           </div>
-          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Grundfos ALPHA2 — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:#F0F0F4;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div class="mini-product" onclick="showToast('Grundfos ALPHA2 — მალე')">
+            <div class="mini-product-img">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 3"/></svg>
             </div>
-            <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Grundfos ALPHA2</div>
-            <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">25-60 · 45W</div>
-            <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 380</div>
+            <div class="mini-product-brand">Grundfos ALPHA2</div>
+            <div class="mini-product-info">25-60 · 45W</div>
+            <div class="mini-product-price">₾ 380</div>
           </div>
-          <div style="min-width:140px;background:var(--bg);border-radius:var(--radius);padding:10px;cursor:pointer;" onclick="showToast('Watts თერმოსტატი — მალე')">
-            <div style="width:100%;height:90px;border-radius:10px;background:#F0F0F4;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+          <div class="mini-product" onclick="showToast('Watts თერმოსტატი — მალე')">
+            <div class="mini-product-img">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
-            <div style="font-size:12px;font-weight:700;color:var(--d1);margin-bottom:2px;">Watts თერმოსტატი</div>
-            <div style="font-size:11px;color:var(--mid);margin-bottom:4px;">LCD · Wi-Fi</div>
-            <div style="font-size:13px;font-weight:800;color:var(--d1);">₾ 185</div>
+            <div class="mini-product-brand">Watts თერმოსტატი</div>
+            <div class="mini-product-info">LCD · Wi-Fi</div>
+            <div class="mini-product-price">₾ 185</div>
           </div>
         </div>
       </div>
@@ -2634,9 +2756,9 @@
   <div class="screen warm-wash" id="screen-order-detail" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row">
         <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:#fff;">შეკვეთა #TH-2847</span>
+        <span class="header-title-text">შეკვეთა #TH-2847</span>
       </div>
     </div>
     <div class="content">
@@ -2661,7 +2783,7 @@
         </div>
       </div>
       <div class="card">
-        <div style="font-size:14px;font-weight:700;margin-bottom:10px;">გადახდა</div>
+        <div class="section-label">გადახდა</div>
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-size:13px;color:var(--l3);">ქვეჯამი</span><span style="font-size:13px;">₾ 4,635</span></div>
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-size:13px;color:var(--l3);">მიწოდება</span><span style="font-size:13px;">₾ 50</span></div>
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-size:13px;color:var(--mid);">ფასდაკლება</span><span style="font-size:13px;color:var(--mid);">-₾ 135</span></div>
@@ -2670,7 +2792,7 @@
       </div>
 
       <!-- Reorder section -->
-      <div style="font-size:14px;font-weight:700;margin-bottom:10px;">ხელახალი შეკვეთა</div>
+      <div class="section-label">ხელახალი შეკვეთა</div>
       <div class="card" style="padding:10px 12px;">
         <div style="display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:var(--border);">
           <div id="reorder-check-1" style="width:28px;height:28px;border:2px solid var(--l2);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;" onclick="toggleReorderCheck(this)"></div>
@@ -2754,7 +2876,7 @@
   <!-- ==================== AI CHAT SCREEN ==================== -->
   <div class="screen" id="screen-chat" style="background:#F2F2F7;overflow:hidden;">
     <!-- Dark header -->
-    <div style="position:relative;z-index:10;background:var(--d1);border-radius:0 0 16px 16px;padding-bottom:16px;">
+    <div class="dark-header-block" style="padding-bottom:16px;">
       <div class="status-bar" style="position:relative;">
         <span class="time">17:42</span>
         <div class="icons">
@@ -2762,7 +2884,7 @@
         </div>
       </div>
       <div style="padding:4px 16px 0;display:flex;align-items:center;gap:12px;">
-        <button style="width:42px;height:42px;border-radius:14px;background:rgba(255,255,255,0.08);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;" onclick="openChatSidebar()">
+        <button class="icon-btn-light" onclick="openChatSidebar()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
         </button>
         <div style="flex:1;display:flex;align-items:center;gap:10px;">
@@ -2774,7 +2896,7 @@
             <div style="font-size:11px;color:rgba(52,199,89,0.9);font-weight:600;">ონლაინ</div>
           </div>
         </div>
-        <button style="width:42px;height:42px;border-radius:14px;background:rgba(255,255,255,0.08);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;" onclick="goBack()">
+        <button class="icon-btn-light" onclick="goBack()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
@@ -2871,10 +2993,10 @@
   <div class="screen warm-wash" id="screen-cart" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;">
-        <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row-between">
+        <div class="header-row">
           <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-          <span style="font-size:18px;font-weight:800;color:#fff;">კალათა</span>
+          <span class="header-title-text">კალათა</span>
           <span id="cart-header-count" style="font-size:13px;color:rgba(255,255,255,0.5);">(3)</span>
         </div>
         <span style="font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;text-decoration:underline;" onclick="[...document.querySelectorAll('.cart-item')].forEach(i=>{i.style.transition='opacity 0.2s';i.style.opacity='0';});setTimeout(()=>{document.querySelectorAll('.cart-item').forEach(i=>i.remove());recalcCart();},250)">გასუფთავება</span>
@@ -3010,10 +3132,9 @@
 
   <!-- ==================== PROFILE ==================== -->
   <div class="screen" id="screen-profile" style="background:#F2F2F7;">
-    <div style="position:absolute;top:0;left:0;right:0;height:30%;background:linear-gradient(180deg, #FFF8E1 0%, #FFFAED 40%, #F2F2F7 100%);pointer-events:none;z-index:0;"></div>
-    <div class="status-bar-light" style="position:relative;z-index:2;"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
-    <div class="header-light" style="padding-top:12px;text-align:center;padding-bottom:24px;position:relative;z-index:2;">
-      <div style="font-size:18px;font-weight:800;margin-bottom:16px;color:var(--d1);">პროფილი</div>
+    <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
+    <div class="header-light" style="padding-top:12px;text-align:center;padding-bottom:24px;">
+      <div class="header-title-text" style="margin-bottom:16px;">პროფილი</div>
       <div style="width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.15),rgba(253,206,54,0.06));border:3px solid var(--accent);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;">
         <span style="font-size:24px;font-weight:900;color:var(--accent-dark);">გმ</span>
       </div>
@@ -3044,8 +3165,8 @@
         </div>
       </div>
       <!-- Partner status -->
-      <div class="card" style="background:linear-gradient(135deg,#1C1C1B 0%,#2C2C2B 100%);color:var(--white);border:none;margin-bottom:12px;padding:20px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(253,206,54,0.12) 0%,transparent 70%);"></div>
+      <div class="dark-card" style="margin-bottom:12px;padding:20px;">
+        <div class="dark-card-glow" style="top:-20px;right:-20px;width:100px;height:100px;"></div>
         <div style="display:flex;justify-content:space-between;align-items:center;position:relative;">
           <div>
             <div style="font-size:11px;color:rgba(255,255,255,0.5);font-weight:500;">პარტნიორის სტატუსი</div>
@@ -3095,9 +3216,9 @@
   <div class="screen warm-wash" id="screen-kit" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span style="font-size:18px;font-weight:800;color:#fff;">კომპლექტები</span>
+      <div class="header-row-between">
+        <div class="header-row">
+          <span class="header-title-text">კომპლექტები</span>
         </div>
         <div style="display:flex;gap:8px;">
           <button class="icon-btn-light" onclick="kitSelectAll()">
@@ -3149,9 +3270,9 @@
   <div class="screen warm-wash" id="screen-favorites" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row">
         <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:#fff;">ფავორიტები</span>
+        <span class="header-title-text">ფავორიტები</span>
       </div>
     </div>
     <div class="content" style="padding-top:14px;">
@@ -3190,10 +3311,10 @@
   <div class="screen warm-wash" id="screen-notifications" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;">
-        <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row-between">
+        <div class="header-row">
           <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-          <span style="font-size:18px;font-weight:800;color:#fff;">შეტყობინებები</span>
+          <span class="header-title-text">შეტყობინებები</span>
         </div>
         <span style="font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;text-decoration:underline;">ყველა წაკითხული</span>
       </div>
@@ -3323,9 +3444,9 @@
   <div class="screen warm-wash" id="screen-addresses" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row">
         <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:#fff;">შენახული მისამართები</span>
+        <span class="header-title-text">შენახული მისამართები</span>
       </div>
     </div>
     <div class="content" style="padding-top:14px;">
@@ -3372,9 +3493,9 @@
   <div class="screen warm-wash" id="screen-personal-info" style="background:#F2F2F7;">
     <div class="status-bar"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div class="header-row">
         <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <span style="font-size:18px;font-weight:800;color:#fff;">პირადი ინფორმაცია</span>
+        <span class="header-title-text">პირადი ინფორმაცია</span>
       </div>
     </div>
     <div class="content" style="padding-top:14px;">
@@ -3388,20 +3509,20 @@
         <div style="font-size:12px;color:var(--mid);cursor:pointer;">ფოტოს შეცვლა</div>
       </div>
       <div style="margin-bottom:14px;">
-        <label style="display:block;font-size:12px;color:var(--mid);margin-bottom:4px;font-weight:500;">სახელი</label>
-        <div class="input-wrap" style="border:1.5px solid #E2E2E8;border-radius:14px;padding:14px 16px;background:#F8F8FA;">
+        <label class="form-label">სახელი</label>
+        <div class="form-input">
           <input type="text" value="გიორგი" style="background:none;border:none;color:var(--d1);font-size:14px;width:100%;font-family:inherit;">
         </div>
       </div>
       <div style="margin-bottom:14px;">
-        <label style="display:block;font-size:12px;color:var(--mid);margin-bottom:4px;font-weight:500;">გვარი</label>
-        <div class="input-wrap" style="border:1.5px solid #E2E2E8;border-radius:14px;padding:14px 16px;background:#F8F8FA;">
+        <label class="form-label">გვარი</label>
+        <div class="form-input">
           <input type="text" value="მათიაშვილი" style="background:none;border:none;color:var(--d1);font-size:14px;width:100%;font-family:inherit;">
         </div>
       </div>
       <div style="margin-bottom:14px;">
-        <label style="display:block;font-size:12px;color:var(--mid);margin-bottom:4px;font-weight:500;">მობილურის ნომერი</label>
-        <div class="input-wrap" style="border:1.5px solid #E2E2E8;border-radius:14px;padding:14px 16px;background:#F8F8FA;display:flex;align-items:center;gap:8px;">
+        <label class="form-label">მობილურის ნომერი</label>
+        <div class="form-input">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AAAAAA" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
           <span style="font-size:14px;color:var(--d2);font-weight:500;">+995</span>
           <div style="width:1px;height:18px;background:var(--l1);"></div>
@@ -3409,8 +3530,8 @@
         </div>
       </div>
       <div style="margin-bottom:24px;">
-        <label style="display:block;font-size:12px;color:var(--mid);margin-bottom:4px;font-weight:500;">კომპანია</label>
-        <div class="input-wrap" style="border:1.5px solid #E2E2E8;border-radius:14px;padding:14px 16px;background:#F8F8FA;">
+        <label class="form-label">კომპანია</label>
+        <div class="form-input">
           <input type="text" value="Thermorum LLC" style="background:none;border:none;color:var(--d1);font-size:14px;width:100%;font-family:inherit;">
         </div>
       </div>
