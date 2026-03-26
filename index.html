@@ -3462,33 +3462,64 @@
   <!-- Hamburger Menu Overlay -->
   <div id="hamburger-overlay" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;z-index:100;">
     <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);" onclick="closeHamburger()"></div>
-    <div id="hamburger-panel" style="position:absolute;top:0;left:0;width:280px;height:100%;background:var(--white);padding:0;transform:translateX(-100%);transition:transform 0.3s ease;display:flex;flex-direction:column;">
-      <div style="background:var(--d1);padding:48px 20px 20px;">
-        <img src="logo.svg" alt="Thermorum" style="height:18px;filter:brightness(0) invert(1);margin-bottom:16px;">
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:48px;height:48px;border-radius:50%;background:rgba(253,206,54,0.12);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:16px;font-weight:800;color:var(--accent);">გმ</span>
+    <div id="hamburger-panel" style="position:absolute;top:0;left:0;width:300px;height:100%;background:var(--d1);padding:0;transform:translateX(-100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;">
+      <!-- Profile header -->
+      <div style="padding:52px 20px 24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+          <img src="logo.svg" alt="Thermorum" style="height:16px;filter:brightness(0) invert(1);">
+          <button onclick="closeHamburger()" style="width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,0.08);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="width:52px;height:52px;border-radius:16px;background:rgba(253,206,54,0.12);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:17px;font-weight:800;color:var(--accent);">გმ</span>
           </div>
           <div>
-            <div style="font-size:15px;font-weight:700;color:var(--white);">გიორგი მათიაშვილი</div>
-            <div style="font-size:11px;color:var(--l3);">VIP პარტნიორი</div>
+            <div style="font-size:16px;font-weight:700;color:#fff;">გიორგი მათიაშვილი</div>
+            <div style="font-size:12px;color:var(--accent);font-weight:600;">VIP პარტნიორი</div>
           </div>
         </div>
       </div>
-      <div style="flex:1;padding:24px 20px;display:flex;flex-direction:column;gap:10px;">
-        <button style="width:100%;padding:16px;border-radius:var(--radius-pill);border:2px solid var(--l1);background:var(--white);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background 0.15s,border-color 0.15s;" onclick="closeHamburger();switchTab('kit')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''">ქვაბის კომპლექტი</button>
-        <button style="width:100%;padding:16px;border-radius:var(--radius-pill);border:2px solid var(--l1);background:var(--white);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background 0.15s,border-color 0.15s;" onclick="closeHamburger();switchTab('home')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''">პროდუქცია</button>
-        <button style="width:100%;padding:16px;border-radius:var(--radius-pill);border:2px solid var(--l1);background:var(--white);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background 0.15s,border-color 0.15s;" onclick="closeHamburger();switchTab('orders')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''">ბოლო შეკვეთები</button>
-        <button style="width:100%;padding:16px;border-radius:var(--radius-pill);border:2px solid var(--l1);background:var(--white);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background 0.15s,border-color 0.15s;" onclick="closeHamburger();navigateTo('promotions')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''">აქციები</button>
-        <button style="width:100%;padding:16px;border-radius:var(--radius-pill);border:none;background:var(--accent);color:var(--d1);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity 0.15s;display:flex;align-items:center;justify-content:center;gap:8px;" onclick="closeHamburger();navigateTo('chat')" onpointerdown="this.style.opacity='0.85'" onpointerup="this.style.opacity=''">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          AI ასისტენტი
-        </button>
+      <!-- Navigation -->
+      <div style="flex:1;padding:0 12px;display:flex;flex-direction:column;gap:2px;">
+        <div style="padding:14px 16px;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:background 0.15s;" onclick="closeHamburger();switchTab('home')" onpointerdown="this.style.background='rgba(255,255,255,0.06)'" onpointerup="this.style.background=''">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span style="font-size:15px;font-weight:600;color:rgba(255,255,255,0.9);">მთავარი</span>
+        </div>
+        <div style="padding:14px 16px;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:background 0.15s;" onclick="closeHamburger();switchTab('kit')" onpointerdown="this.style.background='rgba(255,255,255,0.06)'" onpointerup="this.style.background=''">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <span style="font-size:15px;font-weight:600;color:rgba(255,255,255,0.9);">ქვაბის კომპლექტი</span>
+        </div>
+        <div style="padding:14px 16px;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:background 0.15s;" onclick="closeHamburger();navigateTo('categories')" onpointerdown="this.style.background='rgba(255,255,255,0.06)'" onpointerup="this.style.background=''">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <span style="font-size:15px;font-weight:600;color:rgba(255,255,255,0.9);">პროდუქცია</span>
+        </div>
+        <div style="padding:14px 16px;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:background 0.15s;" onclick="closeHamburger();switchTab('orders')" onpointerdown="this.style.background='rgba(255,255,255,0.06)'" onpointerup="this.style.background=''">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span style="font-size:15px;font-weight:600;color:rgba(255,255,255,0.9);">შეკვეთები</span>
+        </div>
+        <div style="padding:14px 16px;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:background 0.15s;" onclick="closeHamburger();navigateTo('promotions')" onpointerdown="this.style.background='rgba(255,255,255,0.06)'" onpointerup="this.style.background=''">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+          <span style="font-size:15px;font-weight:600;color:rgba(255,255,255,0.9);">აქციები</span>
+        </div>
+        <div style="padding:14px 16px;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:background 0.15s;" onclick="closeHamburger();navigateTo('profile')" onpointerdown="this.style.background='rgba(255,255,255,0.06)'" onpointerup="this.style.background=''">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span style="font-size:15px;font-weight:600;color:rgba(255,255,255,0.9);">პროფილი</span>
+        </div>
+        <!-- Divider -->
+        <div style="height:1px;background:rgba(255,255,255,0.06);margin:8px 16px;"></div>
+        <!-- AI button -->
+        <div style="padding:14px 16px;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:14px;background:rgba(253,206,54,0.08);transition:background 0.15s;" onclick="closeHamburger();navigateTo('chat')" onpointerdown="this.style.background='rgba(253,206,54,0.15)'" onpointerup="this.style.background='rgba(253,206,54,0.08)'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/></svg>
+          <span style="font-size:15px;font-weight:700;color:var(--accent);">AI ასისტენტი</span>
+        </div>
       </div>
-      <div style="padding:12px 20px 24px;">
-        <div style="padding:14px 16px;border-radius:var(--radius);display:flex;gap:14px;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s;" onclick="closeHamburger();navigateTo('login')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-          <span style="font-size:13px;font-weight:600;color:var(--mid);">გასვლა</span>
+      <!-- Logout -->
+      <div style="padding:16px 12px 28px;">
+        <div style="padding:14px 16px;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:background 0.15s;" onclick="closeHamburger();navigateTo('login')" onpointerdown="this.style.background='rgba(255,255,255,0.06)'" onpointerup="this.style.background=''">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,59,48,0.7)" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span style="font-size:14px;font-weight:600;color:rgba(255,59,48,0.7);">გასვლა</span>
         </div>
       </div>
     </div>
