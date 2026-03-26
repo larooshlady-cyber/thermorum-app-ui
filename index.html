@@ -294,8 +294,7 @@
     display: flex; align-items: center; gap: 8px;
     flex-shrink: 0; overflow: hidden;
     max-width: 0; opacity: 0;
-    margin-right: 8px;
-    transition: max-width 0.3s ease, opacity 0.2s ease 0.1s;
+    transition: max-width 0.3s ease, opacity 0.2s ease 0.1s, gap 0.25s ease;
     position: relative; z-index: 1;
   }
   .tab-ai-bubble .tab-ai-side-btn {
@@ -3508,11 +3507,14 @@
   /* ── Nav AI Bubble expand/collapse ── */
   function toggleMicBtn() {
     var mic = document.getElementById('navAiMic');
+    var actions = document.getElementById('navAiActions');
     var hasText = document.getElementById('navAiInput').value.length > 0;
     if (hasText) {
       mic.classList.add('hidden-btn');
+      actions.style.gap = '0px';
     } else {
       mic.classList.remove('hidden-btn');
+      actions.style.gap = '8px';
     }
   }
 
