@@ -135,7 +135,7 @@
     padding: 8px;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
     z-index: 50;
     background: linear-gradient(180deg, #222221 0%, var(--d1) 100%);
     border-radius: 100px;
@@ -2723,70 +2723,106 @@
   </div>
 
   <!-- ==================== CHAT ==================== -->
-  <div class="screen warm-wash" id="screen-chat" style="background:#F2F2F7;">
+  <div class="screen" id="screen-chat" style="background:#F2F2F7;">
     <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
-    <div class="header-light" style="padding-top:12px;">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <button class="back-btn-light" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1B" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-        </div>
-        <div style="flex:1;"><div style="font-size:16px;font-weight:800;color:var(--d1);">ძიება & AI ასისტენტი</div><div style="font-size:12px;color:var(--l3);font-weight:500;">მოძებნე ან ჰკითხე AI-ს</div></div>
+    <!-- Chat header -->
+    <div style="padding:12px 16px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <button style="width:40px;height:40px;border-radius:12px;background:var(--white);border:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div style="text-align:center;">
+        <div style="font-size:16px;font-weight:800;color:var(--d1);">&#4331;&#4312;&#4308;&#4305;&#4304;</div>
       </div>
+      <button style="width:40px;height:40px;border-radius:12px;background:var(--white);border:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="goBack()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
-    <div id="chat-messages" style="flex:1;overflow-y:auto;padding:14px 16px;padding-bottom:90px;-webkit-overflow-scrolling:touch;">
-      <div style="text-align:center;margin-bottom:14px;"><span style="font-size:12px;font-weight:600;color:var(--l3);background:rgba(253,206,54,0.08);padding:4px 12px;border-radius:10px;">დღეს</span></div>
-      <div style="display:flex;gap:8px;margin-bottom:14px;align-items:flex-end;">
-        <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.2),rgba(253,206,54,0.08));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(253,206,54,0.15);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg></div>
-        <div class="chat-bubble chat-ai"><div>გამარჯობა! მე ვარ Thermorum AI ასისტენტი. მოძებნე პროდუქცია ან მითხარი რა გჭირდება — დაგეხმარები შერჩევაში.</div><div class="chat-time">14:30</div></div>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;margin-left:40px;">
-        <div class="chat-quick" style="padding:8px 14px;border:1.5px solid rgba(253,206,54,0.25);border-radius:var(--radius-pill);cursor:pointer;transition:all 0.15s;background:rgba(253,206,54,0.04);" onclick="quickChat('ქვაბის შერჩევაში დამეხმარე')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''"><span style="font-size:13px;font-weight:500;">ქვაბის შერჩევა</span></div>
-        <div class="chat-quick" style="padding:8px 14px;border:1.5px solid rgba(253,206,54,0.25);border-radius:var(--radius-pill);cursor:pointer;transition:all 0.15s;background:rgba(253,206,54,0.04);" onclick="quickChat('შეკვეთის სტატუსი მაინტერესებს')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''"><span style="font-size:13px;font-weight:500;">შეკვეთის სტატუსი</span></div>
-        <div class="chat-quick" style="padding:8px 14px;border:none;border-radius:var(--radius-pill);cursor:pointer;transition:all 0.15s;background:var(--accent);box-shadow:0 2px 8px rgba(253,206,54,0.3);" onclick="generateBundleChat()" onpointerdown="this.style.opacity='0.8'" onpointerup="this.style.opacity=''"><span style="font-size:13px;font-weight:700;color:var(--d1);">ბანდლის გენერაცია</span></div>
-        <div class="chat-quick" style="padding:8px 14px;border:1.5px solid rgba(253,206,54,0.25);border-radius:var(--radius-pill);cursor:pointer;transition:all 0.15s;background:rgba(253,206,54,0.04);" onclick="quickChat('ფასდაკლებები და აქციები')" onpointerdown="this.style.background='var(--bg)'" onpointerup="this.style.background=''"><span style="font-size:13px;font-weight:500;">აქციები</span></div>
-      </div>
-      <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
-        <div class="chat-bubble chat-user"><div>120 კვ.მ ბინისთვის რომელი ქვაბი იქნება ოპტიმალური?</div><div class="chat-time" style="text-align:right;color:rgba(255,255,255,0.5);">14:32</div></div>
-      </div>
-      <div style="display:flex;gap:8px;margin-bottom:14px;align-items:flex-end;">
-        <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.2),rgba(253,206,54,0.08));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(253,206,54,0.15);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg></div>
-        <div style="max-width:80%;">
-          <div class="chat-bubble chat-ai" style="margin-bottom:6px;"><div>120 მ²-ისთვის გირჩევთ <strong>24 kW</strong> სიმძლავრის კონდენსაციურ ქვაბს:</div><div class="chat-time">14:33</div></div>
-          <div style="background:var(--white);border-radius:var(--radius-lg);padding:14px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 4px 16px rgba(0,0,0,0.04);cursor:pointer;" onclick="navigateTo('product')">
-            <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px;">
-              <div class="placeholder" style="width:48px;height:48px;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg></div>
-              <div><div style="font-size:14px;font-weight:700;">Bosch Condens GC7000iW 24</div><div style="font-size:12px;color:var(--l3);margin-top:2px;">24 kW · A++ · Wi-Fi</div><div style="font-size:15px;font-weight:800;margin-top:4px;color:var(--d1);">₾ 2,720</div></div>
-            </div>
-            <button class="btn-primary" style="font-size:13px;padding:10px;">პროდუქტის ნახვა</button>
+
+    <!-- Chat history (shown initially, hidden after first message) -->
+    <div id="chat-history" style="flex:1;overflow-y:auto;padding:0 16px;padding-bottom:90px;-webkit-overflow-scrolling:touch;">
+      <!-- New chat button -->
+      <button onclick="startNewChat()" style="width:100%;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,#FDCE36,#E5B820);border:none;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;margin-bottom:24px;transition:transform 0.15s;" onpointerdown="this.style.transform='scale(0.97)'" onpointerup="this.style.transform=''">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span style="font-size:15px;font-weight:700;color:var(--d1);">&#4304;&#4334;&#4304;&#4314;&#4312; &#4331;&#4312;&#4308;&#4305;&#4304;</span>
+      </button>
+
+      <div style="font-size:12px;font-weight:600;color:var(--l3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;padding-left:4px;">&#4305;&#4317;&#4314;&#4317; &#4321;&#4304;&#4323;&#4305;&#4320;&#4308;&#4305;&#4312;</div>
+
+      <!-- History card 1 -->
+      <div onclick="loadChatHistory(0)" style="background:var(--white);border-radius:16px;padding:16px;margin-bottom:10px;cursor:pointer;border:1px solid rgba(0,0,0,0.04);transition:transform 0.15s;" onpointerdown="this.style.transform='scale(0.98)'" onpointerup="this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(253,206,54,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="3"/></svg>
           </div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:14px;font-weight:700;color:var(--d1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">120 &#4315;&#178;-&#4312;&#4321; &#4325;&#4309;&#4304;&#4305;&#4312;&#4321; &#4328;&#4308;&#4320;&#4329;&#4308;&#4309;&#4304;</div>
+            <div style="font-size:12px;color:var(--l3);margin-top:2px;">Bosch Condens GC7000iW 24 &middot; &#8382;2,720</div>
+          </div>
+          <div style="font-size:11px;color:var(--l2);flex-shrink:0;">14:33</div>
         </div>
       </div>
-      <div style="display:flex;gap:8px;align-items:flex-end;">
-        <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,rgba(253,206,54,0.2),rgba(253,206,54,0.08));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(253,206,54,0.15);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg></div>
-        <div style="background:var(--white);border-radius:16px 16px 16px 4px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.04);display:flex;gap:5px;">
-          <div class="typing-dot" style="width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:0.8;"></div>
-          <div class="typing-dot" style="width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:0.5;"></div>
-          <div class="typing-dot" style="width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:0.3;"></div>
+
+      <!-- History card 2 -->
+      <div onclick="loadChatHistory(1)" style="background:var(--white);border-radius:16px;padding:16px;margin-bottom:10px;cursor:pointer;border:1px solid rgba(0,0,0,0.04);transition:transform 0.15s;" onpointerdown="this.style.transform='scale(0.98)'" onpointerup="this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(253,206,54,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:14px;font-weight:700;color:var(--d1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">&#4320;&#4304;&#4307;&#4312;&#4304;&#4322;&#4317;&#4320;&#4312;&#4321; &#4315;&#4317;&#4316;&#4322;&#4304;&#4319;&#4312;</div>
+            <div style="font-size:12px;color:var(--l3);margin-top:2px;">22-&#4322;&#4312;&#4318;&#4312;&#4321; &#4318;&#4304;&#4316;&#4308;&#4314;&#4323;&#4320;&#4312; &middot; 5 &#4330;&#4304;&#4314;&#4312;</div>
+          </div>
+          <div style="font-size:11px;color:var(--l2);flex-shrink:0;">&#4306;&#4323;&#4328;&#4312;&#4316;</div>
+        </div>
+      </div>
+
+      <!-- History card 3 -->
+      <div onclick="loadChatHistory(2)" style="background:var(--white);border-radius:16px;padding:16px;margin-bottom:10px;cursor:pointer;border:1px solid rgba(0,0,0,0.04);transition:transform 0.15s;" onpointerdown="this.style.transform='scale(0.98)'" onpointerup="this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(253,206,54,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:14px;font-weight:700;color:var(--d1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">&#4305;&#4304;&#4316;&#4307;&#4314;&#4312;&#4321; &#4306;&#4308;&#4316;&#4308;&#4320;&#4304;&#4330;&#4312;&#4304;</div>
+            <div style="font-size:12px;color:var(--l3);margin-top:2px;">&#4321;&#4320;&#4323;&#4314;&#4312; &#4321;&#4312;&#4321;&#4322;&#4308;&#4315;&#4304; &middot; &#8382;8,450</div>
+          </div>
+          <div style="font-size:11px;color:var(--l2);flex-shrink:0;">25 &#4315;&#4304;&#4320;</div>
+        </div>
+      </div>
+
+      <!-- History card 4 -->
+      <div onclick="loadChatHistory(3)" style="background:var(--white);border-radius:16px;padding:16px;margin-bottom:10px;cursor:pointer;border:1px solid rgba(0,0,0,0.04);transition:transform 0.15s;" onpointerdown="this.style.transform='scale(0.98)'" onpointerup="this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(253,206,54,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:14px;font-weight:700;color:var(--d1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">&#4324;&#4304;&#4321;&#4307;&#4304;&#4313;&#4314;&#4308;&#4305;&#4308;&#4305;&#4312; &#4307;&#4304; &#4304;&#4325;&#4330;&#4312;&#4308;&#4305;&#4312;</div>
+            <div style="font-size:12px;color:var(--l3);margin-top:2px;">3 &#4304;&#4325;&#4330;&#4312;&#4304; &#4316;&#4304;&#4318;&#4317;&#4309;&#4316;&#4312;&#4304;</div>
+          </div>
+          <div style="font-size:11px;color:var(--l2);flex-shrink:0;">24 &#4315;&#4304;&#4320;</div>
         </div>
       </div>
     </div>
+
+    <!-- Chat messages (hidden initially, shown after sending) -->
+    <div id="chat-messages" style="flex:1;overflow-y:auto;padding:14px 16px;padding-bottom:90px;-webkit-overflow-scrolling:touch;display:none;">
+    </div>
+
+    <!-- Input bar -->
     <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:12px 16px calc(12px + var(--safe-bottom));border-top:1px solid rgba(0,0,0,0.04);z-index:10;">
       <div style="display:flex;gap:10px;align-items:center;">
-        <button id="chat-voice-btn" style="width:42px;height:42px;border-radius:50%;background:rgba(253,206,54,0.08);display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(253,206,54,0.2);cursor:pointer;flex-shrink:0;transition:all 0.2s;" onclick="toggleVoiceInput(this)" onpointerdown="this.style.transform='scale(0.9)'" onpointerup="this.style.transform=''">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-        </button>
         <div class="input-wrap" style="flex:1;border:1.5px solid rgba(0,0,0,0.06);border-radius:var(--radius-pill);padding:11px 16px;background:#F8F8FA;transition:border-color 0.2s;">
-          <input type="text" id="chat-input" placeholder="მოძებნე ან დაწერე..." style="background:none;border:none;font-size:14px;width:100%;font-family:inherit;color:var(--d1);" onkeydown="if(event.key==='Enter')sendChat()" onfocus="this.parentElement.style.borderColor='rgba(253,206,54,0.5)'" onblur="this.parentElement.style.borderColor='rgba(0,0,0,0.06)'">
+          <input type="text" id="chat-input" placeholder="&#4315;&#4317;&#4331;&#4308;&#4305;&#4316;&#4308; &#4304;&#4316; &#4307;&#4304;&#4332;&#4308;&#4320;&#4308;..." style="background:none;border:none;font-size:14px;width:100%;font-family:inherit;color:var(--d1);" onkeydown="if(event.key==='Enter')sendChat()" onfocus="this.parentElement.style.borderColor='rgba(253,206,54,0.5)'" onblur="this.parentElement.style.borderColor='rgba(0,0,0,0.06)'">
         </div>
-        <button id="chat-send-btn" style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FDCE36,#F5A623);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:transform 0.1s;box-shadow:0 2px 8px rgba(253,206,54,0.3);" onclick="sendChat()" onpointerdown="this.style.transform='scale(0.9)'" onpointerup="this.style.transform=''">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <button id="chat-send-btn" style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#FDCE36,#E5B820);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:transform 0.15s;box-shadow:0 2px 8px rgba(253,206,54,0.25);" onclick="sendChat()" onpointerdown="this.style.transform='scale(0.9)'" onpointerup="this.style.transform=''">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--d1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ==================== CART (Invoice-style) ==================== -->
+    <!-- ==================== CART (Invoice-style) ==================== -->
   <div class="screen warm-wash" id="screen-cart" style="background:#F2F2F7;">
     <div class="status-bar-light"><span class="time">17:42</span><div class="icons"><svg viewBox="0 0 24 24" fill="#1C1C1B"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></div></div>
     <div class="header-light" style="padding-top:12px;">
@@ -3739,6 +3775,10 @@
       if (verifyTimer) clearInterval(verifyTimer);
       verifyTimer = startCountdown('timer-verify', 'resend-verify', 60);
     }
+    // Reset chat to history view when entering
+    if (screen === 'chat') {
+      showChatHistory();
+    }
     // Render kit categories when entering kit screen
     if (screen === 'kit') {
       renderKitCategories();
@@ -4400,12 +4440,49 @@
     showToast(escKit(alt.name) + ' არჩეულია');
   }
 
+  // ============ CHAT — HISTORY / NEW CHAT ============
+  function startNewChat() {
+    const history = document.getElementById('chat-history');
+    const messages = document.getElementById('chat-messages');
+    if (history) history.style.display = 'none';
+    if (messages) { messages.style.display = 'flex'; messages.style.flexDirection = 'column'; messages.innerHTML = ''; }
+    document.getElementById('chat-input').focus();
+  }
+
+  function loadChatHistory(idx) {
+    startNewChat();
+    // Simulate loading a previous chat
+    const container = document.getElementById('chat-messages');
+    const chats = [
+      {q: '120 კვ.მ ბინისთვის რომელი ქვაბი იქნება ოპტიმალური?', a: '120 მ²-ისთვის გირჩევთ <strong>24 kW</strong> სიმძლავრის კონდენსაციურ ქვაბს — Bosch Condens GC7000iW 24, ფასი ₾2,720.'},
+      {q: 'რადიატორის მონტაჟისთვის რა მჭირდება?', a: '22-ტიპის პანელური რადიატორი, 5 ცალი. გირჩევთ Kermi FKO 22/500 მოდელს.'},
+      {q: 'სრული გათბობის სისტემის ბანდლი მინდა', a: 'სრული სისტემა მოიცავს: ქვაბი + რადიატორები + მილები + ტერმოსტატი. ჯამური ფასი ≈ ₾8,450.'},
+      {q: 'რა ფასდაკლებებია ახლა?', a: 'ამჟამად 3 აქტიური აქცია გაქვთ: Bosch ქვაბებზე -15%, რადიატორებზე 3+1, და უფასო მიწოდება ₾500-ზე მეტზე.'}
+    ];
+    const chat = chats[idx] || chats[0];
+    container.innerHTML = '<div style="display:flex;justify-content:flex-end;margin-bottom:14px;"><div class="chat-bubble chat-user"><div>' + chat.q + '</div></div></div>' +
+      '<div style="display:flex;gap:8px;margin-bottom:14px;align-items:flex-end;"><div style="width:32px;height:32px;border-radius:50%;background:rgba(253,206,54,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="chat-bubble chat-ai"><div>' + chat.a + '</div></div></div>';
+  }
+
+  function showChatHistory() {
+    const history = document.getElementById('chat-history');
+    const messages = document.getElementById('chat-messages');
+    if (history) history.style.display = '';
+    if (messages) { messages.style.display = 'none'; messages.innerHTML = ''; }
+  }
+
   // ============ CHAT — SEND MESSAGE ============
   function sendChat() {
     const input = document.getElementById('chat-input');
     const msg = input.value.trim();
     if (!msg) return;
     input.value = '';
+
+    // Hide history, show messages
+    const history = document.getElementById('chat-history');
+    const messages = document.getElementById('chat-messages');
+    if (history) history.style.display = 'none';
+    if (messages && messages.style.display === 'none') { messages.style.display = 'flex'; messages.style.flexDirection = 'column'; }
 
     const container = document.getElementById('chat-messages');
     const now = new Date();
