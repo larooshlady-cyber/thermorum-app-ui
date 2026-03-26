@@ -1315,40 +1315,38 @@
         </div>
       </div>
 
-    </div>
+      <!-- Active Orders (compact, inside header) -->
+      <div style="padding:14px 16px 0;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+          <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);">აქტიური შეკვეთები</span>
+          <span style="font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;padding:8px 0;min-height:44px;display:flex;align-items:center;" onclick="switchTab('orders')">ყველა</span>
+        </div>
+        <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:2px;" class="hide-scrollbar">
+          <div style="cursor:pointer;flex-shrink:0;flex:1;background:rgba(255,255,255,0.06);border-radius:14px;padding:12px 14px;border:1px solid rgba(255,255,255,0.08);" onclick="navigateTo('order-detail')">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:13px;font-weight:800;color:#fff;">#TH-2847</span>
+              <span style="font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(253,206,54,0.15);color:var(--accent);">მზადდება</span>
+            </div>
+            <div style="height:4px;border-radius:2px;background:rgba(255,255,255,0.1);margin-bottom:8px;"><div style="height:100%;width:60%;border-radius:2px;background:var(--accent);"></div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:500;">3/5</span>
+              <span style="font-size:13px;font-weight:800;color:#fff;">₾ 4,850</span>
+            </div>
+          </div>
+          <div style="cursor:pointer;flex-shrink:0;flex:1;background:rgba(255,255,255,0.06);border-radius:14px;padding:12px 14px;border:1px solid rgba(255,255,255,0.08);" onclick="navigateTo('order-detail')">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:13px;font-weight:800;color:#fff;">#TH-2831</span>
+              <span style="font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(52,199,89,0.12);color:var(--green);">გაგზავნილი</span>
+            </div>
+            <div style="height:4px;border-radius:2px;background:rgba(255,255,255,0.1);margin-bottom:8px;"><div style="height:100%;width:85%;border-radius:2px;background:var(--green);"></div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:500;">7/8</span>
+              <span style="font-size:13px;font-weight:800;color:#fff;">₾ 2,120</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <!-- Active Orders -->
-    <div style="position:relative;z-index:1;padding:12px 16px 0;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-        <span style="font-size:15px;font-weight:800;color:var(--d1);">აქტიური შეკვეთები</span>
-        <span style="font-size:13px;font-weight:600;color:var(--accent-dark);cursor:pointer;padding:12px 0;min-height:44px;display:flex;align-items:center;" onclick="switchTab('orders')">ყველა</span>
-      </div>
-      <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;" class="hide-scrollbar">
-        <div style="cursor:pointer;flex-shrink:0;width:280px;background:var(--white);border-radius:20px;padding:18px 20px;border:1px solid rgba(0,0,0,0.06);" onclick="navigateTo('order-detail')">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-            <span style="font-size:16px;font-weight:800;color:var(--d1);">#TH-2847</span>
-            <span style="font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;background:rgba(253,206,54,0.15);color:var(--accent-dark);">მზადდება</span>
-          </div>
-          <div style="font-size:12px;color:var(--l3);margin-bottom:10px;">10 მარტი, 2026</div>
-          <div style="height:6px;border-radius:3px;background:#EEEEF0;margin-bottom:12px;"><div style="height:100%;width:60%;border-radius:3px;background:var(--accent);"></div></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:12px;color:var(--l3);font-weight:500;">3/5 ელემენტი</span>
-            <span style="font-size:16px;font-weight:800;color:var(--d1);">₾ 4,850</span>
-          </div>
-        </div>
-        <div style="cursor:pointer;flex-shrink:0;width:280px;background:var(--white);border-radius:20px;padding:18px 20px;border:1px solid rgba(0,0,0,0.06);" onclick="navigateTo('order-detail')">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-            <span style="font-size:16px;font-weight:800;color:var(--d1);">#TH-2831</span>
-            <span style="font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;background:rgba(52,199,89,0.12);color:var(--green);">გაგზავნილი</span>
-          </div>
-          <div style="font-size:12px;color:var(--l3);margin-bottom:10px;">7 მარტი, 2026</div>
-          <div style="height:6px;border-radius:3px;background:#EEEEF0;margin-bottom:12px;"><div style="height:100%;width:85%;border-radius:3px;background:var(--green);"></div></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:12px;color:var(--l3);font-weight:500;">7/8 ელემენტი</span>
-            <span style="font-size:16px;font-weight:800;color:var(--d1);">₾ 2,120</span>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- 4 Navigation Buttons — 1x4 vertical -->
