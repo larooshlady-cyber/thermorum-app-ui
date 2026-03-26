@@ -182,14 +182,13 @@
   /* ── Center AI bubble — flat brand yellow ── */
   .tab-ai-bubble {
     width: 72px; height: 72px; flex-shrink: 0;
-    border-radius: 50%;
+    border-radius: 36px;
     background: var(--accent);
     box-shadow: 0 4px 20px rgba(253,206,54,0.3);
     display: flex; align-items: center; justify-content: center;
     overflow: visible; cursor: pointer;
     pointer-events: all;
-    transition: width 0.4s ease, height 0.4s ease,
-                border-radius 0.4s ease, background 0.4s ease,
+    transition: width 0.4s ease, background 0.4s ease,
                 box-shadow 0.4s ease, transform 0.2s ease;
     position: relative;
     animation: ai-float 4s ease-in-out infinite;
@@ -247,7 +246,6 @@
   .tab-ai-bubble.expanded {
     background: var(--black);
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    border-radius: 36px;
     animation: none;
     overflow: hidden;
   }
@@ -3507,7 +3505,6 @@
     var send = sendWrap.querySelector('.send-icon');
     w.classList.add('expanded');
     w.style.width = 'calc(100vw - 40px)';
-    w.style.height = '72px';
     w.style.cursor = 'default';
     w.onclick = null;
     sparkle.style.opacity = '0';
@@ -3547,7 +3544,6 @@
     setTimeout(function(){ sparkle.style.opacity = '1'; }, 80);
     w.classList.remove('expanded');
     w.style.width = '72px';
-    w.style.height = '72px';
     w.style.cursor = 'pointer';
     w.onclick = function(){ expandNavAi(); };
   }
