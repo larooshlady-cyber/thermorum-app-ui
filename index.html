@@ -186,7 +186,7 @@
     background: var(--accent);
     box-shadow: 0 4px 20px rgba(253,206,54,0.3);
     display: flex; align-items: center; justify-content: center;
-    overflow: hidden; cursor: pointer;
+    overflow: visible; cursor: pointer;
     pointer-events: all;
     transition: width 0.35s cubic-bezier(0.25,1,0.5,1),
                 height 0.35s cubic-bezier(0.25,1,0.5,1),
@@ -194,30 +194,79 @@
                 background 0.3s ease,
                 box-shadow 0.3s ease, transform 0.2s ease;
     position: relative;
+    animation: ai-float 4s ease-in-out infinite;
   }
-  .tab-ai-bubble:active { transform: scale(0.92); }
+  .tab-ai-bubble:active { transform: scale(0.92); animation: none; }
 
-  /* ── Breathing pulse ring ── */
-  .tab-ai-bubble::before {
+  /* ── Gentle float ── */
+  @keyframes ai-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  /* ── Pulsing glow shadow ── */
+  .tab-ai-bubble::after {
     content: '';
-    position: absolute; inset: -5px;
+    position: absolute; inset: 0;
     border-radius: 50%;
-    border: 1.5px solid rgba(253,206,54,0.3);
-    animation: ai-breathe 3s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(253,206,54,0.4), 0 0 40px rgba(253,206,54,0.15);
+    animation: ai-glow 2.5s ease-in-out infinite;
     pointer-events: none;
   }
-  @keyframes ai-breathe {
-    0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.15); opacity: 0; }
+  @keyframes ai-glow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
   }
 
-  /* ── Expanded state: dark bar ── */
+  /* ── Outer ring pulse 1 ── */
+  .tab-ai-bubble::before {
+    content: '';
+    position: absolute; inset: -6px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(253,206,54,0.35);
+    animation: ai-ring1 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes ai-ring1 {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.18); opacity: 0; }
+  }
+
+  /* ── Second ring pulse (via extra element) ── */
+  .ai-ring-2 {
+    position: absolute; inset: -6px;
+    border-radius: 50%;
+    border: 1px solid rgba(253,206,54,0.2);
+    animation: ai-ring2 3s ease-in-out 1.5s infinite;
+    pointer-events: none;
+  }
+  @keyframes ai-ring2 {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.25); opacity: 0; }
+  }
+
+  /* ── Sparkle icon slow rotation ── */
+  .tab-ai-bubble .sparkle-icon {
+    animation: sparkle-rotate 6s linear infinite;
+  }
+  @keyframes sparkle-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* ── Expanded state: dark bar — kill all animations ── */
   .tab-ai-bubble.expanded {
     background: var(--black);
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     border-radius: 28px;
+    animation: none;
+    overflow: hidden;
   }
-  .tab-ai-bubble.expanded::before { display: none; }
+  .tab-ai-bubble.expanded::before,
+  .tab-ai-bubble.expanded::after,
+  .tab-ai-bubble.expanded .ai-ring-2,
+  .tab-ai-bubble.expanded .ai-ripple { display: none; }
+  .tab-ai-bubble.expanded .sparkle-icon { animation: none; }
   .tab-ai-bubble.expanded .tab-ai-inner-input {
     color: var(--white);
   }
@@ -228,20 +277,17 @@
     stroke: rgba(255,255,255,0.5) !important;
   }
 
-  /* ── Ripple on tap ── */
+  /* ── Looping ripple ── */
   .tab-ai-bubble .ai-ripple {
-    position: absolute; inset: 0;
+    position: absolute; inset: -2px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
-    transform: scale(0); opacity: 0;
+    background: rgba(253,206,54,0.25);
+    animation: ai-ripple-loop 2.5s ease-out infinite;
     pointer-events: none;
   }
-  .tab-ai-bubble .ai-ripple.animate {
-    animation: ai-ripple-fx 0.6s ease-out forwards;
-  }
-  @keyframes ai-ripple-fx {
-    0% { transform: scale(0); opacity: 1; }
-    100% { transform: scale(2.5); opacity: 0; }
+  @keyframes ai-ripple-loop {
+    0% { transform: scale(0.9); opacity: 0.6; }
+    100% { transform: scale(1.6); opacity: 0; }
   }
 
   .tab-ai-bubble .tab-ai-sparkle {
@@ -3296,7 +3342,8 @@
       <span class="tab-label">მთავარი</span>
     </button>
     <!-- AI Chat — expanding bubble (same as home screen) -->
-    <div class="tab-ai-bubble" id="navAiBubble" onclick="triggerAiRipple();expandNavAi()">
+    <div class="tab-ai-bubble" id="navAiBubble" onclick="expandNavAi()">
+      <div class="ai-ring-2"></div>
       <div class="ai-ripple" id="aiRipple"></div>
       <button class="tab-ai-side-btn" id="navAiCam" onclick="event.stopPropagation();navigateTo('chat');collapseNavAi();">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--l3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
@@ -3447,14 +3494,6 @@
     });
   }
 
-  /* ── AI ripple effect ── */
-  function triggerAiRipple() {
-    var r = document.getElementById('aiRipple');
-    r.classList.remove('animate');
-    void r.offsetWidth;
-    r.classList.add('animate');
-  }
-
   /* ── Nav AI Bubble expand/collapse ── */
   var navAiExpanded = false;
   function expandNavAi() {
@@ -3514,7 +3553,7 @@
     w.style.width = '72px';
     w.style.height = '72px';
     w.style.cursor = 'pointer';
-    w.onclick = function(){ triggerAiRipple(); expandNavAi(); };
+    w.onclick = function(){ expandNavAi(); };
   }
   // Collapse nav AI when clicking outside
   document.addEventListener('pointerdown', function(e) {
