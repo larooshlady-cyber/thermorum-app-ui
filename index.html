@@ -188,11 +188,9 @@
     display: flex; align-items: center; justify-content: center;
     overflow: visible; cursor: pointer;
     pointer-events: all;
-    transition: width 0.35s cubic-bezier(0.25,1,0.5,1),
-                height 0.35s cubic-bezier(0.25,1,0.5,1),
-                border-radius 0.35s cubic-bezier(0.25,1,0.5,1),
-                background 0.3s ease,
-                box-shadow 0.3s ease, transform 0.2s ease;
+    transition: width 0.4s ease, height 0.4s ease,
+                border-radius 0.4s ease, background 0.4s ease,
+                box-shadow 0.4s ease, transform 0.2s ease;
     position: relative;
     animation: ai-float 4s ease-in-out infinite;
   }
@@ -245,15 +243,6 @@
     50% { transform: scale(1.25); opacity: 0; }
   }
 
-  /* ── Sparkle icon slow rotation ── */
-  .tab-ai-bubble .sparkle-icon {
-    animation: sparkle-rotate 6s linear infinite;
-  }
-  @keyframes sparkle-rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
   /* ── Expanded state: dark bar — kill all animations ── */
   .tab-ai-bubble.expanded {
     background: var(--black);
@@ -266,7 +255,6 @@
   .tab-ai-bubble.expanded::after,
   .tab-ai-bubble.expanded .ai-ring-2,
   .tab-ai-bubble.expanded .ai-ripple { display: none; }
-  .tab-ai-bubble.expanded .sparkle-icon { animation: none; }
   .tab-ai-bubble.expanded .tab-ai-inner-input {
     color: var(--white);
   }
