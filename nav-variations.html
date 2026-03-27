@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thermorum — Bottom Nav Variations</title>
+<style>
+  /* ========================================
+     Design Tokens
+     ======================================== */
+  :root {
+    --d1: #1C1C1B;
+    --d2: #2A2A29;
+    --accent: #FDCE36;
+    --text-primary: #fafafa;
+    --text-secondary: rgba(255,255,255,0.35);
+    --border-subtle: rgba(255,255,255,0.08);
+    --font-stack: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    --spring-press: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-state: cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  /* ========================================
+     Reset & Base
+     ======================================== */
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #F8F9FA;
+    font-family: var(--font-stack);
+    color: #1d1d1f;
+    min-height: 100vh;
+    padding: 40px 0 60px;
+  }
+
+  /* ========================================
+     Page Header
+     ======================================== */
+  .page-title {
+    text-align: center;
+    padding: 0 24px 32px;
+  }
+
+  .page-title h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #1d1d1f;
+  }
+
+  .page-title p {
+    font-size: 14px;
+    color: #6e6e73;
+    margin-top: 6px;
+  }
+
+  /* ========================================
+     Scrollable Frame Container
+     ======================================== */
+  .frames-wrapper {
+    display: flex;
+    gap: 32px;
+    padding: 0 40px 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .frames-wrapper::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .frames-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .frames-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.15);
+    border-radius: 3px;
+  }
+
+  /* ========================================
+     Individual Frame
+     ======================================== */
+  .frame-col {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+  }
+
+  .frame-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 12px;
+    padding-left: 4px;
+  }
+
+  .frame-label span {
+    color: #6e6e73;
+    font-weight: 400;
+  }
+
+  .phone-frame {
+    width: 390px;
+    height: 844px;
+    border-radius: 44px;
+    overflow: hidden;
+    background: var(--d1);
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.12);
+  }
+
+  /* ========================================
+     Mock Content Area (shared)
+     ======================================== */
+  .mock-status-bar {
+    height: 54px;
+    padding: 14px 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .mock-status-icons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .mock-header {
+    padding: 8px 20px 16px;
+  }
+
+  .mock-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+  }
+
+  .mock-search {
+    margin: 0 20px 20px;
+    height: 40px;
+    background: var(--d2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 8px;
+  }
+
+  .mock-search svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0.4;
+  }
+
+  .mock-search span {
+    font-size: 15px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .mock-cards {
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .mock-card {
+    background: var(--d2);
+    border-radius: 16px;
+    padding: 16px;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .mock-card-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mock-card-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text-primary);
+    opacity: 0.5;
+  }
+
+  .mock-card-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    opacity: 0.8;
+  }
+
+  .mock-card-count {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 2px;
+  }
+
+  /* ========================================
+     Shared Nav Styles
+     ======================================== */
+  .nav-area {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 44px;
+    min-height: 44px;
+    transition: transform 0.25s var(--spring-press);
+    user-select: none;
+  }
+
+  .nav-item:active {
+    transform: scale(0.92);
+  }
+
+  .nav-item svg {
+    width: 24px;
+    height: 24px;
+    transition: color 0.3s var(--ease-state), opacity 0.3s var(--ease-state);
+  }
+
+  .nav-label {
+    font-size: 10px;
+    font-weight: 600;
+    margin-top: 2px;
+    transition: color 0.3s var(--ease-state), opacity 0.3s var(--ease-state);
+  }
+
+  /* ========================================
+     Reduced Motion
+     ======================================== */
+  @media (prefers-reduced-motion: reduce) {
+    .nav-item,
+    .nav-item svg,
+    .nav-label {
+      transition: none;
+    }
+    .nav-item:active {
+      transform: none;
+    }
+  }
+
+  /* ========================================
+     V1 — Refined Pill Dock
+     ======================================== */
+  .nav-v1 {
+    padding: 0 16px 12px;
+  }
+
+  .nav-v1-bar {
+    background: linear-gradient(180deg, #222221, #1C1C1B);
+    border-radius: 100px;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 24px 10px;
+    position: relative;
+    height: 64px;
+  }
+
+  .nav-v1 .nav-item.active svg {
+    color: var(--text-primary);
+    opacity: 1;
+  }
+
+  .nav-v1 .nav-item.active .nav-label {
+    color: var(--text-primary);
+    opacity: 1;
+  }
+
+  .nav-v1 .nav-item.inactive svg {
+    color: var(--text-primary);
+    opacity: 0.35;
+  }
+
+  .nav-v1 .nav-item.inactive .nav-label {
+    color: var(--text-primary);
+    opacity: 0.35;
+  }
+
+  .nav-v1-ai {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -36px;
+    outline: 5px solid var(--text-primary);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.25s var(--spring-press);
+    flex-shrink: 0;
+  }
+
+  .nav-v1-ai:active {
+    transform: scale(0.92);
+  }
+
+  .nav-v1-ai svg {
+    width: 28px;
+    height: 28px;
+    color: #1d1d1f;
+  }
+
+  /* ========================================
+     V2 — Five-Tab Bar
+     ======================================== */
+  .nav-v2-bar {
+    background: var(--d1);
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 8px 0 0;
+    height: 83px;
+  }
+
+  .nav-v2-bar .nav-item {
+    flex: 1;
+    position: relative;
+  }
+
+  .nav-v2-bar .nav-item.active svg {
+    color: var(--accent);
+  }
+
+  .nav-v2-bar .nav-item.active .nav-label {
+    color: var(--accent);
+  }
+
+  .nav-v2-bar .nav-item.inactive svg {
+    color: var(--text-primary);
+    opacity: 0.35;
+  }
+
+  .nav-v2-bar .nav-item.inactive .nav-label {
+    color: var(--text-primary);
+    opacity: 0.35;
+  }
+
+  .nav-v2-bar .nav-item.ai-tab svg {
+    color: var(--accent);
+  }
+
+  .nav-v2-bar .nav-item.ai-tab .nav-label {
+    color: var(--accent);
+  }
+
+  .nav-v2-badge {
+    position: absolute;
+    top: -2px;
+    right: calc(50% - 18px);
+    background: #E53935;
+    color: var(--text-primary);
+    font-size: 10px;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  /* ========================================
+     V3 — Minimal Dot Indicator
+     ======================================== */
+  .nav-v3 {
+    padding: 0 16px 12px;
+  }
+
+  .nav-v3-bar {
+    background: linear-gradient(180deg, #222221, #1C1C1B);
+    border-radius: 100px;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 6px 8px;
+    height: 56px;
+  }
+
+  .nav-v3-bar .nav-item {
+    position: relative;
+    width: 56px;
+    height: 44px;
+  }
+
+  .nav-v3-bar .nav-item.active svg {
+    color: var(--text-primary);
+    opacity: 1;
+  }
+
+  .nav-v3-bar .nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+
+  .nav-v3-bar .nav-item.inactive svg {
+    color: var(--text-primary);
+    opacity: 0.3;
+  }
+
+  /* ========================================
+     V4 — Morphing Contextual Bar
+     ======================================== */
+  .nav-v4 {
+    padding: 0 12px 12px;
+  }
+
+  .nav-v4-bar {
+    background: rgba(28,28,27,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .nav-v4-accent-stripe {
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), rgba(253,206,54,0.3));
+    width: 100%;
+  }
+
+  .nav-v4-context {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px 14px;
+  }
+
+  .nav-v4-context .nav-v4-side {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.25s var(--spring-press);
+  }
+
+  .nav-v4-context .nav-v4-side:active {
+    transform: scale(0.92);
+  }
+
+  .nav-v4-context .nav-v4-side svg {
+    width: 22px;
+    height: 22px;
+    color: var(--text-primary);
+    opacity: 0.7;
+  }
+
+  .nav-v4-center {
+    text-align: center;
+    flex: 1;
+  }
+
+  .nav-v4-center-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .nav-v4-progress-track {
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    width: 120px;
+    margin: 0 auto;
+  }
+
+  .nav-v4-progress-fill {
+    height: 100%;
+    width: 40%;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* ========================================
+     V5 — Segmented Glass Bar
+     ======================================== */
+  .nav-v5-bar {
+    background: rgba(28,28,27,0.7);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border-top: 0.5px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 8px 8px 0;
+    height: 88px;
+  }
+
+  .nav-v5-bar .nav-item {
+    flex: 1;
+    padding: 6px 4px 8px;
+    border-radius: 12px;
+    transition: background 0.3s var(--ease-state), transform 0.25s var(--spring-press);
+  }
+
+  .nav-v5-bar .nav-item:active {
+    transform: scale(0.92);
+  }
+
+  .nav-v5-bar .nav-item.active {
+    background: rgba(255,255,255,0.08);
+  }
+
+  .nav-v5-bar .nav-item.active svg {
+    color: var(--accent);
+  }
+
+  .nav-v5-bar .nav-item.active .nav-label {
+    color: var(--accent);
+  }
+
+  .nav-v5-bar .nav-item.inactive svg {
+    color: var(--text-primary);
+    opacity: 0.35;
+  }
+
+  .nav-v5-bar .nav-item.inactive .nav-label {
+    color: var(--text-primary);
+    opacity: 0.35;
+  }
+
+  .nav-v5-bar .nav-item.ai-glow {
+    box-shadow: 0 0 12px rgba(253,206,54,0.15);
+  }
+</style>
+</head>
+<body>
+
+<!-- Page Title -->
+<div class="page-title">
+  <h1>Thermorum — Bottom Nav Variations</h1>
+  <p>Georgian B2B heating/plumbing marketplace &middot; Dark theme &middot; 5 navigation concepts</p>
+</div>
+
+<!-- Horizontally Scrollable Frames -->
+<div class="frames-wrapper">
+
+  <!-- ============================================================
+       V1 — Refined Pill Dock
+       ============================================================ -->
+  <div class="frame-col">
+    <div class="frame-label">V1 — Refined Pill Dock <span>3 items, floating, raised AI</span></div>
+    <div class="phone-frame">
+      <!-- Status bar -->
+      <div class="mock-status-bar">
+        <span>9:41</span>
+        <div class="mock-status-icons">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="3" width="3" height="9" rx="1" fill="currentColor" opacity="0.3"/><rect x="4.5" y="1.5" width="3" height="10.5" rx="1" fill="currentColor" opacity="0.5"/><rect x="9" y="0" width="3" height="12" rx="1" fill="currentColor"/></svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="0" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1"/><rect x="14" y="3.5" width="2" height="5" rx="0.5" fill="currentColor" opacity="0.4"/><rect x="1.5" y="1.5" width="8" height="9" rx="1" fill="currentColor"/></svg>
+        </div>
+      </div>
+      <!-- Header -->
+      <div class="mock-header"><h2>Thermorum</h2></div>
+      <!-- Search -->
+      <div class="mock-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-primary)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>ძიება...</span>
+      </div>
+      <!-- Cards -->
+      <div class="mock-cards">
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+          <div><div class="mock-card-label">გათბობა</div><div class="mock-card-count">124 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+          <div><div class="mock-card-label">სანტექნიკა</div><div class="mock-card-count">89 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><div class="mock-card-label">ვენტილაცია</div><div class="mock-card-count">56 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+          <div><div class="mock-card-label">მზის ენერგია</div><div class="mock-card-count">32 პროდუქტი</div></div>
+        </div>
+      </div>
+      <!-- Nav V1 -->
+      <div class="nav-area nav-v1">
+        <div class="nav-v1-bar">
+          <!-- Home (active) -->
+          <div class="nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-label">მთავარი</span>
+          </div>
+          <!-- AI center button -->
+          <div class="nav-v1-ai">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/><path d="M18 14l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" opacity="0.6"/></svg>
+          </div>
+          <!-- Favorites (inactive) -->
+          <div class="nav-item inactive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span class="nav-label">ფავორიტები</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       V2 — Five-Tab Bar
+       ============================================================ -->
+  <div class="frame-col">
+    <div class="frame-label">V2 — Five-Tab Bar <span>Full-width, 5 tabs, cart badge</span></div>
+    <div class="phone-frame">
+      <div class="mock-status-bar">
+        <span>9:41</span>
+        <div class="mock-status-icons">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="3" width="3" height="9" rx="1" fill="currentColor" opacity="0.3"/><rect x="4.5" y="1.5" width="3" height="10.5" rx="1" fill="currentColor" opacity="0.5"/><rect x="9" y="0" width="3" height="12" rx="1" fill="currentColor"/></svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="0" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1"/><rect x="14" y="3.5" width="2" height="5" rx="0.5" fill="currentColor" opacity="0.4"/><rect x="1.5" y="1.5" width="8" height="9" rx="1" fill="currentColor"/></svg>
+        </div>
+      </div>
+      <div class="mock-header"><h2>Thermorum</h2></div>
+      <div class="mock-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-primary)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>ძიება...</span>
+      </div>
+      <div class="mock-cards">
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+          <div><div class="mock-card-label">გათბობა</div><div class="mock-card-count">124 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+          <div><div class="mock-card-label">სანტექნიკა</div><div class="mock-card-count">89 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><div class="mock-card-label">ვენტილაცია</div><div class="mock-card-count">56 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+          <div><div class="mock-card-label">მზის ენერგია</div><div class="mock-card-count">32 პროდუქტი</div></div>
+        </div>
+      </div>
+      <!-- Nav V2 -->
+      <div class="nav-area">
+        <div class="nav-v2-bar">
+          <!-- Home (active) -->
+          <div class="nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-label">მთავარი</span>
+          </div>
+          <!-- Categories (inactive) -->
+          <div class="nav-item inactive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            <span class="nav-label">კატეგორიები</span>
+          </div>
+          <!-- AI (center, gold) -->
+          <div class="nav-item ai-tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/><path d="M18 14l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" opacity="0.6"/></svg>
+            <span class="nav-label">AI</span>
+          </div>
+          <!-- Cart (inactive, with badge) -->
+          <div class="nav-item inactive" style="position: relative;">
+            <div class="nav-v2-badge">3</div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span class="nav-label">კალათა</span>
+          </div>
+          <!-- Orders (inactive) -->
+          <div class="nav-item inactive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            <span class="nav-label">შეკვეთები</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       V3 — Minimal Dot Indicator
+       ============================================================ -->
+  <div class="frame-col">
+    <div class="frame-label">V3 — Minimal Dot Indicator <span>4 items, icons only, dot for active</span></div>
+    <div class="phone-frame">
+      <div class="mock-status-bar">
+        <span>9:41</span>
+        <div class="mock-status-icons">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="3" width="3" height="9" rx="1" fill="currentColor" opacity="0.3"/><rect x="4.5" y="1.5" width="3" height="10.5" rx="1" fill="currentColor" opacity="0.5"/><rect x="9" y="0" width="3" height="12" rx="1" fill="currentColor"/></svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="0" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1"/><rect x="14" y="3.5" width="2" height="5" rx="0.5" fill="currentColor" opacity="0.4"/><rect x="1.5" y="1.5" width="8" height="9" rx="1" fill="currentColor"/></svg>
+        </div>
+      </div>
+      <div class="mock-header"><h2>Thermorum</h2></div>
+      <div class="mock-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-primary)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>ძიება...</span>
+      </div>
+      <div class="mock-cards">
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+          <div><div class="mock-card-label">გათბობა</div><div class="mock-card-count">124 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+          <div><div class="mock-card-label">სანტექნიკა</div><div class="mock-card-count">89 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><div class="mock-card-label">ვენტილაცია</div><div class="mock-card-count">56 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+          <div><div class="mock-card-label">მზის ენერგია</div><div class="mock-card-count">32 პროდუქტი</div></div>
+        </div>
+      </div>
+      <!-- Nav V3 -->
+      <div class="nav-area nav-v3">
+        <div class="nav-v3-bar">
+          <!-- Home (active) -->
+          <div class="nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <!-- Categories (inactive) -->
+          <div class="nav-item inactive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </div>
+          <!-- Cart (inactive) -->
+          <div class="nav-item inactive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <!-- Profile (inactive) -->
+          <div class="nav-item inactive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       V4 — Morphing Contextual Bar
+       ============================================================ -->
+  <div class="frame-col">
+    <div class="frame-label">V4 — Morphing Contextual Bar <span>Context-aware, cart state shown</span></div>
+    <div class="phone-frame">
+      <div class="mock-status-bar">
+        <span>9:41</span>
+        <div class="mock-status-icons">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="3" width="3" height="9" rx="1" fill="currentColor" opacity="0.3"/><rect x="4.5" y="1.5" width="3" height="10.5" rx="1" fill="currentColor" opacity="0.5"/><rect x="9" y="0" width="3" height="12" rx="1" fill="currentColor"/></svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="0" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1"/><rect x="14" y="3.5" width="2" height="5" rx="0.5" fill="currentColor" opacity="0.4"/><rect x="1.5" y="1.5" width="8" height="9" rx="1" fill="currentColor"/></svg>
+        </div>
+      </div>
+      <div class="mock-header"><h2>Thermorum</h2></div>
+      <div class="mock-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-primary)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>ძიება...</span>
+      </div>
+      <div class="mock-cards">
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+          <div><div class="mock-card-label">გათბობა</div><div class="mock-card-count">124 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+          <div><div class="mock-card-label">სანტექნიკა</div><div class="mock-card-count">89 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><div class="mock-card-label">ვენტილაცია</div><div class="mock-card-count">56 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+          <div><div class="mock-card-label">მზის ენერგია</div><div class="mock-card-count">32 პროდუქტი</div></div>
+        </div>
+      </div>
+      <!-- Nav V4 -->
+      <div class="nav-area nav-v4">
+        <div class="nav-v4-bar">
+          <div class="nav-v4-accent-stripe"></div>
+          <div class="nav-v4-context">
+            <!-- Left: back arrow -->
+            <div class="nav-v4-side">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            </div>
+            <!-- Center: contextual info -->
+            <div class="nav-v4-center">
+              <div class="nav-v4-center-label">კალათაში: 3 ნივთი</div>
+              <div class="nav-v4-progress-track">
+                <div class="nav-v4-progress-fill"></div>
+              </div>
+            </div>
+            <!-- Right: cart icon -->
+            <div class="nav-v4-side">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       V5 — Segmented Glass Bar
+       ============================================================ -->
+  <div class="frame-col">
+    <div class="frame-label">V5 — Segmented Glass Bar <span>Glass morphism, active pill highlight</span></div>
+    <div class="phone-frame">
+      <div class="mock-status-bar">
+        <span>9:41</span>
+        <div class="mock-status-icons">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="3" width="3" height="9" rx="1" fill="currentColor" opacity="0.3"/><rect x="4.5" y="1.5" width="3" height="10.5" rx="1" fill="currentColor" opacity="0.5"/><rect x="9" y="0" width="3" height="12" rx="1" fill="currentColor"/></svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="0" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1"/><rect x="14" y="3.5" width="2" height="5" rx="0.5" fill="currentColor" opacity="0.4"/><rect x="1.5" y="1.5" width="8" height="9" rx="1" fill="currentColor"/></svg>
+        </div>
+      </div>
+      <div class="mock-header"><h2>Thermorum</h2></div>
+      <div class="mock-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-primary)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>ძიება...</span>
+      </div>
+      <div class="mock-cards">
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+          <div><div class="mock-card-label">გათბობა</div><div class="mock-card-count">124 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+          <div><div class="mock-card-label">სანტექნიკა</div><div class="mock-card-count">89 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><div class="mock-card-label">ვენტილაცია</div><div class="mock-card-count">56 პროდუქტი</div></div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+          <div><div class="mock-card-label">მზის ენერგია</div><div class="mock-card-count">32 პროდუქტი</div></div>
+        </div>
+      </div>
+      <!-- Nav V5 -->
+      <div class="nav-area">
+        <div class="nav-v5-bar">
+          <!-- Home (active) -->
+          <div class="nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-label">მთავარი</span>
+          </div>
+          <!-- Categories (inactive) -->
+          <div class="nav-item inactive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            <span class="nav-label">კატეგორიები</span>
+          </div>
+          <!-- AI (center, gold glow) -->
+          <div class="nav-item inactive ai-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/><path d="M18 14l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" opacity="0.6"/></svg>
+            <span class="nav-label">AI</span>
+          </div>
+          <!-- Cart (inactive) -->
+          <div class="nav-item inactive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span class="nav-label">კალათა</span>
+          </div>
+          <!-- Profile (inactive) -->
+          <div class="nav-item inactive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="nav-label">პროფილი</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end frames-wrapper -->
+
+</body>
+</html>
